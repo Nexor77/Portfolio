@@ -1,1 +1,1756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d3b">
+<meta name="description" content="NEXORA Studio. Sites profissionais para negócios locais.">
+<title>NEXORA's Studio | Sites de Alta Conversão</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+ theme: {
+  extend: {
+   colors: {
+    nx: {
+     bg:'#071923',
+     panel:'#102d3b',
+     card:'#153747',
+     border:'#254757',
+     gold:'#e7b96b',
+     light:'#f5ead7',
+     muted:'#a8bac2',
+     green:'#64c9a1'
+    }
+   },
+   fontFamily: {
+    sans:['DM Sans','sans-serif'],
+    editorial:['Playfair Display','serif']
+   }
+  }
+ }
+}
+</script>
+
+<style>
+:root {
+ --bg:#071923;
+ --panel:#102d3b;
+ --card:#153747;
+ --border:#254757;
+ --gold:#e7b96b;
+ --light:#f5ead7;
+ --muted:#a8bac2;
+ --green:#64c9a1;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+ margin:0;
+ background:var(--bg);
+ color:var(--light);
+ font-family:'DM Sans',sans-serif;
+ overflow-x:hidden;
+}
+button,input,select,textarea {font:inherit}
+button {cursor:pointer}
+::selection {background:var(--gold);color:#071923}
+::-webkit-scrollbar {width:8px}
+::-webkit-scrollbar-track {background:var(--bg)}
+::-webkit-scrollbar-thumb {background:#345767;border-radius:20px}
+.hidden-page {display:none!important}
+.page-view {animation:pageIn .45s ease}
+@keyframes pageIn {
+ from {opacity:0;transform:translateY(10px)}
+ to {opacity:1;transform:translateY(0)}
+}
+.glass {
+ background:rgba(16,45,59,.78);
+ border:1px solid rgba(255,255,255,.09);
+ backdrop-filter:blur(18px);
+}
+.nx-card {
+ background:linear-gradient(145deg,#153747,#0d2734);
+ border:1px solid var(--border);
+ border-radius:22px;
+ transition:.3s ease;
+}
+.nx-card:hover {
+ transform:translateY(-5px);
+ border-color:rgba(231,185,107,.55);
+ box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+.gold-text {
+ background:linear-gradient(100deg,#f8e5bd,#d6a552);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+.nx-btn {
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:9px;
+ padding:13px 20px;
+ border-radius:12px;
+ font-weight:800;
+ transition:.25s;
+}
+.nx-btn-primary {
+ background:var(--gold);
+ color:#14232a;
+}
+.nx-btn-primary:hover {
+ background:#f5d69e;
+ transform:translateY(-2px);
+}
+.nx-btn-outline {
+ border:1px solid #527080;
+ color:var(--light);
+}
+.nx-btn-outline:hover {
+ border-color:var(--gold);
+ color:var(--gold);
+}
+.nav-link {
+ color:#b8c8ce;
+ font-size:13px;
+ font-weight:700;
+ transition:.2s;
+}
+.nav-link:hover,.nav-link.active {color:var(--gold)}
+.section-label {
+ color:var(--gold);
+ font-size:11px;
+ letter-spacing:3px;
+ text-transform:uppercase;
+ font-weight:800;
+}
+.section-title {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(30px,5vw,48px);
+ line-height:1.12;
+}
+.nx-input {
+ width:100%;
+ padding:13px 15px;
+ border:1px solid var(--border);
+ background:#091f2a;
+ border-radius:12px;
+ color:white;
+ outline:none;
+}
+.nx-input:focus {border-color:var(--gold)}
+.nx-input::placeholder {color:#80949d}
+.feature-icon {
+ width:45px;height:45px;
+ display:grid;place-items:center;
+ border-radius:14px;
+ background:rgba(231,185,107,.12);
+ color:var(--gold);
+ font-size:18px;
+}
+.progress-track {
+ position:fixed;top:0;left:0;height:3px;
+ background:var(--gold);width:0;z-index:1000;
+}
+.ambient {
+ position:fixed;inset:0;pointer-events:none;z-index:-1;
+ background:
+ radial-gradient(ellipse at 15% 10%,rgba(33,92,108,.20),transparent 42%),
+ radial-gradient(ellipse at 90% 70%,rgba(181,132,65,.09),transparent 40%);
+}
+.site-preview {
+ min-height:230px;
+ border-radius:16px;
+ overflow:hidden;
+ position:relative;
+}
+.preview-dentist {background:linear-gradient(135deg,#dff4f1,#a5d6d0);color:#174c50}
+.preview-burger {background:linear-gradient(135deg,#321c17,#8e4224);color:#fff0d4}
+.preview-barber {background:linear-gradient(135deg,#161d27,#35465c);color:#f4e6c9}
+.preview-fashion {background:linear-gradient(135deg,#eaded4,#c7a998);color:#37251f}
+.preview-fitness {background:linear-gradient(135deg,#182a24,#52765d);color:#f1f6e8}
+.preview-pet {background:linear-gradient(135deg,#f5e9d5,#d4b78d);color:#443421}
+.preview-content {
+ position:absolute;inset:0;padding:24px;
+ display:flex;flex-direction:column;justify-content:space-between;
+}
+.preview-brand {font-size:11px;letter-spacing:2px;font-weight:900}
+.preview-heading {font-family:'Playfair Display',serif;font-size:30px;line-height:1.05;max-width:250px}
+.preview-action {
+ display:inline-flex;align-items:center;gap:7px;
+ font-size:11px;font-weight:900;
+ border-bottom:1px solid currentColor;padding-bottom:4px;
+ width:max-content;
+}
+.demo-badge {
+ position:absolute;top:13px;right:13px;
+ background:rgba(7,25,35,.8);color:white;
+ padding:6px 10px;border-radius:30px;font-size:9px;
+ letter-spacing:1px;font-weight:800;
+}
+.demo-tab {
+ padding:9px 12px;border-radius:8px;
+ background:rgba(255,255,255,.13);
+ border:1px solid rgba(120,120,120,.25);
+ color:inherit;font-size:10px;font-weight:800;
+ margin-right:4px;margin-bottom:5px;
+}
+.demo-tab:hover {background:rgba(231,185,107,.35)}
+.modal-backdrop {
+ position:fixed;inset:0;z-index:500;
+ background:rgba(0,0,0,.78);
+ display:none;align-items:center;justify-content:center;
+ padding:15px;
+}
+.modal-backdrop.open {display:flex}
+.modal-panel {
+ width:min(100%,900px);max-height:90vh;overflow:auto;
+ background:#0c2633;border:1px solid var(--border);
+ border-radius:22px;padding:22px;
+}
+.mobile-nav {
+ position:fixed;bottom:0;left:0;right:0;z-index:100;
+ background:rgba(7,25,35,.95);
+ border-top:1px solid var(--border);
+ backdrop-filter:blur(15px);
+ display:none;
+}
+body.cb-protanopia {filter:contrast(1.08) saturate(.8)}
+body.cb-deuteranopia {filter:contrast(1.08) saturate(.75)}
+body.cb-highcontrast {filter:contrast(1.5)}
+#flowerOverlay.flower-active {display:flex}
+.flower-petal {
+ position:absolute;width:42px;height:66px;
+ left:50%;top:50%;
+ margin-left:-21px;margin-top:-60px;
+ border-radius:50% 50% 45% 45%;
+ background:linear-gradient(145deg,#ffe9a9,#e7b96b 65%,#c58c43);
+ transform-origin:50% 100%;
+ box-shadow:0 0 18px rgba(231,185,107,.22);
+}
+.flower-particle {
+ position:absolute;width:5px;height:5px;border-radius:50%;
+ background:#f4d995;left:50%;top:50%;
+ animation:flowerFloat 3s ease-in-out infinite;
+}
+@keyframes flowerFloat {
+ 0% {transform:translate(0,0) scale(.5);opacity:0}
+ 20% {opacity:1}
+ 100% {transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}
+}
+@media(max-width:800px) {
+ .desktop-nav {display:none!important}
+ .mobile-nav {display:flex}
+ body {padding-bottom:75px}
+ .hero-grid {grid-template-columns:1fr!important}
+ .hero-visual {min-height:250px!important}
+}
+@media(prefers-reduced-motion:reduce) {
+ *,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ #flowerStem,#flowerHead,#flowerPhrase,#flowerSubtext,#flowerCTA {transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<div class="progress-track" id="progressTrack"></div>
+<div class="ambient"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 glass">
+ <div class="max-w-7xl mx-auto px-5 h-[76px] flex items-center justify-between">
+  <button onclick="goPage('home')" class="flex items-center gap-3 text-left">
+   <span class="w-10 h-10 rounded-xl bg-nx-gold text-nx-bg grid place-items-center text-xl">
+    <i class="fa-solid fa-bolt" id="logoBoltBtn" onclick="event.stopPropagation();triggerFlower()"></i>
+   </span>
+   <span>
+    <span class="block font-extrabold tracking-[3px] text-lg">NEXORA<span class="gold-text">'S</span></span>
+    <span class="block text-[9px] tracking-[3px] text-nx-muted uppercase">Digital Studio</span>
+   </span>
+  </button>
+
+  <nav class="desktop-nav flex items-center gap-7">
+   <button class="nav-link active" data-page="home" onclick="goPage('home')" data-i18n="nav_home">Início</button>
+   <button class="nav-link" data-page="catalog" onclick="goPage('catalog')" data-i18n="nav_catalog">Portfólio</button>
+   <button class="nav-link" data-page="features" onclick="goPage('features')" data-i18n="nav_features">Funcionalidades</button>
+   <button class="nav-link" data-page="contracts" onclick="goPage('contracts')" data-i18n="nav_plans">Planos</button>
+   <button class="nav-link" data-page="marketing" onclick="goPage('marketing')" data-i18n="nav_marketing">Marketing</button>
+   <button class="nav-link" data-page="contact" onclick="goPage('contact')" data-i18n="nav_contact">Contato</button>
+  </nav>
+
+  <div class="flex items-center gap-3">
+   <button onclick="togglePreferences()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-gold" title="Preferências">
+    <i class="fa-solid fa-sliders"></i>
+   </button>
+   <button onclick="openWhatsApp()" class="nx-btn nx-btn-primary !py-2.5 !px-4 text-xs">
+    <i class="fa-brands fa-whatsapp"></i><span class="hidden sm:inline"> WhatsApp</span>
+   </button>
+  </div>
+ </div>
+</header>
+
+<nav class="mobile-nav justify-around items-center py-3">
+ <button onclick="goPage('home')" class="text-center text-xs text-nx-gold"><i class="fa-solid fa-house block text-lg mb-1"></i>Início</button>
+ <button onclick="goPage('catalog')" class="text-center text-xs text-nx-muted"><i class="fa-solid fa-grid-2 block text-lg mb-1"></i>Sites</button>
+ <button onclick="goPage('features')" class="text-center text-xs text-nx-muted"><i class="fa-solid fa-wand-magic-sparkles block text-lg mb-1"></i>Recursos</button>
+ <button onclick="goPage('contracts')" class="text-center text-xs text-nx-muted"><i class="fa-solid fa-tags block text-lg mb-1"></i>Planos</button>
+ <button onclick="goPage('contact')" class="text-center text-xs text-nx-muted"><i class="fa-solid fa-message block text-lg mb-1"></i>Contato</button>
+</nav>
+
+<main class="pt-[76px]">
+
+<!-- INÍCIO -->
+<section id="page-home" class="page-view">
+ <div class="max-w-7xl mx-auto px-5 pt-20 pb-24">
+  <div class="hero-grid grid grid-cols-2 gap-12 items-center">
+   <div>
+    <div class="section-label mb-6"><i class="fa-solid fa-circle mr-2 text-[7px]"></i>ESTÚDIO DIGITAL INDEPENDENTE</div>
+    <h1 class="section-title text-5xl md:text-6xl font-editorial mb-7">
+     Seu negócio merece uma presença <span class="gold-text">extraordinária.</span>
+    </h1>
+    <p class="text-nx-muted leading-8 max-w-xl mb-9">
+     Criamos sites modernos, responsivos e pensados para transformar visitantes em oportunidades para o seu negócio.
+    </p>
+    <div class="flex flex-wrap gap-3">
+     <button onclick="goPage('catalog')" class="nx-btn nx-btn-primary">Explorar demonstrações <i class="fa-solid fa-arrow-right"></i></button>
+     <button onclick="goPage('contact')" class="nx-btn nx-btn-outline">Criar meu site</button>
+    </div>
+    <div class="flex flex-wrap gap-8 mt-12 pt-8 border-t border-nx-border">
+     <div><strong class="text-2xl gold-text">6+</strong><p class="text-xs text-nx-muted mt-1">Segmentos demonstrativos</p></div>
+     <div><strong class="text-2xl gold-text">18</strong><p class="text-xs text-nx-muted mt-1">Recursos interativos</p></div>
+     <div><strong class="text-2xl gold-text">100%</strong><p class="text-xs text-nx-muted mt-1">Design responsivo</p></div>
+    </div>
+   </div>
+
+   <div class="hero-visual relative min-h-[440px] flex items-center justify-center">
+    <div class="absolute w-[330px] h-[330px] rounded-full border border-nx-border"></div>
+    <div class="absolute w-[260px] h-[260px] rounded-full border border-nx-border"></div>
+    <div class="relative nx-card p-5 w-full max-w-md rotate-2">
+     <div class="flex items-center justify-between mb-5">
+      <span class="text-xs font-extrabold tracking-widest">NEXORA / PREVIEW</span>
+      <span class="text-green-300 text-xs"><i class="fa-solid fa-circle text-[7px] mr-1"></i>ONLINE</span>
+     </div>
+     <div class="rounded-xl bg-[#e8e3d8] text-[#20343a] p-7 min-h-[240px] flex flex-col justify-between">
+      <div class="flex justify-between text-[10px] font-bold tracking-widest"><span>YOUR BRAND</span><span>MENU ☰</span></div>
+      <div>
+       <p class="text-[9px] tracking-[3px] mb-3">UMA NOVA EXPERIÊNCIA</p>
+       <h2 class="font-editorial text-4xl leading-tight">Ideias que<br><i>ganham vida.</i></h2>
+       <div class="mt-5 bg-[#20343a] text-white rounded-full px-5 py-3 w-max text-[10px]">DESCUBRA MAIS ↗</div>
+      </div>
+      <div class="flex justify-between text-[9px]"><span>DESIGN DIGITAL</span><span>2026</span></div>
+     </div>
+     <div class="flex justify-between text-xs text-nx-muted mt-4"><span>Design editorial</span><span>Mobile-first</span><span>Experiência premium</span></div>
+    </div>
+    <div class="absolute -bottom-2 -left-2 nx-card p-4 text-xs">
+     <i class="fa-solid fa-wand-magic-sparkles text-nx-gold mr-2"></i>Experiência interativa
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="border-y border-nx-border bg-[#0b222e]">
+  <div class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-3 gap-8">
+   <div class="flex gap-4"><div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div><div><h3 class="font-bold mb-1">Feito para qualquer tela</h3><p class="text-sm text-nx-muted">Experiência adaptada a celulares, tablets e computadores.</p></div></div>
+   <div class="flex gap-4"><div class="feature-icon"><i class="fa-solid fa-bolt"></i></div><div><h3 class="font-bold mb-1">Contato sem obstáculos</h3><p class="text-sm text-nx-muted">Atalhos para facilitar a comunicação com seus clientes.</p></div></div>
+   <div class="flex gap-4"><div class="feature-icon"><i class="fa-solid fa-gem"></i></div><div><h3 class="font-bold mb-1">Identidade própria</h3><p class="text-sm text-nx-muted">Visual pensado para combinar com seu segmento.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section id="page-catalog" class="page-view hidden-page">
+ <div class="max-w-7xl mx-auto px-5 py-16">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+   <div class="section-label mb-4">PORTFÓLIO INTERATIVO</div>
+   <h2 class="section-title mb-5">Um universo de possibilidades.</h2>
+   <p class="text-nx-muted leading-7">Explore demonstrações de sites desenvolvidos para diferentes tipos de negócio. Abra cada projeto e experimente suas funcionalidades.</p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-2 mb-9" id="catalogFilters">
+   <button class="nx-btn nx-btn-primary !py-2 !px-4 text-xs" onclick="filterCatalog('all',this)">Todos</button>
+   <button class="nx-btn nx-btn-outline !py-2 !px-4 text-xs" onclick="filterCatalog('food',this)">Alimentação</button>
+   <button class="nx-btn nx-btn-outline !py-2 !px-4 text-xs" onclick="filterCatalog('services',this)">Serviços</button>
+   <button class="nx-btn nx-btn-outline !py-2 !px-4 text-xs" onclick="filterCatalog('retail',this)">Comércio</button>
+   <button class="nx-btn nx-btn-outline !py-2 !px-4 text-xs" onclick="filterCatalog('wellness',this)">Bem-estar</button>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid">
+   <article class="nx-card p-3 catalog-item" data-category="services">
+    <div class="site-preview preview-dentist">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">ODONTO PRIME</span><div><h3 class="preview-heading">Seu sorriso, nossa missão.</h3><p class="text-xs mt-3">Cuidado e confiança em cada detalhe.</p></div><span class="preview-action">AGENDAR CONSULTA ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Clínica odontológica</h3><span class="text-[9px] text-nx-green">SAÚDE</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações, galeria e solicitação de agendamento.</p><button onclick="openDemo('dentist')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+
+   <article class="nx-card p-3 catalog-item" data-category="food">
+    <div class="site-preview preview-burger">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">BUN & CO.</span><div><h3 class="preview-heading">Sabor que fala por si.</h3><p class="text-xs mt-3">Hambúrguer artesanal de verdade.</p></div><span class="preview-action">VER CARDÁPIO ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Hamburgueria</h3><span class="text-[9px] text-nx-gold">GASTRONOMIA</span></div><p class="text-sm text-nx-muted mb-5">Cardápio com filtros, carrinho demonstrativo e pedido via WhatsApp.</p><button onclick="openDemo('burger')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+
+   <article class="nx-card p-3 catalog-item" data-category="services">
+    <div class="site-preview preview-barber">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">BARBER CLUB</span><div><h3 class="preview-heading">Estilo é identidade.</h3><p class="text-xs mt-3">Seu próximo visual começa aqui.</p></div><span class="preview-action">RESERVAR HORÁRIO ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Barbearia</h3><span class="text-[9px] text-nx-gold">ESTILO</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de agendamento.</p><button onclick="openDemo('barber')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+
+   <article class="nx-card p-3 catalog-item" data-category="retail">
+    <div class="site-preview preview-fashion">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">ATELIER 08</span><div><h3 class="preview-heading">Vista sua essência.</h3><p class="text-xs mt-3">Uma coleção feita para expressar.</p></div><span class="preview-action">EXPLORAR COLEÇÃO ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Loja de moda</h3><span class="text-[9px] text-nx-gold">VAREJO</span></div><p class="text-sm text-nx-muted mb-5">Catálogo, filtros, seleção de tamanhos e sacola demonstrativa.</p><button onclick="openDemo('fashion')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+
+   <article class="nx-card p-3 catalog-item" data-category="wellness">
+    <div class="site-preview preview-fitness">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">PULSE FITNESS</span><div><h3 class="preview-heading">Movimento transforma.</h3><p class="text-xs mt-3">Descubra uma rotina ativa.</p></div><span class="preview-action">CONHECER PLANOS ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Academia</h3><span class="text-[9px] text-nx-green">FITNESS</span></div><p class="text-sm text-nx-muted mb-5">Modalidades, planos, avaliações e contato.</p><button onclick="openDemo('fitness')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+
+   <article class="nx-card p-3 catalog-item" data-category="services">
+    <div class="site-preview preview-pet">
+     <span class="demo-badge">DEMO INTERATIVA</span>
+     <div class="preview-content"><span class="preview-brand">PET & CIA</span><div><h3 class="preview-heading">Carinho em cada cuidado.</h3><p class="text-xs mt-3">Seu pet merece o melhor.</p></div><span class="preview-action">AGENDAR SERVIÇO ↗</span></div>
+    </div>
+    <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Pet shop</h3><span class="text-[9px] text-nx-green">PET</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de atendimento.</p><button onclick="openDemo('pet')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section id="page-features" class="page-view hidden-page">
+ <div class="max-w-7xl mx-auto px-5 py-16">
+  <div class="text-center max-w-3xl mx-auto mb-14">
+   <div class="section-label mb-4">TECNOLOGIA E EXPERIÊNCIA</div>
+   <h2 class="section-title mb-5">Detalhes que fazem a diferença.</h2>
+   <p class="text-nx-muted leading-7">Conheça recursos que podem transformar um site comum em uma experiência digital interativa.</p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="featureGrid"></div>
+
+  <!-- ROI -->
+  <div class="mt-20 nx-card p-6 md:p-10">
+   <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+     <div class="section-label mb-3">SIMULADOR INTERATIVO</div>
+     <h3 class="section-title mb-4">Simule oportunidades para seu negócio.</h3>
+     <p class="text-nx-muted text-sm leading-7">Insira números hipotéticos e veja uma estimativa ilustrativa de receita. O cálculo não representa garantia de resultados.</p>
+    </div>
+    <div class="space-y-4">
+     <label class="block text-sm font-bold">Visitas mensais estimadas
+      <input id="roiVisits" class="nx-input mt-2" type="number" min="0" max="1000000" value="500">
+     </label>
+     <label class="block text-sm font-bold">Valor médio por venda (R$)
+      <input id="roiTicket" class="nx-input mt-2" type="number" min="0" max="1000000" step="0.01" value="80">
+     </label>
+     <label class="block text-sm font-bold">Taxa hipotética de conversão (%)
+      <input id="roiRate" class="nx-input mt-2" type="number" min="0" max="100" step="0.1" value="2">
+     </label>
+     <button onclick="calculateROI()" class="nx-btn nx-btn-primary w-full">Calcular estimativa</button>
+     <div class="rounded-xl bg-[#071923] border border-nx-border p-5">
+      <p class="text-xs text-nx-muted">Receita mensal hipotética</p>
+      <strong id="roiResult" class="text-3xl gold-text block mt-2">R$ 800,00</strong>
+      <p id="roiDetails" class="text-xs text-nx-muted mt-2">Estimativa de 10 vendas por mês.</p>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- CARRO 3D -->
+  <div class="mt-20">
+   <div class="text-center mb-8">
+    <div class="section-label mb-3">EXPERIÊNCIA 3D</div>
+    <h3 class="section-title mb-4">Seu site pode ir além do convencional.</h3>
+    <p class="text-nx-muted text-sm">Uma demonstração de produto 3D interativo, com rotação, zoom e personalização visual.</p>
+   </div>
+
+   <div class="nx-card p-3 md:p-6">
+    <div class="relative rounded-2xl overflow-hidden bg-[#091d29]">
+     <div id="car3DStage" style="width:100%;height:390px;position:relative;touch-action:none">
+      <div id="car3DLoading" class="absolute inset-0 grid place-items-center text-nx-muted text-sm">Preparando experiência 3D...</div>
+     </div>
+     <div class="absolute top-4 left-4 text-xs text-nx-muted pointer-events-none">
+      <i class="fa-solid fa-cube text-nx-gold mr-2"></i>INTERACTIVE 3D
+     </div>
+    </div>
+    <div class="flex flex-wrap justify-between items-center gap-4 p-4">
+     <div>
+      <p class="text-xs text-nx-muted mb-2">COR DO VEÍCULO</p>
+      <div class="flex gap-2">
+       <button aria-label="Azul" onclick="changeCarColor(0x174f87)" class="w-8 h-8 rounded-full border-2 border-white/50" style="background:#174f87"></button>
+       <button aria-label="Preto" onclick="changeCarColor(0x20252c)" class="w-8 h-8 rounded-full border-2 border-white/50" style="background:#20252c"></button>
+       <button aria-label="Vermelho" onclick="changeCarColor(0xb52e32)" class="w-8 h-8 rounded-full border-2 border-white/50" style="background:#b52e32"></button>
+       <button aria-label="Dourado" onclick="changeCarColor(0xb28b48)" class="w-8 h-8 rounded-full border-2 border-white/50" style="background:#b28b48"></button>
+       <button aria-label="Prata" onclick="changeCarColor(0x9ba7b0)" class="w-8 h-8 rounded-full border-2 border-white/50" style="background:#9ba7b0"></button>
+      </div>
+     </div>
+     <div class="flex gap-2">
+      <button onclick="toggleCarRotation()" id="carRotateBtn" class="nx-btn nx-btn-outline !py-2 text-xs"><i class="fa-solid fa-pause"></i> Pausar</button>
+      <button onclick="resetCarView()" class="nx-btn nx-btn-outline !py-2 text-xs"><i class="fa-solid fa-rotate-left"></i> Reiniciar</button>
+     </div>
+    </div>
+    <p class="text-[10px] text-nx-muted px-4 pb-3">Arraste para girar. Use a roda do mouse ou o gesto de pinça para aproximar e afastar. Modelo demonstrativo construído em 3D.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PLANOS E PREÇOS -->
+<section id="page-contracts" class="page-view hidden-page">
+ <div class="max-w-7xl mx-auto px-5 py-16">
+  <div class="text-center max-w-3xl mx-auto mb-14">
+   <div class="section-label mb-4">PLANOS NEXORA</div>
+   <h2 class="section-title mb-5">O próximo passo do seu negócio.</h2>
+   <p class="text-nx-muted leading-7">Escolha o formato que combina com seu projeto. Todos os planos são apresentados com valores e condições ilustrativos sujeitos à confirmação na contratação.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+   <article class="nx-card p-6 flex flex-col">
+    <span class="section-label">SIMPLES</span>
+    <h3 class="text-xl font-bold mt-3">Sem Manutenção</h3>
+    <div class="mt-5"><strong class="text-4xl gold-text">R$89</strong><span class="text-xs text-nx-muted"> / projeto</span></div>
+    <p class="text-xs text-nx-muted mt-3">Uma presença digital essencial para seu negócio.</p>
+    <ul class="text-sm text-nx-muted space-y-3 my-7 flex-1">
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Até 7 recursos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Landing page</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Atalho para WhatsApp</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Prazo estimado de 48h</li>
+    </ul>
+    <button onclick="choosePlan('Simples Sem Manutenção - R$89')" class="nx-btn nx-btn-outline w-full">Escolher plano</button>
+   </article>
+
+   <article class="nx-card p-6 flex flex-col">
+    <span class="section-label">SIMPLES</span>
+    <h3 class="text-xl font-bold mt-3">Com Manutenção</h3>
+    <div class="mt-5"><strong class="text-4xl gold-text">R$119</strong><span class="text-xs text-nx-muted"> / projeto</span></div>
+    <p class="text-xs text-nx-muted mt-3">Para quem deseja suporte em atualizações.</p>
+    <ul class="text-sm text-nx-muted space-y-3 my-7 flex-1">
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Até 7 recursos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Atualizações de fotos e textos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Hospedagem e estabilidade conforme condições contratadas</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Suporte de manutenção</li>
+    </ul>
+    <button onclick="choosePlan('Simples Com Manutenção - R$119')" class="nx-btn nx-btn-outline w-full">Escolher plano</button>
+   </article>
+
+   <article class="nx-card p-6 flex flex-col border border-nx-gold/50">
+    <span class="section-label">ESPECIAL</span>
+    <h3 class="text-xl font-bold mt-3">Sem Manutenção</h3>
+    <div class="mt-5"><strong class="text-4xl gold-text">R$149</strong><span class="text-xs text-nx-muted"> / projeto</span></div>
+    <p class="text-xs text-nx-muted mt-3">Mais recursos e possibilidades interativas.</p>
+    <ul class="text-sm text-nx-muted space-y-3 my-7 flex-1">
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Até 12 recursos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Elementos interativos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Gerenciador demonstrativo</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Personalização avançada</li>
+    </ul>
+    <button onclick="choosePlan('Especial Sem Manutenção - R$149')" class="nx-btn nx-btn-primary w-full">Escolher plano</button>
+   </article>
+
+   <article class="nx-card p-6 flex flex-col">
+    <span class="section-label">ESPECIAL VIP</span>
+    <h3 class="text-xl font-bold mt-3">Com Manutenção</h3>
+    <div class="mt-5"><strong class="text-4xl gold-text">R$179</strong><span class="text-xs text-nx-muted"> / projeto</span></div>
+    <p class="text-xs text-nx-muted mt-3">A experiência mais completa da NEXORA.</p>
+    <ul class="text-sm text-nx-muted space-y-3 my-7 flex-1">
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Até 12 recursos</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Gerenciador de conteúdo conforme escopo</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Atualizações de fotos e preços conforme condições contratadas</li>
+     <li><i class="fa-solid fa-check text-nx-green mr-2"></i>Suporte de manutenção</li>
+    </ul>
+    <button onclick="choosePlan('Especial Com Manutenção VIP - R$179')" class="nx-btn nx-btn-primary w-full">Escolher plano</button>
+   </article>
+  </div>
+
+  <p class="text-xs text-nx-muted text-center mt-8">Recursos extras: R$11,99 cada, conforme disponibilidade e escopo acordado. Confirme previamente hospedagem, domínio, manutenção e limites de atualização.</p>
+ </div>
+</section>
+
+<!-- MARKETING -->
+<section id="page-marketing" class="page-view hidden-page">
+ <div class="max-w-7xl mx-auto px-5 py-16">
+  <div class="text-center max-w-3xl mx-auto mb-14">
+   <div class="section-label mb-4">ESTRATÉGIA DIGITAL</div>
+   <h2 class="section-title mb-5">Não basta estar online. É preciso ser lembrado.</h2>
+   <p class="text-nx-muted leading-7">Um bom site apresenta seu negócio, transmite confiança e facilita o próximo passo do visitante.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-5">
+   <article class="nx-card p-7">
+    <div class="feature-icon mb-5"><i class="fa-solid fa-bullseye"></i></div>
+    <h3 class="text-xl font-bold mb-3">Mensagem clara</h3>
+    <p class="text-sm text-nx-muted leading-7">Explique o que sua empresa oferece, para quem trabalha e como o visitante pode entrar em contato.</p>
+   </article>
+   <article class="nx-card p-7">
+    <div class="feature-icon mb-5"><i class="fa-solid fa-star"></i></div>
+    <h3 class="text-xl font-bold mb-3">Prova social real</h3>
+    <p class="text-sm text-nx-muted leading-7">Apresente avaliações autênticas, depoimentos autorizados e informações verificáveis.</p>
+   </article>
+   <article class="nx-card p-7">
+    <div class="feature-icon mb-5"><i class="fa-solid fa-gem"></i></div>
+    <h3 class="text-xl font-bold mb-3">Visual profissional</h3>
+    <p class="text-sm text-nx-muted leading-7">Uma identidade visual coerente ajuda seu negócio a transmitir organização e personalidade.</p>
+   </article>
+   <article class="nx-card p-7">
+    <div class="feature-icon mb-5"><i class="fa-solid fa-comments"></i></div>
+    <h3 class="text-xl font-bold mb-3">Contato imediato</h3>
+    <p class="text-sm text-nx-muted leading-7">Botões e formulários tornam o caminho entre interesse e conversa mais simples.</p>
+   </article>
+  </div>
+
+  <div class="nx-card p-8 md:p-12 mt-8 text-center">
+   <div class="section-label mb-4">SUA MARCA MERECE UM ESPAÇO</div>
+   <h3 class="section-title mb-5">Vamos construir sua presença digital?</h3>
+   <button onclick="goPage('contact')" class="nx-btn nx-btn-primary">Começar meu projeto <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+ </div>
+</section>
+
+<!-- CONTATO -->
+<section id="page-contact" class="page-view hidden-page">
+ <div class="max-w-6xl mx-auto px-5 py-16">
+  <div class="grid md:grid-cols-2 gap-12">
+   <div>
+    <div class="section-label mb-4">FALE COM A NEXORA</div>
+    <h2 class="section-title mb-6">Seu projeto começa com uma conversa.</h2>
+    <p class="text-nx-muted leading-8 mb-8">Conte um pouco sobre seu negócio. Vamos entender sua ideia e preparar uma proposta de acordo com suas necessidades.</p>
+    <div class="space-y-5">
+     <div class="flex gap-4 items-center"><div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div><div><strong class="block">WhatsApp</strong><span class="text-sm text-nx-muted">Atendimento direto</span></div></div>
+     <div class="flex gap-4 items-center"><div class="feature-icon"><i class="fa-solid fa-laptop"></i></div><div><strong class="block">Projetos personalizados</strong><span class="text-sm text-nx-muted">Soluções para negócios locais</span></div></div>
+     <div class="flex gap-4 items-center"><div class="feature-icon"><i class="fa-solid fa-clock"></i></div><div><strong class="block">Prazo estimado</strong><span class="text-sm text-nx-muted">Consulte a disponibilidade</span></div></div>
+    </div>
+   </div>
+
+   <form class="nx-card p-6 md:p-8 space-y-5" onsubmit="sendCustomWhatsappMessage(event)">
+    <div>
+     <label class="text-xs font-bold block mb-2" for="contactName">Seu nome</label>
+     <input id="contactName" class="nx-input" required maxlength="70" placeholder="Digite seu nome">
+    </div>
+    <div>
+     <label class="text-xs font-bold block mb-2" for="contactNiche">Segmento do negócio</label>
+     <select id="contactNiche" class="nx-input" required>
+      <option value="">Selecione seu segmento</option>
+      <option>Alimentação</option>
+      <option>Barbearia</option>
+      <option>Clínica odontológica</option>
+      <option>Moda e vestuário</option>
+      <option>Academia e fitness</option>
+      <option>Pet shop</option>
+      <option>Outro</option>
+     </select>
+    </div>
+    <div>
+     <label class="text-xs font-bold block mb-2" for="contactPlan">Plano de interesse</label>
+     <select id="contactPlan" class="nx-input" required>
+      <option value="">Selecione um plano</option>
+      <option>Simples Sem Manutenção - R$89</option>
+      <option>Simples Com Manutenção - R$119</option>
+      <option>Especial Sem Manutenção - R$149</option>
+      <option>Especial Com Manutenção VIP - R$179</option>
+      <option>Ainda quero conversar</option>
+     </select>
+    </div>
+    <div>
+     <label class="text-xs font-bold block mb-2" for="contactDetails">Conte sobre sua ideia (opcional)</label>
+     <textarea id="contactDetails" class="nx-input" rows="4" maxlength="700" placeholder="O que você gostaria de ter no seu site?"></textarea>
+    </div>
+    <button type="submit" class="nx-btn nx-btn-primary w-full">Enviar pelo WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
+    <p class="text-[10px] text-nx-muted text-center">O botão abre o WhatsApp com uma mensagem preparada. Você poderá revisar antes de enviar.</p>
+   </form>
+  </div>
+
+  <div class="nx-card p-6 md:p-8 mt-14">
+   <h3 class="font-editorial text-3xl mb-6">Perguntas frequentes</h3>
+   <div class="space-y-3">
+    <details class="border-b border-nx-border py-4">
+     <summary class="font-bold cursor-pointer">Quanto tempo leva para criar um site?</summary>
+     <p class="text-sm text-nx-muted mt-3 leading-7">O prazo estimado apresentado é de até 48 horas para projetos compatíveis com esse prazo, contado após o recebimento de todas as informações e materiais necessários. Projetos maiores podem levar mais tempo.</p>
+    </details>
+    <details class="border-b border-nx-border py-4">
+     <summary class="font-bold cursor-pointer">Posso pedir recursos extras?</summary>
+     <p class="text-sm text-nx-muted mt-3 leading-7">Sim. Recursos adicionais podem ser avaliados e orçados conforme a complexidade.</p>
+    </details>
+    <details class="border-b border-nx-border py-4">
+     <summary class="font-bold cursor-pointer">Como funcionam as atualizações?</summary>
+     <p class="text-sm text-nx-muted mt-3 leading-7">As atualizações dependem do plano e das condições combinadas na contratação.</p>
+    </details>
+    <details class="py-4">
+     <summary class="font-bold cursor-pointer">O domínio está incluído?</summary>
+     <p class="text-sm text-nx-muted mt-3 leading-7">Domínio, hospedagem e serviços externos devem ser confirmados na proposta. Não presuma que estejam incluídos sem essa confirmação.</p>
+    </details>
+   </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- RODAPÉ -->
+<footer class="border-t border-nx-border bg-[#06151e]">
+ <div class="max-w-7xl mx-auto px-5 py-10">
+  <div class="flex flex-col md:flex-row justify-between gap-8">
+   <div>
+    <div class="font-extrabold tracking-[3px] text-xl">NEXORA<span class="gold-text">'S</span></div>
+    <p class="text-xs text-nx-muted mt-2">Digital Studio · Ideias que ganham vida.</p>
+   </div>
+   <div class="flex flex-wrap gap-5 text-xs text-nx-muted">
+    <button onclick="goPage('home')">Início</button>
+    <button onclick="goPage('catalog')">Portfólio</button>
+    <button onclick="goPage('features')">Funcionalidades</button>
+    <button onclick="goPage('contracts')">Planos</button>
+    <button onclick="goPage('contact')">Contato</button>
+   </div>
+  </div>
+  <div class="border-t border-nx-border mt-8 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-[10px] text-nx-muted">
+   <span>© <span id="currentYear"></span> NEXORA's Studio. Todos os direitos reservados.</span>
+   <span>Design, tecnologia e experiências digitais.</span>
+  </div>
+ </div>
+</footer>
+
+<!-- BOTÃO WHATSAPP -->
+<button onclick="openWhatsApp()" aria-label="Conversar pelo WhatsApp" class="fixed bottom-20 md:bottom-7 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white text-2xl shadow-xl hover:scale-105 transition">
+ <i class="fa-brands fa-whatsapp"></i>
+</button>
+
+<!-- DEMONSTRAÇÕES INTERATIVAS -->
+<div id="demoModal" class="modal-backdrop" onclick="if(event.target===this)closeDemo()">
+ <div class="modal-panel">
+  <div class="flex items-center justify-between gap-3 mb-5">
+   <div>
+    <div class="section-label">NEXORA EXPERIENCE</div>
+    <h2 id="demoTitle" class="font-editorial text-3xl mt-1">Demonstração</h2>
+   </div>
+   <button onclick="closeDemo()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-muted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="demoContent"></div>
+  <p class="text-[10px] text-nx-muted mt-6 text-center">Demonstração fictícia. Solicitações e pedidos não representam transações reais.</p>
+ </div>
+</div>
+
+<!-- PREFERÊNCIAS -->
+<div id="preferencesModal" class="modal-backdrop" onclick="if(event.target===this)togglePreferences()">
+ <div class="modal-panel" style="max-width:480px">
+  <div class="flex justify-between items-center mb-6">
+   <h3 class="font-editorial text-3xl">Preferências</h3>
+   <button onclick="togglePreferences()" class="text-nx-muted text-xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <label class="text-xs font-bold block mb-3">IDIOMA DO SITE</label>
+  <div class="grid grid-cols-3 gap-2 mb-7">
+   <button onclick="setStudioLanguage('pt')" class="nx-btn nx-btn-outline text-xs">🇧🇷 Português</button>
+   <button onclick="setStudioLanguage('en')" class="nx-btn nx-btn-outline text-xs">🇺🇸 English</button>
+   <button onclick="setStudioLanguage('es')" class="nx-btn nx-btn-outline text-xs">🇪🇸 Español</button>
+  </div>
+
+  <label class="text-xs font-bold block mb-3">ACESSIBILIDADE VISUAL</label>
+  <div class="grid grid-cols-2 gap-2">
+   <button onclick="setColorblindMode('normal')" class="nx-btn nx-btn-outline text-xs">Padrão</button>
+   <button onclick="setColorblindMode('protanopia')" class="nx-btn nx-btn-outline text-xs">Protanopia</button>
+   <button onclick="setColorblindMode('deuteranopia')" class="nx-btn nx-btn-outline text-xs">Deuteranopia</button>
+   <button onclick="setColorblindMode('highcontrast')" class="nx-btn nx-btn-outline text-xs">Alto contraste</button>
+  </div>
+  <p class="text-xs text-nx-muted mt-5">As preferências de idioma e acessibilidade são armazenadas neste dispositivo.</p>
+ </div>
+</div>
+
+<!-- EASTER EGG DA FLOR -->
+<div id="flowerOverlay" class="fixed inset-0 z-[700] hidden items-center justify-center p-5" style="background:radial-gradient(ellipse at center,#173c45 0%,#06151e 75%)">
+ <button onclick="closeFlower()" class="absolute top-6 right-6 text-white/60 text-2xl" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+ <div class="max-w-xl w-full text-center">
+  <div class="section-label mb-4">UMA IDEIA PODE FLORESCER</div>
+  <div id="flowerScene" class="relative mx-auto" style="height:340px;max-width:340px">
+   <div class="absolute bottom-5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#e7b96b]" id="flowerSeed"></div>
+   <div id="flowerStem" class="absolute bottom-8 left-1/2 -translate-x-1/2 w-2 rounded-full" style="height:0;background:linear-gradient(#64c9a1,#367e60);transform-origin:bottom;transition:height 2s ease"></div>
+   <div id="flowerLeafLeft" class="absolute left-1/2 bottom-[130px] w-12 h-7 rounded-tl-full rounded-br-full opacity-0" style="background:#64c9a1;transform:rotate(-35deg);transition:opacity 1s"></div>
+   <div id="flowerLeafRight" class="absolute left-1/2 bottom-[175px] w-12 h-7 rounded-tr-full rounded-bl-full opacity-0" style="background:#80d3a6;transform:rotate(35deg);transition:opacity 1s"></div>
+   <div id="flowerHead" class="absolute left-1/2 top-[50px] -translate-x-1/2 w-36 h-36 opacity-0 scale-0" style="transition:all 1.5s cubic-bezier(.2,.8,.2,1)">
+    <div class="absolute inset-0 rounded-full bg-[#e7b96b] blur-2xl opacity-20"></div>
+    <div id="flowerPetals" class="absolute inset-0"></div>
+    <div class="absolute w-9 h-9 rounded-full bg-[#9a622b] border-4 border-[#f1d18c] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"></div>
+   </div>
+   <div id="flowerParticles" class="absolute inset-0 pointer-events-none"></div>
+  </div>
+  <h2 id="flowerPhrase" class="font-editorial text-3xl md:text-4xl leading-tight opacity-0 transition-opacity duration-1000">
+   Do mesmo jeito que essa flor nasceu, seu site pode nascer hoje.
+  </h2>
+  <p id="flowerSubtext" class="text-nx-muted text-sm mt-4 opacity-0 transition-opacity duration-1000">Toda grande presença digital começa com uma ideia.</p>
+  <button id="flowerCTA" onclick="closeFlower();goPage('contact')" class="nx-btn nx-btn-primary mt-8 opacity-0 transition-opacity duration-1000">Quero criar meu site <i class="fa-solid fa-arrow-right"></i></button>
+ </div>
+</div>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+/* DEMONSTRAÇÕES INTERATIVAS */
+const demoData = {
+ dentist: {
+  title:'Odonto Prime',
+  intro:'Um novo motivo para sorrir.',
+  description:'Cuidado odontológico com atenção, tecnologia e confiança.',
+  color:'#dff4f1',
+  services:[
+   ['Avaliação','Consulta inicial para conhecer suas necessidades.'],
+   ['Limpeza','Orientação e cuidados de higiene bucal.'],
+   ['Ortodontia','Informações sobre tratamentos ortodônticos.'],
+   ['Estética dental','Conheça possibilidades de cuidado estético.']
+  ]
+ },
+ burger:{
+  title:'Bun & Co.',
+  intro:'Seu próximo hambúrguer favorito.',
+  description:'Ingredientes selecionados e sabor artesanal.',
+  color:'#321c17',
+  services:[
+   ['Classic Burger','Pão, carne, queijo e molho especial.'],
+   ['Cheese Bacon','Queijo, bacon crocante e molho da casa.'],
+   ['Veggie Burger','Opção vegetal com ingredientes frescos.'],
+   ['Batata da Casa','Batatas crocantes com tempero especial.']
+  ]
+ },
+ barber:{
+  title:'Barber Club',
+  intro:'Seu estilo, suas regras.',
+  description:'Um espaço dedicado ao cuidado e à personalidade.',
+  color:'#161d27',
+  services:[
+   ['Corte tradicional','Corte personalizado.'],
+   ['Degradê','Acabamento em degradê.'],
+   ['Barba','Aparar e alinhar a barba.'],
+   ['Combo','Cabelo e barba.']
+  ]
+ },
+ fashion:{
+  title:'Atelier 08',
+  intro:'Vista sua essência.',
+  description:'Peças selecionadas para diferentes estilos.',
+  color:'#eaded4',
+  services:[
+   ['Camiseta Essential','Camiseta casual.'],
+   ['Jaqueta Urban','Jaqueta de estilo urbano.'],
+   ['Calça Classic','Calça versátil.'],
+   ['Moletom Studio','Moletom confortável.']
+  ]
+ },
+ fitness:{
+  title:'Pulse Fitness',
+  intro:'Movimente-se no seu ritmo.',
+  description:'Encontre atividades que combinem com sua rotina.',
+  color:'#182a24',
+  services:[
+   ['Musculação','Treinamento acompanhado.'],
+   ['Funcional','Atividades dinâmicas em grupo.'],
+   ['Mobilidade','Exercícios de mobilidade e movimento.'],
+   ['Aulas coletivas','Atividades em horários programados.']
+  ]
+ },
+ pet:{
+  title:'Pet & Cia',
+  intro:'Cuidado que vem do coração.',
+  description:'Um ambiente pensado para o bem-estar dos animais.',
+  color:'#f5e9d5',
+  services:[
+   ['Banho','Higiene e cuidado.'],
+   ['Tosa','Serviço de tosa conforme necessidade.'],
+   ['Acessórios','Produtos e acessórios para pets.'],
+   ['Orientação','Informações sobre cuidados básicos.']
+  ]
+ }
+};
+
+let currentDemo = null;
+let demoCart = [];
+
+function openDemo(type){
+ const data = demoData[type];
+ if(!data) return;
+ currentDemo = type;
+ demoCart = [];
+ document.getElementById('demoTitle').textContent = data.title;
+ document.getElementById('demoModal').classList.add('open');
+ renderDemoHome();
+ document.body.style.overflow='hidden';
+}
+
+function closeDemo(){
+ document.getElementById('demoModal').classList.remove('open');
+ document.body.style.overflow='';
+}
+
+function demoShell(content){
+ const data=demoData[currentDemo];
+ const isDark=['burger','barber','fitness'].includes(currentDemo);
+ const foreground=isDark?'#fff':'#263b3d';
+ const background=data.color;
+ return `
+ <div style="background:${background};color:${foreground};border-radius:16px;overflow:hidden">
+  <div style="padding:18px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(120,120,120,.2)">
+   <strong style="letter-spacing:2px;font-size:12px">${data.title.toUpperCase()}</strong>
+   <span style="font-size:10px;opacity:.7">SITE DEMONSTRATIVO</span>
+  </div>
+  <div style="padding:22px">${content}</div>
+ </div>`;
+}
+
+function renderDemoHome(){
+ if(currentDemo==='burger')return renderBurgerMenu();
+ if(currentDemo==='fashion')return renderFashionShop();
+ const data=demoData[currentDemo];
+ const content=`
+ <div style="padding:15px 0 25px">
+  <p style="font-size:10px;letter-spacing:3px;margin-bottom:14px">BEM-VINDO À ${data.title.toUpperCase()}</p>
+  <h2 style="font-family:Georgia,serif;font-size:clamp(30px,6vw,48px);line-height:1.08;margin-bottom:13px">${data.intro}</h2>
+  <p style="font-size:13px;opacity:.75;max-width:440px;line-height:1.8">${data.description}</p>
+  <button onclick="renderDemoServices()" style="margin-top:23px;padding:12px 18px;background:${['burger','barber','fitness'].includes(currentDemo)?'#e7b96b':'#183d43'};color:${['burger','barber','fitness'].includes(currentDemo)?'#17262c':'white'};border-radius:9px;font-weight:800;font-size:11px">EXPLORAR AGORA ↗</button>
+ </div>
+ <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+  <div style="padding:14px;border:1px solid rgba(120,120,120,.25);border-radius:12px"><strong style="font-size:12px">Experiência simples</strong><p style="font-size:10px;opacity:.7;margin-top:5px">Navegação intuitiva.</p></div>
+  <div style="padding:14px;border:1px solid rgba(120,120,120,.25);border-radius:12px"><strong style="font-size:12px">Contato rápido</strong><p style="font-size:10px;opacity:.7;margin-top:5px">Solicitação em poucos passos.</p></div>
+ </div>
+ <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+  <button class="demo-tab" onclick="renderDemoHome()">Início</button>
+  <button class="demo-tab" onclick="renderDemoServices()">Serviços</button>
+  <button class="demo-tab" onclick="renderDemoReviews()">Avaliações</button>
+  <button class="demo-tab" onclick="renderDemoBooking()">Contato</button>
+ </div>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+}
+
+function renderDemoServices(){
+ const data=demoData[currentDemo];
+ let cards=data.services.map((item,index)=>`
+ <div style="padding:15px;background:rgba(255,255,255,.14);border:1px solid rgba(120,120,120,.2);border-radius:12px">
+  <div style="font-size:10px;opacity:.6;margin-bottom:7px">OPÇÃO ${String(index+1).padStart(2,'0')}</div>
+  <strong style="font-size:14px">${item[0]}</strong>
+  <p style="font-size:11px;opacity:.7;line-height:1.6;margin-top:7px">${item[1]}</p>
+  <button onclick="selectDemoService(${index})" style="margin-top:13px;padding:9px 12px;border-radius:8px;background:#e7b96b;color:#17262c;font-size:10px;font-weight:900">SELECIONAR</button>
+ </div>`).join('');
+ const content=`
+ <h3 style="font-family:Georgia,serif;font-size:28px;margin-bottom:8px">Conheça nossas opções.</h3>
+ <p style="font-size:12px;opacity:.7;margin-bottom:18px">Selecione uma opção para saber mais ou solicitar atendimento.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px">${cards}</div>
+ <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+  <button class="demo-tab" onclick="renderDemoHome()">Início</button>
+  <button class="demo-tab" onclick="renderDemoReviews()">Avaliações</button>
+  <button class="demo-tab" onclick="renderDemoBooking()">Contato</button>
+ </div>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+}
+
+function selectDemoService(index){
+ const item=demoData[currentDemo].services[index];
+ const msg=`Olá! Gostaria de saber mais sobre ${item[0]} no ${demoData[currentDemo].title}.`;
+ if(confirm(`Você selecionou: ${item[0]}.\n\nDeseja preparar uma mensagem de contato?`)){
+  const url='https://wa.me/555189761893?text='+encodeURIComponent(msg);
+  window.open(url,'_blank','noopener');
+ }
+}
+
+function renderDemoReviews(){
+ const reviews=[
+  ['Mariana','Experiência muito boa e atendimento atencioso.'],
+  ['Rafael','Gostei da organização e da facilidade para encontrar informações.'],
+  ['Camila','Visual bonito e navegação muito simples.']
+ ];
+ const content=`
+ <h3 style="font-family:Georgia,serif;font-size:28px;margin-bottom:15px">O que dizem sobre nós.</h3>
+ <p style="font-size:10px;opacity:.6;margin-bottom:15px">AVALIAÇÕES ILUSTRATIVAS DA DEMONSTRAÇÃO</p>
+ ${reviews.map(r=>`<div style="padding:15px;border:1px solid rgba(120,120,120,.2);border-radius:12px;margin-bottom:9px"><div style="color:#bd8738;font-size:12px;margin-bottom:7px">★★★★★</div><p style="font-size:12px;line-height:1.6">"${r[1]}"</p><strong style="font-size:11px;display:block;margin-top:8px">${r[0]}</strong></div>`).join('')}
+ <button class="demo-tab" onclick="renderDemoHome()">Início</button>
+ <button class="demo-tab" onclick="renderDemoServices()">Serviços</button>
+ <button class="demo-tab" onclick="renderDemoBooking()">Contato</button>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+}
+
+function renderDemoBooking(){
+ const content=`
+ <h3 style="font-family:Georgia,serif;font-size:28px;margin-bottom:8px">Vamos conversar?</h3>
+ <p style="font-size:12px;opacity:.7;margin-bottom:18px">Preencha os dados para preparar uma solicitação demonstrativa.</p>
+ <form onsubmit="submitDemoBooking(event)" style="display:grid;gap:12px">
+  <label style="font-size:11px;font-weight:700">Seu nome
+   <input id="demoName" required maxlength="70" class="nx-input mt-2" placeholder="Como podemos chamar você?">
+  </label>
+  <label style="font-size:11px;font-weight:700">O que você procura?
+   <select id="demoRequest" class="nx-input mt-2">
+    ${demoData[currentDemo].services.map(s=>`<option>${s[0]}</option>`).join('')}
+   </select>
+  </label>
+  <label style="font-size:11px;font-weight:700">Mensagem
+   <textarea id="demoMessage" maxlength="500" class="nx-input mt-2" rows="3" placeholder="Escreva uma observação (opcional)"></textarea>
+  </label>
+  <button class="nx-btn nx-btn-primary" type="submit">Preparar solicitação <i class="fa-brands fa-whatsapp"></i></button>
+ </form>
+ <div style="display:flex;gap:8px;margin-top:15px"><button class="demo-tab" onclick="renderDemoHome()">Início</button><button class="demo-tab" onclick="renderDemoServices()">Serviços</button></div>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+}
+
+function submitDemoBooking(event){
+ event.preventDefault();
+ const name=document.getElementById('demoName').value.trim();
+ const request=document.getElementById('demoRequest').value;
+ const note=document.getElementById('demoMessage').value.trim();
+ if(!name)return;
+ const message=`Olá! Meu nome é ${name}. Tenho interesse em ${request} no ${demoData[currentDemo].title}.${note?' Observação: '+note:''}`;
+ window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+}
+
+/* CARDÁPIO E CARRINHO */
+function renderBurgerMenu(){
+ const products=[
+  {name:'Classic Burger',price:28,category:'Hambúrguer',desc:'Carne, queijo e molho especial.'},
+  {name:'Cheese Bacon',price:34,category:'Hambúrguer',desc:'Queijo, bacon e molho da casa.'},
+  {name:'Veggie Burger',price:29,category:'Hambúrguer',desc:'Hambúrguer vegetal e salada.'},
+  {name:'Batata da Casa',price:16,category:'Acompanhamento',desc:'Porção de batatas crocantes.'},
+  {name:'Refrigerante',price:8,category:'Bebida',desc:'Lata gelada.'},
+  {name:'Milkshake',price:18,category:'Bebida',desc:'Milkshake cremoso.'}
+ ];
+ const content=`
+ <h3 style="font-family:Georgia,serif;font-size:28px">Cardápio</h3>
+ <p style="font-size:11px;opacity:.7;margin:8px 0 16px">Escolha seus favoritos. Valores ilustrativos.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px">
+ ${['Todos','Hambúrguer','Acompanhamento','Bebida'].map(c=>`<button class="demo-tab" onclick="filterBurger('${c}')">${c}</button>`).join('')}
+ </div>
+ <div id="burgerProducts" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px"></div>
+ <div style="margin-top:20px;padding:15px;border-radius:12px;background:rgba(255,255,255,.1)">
+  <div class="flex justify-between items-center"><strong style="font-size:14px">Sua sacola</strong><span id="burgerCount" style="font-size:11px">0 itens</span></div>
+  <div id="burgerCart" style="font-size:11px;margin-top:10px">Sua sacola está vazia.</div>
+  <div class="flex justify-between items-center mt-4"><strong>Total</strong><strong id="burgerTotal">R$ 0,00</strong></div>
+  <button onclick="checkoutBurger()" class="nx-btn nx-btn-primary w-full mt-4">Preparar pedido</button>
+ </div>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+ window.burgerProducts=products;
+ renderBurgerProducts('Todos');
+}
+
+function filterBurger(category){renderBurgerProducts(category)}
+
+function renderBurgerProducts(category){
+ const products=window.burgerProducts||[];
+ const filtered=category==='Todos'?products:products.filter(p=>p.category===category);
+ document.getElementById('burgerProducts').innerHTML=filtered.map(p=>`
+ <div style="padding:13px;border:1px solid rgba(120,120,120,.2);border-radius:12px">
+  <strong style="font-size:12px">${p.name}</strong>
+  <p style="font-size:10px;opacity:.65;margin:7px 0">${p.desc}</p>
+  <div class="flex justify-between items-center"><strong style="font-size:13px">R$ ${p.price.toFixed(2).replace('.',',')}</strong><button onclick="addBurger('${p.name}')" style="background:#e7b96b;color:#17262c;border-radius:7px;padding:7px 10px;font-size:10px;font-weight:900">+ ADICIONAR</button></div>
+ </div>`).join('');
+}
+
+function addBurger(name){
+ const product=window.burgerProducts.find(p=>p.name===name);
+ if(!product)return;
+ const existing=demoCart.find(p=>p.name===name);
+ if(existing)existing.qty++;
+ else demoCart.push({...product,qty:1});
+ updateBurgerCart();
+}
+
+function updateBurgerCart(){
+ const count=demoCart.reduce((sum,p)=>sum+p.qty,0);
+ const total=demoCart.reduce((sum,p)=>sum+p.price*p.qty,0);
+ document.getElementById('burgerCount').textContent=count+' itens';
+ document.getElementById('burgerTotal').textContent='R$ '+total.toFixed(2).replace('.',',');
+ document.getElementById('burgerCart').innerHTML=demoCart.length?demoCart.map(p=>`
+ <div class="flex justify-between gap-3 py-2 border-b border-white/10">
+  <span>${p.qty}x ${p.name}</span><span>R$ ${(p.price*p.qty).toFixed(2).replace('.',',')}</span>
+ </div>`).join(''):'Sua sacola está vazia.';
+}
+
+function checkoutBurger(){
+ if(!demoCart.length){alert('Adicione algum produto à sacola primeiro.');return;}
+ const lines=demoCart.map(p=>`${p.qty}x ${p.name}`).join(', ');
+ const total=demoCart.reduce((sum,p)=>sum+p.price*p.qty,0);
+ const msg=`Olá! Gostaria de consultar este pedido demonstrativo: ${lines}. Total estimado: R$ ${total.toFixed(2)}.`;
+ window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener');
+}
+
+/* MODA: CATÁLOGO E TAMANHOS */
+function renderFashionShop(){
+ const products=[
+  {name:'Camiseta Essential',price:69.90,category:'Camisetas',sizes:['P','M','G','GG']},
+  {name:'Jaqueta Urban',price:189.90,category:'Jaquetas',sizes:['P','M','G','GG']},
+  {name:'Calça Classic',price:129.90,category:'Calças',sizes:['36','38','40','42']},
+  {name:'Moletom Studio',price:149.90,category:'Moletons',sizes:['P','M','G','GG']}
+ ];
+ const content=`
+ <h3 style="font-family:Georgia,serif;font-size:28px">Coleção selecionada</h3>
+ <p style="font-size:11px;opacity:.7;margin:8px 0 16px">Produtos e preços fictícios para demonstração.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px">
+ ${['Todos','Camisetas','Jaquetas','Calças','Moletons'].map(c=>`<button class="demo-tab" onclick="filterFashion('${c}')">${c}</button>`).join('')}
+ </div>
+ <div id="fashionProducts" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px"></div>
+ <div style="margin-top:15px;padding:15px;border-radius:12px;background:rgba(255,255,255,.14)">
+  <strong style="font-size:13px">Sacola</strong>
+  <div id="fashionCart" class="text-xs mt-2">Nenhum produto selecionado.</div>
+  <button onclick="checkoutFashion()" class="nx-btn nx-btn-primary w-full mt-3">Consultar seleção</button>
+ </div>`;
+ document.getElementById('demoContent').innerHTML=demoShell(content);
+ window.fashionProducts=products;
+ window.fashionCart=[];
+ renderFashionProducts('Todos');
+}
+
+function filterFashion(category){
+ const products=window.fashionProducts;
+ const filtered=category==='Todos'?products:products.filter(p=>p.category===category);
+ document.getElementById('fashionProducts').innerHTML=filtered.map(p=>{
+  const idx=products.indexOf(p);
+  return `
+  <div style="padding:13px;border:1px solid rgba(120,120,120,.25);border-radius:12px">
+   <div style="height:90px;border-radius:9px;background:rgba(90,70,60,.14);display:grid;place-items:center;font-size:28px"><i class="fa-solid fa-shirt"></i></div>
+   <strong style="font-size:12px;display:block;margin-top:10px">${p.name}</strong>
+   <p style="font-size:12px;margin:5px 0">R$ ${p.price.toFixed(2).replace('.',',')}</p>
+   <label style="font-size:10px">Tamanho
+    <select id="fashionSize${idx}" class="nx-input mt-1" style="padding:8px;color:#fff;background:#102d3b">
+    ${p.sizes.map(s=>`<option>${s}</option>`).join('')}
+    </select>
+   </label>
+   <button onclick="addFashion(${idx})" class="nx-btn nx-btn-primary w-full mt-3 !py-2 text-xs">Adicionar</button>
+  </div>`;
+ }).join('');
+}
+
+function addFashion(index){
+ const p=window.fashionProducts[index];
+ const size=document.getElementById('fashionSize'+index).value;
+ window.fashionCart.push({name:p.name,size,price:p.price});
+ document.getElementById('fashionCart').innerHTML=window.fashionCart.map(x=>`${x.name} | Tam. ${x.size} | R$ ${x.price.toFixed(2).replace('.',',')}`).join('<br>');
+}
+
+function checkoutFashion(){
+ if(!window.fashionCart?.length){alert('Selecione algum produto primeiro.');return;}
+ const msg='Olá! Gostaria de consultar estes produtos: '+window.fashionCart.map(p=>`${p.name}, tamanho ${p.size}`).join('; ');
+ window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener');
+}
+
+/* CATÁLOGO DOS 18 RECURSOS */
+const featureList=[
+ ['Aparição suave na rolagem','Elementos aparecem conforme o visitante percorre a página.','fa-eye'],
+ ['Contadores animados','Números ganham movimento para destacar informações.','fa-chart-line'],
+ ['Efeito de toque e inclinação','Cartões reagem suavemente à interação.','fa-hand-pointer'],
+ ['Barra de leitura','Indica visualmente o progresso de navegação.','fa-bars-progress'],
+ ['Transições entre abas','Mudanças de conteúdo com transições suaves.','fa-shuffle'],
+ ['Identidade visual por nicho','Cores e elementos alinhados ao segmento do negócio.','fa-palette'],
+ ['Design Mobile-First','Layout pensado primeiro para telas menores.','fa-mobile-screen'],
+ ['Cartões e badges','Destaque serviços, produtos e informações.','fa-id-card'],
+ ['Comparativo visual','Apresenta duas versões de um mesmo projeto.','fa-images'],
+ ['Comparador antes e depois','Controle deslizante para comparar imagens.','fa-sliders'],
+ ['Catálogo interativo','Produtos, categorias e filtros navegáveis.','fa-store'],
+ ['Simuladores e calculadoras','Ferramentas que respondem às informações inseridas.','fa-calculator'],
+ ['Quiz e recomendador','Perguntas simples que ajudam a encontrar opções.','fa-circle-question'],
+ ['FAQ interativo','Perguntas e respostas expansíveis.','fa-circle-chevron-down'],
+ ['Gerenciador de conteúdo','Área demonstrativa para editar textos e dados locais.','fa-pen-to-square'],
+ ['Mensagem pronta','Atalho para iniciar uma conversa com texto preparado.','fa-comment-dots'],
+ ['Cópia e partilha','Facilita copiar informações e compartilhar páginas.','fa-share-nodes'],
+ ['Formulário guiado','Coleta informações em etapas organizadas.','fa-list-check']
+];
+
+const featureGrid=document.getElementById('featureGrid');
+featureGrid.innerHTML=featureList.map((f,i)=>`
+ <article class="nx-card p-5 flex flex-col">
+  <div class="flex items-center justify-between mb-5">
+   <div class="feature-icon"><i class="fa-solid ${f[2]}"></i></div>
+   <span class="text-[10px] text-nx-muted">RECURSO ${String(i+1).padStart(2,'0')}</span>
+  </div>
+  <h3 class="font-bold text-base mb-2">${f[0]}</h3>
+  <p class="text-sm text-nx-muted leading-6 flex-1">${f[1]}</p>
+  <button onclick="testFeature(${i})" class="nx-btn nx-btn-outline w-full mt-5 !py-2.5 text-xs">Testar recurso <i class="fa-solid fa-arrow-right"></i></button>
+ </article>
+`).join('');
+
+function testFeature(index){
+ const tests=[
+  ()=>showFeatureMessage('Aparição suave','Role a página e observe os elementos surgindo.'),
+  ()=>showFeatureMessage('Contador animado','<span id="testCounter" style="font-size:30px;color:#e7b96b;font-weight:900">0</span><br>Contagem demonstrativa em andamento.'),
+  ()=>showFeatureMessage('Efeito de inclinação','<div id="tiltTest" style="padding:30px;background:#153747;border-radius:15px;transition:.2s">Mova o mouse ou toque aqui!</div>'),
+  ()=>showFeatureMessage('Barra de progresso','A barra dourada no topo indica o quanto da página foi percorrido.'),
+  ()=>showFeatureMessage('Transições','As páginas deste site usam transições suaves. Experimente navegar pelo menu.'),
+  ()=>showFeatureMessage('Identidade visual','Cada demonstração possui sua própria combinação de cores e identidade.'),
+  ()=>showFeatureMessage('Mobile-first','Redimensione a janela ou abra o site em um celular para testar.'),
+  ()=>showFeatureMessage('Cartões e badges','Os cartões do portfólio demonstram diferentes formatos de destaque.'),
+  ()=>showFeatureMessage('Comparativo visual','Uma página pode mostrar duas versões de um projeto lado a lado.'),
+  ()=>showFeatureMessage('Comparador','O comparador pode ser implementado com um controle deslizante entre duas imagens.'),
+  ()=>{closeFeatureMessage();goPage('catalog')},
+  ()=>{closeFeatureMessage();document.getElementById('roiVisits').scrollIntoView({behavior:'smooth',block:'center'})},
+  ()=>showQuizDemo(),
+  ()=>showFaqDemo(),
+  ()=>showManagerDemo(),
+  ()=>{const msg='Olá! Gostaria de conhecer os serviços da NEXORA.';window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener')},
+  ()=>copyDemoText(),
+  ()=>showFormDemo()
+ ];
+ tests[index]?.();
+}
+
+function showFeatureMessage(title,html){
+ let modal=document.getElementById('featureTestModal');
+ if(!modal){
+  modal=document.createElement('div');
+  modal.id='featureTestModal';
+  modal.className='modal-backdrop';
+  modal.innerHTML=`<div class="modal-panel" style="max-width:500px"><div class="flex justify-between items-center mb-5"><h3 id="featureTestTitle" class="font-bold text-xl"></h3><button onclick="closeFeatureMessage()" class="text-nx-muted text-xl"><i class="fa-solid fa-xmark"></i></button></div><div id="featureTestBody" class="text-sm text-nx-muted leading-7"></div></div>`;
+  document.body.appendChild(modal);
+ }
+ document.getElementById('featureTestTitle').textContent=title;
+ document.getElementById('featureTestBody').innerHTML=html;
+ modal.classList.add('open');
+ const counter=document.getElementById('testCounter');
+ if(counter){
+  let value=0;
+  const timer=setInterval(()=>{
+   value+=5;
+   counter.textContent=value;
+   if(value>=100)clearInterval(timer);
+  },35);
+ }
+ const tilt=document.getElementById('tiltTest');
+ if(tilt){
+  tilt.addEventListener('pointermove',e=>{
+   const r=tilt.getBoundingClientRect();
+   const x=(e.clientX-r.left)/r.width;
+   const y=(e.clientY-r.top)/r.height;
+   tilt.style.transform=`perspective(400px) rotateX(${(0.5-y)*15}deg) rotateY(${(x-0.5)*15}deg)`;
+  });
+  tilt.addEventListener('pointerleave',()=>tilt.style.transform='none');
+ }
+}
+
+function closeFeatureMessage(){
+ const modal=document.getElementById('featureTestModal');
+ if(modal)modal.classList.remove('open');
+}
+
+function showQuizDemo(){
+ showFeatureMessage('Quiz demonstrativo',`
+ <p class="mb-4">Qual experiência você gostaria de encontrar?</p>
+ <div class="grid gap-2">
+ <button class="nx-btn nx-btn-outline" onclick="showFeatureMessage('Resultado','Você selecionou uma experiência simples e direta.')">Algo simples e direto</button>
+ <button class="nx-btn nx-btn-outline" onclick="showFeatureMessage('Resultado','Você selecionou uma experiência completa e personalizada.')">Algo completo e personalizado</button>
+ </div>`);
+}
+
+function showFaqDemo(){
+ showFeatureMessage('FAQ interativo',`
+ <details class="border-b border-nx-border py-3"><summary class="cursor-pointer font-bold">O site funciona no celular?</summary><p class="mt-2">Sim. O layout pode ser adaptado para diferentes tamanhos de tela.</p></details>
+ <details class="border-b border-nx-border py-3"><summary class="cursor-pointer font-bold">Posso atualizar informações?</summary><p class="mt-2">Isso depende dos recursos previstos no plano contratado.</p></details>
+ <details class="py-3"><summary class="cursor-pointer font-bold">Como entro em contato?</summary><p class="mt-2">Pelo formulário ou botão de WhatsApp.</p></details>`);
+}
+
+function showManagerDemo(){
+ showFeatureMessage('Gerenciador demonstrativo',`
+ <p class="mb-3">Edite o texto abaixo. A alteração é apenas local nesta demonstração.</p>
+ <input id="managerInput" class="nx-input" value="Bem-vindo ao meu negócio">
+ <button class="nx-btn nx-btn-primary mt-3" onclick="document.getElementById('managerOutput').textContent=document.getElementById('managerInput').value">Salvar prévia</button>
+ <p id="managerOutput" class="mt-4 p-3 rounded-xl bg-[#153747]">Bem-vindo ao meu negócio</p>`);
+}
+
+function copyDemoText(){
+ const value='Conheça a NEXORA Studio: criação de sites para negócios locais.';
+ if(navigator.clipboard?.writeText){
+  navigator.clipboard.writeText(value).then(()=>showFeatureMessage('Texto copiado','A mensagem foi copiada para a área de transferência.')).catch(()=>showFeatureMessage('Copie o texto',value));
+ }else{
+  showFeatureMessage('Texto para copiar',value);
+ }
+}
+
+function showFormDemo(){
+ showFeatureMessage('Formulário guiado',`
+ <div id="guidedStep">
+  <p class="mb-3">Etapa 1 de 2: como se chama seu negócio?</p>
+  <input id="guidedName" class="nx-input" placeholder="Nome do negócio">
+  <button class="nx-btn nx-btn-primary mt-3" onclick="guidedNext()">Continuar</button>
+ </div>`);
+}
+function guidedNext(){
+ const name=document.getElementById('guidedName').value.trim();
+ if(!name){alert('Informe um nome.');return}
+ document.getElementById('guidedStep').innerHTML=`
+ <p class="mb-3">Etapa 2 de 2: qual é o segmento de ${name}?</p>
+ <select id="guidedType" class="nx-input"><option>Serviços</option><option>Alimentação</option><option>Comércio</option><option>Bem-estar</option></select>
+ <button class="nx-btn nx-btn-primary mt-3" onclick="showFeatureMessage('Concluído','Demonstração concluída para ${name}.')">Finalizar</button>`;
+}
+
+/* CALCULADORA ROI */
+function calculateROI(){
+ const visits=Number(document.getElementById('roiVisits').value);
+ const ticket=Number(document.getElementById('roiTicket').value);
+ const rate=Number(document.getElementById('roiRate').value);
+ if(!Number.isFinite(visits)||!Number.isFinite(ticket)||!Number.isFinite(rate)||visits<0||ticket<0||rate<0||rate>100||visits>1000000||ticket>1000000){
+  alert('Confira os valores informados. A taxa deve ficar entre 0 e 100%.');
+  return;
+ }
+ const sales=visits*rate/100;
+ const revenue=sales*ticket;
+ document.getElementById('roiResult').textContent=revenue.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+ document.getElementById('roiDetails').textContent=`Estimativa matemática de ${sales.toLocaleString('pt-BR',{maximumFractionDigits:1})} vendas. Valores hipotéticos, sem garantia de conversão.`;
+}
+
+/* MODELO 3D COM THREE.JS */
+let carScene=null,carCamera=null,carRenderer=null,carGroup=null;
+let carBodyMaterial=null,carAutoRotate=true,carFrame=null;
+let carDragging=false,carLastX=0,carLastY=0,carPointerY=0;
+let carZoom=8,carInitialized=false;
+
+function initCar3D(){
+ const stage=document.getElementById('car3DStage');
+ if(!stage||carInitialized)return;
+ if(!window.THREE){
+  document.getElementById('car3DLoading').textContent='Não foi possível carregar o motor 3D. Verifique sua conexão.';
+  return;
+ }
+ carInitialized=true;
+ const THREE=window.THREE;
+ carScene=new THREE.Scene();
+ carScene.background=new THREE.Color(0x091d29);
+ carScene.fog=new THREE.Fog(0x091d29,12,28);
+ carCamera=new THREE.PerspectiveCamera(40,stage.clientWidth/stage.clientHeight,.1,100);
+ carCamera.position.set(6,4,carZoom);
+ carRenderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
+ carRenderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+ carRenderer.setSize(stage.clientWidth,stage.clientHeight);
+ carRenderer.shadowMap.enabled=true;
+ carRenderer.shadowMap.type=THREE.PCFSoftShadowMap;
+ carRenderer.outputEncoding=THREE.sRGBEncoding;
+ stage.appendChild(carRenderer.domElement);
+ const loadingEl=document.getElementById('car3DLoading');
+ if(loadingEl)loadingEl.remove();
+
+ const ambient=new THREE.HemisphereLight(0xd8edff,0x26303a,2.1);
+ carScene.add(ambient);
+ const keyLight=new THREE.DirectionalLight(0xffe2b2,3);
+ keyLight.position.set(4,8,5);
+ keyLight.castShadow=true;
+ carScene.add(keyLight);
+ const rimLight=new THREE.PointLight(0x4c9dd2,2,15);
+ rimLight.position.set(-5,3,-4);
+ carScene.add(rimLight);
+
+ const floor=new THREE.Mesh(
+  new THREE.PlaneGeometry(200,200),
+  new THREE.MeshStandardMaterial({color:0x0c2735,roughness:.8})
+ );
+ floor.rotation.x=-Math.PI/2;
+ floor.position.y=-.8;
+ floor.receiveShadow=true;
+ carScene.add(floor);
+
+ const grid=new THREE.GridHelper(30,30,0x345466,0x193746);
+ grid.position.y=-.78;
+ carScene.add(grid);
+
+ carGroup=new THREE.Group();
+ carScene.add(carGroup);
+
+ const paint=new THREE.MeshStandardMaterial({color:0x174f87,metalness:.75,roughness:.24});
+ carBodyMaterial=paint;
+ const glass=new THREE.MeshStandardMaterial({color:0x101c26,metalness:.4,roughness:.12});
+ const rubber=new THREE.MeshStandardMaterial({color:0x080a0d,roughness:.9});
+ const metal=new THREE.MeshStandardMaterial({color:0x9caab4,metalness:.85,roughness:.2});
+ const lamp=new THREE.MeshStandardMaterial({color:0xfff1c2,emissive:0xffd88a,emissiveIntensity:1.5});
+ const rearLamp=new THREE.MeshStandardMaterial({color:0xc52e36,emissive:0x9e101c,emissiveIntensity:.8});
+
+ function box(w,h,d,material,x,y,z){
+  const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);
+  mesh.position.set(x,y,z);
+  mesh.castShadow=true;
+  mesh.receiveShadow=true;
+  carGroup.add(mesh);
+  return mesh;
+ }
+
+ box(3.8,.65,1.65,paint,0,0,0);
+ box(1.1,.35,1.65,paint,1.25,.28,0);
+ box(.85,.35,1.65,paint,-1.35,.28,0);
+
+ const roof=new THREE.Mesh(new THREE.BoxGeometry(1.9,.65,1.42),paint);
+ roof.position.set(-.05,.75,0);
+ roof.castShadow=true;
+ carGroup.add(roof);
+
+ box(.08,.48,1.37,glass,.92,.76,0);
+ box(.08,.48,1.37,glass,-1.02,.76,0);
+ box(1.7,.06,.04,glass,-.05,1.09,.72);
+ box(1.7,.06,.04,glass,-.05,1.09,-.72);
+
+ function wheel(x,z){
+  const tire=new THREE.Mesh(new THREE.CylinderGeometry(.42,.42,.28,32),rubber);
+  tire.rotation.x=Math.PI/2;
+  tire.position.set(x,-.34,z);
+  tire.castShadow=true;
+  carGroup.add(tire);
+  const rim=new THREE.Mesh(new THREE.CylinderGeometry(.23,.23,.295,24),metal);
+  rim.rotation.x=Math.PI/2;
+  rim.position.set(x,-.34,z);
+  carGroup.add(rim);
+  const hub=new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.31,20),glass);
+  hub.rotation.x=Math.PI/2;
+  hub.position.set(x,-.34,z);
+  carGroup.add(hub);
+ }
+ wheel(1.25,.88);wheel(1.25,-.88);
+ wheel(-1.25,.88);wheel(-1.25,-.88);
+
+ box(.12,.16,.5,lamp,1.94,.03,.48);
+ box(.12,.16,.5,lamp,1.94,.03,-.48);
+ box(.1,.18,.42,rearLamp,-1.94,.03,.48);
+ box(.1,.18,.42,rearLamp,-1.94,.03,-.48);
+
+ box(.15,.18,1.7,metal,2.0,-.28,0);
+ box(.15,.18,1.7,metal,-2.0,-.28,0);
+
+ box(.28,.13,.2,paint,.72,.42,.92);
+ box(.28,.13,.2,paint,.72,.42,-.92);
+
+ carGroup.rotation.y=-.45;
+
+ const canvas=carRenderer.domElement;
+ canvas.addEventListener('pointerdown',e=>{
+  carDragging=true;
+  carLastX=e.clientX;
+  carLastY=e.clientY;
+  canvas.setPointerCapture(e.pointerId);
+ });
+ canvas.addEventListener('pointermove',e=>{
+  if(!carDragging)return;
+  const dx=e.clientX-carLastX;
+  const dy=e.clientY-carLastY;
+  carGroup.rotation.y+=dx*.009;
+  carPointerY=Math.max(-.35,Math.min(.35,carPointerY+dy*.004));
+  carLastX=e.clientX;
+  carLastY=e.clientY;
+ });
+ canvas.addEventListener('pointerup',()=>carDragging=false);
+ canvas.addEventListener('pointercancel',()=>carDragging=false);
+ canvas.addEventListener('wheel',e=>{
+  e.preventDefault();
+  carZoom=Math.max(5,Math.min(13,carZoom+e.deltaY*.008));
+  updateCarCamera();
+ },{passive:false});
+
+ let touchDistance=null;
+ canvas.addEventListener('touchmove',e=>{
+  if(e.touches.length!==2)return;
+  const dx=e.touches[0].clientX-e.touches[1].clientX;
+  const dy=e.touches[0].clientY-e.touches[1].clientY;
+  const distance=Math.sqrt(dx*dx+dy*dy);
+  if(touchDistance!==null){
+   carZoom=Math.max(5,Math.min(13,carZoom-(distance-touchDistance)*.025));
+   updateCarCamera();
+  }
+  touchDistance=distance;
+ },{passive:true});
+ canvas.addEventListener('touchend',()=>touchDistance=null);
+
+ function animate(){
+  carFrame=requestAnimationFrame(animate);
+  if(carAutoRotate&&!carDragging)carGroup.rotation.y+=.003;
+  carGroup.rotation.x=carPointerY;
+  carRenderer.render(carScene,carCamera);
+ }
+ animate();
+
+ window.addEventListener('resize',resizeCar3D);
+}
+
+function updateCarCamera(){
+ if(!carCamera)return;
+ const angle=Math.atan2(carCamera.position.x,carCamera.position.z);
+ carCamera.position.x=Math.sin(angle)*carZoom;
+ carCamera.position.z=Math.cos(angle)*carZoom;
+ carCamera.lookAt(0,.1,0);
+}
+
+function resizeCar3D(){
+ const stage=document.getElementById('car3DStage');
+ if(!stage||!carRenderer||!carCamera)return;
+ carCamera.aspect=stage.clientWidth/stage.clientHeight;
+ carCamera.updateProjectionMatrix();
+ carRenderer.setSize(stage.clientWidth,stage.clientHeight);
+}
+
+function changeCarColor(color){
+ if(!carBodyMaterial)return;
+ carBodyMaterial.color.setHex(color);
+}
+
+function toggleCarRotation(){
+ carAutoRotate=!carAutoRotate;
+ const btn=document.getElementById('carRotateBtn');
+ if(btn)btn.innerHTML=carAutoRotate?'<i class="fa-solid fa-pause"></i> Pausar':'<i class="fa-solid fa-play"></i> Girar';
+}
+
+function resetCarView(){
+ if(!carGroup)return;
+ carGroup.rotation.set(0,-.45,0);
+ carPointerY=0;
+ carZoom=8;
+ carCamera.position.set(6,4,carZoom);
+ carCamera.lookAt(0,.1,0);
+}
+
+const featureObserver=new MutationObserver(()=>{
+ const page=document.getElementById('page-features');
+ if(page&&!page.classList.contains('hidden-page'))initCar3D();
+});
+featureObserver.observe(document.getElementById('page-features'),{attributes:true,attributeFilter:['class']});
+
+/* NAVEGAÇÃO */
+function goPage(page){
+ const valid=['home','catalog','features','contracts','marketing','contact'];
+ if(!valid.includes(page))page='home';
+ document.querySelectorAll('.page-view').forEach(el=>el.classList.add('hidden-page'));
+ const target=document.getElementById('page-'+page);
+ if(target)target.classList.remove('hidden-page');
+ document.querySelectorAll('.nav-link').forEach(btn=>{
+  btn.classList.toggle('active',btn.dataset.page===page);
+ });
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(page==='features')setTimeout(()=>initCar3D(),100);
+}
+
+/* PROGRESSO DE LEITURA */
+window.addEventListener('scroll',()=>{
+ const doc=document.documentElement;
+ const max=doc.scrollHeight-doc.clientHeight;
+ const percent=max>0?(window.scrollY/max)*100:0;
+ document.getElementById('progressTrack').style.width=percent+'%';
+},{passive:true});
+
+/* WHATSAPP */
+function openWhatsApp(){
+ const message='Olá! Conheci a NEXORA Studio e gostaria de saber mais sobre a criação de um site.';
+ window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+}
+
+function choosePlan(plan){
+ goPage('contact');
+ const select=document.getElementById('contactPlan');
+ if(select){
+  const option=[...select.options].find(o=>o.text===plan);
+  if(option)select.value=option.value;
+ }
+}
+
+/* FORMULÁRIO DE CONTATO */
+function sendCustomWhatsappMessage(event){
+ if(event)event.preventDefault();
+ const name=document.getElementById('contactName').value.trim();
+ const niche=document.getElementById('contactNiche').value;
+ const plan=document.getElementById('contactPlan').value;
+ const details=document.getElementById('contactDetails').value.trim();
+ if(!name||!niche||!plan){
+  alert('Preencha seu nome, segmento e plano de interesse.');
+  return;
+ }
+ const message=`Olá, NEXORA Studio! Meu nome é ${name}. Tenho um negócio de ${niche} e gostaria de conversar sobre o plano ${plan}.${details?' Minha ideia: '+details:''}`;
+ window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+}
+
+/* PREFERÊNCIAS */
+function togglePreferences(){
+ document.getElementById('preferencesModal').classList.toggle('open');
+}
+
+function setColorblindMode(mode){
+ const body=document.body;
+ body.classList.remove('cb-protanopia','cb-deuteranopia','cb-highcontrast');
+ const allowed=['normal','protanopia','deuteranopia','highcontrast'];
+ if(!allowed.includes(mode))mode='normal';
+ if(mode!=='normal')body.classList.add('cb-'+mode);
+ try{localStorage.setItem('nx_accessibility',mode)}catch(e){}
+}
+
+/* IDIOMAS */
+const translations={
+ pt:{
+  nav_home:'Início',nav_catalog:'Portfólio',nav_features:'Funcionalidades',
+  nav_plans:'Planos',nav_marketing:'Marketing',nav_contact:'Contato'
+ },
+ en:{
+  nav_home:'Home',nav_catalog:'Portfolio',nav_features:'Features',
+  nav_plans:'Plans',nav_marketing:'Marketing',nav_contact:'Contact'
+ },
+ es:{
+  nav_home:'Inicio',nav_catalog:'Portafolio',nav_features:'Funciones',
+  nav_plans:'Planes',nav_marketing:'Marketing',nav_contact:'Contacto'
+ }
+};
+
+function setStudioLanguage(langKey){
+ if(!translations[langKey])return;
+ document.documentElement.lang=langKey==='pt'?'pt-BR':langKey;
+ document.querySelectorAll('[data-i18n]').forEach(el=>{
+  const key=el.dataset.i18n;
+  if(translations[langKey][key])el.textContent=translations[langKey][key];
+ });
+ try{localStorage.setItem('nx_language',langKey)}catch(e){}
+ applyExtendedTranslations(langKey);
+}
+
+const extendedTranslations={
+ en:{
+  'Explorar demonstrações':'Explore demos',
+  'Criar meu site':'Create my website',
+  'Seu negócio merece uma presença':'Your business deserves a presence',
+  'extraordinária.':'extraordinary.',
+  'Um universo de possibilidades.':'A universe of possibilities.',
+  'Experimentar site':'Try this website',
+  'Conheça nossas opções.':'Explore our options.',
+  'Vamos conversar?':'Let’s talk?',
+  'Enviar pelo WhatsApp':'Send via WhatsApp',
+  'Perguntas frequentes':'Frequently asked questions',
+  'Seu projeto começa com uma conversa.':'Your project starts with a conversation.',
+  'O próximo passo do seu negócio.':'The next step for your business.',
+  'Escolher plano':'Choose plan',
+  'Mensagem clara':'Clear message',
+  'Prova social real':'Real social proof',
+  'Visual profissional':'Professional design',
+  'Contato imediato':'Instant contact',
+  'Quero criar meu site':'I want my website',
+  'Do mesmo jeito que essa flor nasceu, seu site pode nascer hoje.':'Just as this flower bloomed, your website can bloom today.'
+ },
+ es:{
+  'Explorar demonstrações':'Explorar demostraciones',
+  'Criar meu site':'Crear mi sitio',
+  'Seu negócio merece uma presença':'Tu negocio merece una presencia',
+  'extraordinária.':'extraordinaria.',
+  'Um universo de possibilidades.':'Un universo de posibilidades.',
+  'Experimentar site':'Probar sitio',
+  'Conheça nossas opções.':'Conoce nuestras opciones.',
+  'Vamos conversar?':'¿Hablamos?',
+  'Enviar pelo WhatsApp':'Enviar por WhatsApp',
+  'Perguntas frequentes':'Preguntas frecuentes',
+  'Seu projeto começa com uma conversa.':'Tu proyecto comienza con una conversación.',
+  'O próximo passo do seu negócio.':'El próximo paso de tu negocio.',
+  'Escolher plano':'Elegir plan',
+  'Mensagem clara':'Mensaje claro',
+  'Prova social real':'Prueba social real',
+  'Visual profissional':'Diseño profesional',
+  'Contato imediato':'Contacto inmediato',
+  'Quero criar meu site':'Quiero crear mi sitio',
+  'Do mesmo jeito que essa flor nasceu, seu site pode nascer hoje.':'Así como nació esta flor, tu sitio web puede nacer hoy.'
+ }
+};
+
+function applyExtendedTranslations(lang){
+ if(lang==='pt')return;
+ const map=extendedTranslations[lang];
+ if(!map)return;
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ const nodes=[];
+ while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(node=>{
+  const original=node.nodeValue.trim();
+  if(!original)return;
+  if(map[original]){
+   node.nodeValue=node.nodeValue.replace(original,map[original]);
+  }
+ });
+}
+
+/* FILTROS DO PORTFÓLIO */
+function filterCatalog(category,button){
+ document.querySelectorAll('.catalog-item').forEach(item=>{
+  item.style.display=category==='all'||item.dataset.category===category?'':'none';
+ });
+ document.querySelectorAll('#catalogFilters button').forEach(btn=>{
+  btn.classList.remove('nx-btn-primary');
+  btn.classList.add('nx-btn-outline');
+ });
+ if(button){
+  button.classList.remove('nx-btn-outline');
+  button.classList.add('nx-btn-primary');
+ }
+}
+
+/* EASTER EGG FLOR */
+function triggerFlower(){
+ const overlay=document.getElementById('flowerOverlay');
+ overlay.classList.remove('hidden');
+ overlay.classList.add('flower-active');
+ document.getElementById('flowerPhrase').style.opacity=0;
+ document.getElementById('flowerSubtext').style.opacity=0;
+ document.getElementById('flowerCTA').style.opacity=0;
+ document.getElementById('flowerStem').style.height='0';
+ document.getElementById('flowerHead').style.opacity=0;
+ document.getElementById('flowerHead').style.transform='translateX(-50%) scale(0)';
+ document.getElementById('flowerLeafLeft').style.opacity=0;
+ document.getElementById('flowerLeafRight').style.opacity=0;
+ document.getElementById('flowerParticles').innerHTML='';
+ document.getElementById('flowerSeed').style.opacity=1;
+
+ const petals=document.getElementById('flowerPetals');
+ petals.innerHTML='';
+ for(let i=0;i<8;i++){
+  const petal=document.createElement('div');
+  petal.className='flower-petal';
+  petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(.15)`;
+  petal.style.transition='transform 1.2s cubic-bezier(.2,.8,.2,1)';
+  petals.appendChild(petal);
+  setTimeout(()=>petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(1)`,2200+i*80);
+ }
+
+ setTimeout(()=>{document.getElementById('flowerStem').style.height='190px'},300);
+ setTimeout(()=>{
+  document.getElementById('flowerLeafLeft').style.opacity=1;
+  document.getElementById('flowerLeafRight').style.opacity=1;
+ },1500);
+ setTimeout(()=>{
+  document.getElementById('flowerHead').style.opacity=1;
+  document.getElementById('flowerHead').style.transform='translateX(-50%) scale(1)';
+ },2100);
+ setTimeout(()=>{
+  const container=document.getElementById('flowerParticles');
+  for(let i=0;i<24;i++){
+   const particle=document.createElement('span');
+   particle.className='flower-particle';
+   particle.style.setProperty('--tx',(Math.random()*260-130)+'px');
+   particle.style.setProperty('--ty',(Math.random()*-230-30)+'px');
+   particle.style.animationDelay=(Math.random()*1.5)+'s';
+   container.appendChild(particle);
+  }
+ },2800);
+ setTimeout(()=>document.getElementById('flowerPhrase').style.opacity=1,3500);
+ setTimeout(()=>document.getElementById('flowerSubtext').style.opacity=1,4500);
+ setTimeout(()=>document.getElementById('flowerCTA').style.opacity=1,5200);
+}
+
+function closeFlower(){
+ const overlay=document.getElementById('flowerOverlay');
+ overlay.classList.add('hidden');
+ overlay.classList.remove('flower-active');
+}
+
+/* INICIALIZAÇÃO */
+document.getElementById('currentYear').textContent=new Date().getFullYear();
+
+try{
+ const savedLanguage=localStorage.getItem('nx_language');
+ if(savedLanguage)setStudioLanguage(savedLanguage);
+ const savedAccessibility=localStorage.getItem('nx_accessibility');
+ if(savedAccessibility)setColorblindMode(savedAccessibility);
+}catch(e){}
+
+calculateROI();
+goPage('home');
+</script>
+
+</body>
+</html>
 
