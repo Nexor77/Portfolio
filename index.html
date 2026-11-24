@@ -286,7 +286,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
   </nav>
 
   <div class="flex items-center gap-3">
-   <button onclick="togglePreferences()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-gold" title="Preferências">
+   <button onclick="togglePreferences()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-gold" title="Preferências" aria-label="Preferências">
     <i class="fa-solid fa-sliders"></i>
    </button>
    <button onclick="openWhatsApp()" class="nx-btn nx-btn-primary !py-2.5 !px-4 text-xs">
@@ -737,7 +737,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
     <div class="section-label">NEXORA EXPERIENCE</div>
     <h2 id="demoTitle" class="font-editorial text-3xl mt-1">Demonstração</h2>
    </div>
-   <button onclick="closeDemo()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-muted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+   <button onclick="closeDemo()" class="w-10 h-10 rounded-xl border border-nx-border text-nx-muted hover:text-white" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div id="demoContent"></div>
   <p class="text-[10px] text-nx-muted mt-6 text-center">Demonstração fictícia. Solicitações e pedidos não representam transações reais.</p>
@@ -749,7 +749,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
  <div class="modal-panel" style="max-width:480px">
   <div class="flex justify-between items-center mb-6">
    <h3 class="font-editorial text-3xl">Preferências</h3>
-   <button onclick="togglePreferences()" class="text-nx-muted text-xl"><i class="fa-solid fa-xmark"></i></button>
+   <button onclick="togglePreferences()" class="text-nx-muted text-xl" aria-label="Fechar preferências"><i class="fa-solid fa-xmark"></i></button>
   </div>
 
   <label class="text-xs font-bold block mb-3">IDIOMA DO SITE</label>
@@ -799,6 +799,8 @@ body.cb-highcontrast {filter:contrast(1.5)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+const NEXORA_WHATSAPP = '555189761893';
+
 /* DEMONSTRAÇÕES INTERATIVAS */
 const demoData = {
  dentist: {
@@ -958,8 +960,8 @@ function selectDemoService(index){
  const item=demoData[currentDemo].services[index];
  const msg=`Olá! Gostaria de saber mais sobre ${item[0]} no ${demoData[currentDemo].title}.`;
  if(confirm(`Você selecionou: ${item[0]}.\n\nDeseja preparar uma mensagem de contato?`)){
-  const url='https://wa.me/555189761893?text='+encodeURIComponent(msg);
-  window.open(url,'_blank','noopener');
+  const url=`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(msg);
+  window.open(url,'_blank','noopener,noreferrer');
  }
 }
 
@@ -1008,7 +1010,7 @@ function submitDemoBooking(event){
  const note=document.getElementById('demoMessage').value.trim();
  if(!name)return;
  const message=`Olá! Meu nome é ${name}. Tenho interesse em ${request} no ${demoData[currentDemo].title}.${note?' Observação: '+note:''}`;
- window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+ window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(message),'_blank','noopener,noreferrer');
 }
 
 /* CARDÁPIO E CARRINHO */
@@ -1077,7 +1079,7 @@ function checkoutBurger(){
  const lines=demoCart.map(p=>`${p.qty}x ${p.name}`).join(', ');
  const total=demoCart.reduce((sum,p)=>sum+p.price*p.qty,0);
  const msg=`Olá! Gostaria de consultar este pedido demonstrativo: ${lines}. Total estimado: R$ ${total.toFixed(2)}.`;
- window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener');
+ window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(msg),'_blank','noopener,noreferrer');
 }
 
 /* MODA: CATÁLOGO E TAMANHOS */
@@ -1136,7 +1138,7 @@ function addFashion(index){
 function checkoutFashion(){
  if(!window.fashionCart?.length){alert('Selecione algum produto primeiro.');return;}
  const msg='Olá! Gostaria de consultar estes produtos: '+window.fashionCart.map(p=>`${p.name}, tamanho ${p.size}`).join('; ');
- window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener');
+ window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(msg),'_blank','noopener,noreferrer');
 }
 
 /* CATÁLOGO DOS 18 RECURSOS */
@@ -1191,7 +1193,7 @@ function testFeature(index){
   ()=>showQuizDemo(),
   ()=>showFaqDemo(),
   ()=>showManagerDemo(),
-  ()=>{const msg='Olá! Gostaria de conhecer os serviços da NEXORA.';window.open('https://wa.me/555189761893?text='+encodeURIComponent(msg),'_blank','noopener')},
+  ()=>{const msg='Olá! Gostaria de conhecer os serviços da NEXORA.';window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(msg),'_blank','noopener,noreferrer')},
   ()=>copyDemoText(),
   ()=>showFormDemo()
  ];
@@ -1511,14 +1513,20 @@ const featureObserver=new MutationObserver(()=>{
 featureObserver.observe(document.getElementById('page-features'),{attributes:true,attributeFilter:['class']});
 
 /* NAVEGAÇÃO */
+const pageNames=['home','catalog','features','contracts','marketing','contact'];
+
 function goPage(page){
- const valid=['home','catalog','features','contracts','marketing','contact'];
- if(!valid.includes(page))page='home';
+ if(!pageNames.includes(page))page='home';
  document.querySelectorAll('.page-view').forEach(el=>el.classList.add('hidden-page'));
  const target=document.getElementById('page-'+page);
  if(target)target.classList.remove('hidden-page');
  document.querySelectorAll('.nav-link').forEach(btn=>{
   btn.classList.toggle('active',btn.dataset.page===page);
+ });
+ document.querySelectorAll('.mobile-nav button').forEach((button,index)=>{
+  const active=pageNames[index]===page;
+  button.classList.toggle('text-nx-gold',active);
+  button.classList.toggle('text-nx-muted',!active);
  });
  window.scrollTo({top:0,behavior:'smooth'});
  if(page==='features')setTimeout(()=>initCar3D(),100);
@@ -1533,9 +1541,9 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 /* WHATSAPP */
-function openWhatsApp(){
- const message='Olá! Conheci a NEXORA Studio e gostaria de saber mais sobre a criação de um site.';
- window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+function openWhatsApp(customMessage){
+ const message=customMessage||'Olá! Conheci a NEXORA Studio e gostaria de saber mais sobre a criação de um site.';
+ window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=`+encodeURIComponent(message),'_blank','noopener,noreferrer');
 }
 
 function choosePlan(plan){
@@ -1559,7 +1567,7 @@ function sendCustomWhatsappMessage(event){
   return;
  }
  const message=`Olá, NEXORA Studio! Meu nome é ${name}. Tenho um negócio de ${niche} e gostaria de conversar sobre o plano ${plan}.${details?' Minha ideia: '+details:''}`;
- window.open('https://wa.me/555189761893?text='+encodeURIComponent(message),'_blank','noopener');
+ openWhatsApp(message);
 }
 
 /* PREFERÊNCIAS */
@@ -1680,7 +1688,14 @@ function filterCatalog(category,button){
 }
 
 /* EASTER EGG FLOR */
+let flowerTimers = [];
+function clearFlowerTimers(){
+ flowerTimers.forEach(t=>clearTimeout(t));
+ flowerTimers = [];
+}
+
 function triggerFlower(){
+ clearFlowerTimers();
  const overlay=document.getElementById('flowerOverlay');
  overlay.classList.remove('hidden');
  overlay.classList.add('flower-active');
@@ -1703,19 +1718,19 @@ function triggerFlower(){
   petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(.15)`;
   petal.style.transition='transform 1.2s cubic-bezier(.2,.8,.2,1)';
   petals.appendChild(petal);
-  setTimeout(()=>petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(1)`,2200+i*80);
+  flowerTimers.push(setTimeout(()=>petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(1)`,2200+i*80));
  }
 
- setTimeout(()=>{document.getElementById('flowerStem').style.height='190px'},300);
- setTimeout(()=>{
+ flowerTimers.push(setTimeout(()=>{document.getElementById('flowerStem').style.height='190px'},300));
+ flowerTimers.push(setTimeout(()=>{
   document.getElementById('flowerLeafLeft').style.opacity=1;
   document.getElementById('flowerLeafRight').style.opacity=1;
- },1500);
- setTimeout(()=>{
+ },1500));
+ flowerTimers.push(setTimeout(()=>{
   document.getElementById('flowerHead').style.opacity=1;
   document.getElementById('flowerHead').style.transform='translateX(-50%) scale(1)';
- },2100);
- setTimeout(()=>{
+ },2100));
+ flowerTimers.push(setTimeout(()=>{
   const container=document.getElementById('flowerParticles');
   for(let i=0;i<24;i++){
    const particle=document.createElement('span');
@@ -1725,17 +1740,28 @@ function triggerFlower(){
    particle.style.animationDelay=(Math.random()*1.5)+'s';
    container.appendChild(particle);
   }
- },2800);
- setTimeout(()=>document.getElementById('flowerPhrase').style.opacity=1,3500);
- setTimeout(()=>document.getElementById('flowerSubtext').style.opacity=1,4500);
- setTimeout(()=>document.getElementById('flowerCTA').style.opacity=1,5200);
+ },2800));
+ flowerTimers.push(setTimeout(()=>document.getElementById('flowerPhrase').style.opacity=1,3500));
+ flowerTimers.push(setTimeout(()=>document.getElementById('flowerSubtext').style.opacity=1,4500));
+ flowerTimers.push(setTimeout(()=>document.getElementById('flowerCTA').style.opacity=1,5200));
 }
 
 function closeFlower(){
+ clearFlowerTimers();
  const overlay=document.getElementById('flowerOverlay');
  overlay.classList.add('hidden');
  overlay.classList.remove('flower-active');
 }
+
+/* FECHAR MODAIS COM ESC */
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'){
+  closeDemo();
+  closeFeatureMessage();
+  closeFlower();
+  document.getElementById('preferencesModal').classList.remove('open');
+ }
+});
 
 /* INICIALIZAÇÃO */
 document.getElementById('currentYear').textContent=new Date().getFullYear();
@@ -1753,4 +1779,3 @@ goPage('home');
 
 </body>
 </html>
-
