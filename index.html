@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102d3b">
+<meta name="theme-color" content="#080b12">
 <meta name="description" content="NEXORA Studio. Sites profissionais para negócios locais.">
 <title>NEXORA's Studio | Sites de Alta Conversão</title>
 
@@ -39,24 +39,26 @@ tailwind.config = {
 </script>
 
 <style>
+/* NEXORA LUXURY SYSTEM */
 :root {
- --bg:#071923;
- --panel:#102d3b;
- --card:#153747;
- --border:#254757;
- --gold:#e7b96b;
- --light:#f5ead7;
- --muted:#a8bac2;
- --green:#64c9a1;
+  --bg: #080b12;
+  --panel: #111722;
+  --card: #171f2b;
+  --border: #34313a;
+  --gold: #c9a66b;
+  --light: #f4f0e8;
+  --muted: #aaa6a0;
+  --green: #64c9a1;
 }
 * {box-sizing:border-box}
 html {scroll-behavior:smooth}
 body {
- margin:0;
- background:var(--bg);
- color:var(--light);
- font-family:'DM Sans',sans-serif;
- overflow-x:hidden;
+  margin:0;
+  background:radial-gradient(ellipse at 50% -20%, #20202a 0%, #080b12 48%), var(--bg);
+  color:var(--light);
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.005em;
+  overflow-x:hidden;
 }
 button,input,select,textarea {font:inherit}
 button {cursor:pointer}
@@ -71,27 +73,34 @@ button {cursor:pointer}
  to {opacity:1;transform:translateY(0)}
 }
 .glass {
- background:rgba(16,45,59,.78);
- border:1px solid rgba(255,255,255,.09);
- backdrop-filter:blur(18px);
+  background:rgba(8,11,18,.88);
+  border-bottom:1px solid rgba(201,166,107,.18);
+  backdrop-filter:blur(18px);
 }
 .nx-card {
- background:linear-gradient(145deg,#153747,#0d2734);
- border:1px solid var(--border);
- border-radius:22px;
- transition:.3s ease;
+  background:linear-gradient(145deg,rgba(27,32,42,.96),rgba(13,17,25,.98));
+  border:1px solid rgba(201,166,107,.18);
+  box-shadow:0 18px 55px rgba(0,0,0,.16);
+  border-radius:22px;
+  transition:.3s ease;
 }
 .nx-card:hover {
- transform:translateY(-5px);
- border-color:rgba(231,185,107,.55);
- box-shadow:0 18px 50px rgba(0,0,0,.22);
+  transform:translateY(-5px);
+  border-color:rgba(201,166,107,.58);
+  box-shadow:0 24px 65px rgba(0,0,0,.32);
+}
+.nx-btn-primary {
+  background:linear-gradient(135deg,#e3c995,#b58d50);
+  box-shadow:0 8px 24px rgba(181,141,80,.16);
+  color:#14232a;
 }
 .gold-text {
- background:linear-gradient(100deg,#f8e5bd,#d6a552);
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
+  background:linear-gradient(110deg,#f1dfb8,#c9a66b 55%,#9d7945);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
+.section-label { color: #d0b47f; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:800; }
 .nx-btn {
  display:inline-flex;
  align-items:center;
@@ -101,10 +110,6 @@ button {cursor:pointer}
  border-radius:12px;
  font-weight:800;
  transition:.25s;
-}
-.nx-btn-primary {
- background:var(--gold);
- color:#14232a;
 }
 .nx-btn-primary:hover {
  background:#f5d69e;
@@ -125,13 +130,6 @@ button {cursor:pointer}
  transition:.2s;
 }
 .nav-link:hover,.nav-link.active {color:var(--gold)}
-.section-label {
- color:var(--gold);
- font-size:11px;
- letter-spacing:3px;
- text-transform:uppercase;
- font-weight:800;
-}
 .section-title {
  font-family:'Playfair Display',serif;
  font-size:clamp(30px,5vw,48px);
@@ -204,6 +202,107 @@ button {cursor:pointer}
  margin-right:4px;margin-bottom:5px;
 }
 .demo-tab:hover {background:rgba(231,185,107,.35)}
+.demo-hero {
+  position: relative;
+  min-height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  color: white;
+}
+.demo-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,rgba(5,7,10,.88),rgba(5,7,10,.08) 85%);
+}
+.demo-hero > * { position: relative; z-index: 1; }
+.demo-hero h2 {
+  font: 500 clamp(30px,6vw,52px)/1.02 Georgia,serif;
+  max-width: 520px;
+  margin: 10px 0;
+}
+.demo-hero p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e7d6b8;
+}
+.demo-photo-card {
+  border-radius: 13px;
+  overflow: hidden;
+  background: #171d27;
+  border: 1px solid rgba(201,166,107,.22);
+}
+.demo-photo-card .copy { padding: 14px; }
+.feature-preview {
+  height: 112px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 13px;
+  margin: -1px -1px 18px;
+  background: linear-gradient(135deg,#202632,#111722);
+  border: 1px solid rgba(201,166,107,.18);
+}
+.feature-preview:after {
+  content: "PRÉVIA ANIMADA";
+  position: absolute;
+  left: 12px;
+  bottom: 9px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #e5d0a8;
+}
+.feature-preview .preview-orb {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  left: calc(50% - 27px);
+  top: 25px;
+  background: linear-gradient(135deg,#e6d2a6,#9e7945);
+  box-shadow: 0 0 35px rgba(201,166,107,.3);
+  animation: previewFloat 3s ease-in-out infinite;
+}
+.feature-preview .preview-line {
+  position: absolute;
+  height: 2px;
+  width: 70%;
+  left: 15%;
+  top: 55px;
+  background: linear-gradient(90deg,transparent,#d8bd8b,transparent);
+  animation: previewSweep 2.4s ease-in-out infinite;
+}
+.feature-preview .preview-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f4e4c2;
+  top: 52px;
+  left: 15%;
+  animation: previewTravel 3s ease-in-out infinite;
+}
+@keyframes previewFloat {
+  0%,100% { transform: translateY(7px) rotate(-8deg) scale(.92); }
+  50% { transform: translateY(-8px) rotate(8deg) scale(1.08); }
+}
+@keyframes previewSweep {
+  0%,100% { opacity: .2; transform: scaleX(.55); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+@keyframes previewTravel {
+  0% { left: 15%; opacity: .3; }
+  50% { left: 82%; opacity: 1; }
+  100% { left: 15%; opacity: .3; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .feature-preview * { animation: none !important; }
+}
 .modal-backdrop {
  position:fixed;inset:0;z-index:500;
  background:rgba(0,0,0,.78);
@@ -911,28 +1010,104 @@ function demoShell(content){
  </div>`;
 }
 
-function renderDemoHome(){
- if(currentDemo==='burger')return renderBurgerMenu();
- if(currentDemo==='fashion')return renderFashionShop();
- const data=demoData[currentDemo];
- const content=`
- <div style="padding:15px 0 25px">
-  <p style="font-size:10px;letter-spacing:3px;margin-bottom:14px">BEM-VINDO À ${data.title.toUpperCase()}</p>
-  <h2 style="font-family:Georgia,serif;font-size:clamp(30px,6vw,48px);line-height:1.08;margin-bottom:13px">${data.intro}</h2>
-  <p style="font-size:13px;opacity:.75;max-width:440px;line-height:1.8">${data.description}</p>
-  <button onclick="renderDemoServices()" style="margin-top:23px;padding:12px 18px;background:${['burger','barber','fitness'].includes(currentDemo)?'#e7b96b':'#183d43'};color:${['burger','barber','fitness'].includes(currentDemo)?'#17262c':'white'};border-radius:9px;font-weight:800;font-size:11px">EXPLORAR AGORA ↗</button>
- </div>
- <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
-  <div style="padding:14px;border:1px solid rgba(120,120,120,.25);border-radius:12px"><strong style="font-size:12px">Experiência simples</strong><p style="font-size:10px;opacity:.7;margin-top:5px">Navegação intuitiva.</p></div>
-  <div style="padding:14px;border:1px solid rgba(120,120,120,.25);border-radius:12px"><strong style="font-size:12px">Contato rápido</strong><p style="font-size:10px;opacity:.7;margin-top:5px">Solicitação em poucos passos.</p></div>
- </div>
- <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
-  <button class="demo-tab" onclick="renderDemoHome()">Início</button>
-  <button class="demo-tab" onclick="renderDemoServices()">Serviços</button>
-  <button class="demo-tab" onclick="renderDemoReviews()">Avaliações</button>
-  <button class="demo-tab" onclick="renderDemoBooking()">Contato</button>
- </div>`;
- document.getElementById('demoContent').innerHTML=demoShell(content);
+function renderDemoHome() {
+  if (currentDemo === 'burger') return renderBurgerMenu();
+  if (currentDemo === 'fashion') return renderFashionShop();
+
+  const data = demoData[currentDemo];
+
+  const visual = {
+    dentist: {
+      photo: 'photo-1606811971618-4486d14f3f99',
+      eyebrow: 'ODONTOLOGIA CONTEMPORÂNEA',
+      headline: 'Um sorriso confiante transforma tudo.',
+      sub: 'Cuidado, tecnologia e atenção em cada etapa.'
+    },
+    barber: {
+      photo: 'photo-1503951914875-452162b0f3f1',
+      eyebrow: 'BARBER CLUB • EST. 2018',
+      headline: 'Seu estilo merece um corte à altura.',
+      sub: 'Precisão, personalidade e uma experiência exclusiva.'
+    },
+    fitness: {
+      photo: 'photo-1534438327276-14e5300c3a48',
+      eyebrow: 'PULSE FITNESS • MOVIMENTO',
+      headline: 'Supere seus limites. No seu ritmo.',
+      sub: 'Treino inteligente, acompanhamento e evolução constante.'
+    },
+    pet: {
+      photo: 'photo-1548199973-03cce0bbc87b',
+      eyebrow: 'PET & CIA • CUIDADO',
+      headline: 'Cuidado de verdade para quem faz parte da família.',
+      sub: 'Bem-estar, carinho e atenção em todos os detalhes.'
+    }
+  };
+
+  const v = visual[currentDemo] || {
+    photo: 'photo-1517248135467-4c7edcad34c4',
+    eyebrow: 'EXPERIÊNCIA EXCLUSIVA',
+    headline: data.intro,
+    sub: data.description
+  };
+
+  const content = `
+    <div class="demo-hero"
+      style="background-image:url('https://images.unsplash.com/${v.photo}?auto=format&fit=crop&w=1400&q=85')">
+
+      <div>
+        <p>${v.eyebrow}</p>
+        <h2>${v.headline}</h2>
+
+        <div style="max-width:460px;font-size:13px;line-height:1.7;color:#eee5d7">
+          ${v.sub}
+        </div>
+
+        <button onclick="renderDemoBooking()"
+          style="margin-top:20px;padding:13px 19px;background:#d1b47d;color:#151515;border-radius:5px;font-size:10px;font-weight:900;letter-spacing:1px">
+          SOLICITAR ATENDIMENTO ↗
+        </button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 2px 12px">
+      <div>
+        <span style="font-size:9px;letter-spacing:2px;color:#ad8c59">01 / EXPERIÊNCIA</span>
+        <h3 style="font:26px Georgia,serif;margin-top:6px">Feito para você.</h3>
+      </div>
+
+      <p style="max-width:300px;font-size:11px;line-height:1.8;opacity:.72">
+        Uma presença digital que combina estética, informação e facilidade para transformar interesse em contato.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:12px 0 20px">
+      ${(data.services || []).slice(0,3).map((item,i) => `
+        <div class="demo-photo-card">
+          <div style="height:5px;background:linear-gradient(90deg,#c9a66b,transparent)"></div>
+          <div class="copy">
+            <span style="font-size:9px;color:#bd9d69;letter-spacing:1px">
+              0${i+1} / DESTAQUE
+            </span>
+            <strong style="display:block;font:18px Georgia,serif;margin:8px 0">
+              ${item[0]}
+            </strong>
+            <span style="font-size:10px;opacity:.68;line-height:1.6">
+              ${item[1]}
+            </span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+      <button class="demo-tab" onclick="renderDemoHome()">Início</button>
+      <button class="demo-tab" onclick="renderDemoServices()">Serviços</button>
+      <button class="demo-tab" onclick="renderDemoReviews()">Avaliações</button>
+      <button class="demo-tab" onclick="renderDemoBooking()">Contato</button>
+    </div>
+  `;
+
+  document.getElementById('demoContent').innerHTML = demoShell(content);
 }
 
 function renderDemoServices(){
@@ -1163,17 +1338,42 @@ const featureList=[
  ['Formulário guiado','Coleta informações em etapas organizadas.','fa-list-check']
 ];
 
-const featureGrid=document.getElementById('featureGrid');
-featureGrid.innerHTML=featureList.map((f,i)=>`
- <article class="nx-card p-5 flex flex-col">
-  <div class="flex items-center justify-between mb-5">
-   <div class="feature-icon"><i class="fa-solid ${f[2]}"></i></div>
-   <span class="text-[10px] text-nx-muted">RECURSO ${String(i+1).padStart(2,'0')}</span>
-  </div>
-  <h3 class="font-bold text-base mb-2">${f[0]}</h3>
-  <p class="text-sm text-nx-muted leading-6 flex-1">${f[1]}</p>
-  <button onclick="testFeature(${i})" class="nx-btn nx-btn-outline w-full mt-5 !py-2.5 text-xs">Testar recurso <i class="fa-solid fa-arrow-right"></i></button>
- </article>
+const featureGrid = document.getElementById('featureGrid');
+featureGrid.innerHTML = featureList.map((f,i) => `
+  <article class="nx-card p-4 flex flex-col">
+
+    <div class="feature-preview" aria-label="Prévia animada do recurso">
+      <span class="preview-orb"></span>
+      <span class="preview-line"></span>
+      <span class="preview-dot"></span>
+
+      <span style="position:absolute;right:12px;top:10px;color:#d9c49d;font-size:9px;letter-spacing:1px">
+        NEXORA / ${String(i+1).padStart(2,'0')}
+      </span>
+    </div>
+
+    <div class="flex items-center justify-between mb-3">
+      <div class="feature-icon">
+        <i class="fa-solid ${f[2]}"></i>
+      </div>
+
+      <span class="text-[10px] text-nx-muted">
+        RECURSO ${String(i+1).padStart(2,'0')}
+      </span>
+    </div>
+
+    <h3 class="font-bold text-base mb-2">${f[0]}</h3>
+
+    <p class="text-sm text-nx-muted leading-6 flex-1">
+      ${f[1]}
+    </p>
+
+    <button onclick="testFeature(${i})"
+      class="nx-btn nx-btn-outline w-full mt-5 !py-2.5 text-xs">
+      Ver demonstração <i class="fa-solid fa-play"></i>
+    </button>
+
+  </article>
 `).join('');
 
 function testFeature(index){
@@ -1688,62 +1888,124 @@ function filterCatalog(category,button){
 }
 
 /* EASTER EGG FLOR */
+let flowerAudioContext = null;
+
+function playFlowerChime() {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+
+    if (!AC) return;
+
+    flowerAudioContext = flowerAudioContext || new AC();
+
+    if (flowerAudioContext.state === 'suspended') {
+      flowerAudioContext.resume();
+    }
+
+    const c = flowerAudioContext;
+    const n = c.currentTime;
+
+    // Pequena sequência musical suave, estilo sinos.
+    [659.25, 783.99, 987.77, 1174.66, 987.77].forEach((hz,i) => {
+
+      const t = n + i * .24;
+
+      const o = c.createOscillator();
+      const g = c.createGain();
+
+      const h = c.createOscillator();
+      const hg = c.createGain();
+
+      o.type = 'sine';
+      o.frequency.value = hz;
+
+      h.type = 'sine';
+      h.frequency.value = hz * 2.01;
+
+      g.gain.setValueAtTime(.0001,t);
+      g.gain.exponentialRampToValueAtTime(.075,t+.025);
+      g.gain.exponentialRampToValueAtTime(.0001,t+1.45);
+
+      hg.gain.setValueAtTime(.0001,t);
+      hg.gain.exponentialRampToValueAtTime(.012,t+.03);
+      hg.gain.exponentialRampToValueAtTime(.0001,t+.8);
+
+      o.connect(g);
+      g.connect(c.destination);
+
+      h.connect(hg);
+      hg.connect(c.destination);
+
+      o.start(t);
+      h.start(t);
+
+      o.stop(t+1.5);
+      h.stop(t+.85);
+    });
+
+  } catch(e) {
+    console.info('Áudio da flor indisponível.',e);
+  }
+}
+
 let flowerTimers = [];
 function clearFlowerTimers(){
  flowerTimers.forEach(t=>clearTimeout(t));
  flowerTimers = [];
 }
 
-function triggerFlower(){
- clearFlowerTimers();
- const overlay=document.getElementById('flowerOverlay');
- overlay.classList.remove('hidden');
- overlay.classList.add('flower-active');
- document.getElementById('flowerPhrase').style.opacity=0;
- document.getElementById('flowerSubtext').style.opacity=0;
- document.getElementById('flowerCTA').style.opacity=0;
- document.getElementById('flowerStem').style.height='0';
- document.getElementById('flowerHead').style.opacity=0;
- document.getElementById('flowerHead').style.transform='translateX(-50%) scale(0)';
- document.getElementById('flowerLeafLeft').style.opacity=0;
- document.getElementById('flowerLeafRight').style.opacity=0;
- document.getElementById('flowerParticles').innerHTML='';
- document.getElementById('flowerSeed').style.opacity=1;
+function triggerFlower() {
+  playFlowerChime();
 
- const petals=document.getElementById('flowerPetals');
- petals.innerHTML='';
- for(let i=0;i<8;i++){
-  const petal=document.createElement('div');
-  petal.className='flower-petal';
-  petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(.15)`;
-  petal.style.transition='transform 1.2s cubic-bezier(.2,.8,.2,1)';
-  petals.appendChild(petal);
-  flowerTimers.push(setTimeout(()=>petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(1)`,2200+i*80));
- }
+  clearFlowerTimers();
+  const overlay=document.getElementById('flowerOverlay');
+  overlay.classList.remove('hidden');
+  overlay.classList.add('flower-active');
+  document.getElementById('flowerPhrase').style.opacity=0;
+  document.getElementById('flowerSubtext').style.opacity=0;
+  document.getElementById('flowerCTA').style.opacity=0;
+  document.getElementById('flowerStem').style.height='0';
+  document.getElementById('flowerHead').style.opacity=0;
+  document.getElementById('flowerHead').style.transform='translateX(-50%) scale(0)';
+  document.getElementById('flowerLeafLeft').style.opacity=0;
+  document.getElementById('flowerLeafRight').style.opacity=0;
+  document.getElementById('flowerParticles').innerHTML='';
+  document.getElementById('flowerSeed').style.opacity=1;
 
- flowerTimers.push(setTimeout(()=>{document.getElementById('flowerStem').style.height='190px'},300));
- flowerTimers.push(setTimeout(()=>{
-  document.getElementById('flowerLeafLeft').style.opacity=1;
-  document.getElementById('flowerLeafRight').style.opacity=1;
- },1500));
- flowerTimers.push(setTimeout(()=>{
-  document.getElementById('flowerHead').style.opacity=1;
-  document.getElementById('flowerHead').style.transform='translateX(-50%) scale(1)';
- },2100));
- flowerTimers.push(setTimeout(()=>{
-  const container=document.getElementById('flowerParticles');
-  for(let i=0;i<24;i++){
-   const particle=document.createElement('span');
-   particle.className='flower-particle';
-   particle.style.setProperty('--tx',(Math.random()*260-130)+'px');
-   particle.style.setProperty('--ty',(Math.random()*-230-30)+'px');
-   particle.style.animationDelay=(Math.random()*1.5)+'s';
-   container.appendChild(particle);
+  const petals=document.getElementById('flowerPetals');
+  petals.innerHTML='';
+  for(let i=0;i<8;i++){
+   const petal=document.createElement('div');
+   petal.className='flower-petal';
+   petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(.15)`;
+   petal.style.transition='transform 1.2s cubic-bezier(.2,.8,.2,1)';
+   petals.appendChild(petal);
+   flowerTimers.push(setTimeout(()=>petal.style.transform=`rotate(${i*45}deg) translateY(-15px) scale(1)`,2200+i*80));
   }
- },2800));
- flowerTimers.push(setTimeout(()=>document.getElementById('flowerPhrase').style.opacity=1,3500));
- flowerTimers.push(setTimeout(()=>document.getElementById('flowerSubtext').style.opacity=1,4500));
- flowerTimers.push(setTimeout(()=>document.getElementById('flowerCTA').style.opacity=1,5200));
+
+  flowerTimers.push(setTimeout(()=>{document.getElementById('flowerStem').style.height='190px'},300));
+  flowerTimers.push(setTimeout(()=>{
+   document.getElementById('flowerLeafLeft').style.opacity=1;
+   document.getElementById('flowerLeafRight').style.opacity=1;
+  },1500));
+  flowerTimers.push(setTimeout(()=>{
+   document.getElementById('flowerHead').style.opacity=1;
+   document.getElementById('flowerHead').style.transform='translateX(-50%) scale(1)';
+  },2100));
+  flowerTimers.push(setTimeout(()=>{
+   const container=document.getElementById('flowerParticles');
+   for(let i=0;i<24;i++){
+    const particle=document.createElement('span');
+    particle.className='flower-particle';
+    particle.style.setProperty('--tx',(Math.random()*260-130)+'px');
+    particle.style.setProperty('--ty',(Math.random()*-230-30)+'px');
+    particle.style.animationDelay=(Math.random()*1.5)+'s';
+    container.appendChild(particle);
+   }
+  },2800));
+  flowerTimers.push(setTimeout(()=>document.getElementById('flowerPhrase').style.opacity=1,3500));
+  flowerTimers.push(setTimeout(()=>document.getElementById('flowerSubtext').style.opacity=1,4500));
+  flowerTimers.push(setTimeout(()=>document.getElementById('flowerCTA').style.opacity=1,5200));
 }
 
 function closeFlower(){
