@@ -218,7 +218,8 @@ button {cursor:pointer}
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg,rgba(5,7,10,.88),rgba(5,7,10,.08) 85%);
+  background: linear-gradient(90deg,rgba(5,7,10,.76) 0%,rgba(5,7,10,.34) 65%,rgba(5,7,10,.12) 100%),
+              linear-gradient(0deg,rgba(5,7,10,.88),rgba(5,7,10,.12) 85%);
 }
 .demo-hero > * { position: relative; z-index: 1; }
 .demo-hero h2 {
@@ -230,7 +231,14 @@ button {cursor:pointer}
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #e7d6b8;
+  color: #f3e5c9;
+  text-shadow: 0 2px 12px rgba(0,0,0,.75);
+  display: inline-block;
+  padding: 7px 10px;
+  border: 1px solid rgba(243,229,201,.28);
+  border-radius: 999px;
+  background: rgba(5,10,14,.42);
+  backdrop-filter: blur(8px);
 }
 .demo-photo-card {
   border-radius: 13px;
@@ -356,6 +364,373 @@ body.cb-highcontrast {filter:contrast(1.5)}
  *,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
  #flowerStem,#flowerHead,#flowerPhrase,#flowerSubtext,#flowerCTA {transition:none!important}
 }
+
+/* =========================================
+   NEXORA REFINEMENT PASS
+   Ajustes aplicados à estrutura real do HTML
+========================================= */
+
+:root {
+  --nx-bg: #080b12;
+  --nx-panel: #111722;
+  --nx-card: #171f2b;
+  --nx-gold: #c9a66b;
+  --nx-gold-soft: #ead8b5;
+  --nx-text: #f4f0e8;
+  --nx-muted: #aaa6a0;
+  --nx-border-soft: rgba(201,166,107,.22);
+}
+
+body {
+  color: var(--nx-text);
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(45,54,65,.48), transparent 48%),
+    var(--nx-bg);
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+.section-label {
+  letter-spacing: .19em;
+  line-height: 1.6;
+}
+
+/* Hero: hierarquia, alinhamento e respiro */
+.hero-grid {
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.hero-grid > div:first-child {
+  min-width: 0;
+}
+
+.hero-preview-card {
+  transform: none !important;
+  border-radius: 26px;
+  padding: clamp(14px, 2.2vw, 22px);
+}
+
+.hero-preview-card > div:nth-child(2) {
+  border-radius: 18px;
+  min-height: 260px;
+  box-shadow: inset 0 0 0 1px rgba(32,52,58,.08);
+}
+
+.hero-preview-card > div:nth-child(2) h2 {
+  color: #20343a;
+  line-height: 1.08;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 22px);
+  align-items: stretch;
+}
+
+.hero-metric {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.hero-metric strong {
+  display: block;
+  color: var(--nx-gold-soft);
+  font: 500 clamp(1.65rem, 3.4vw, 2.15rem)/1.05 'Playfair Display', serif;
+}
+
+.hero-metric span {
+  color: var(--nx-muted);
+  font-size: clamp(10px, 1.1vw, 12px);
+  line-height: 1.45;
+  max-width: 135px;
+}
+
+/* Cartões: raio e contorno coerentes */
+.nx-card,
+.demo-photo-card,
+.site-preview,
+.modal-panel {
+  border-radius: 20px;
+}
+
+.nx-card {
+  border-color: var(--nx-border-soft);
+}
+
+.demo-photo-card {
+  border-radius: 16px;
+  background: #171f2b;
+  color: #f4f0e8;
+}
+
+.demo-photo-card .copy {
+  padding: 17px;
+}
+
+.demo-photo-card .copy strong {
+  color: #f4f0e8;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* Texto do hero sobre fotografia: contraste garantido */
+.demo-hero {
+  min-height: 320px;
+  border-radius: 18px;
+  background-position: center;
+}
+
+.demo-hero > div {
+  max-width: 620px;
+}
+
+.demo-hero p {
+  max-width: max-content;
+}
+
+/* Modal e títulos internos */
+.modal-panel {
+  background: #0c111b;
+  border-color: var(--nx-border-soft);
+}
+
+#preferencesModal h3,
+#demoModal > .modal-panel > .flex h2 {
+  color: #f4f0e8;
+}
+#demoContent h3 {
+  color: inherit;
+}
+
+.modal-panel .demo-photo-card p,
+.modal-panel .demo-photo-card span {
+  color: #c6c0b6;
+}
+
+.modal-panel .demo-photo-card strong {
+  color: #f4f0e8;
+}
+
+/* Ícone de preferências mais definido */
+header button[aria-label="Preferências"] {
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(201,166,107,.09);
+  border: 1px solid rgba(201,166,107,.45);
+  color: #ead8b5;
+}
+
+header button[aria-label="Preferências"] i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Botão WhatsApp não disputa espaço com a navegação inferior */
+.nx-whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 45;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 28px rgba(0,0,0,.34);
+}
+
+.mobile-nav {
+  z-index: 100;
+  min-height: 66px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  background: rgba(7,13,20,.97);
+  border-top-color: rgba(201,166,107,.24);
+}
+
+.mobile-nav button {
+  min-width: 48px;
+  min-height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.mobile-nav button i {
+  line-height: 1;
+}
+
+/* Seis variações reais para as prévias dos recursos */
+.feature-preview {
+  height: 126px;
+  border-radius: 15px;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(201,166,107,.16), transparent 35%),
+    linear-gradient(135deg,#202632,#101620);
+}
+
+.feature-preview .preview-orb {
+  width: 48px;
+  height: 48px;
+  left: calc(50% - 24px);
+  top: 28px;
+  border-radius: 15px;
+}
+
+.feature-preview-variant-1 {
+  background: linear-gradient(135deg,#132c2a,#1b4b43);
+}
+.feature-preview-variant-1 .preview-orb {
+  width: 78px;
+  height: 38px;
+  left: calc(50% - 39px);
+  top: 25px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#8ac9ad,#d5e8c8);
+  animation: previewPulse 2.5s ease-in-out infinite;
+}
+.feature-preview-variant-1 .preview-line { top: 78px; width: 48%; left: 26%; }
+
+.feature-preview-variant-2 {
+  background: linear-gradient(135deg,#252035,#44345b);
+}
+.feature-preview-variant-2 .preview-orb {
+  width: 42px;
+  height: 42px;
+  top: 31px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#e6c8ff,#a98ad5);
+  animation: previewOrbit 4s ease-in-out infinite;
+}
+
+.feature-preview-variant-3 {
+  background: linear-gradient(135deg,#10283b,#1c4a66);
+}
+.feature-preview-variant-3 .preview-orb {
+  width: 88px;
+  height: 8px;
+  top: 42px;
+  left: calc(50% - 44px);
+  border-radius: 99px;
+  background: linear-gradient(90deg,#75c9df,#e4f4f7);
+  animation: previewPulse 2.2s ease-in-out infinite;
+}
+.feature-preview-variant-3 .preview-dot { top: 78px; }
+
+.feature-preview-variant-4 {
+  background: linear-gradient(135deg,#35251b,#65432c);
+}
+.feature-preview-variant-4 .preview-orb {
+  width: 38px;
+  height: 54px;
+  top: 22px;
+  border-radius: 8px 8px 16px 16px;
+  background: linear-gradient(135deg,#f0d3a0,#b27a48);
+  animation: previewFloat 3.4s ease-in-out infinite;
+}
+
+.feature-preview-variant-5 {
+  background: linear-gradient(135deg,#172c25,#355342);
+}
+.feature-preview-variant-5 .preview-orb {
+  width: 58px;
+  height: 58px;
+  top: 19px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,#f3e3bd,#b18a56 70%);
+  animation: previewPulse 3s ease-in-out infinite;
+}
+
+@keyframes previewPulse {
+  0%,100% { transform: scale(.92); opacity: .78; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+@keyframes previewOrbit {
+  0%,100% { transform: translateX(-18px) rotate(-12deg); }
+  50% { transform: translateX(18px) rotate(12deg); }
+}
+
+/* Botões e ações com linguagem visual consistente */
+.nx-btn {
+  border-radius: 999px;
+  letter-spacing: .015em;
+}
+.nx-btn-outline {
+  border-color: rgba(201,166,107,.38);
+}
+.demo-tab {
+  border-radius: 999px;
+  padding: 9px 15px;
+}
+.preview-action::after {
+  content: " ↗";
+  font-weight: 800;
+}
+
+/* Idioma da marca e rótulos mais discretos */
+.preview-brand,
+.demo-badge,
+.feature-preview:after {
+  letter-spacing: .14em;
+}
+.demo-badge {
+  background: rgba(7,13,20,.88);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* Mobile: métricas compactas, cards e botão flutuante */
+@media (max-width: 800px) {
+  .hero-grid {
+    gap: 2.5rem;
+  }
+  .hero-metrics {
+    gap: 8px;
+  }
+  .hero-metric {
+    align-items: flex-start;
+  }
+  .hero-metric span {
+    font-size: 10px;
+  }
+  .nx-whatsapp-float {
+    right: 14px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+  .demo-hero {
+    min-height: 300px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-metrics {
+    gap: 5px;
+  }
+  .hero-metric strong {
+    font-size: 1.55rem;
+  }
+  .hero-metric span {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-preview *,
+  .nx-card,
+  .nx-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 </style>
 </head>
 
@@ -371,7 +746,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    </span>
    <span>
     <span class="block font-extrabold tracking-[3px] text-lg">NEXORA<span class="gold-text">'S</span></span>
-    <span class="block text-[9px] tracking-[3px] text-nx-muted uppercase">Digital Studio</span>
+    <span class="block text-[9px] tracking-[3px] text-nx-muted uppercase">Estúdio Digital</span>
    </span>
   </button>
 
@@ -421,27 +796,27 @@ body.cb-highcontrast {filter:contrast(1.5)}
      <button onclick="goPage('catalog')" class="nx-btn nx-btn-primary">Explorar demonstrações <i class="fa-solid fa-arrow-right"></i></button>
      <button onclick="goPage('contact')" class="nx-btn nx-btn-outline">Criar meu site</button>
     </div>
-    <div class="flex flex-wrap gap-8 mt-12 pt-8 border-t border-nx-border">
-     <div><strong class="text-2xl gold-text">6+</strong><p class="text-xs text-nx-muted mt-1">Segmentos demonstrativos</p></div>
-     <div><strong class="text-2xl gold-text">18</strong><p class="text-xs text-nx-muted mt-1">Recursos interativos</p></div>
-     <div><strong class="text-2xl gold-text">100%</strong><p class="text-xs text-nx-muted mt-1">Design responsivo</p></div>
+    <div class="hero-metrics mt-12 pt-8 border-t border-nx-border">
+     <div class="hero-metric"><strong>6+</strong><span>Segmentos demonstrativos</span></div>
+     <div class="hero-metric"><strong>18</strong><span>Recursos interativos</span></div>
+     <div class="hero-metric"><strong>100%</strong><span>Design responsivo</span></div>
     </div>
    </div>
 
    <div class="hero-visual relative min-h-[440px] flex items-center justify-center">
     <div class="absolute w-[330px] h-[330px] rounded-full border border-nx-border"></div>
     <div class="absolute w-[260px] h-[260px] rounded-full border border-nx-border"></div>
-    <div class="relative nx-card p-5 w-full max-w-md rotate-2">
+    <div class="relative nx-card p-5 w-full max-w-md hero-preview-card">
      <div class="flex items-center justify-between mb-5">
       <span class="text-xs font-extrabold tracking-widest">NEXORA / PREVIEW</span>
       <span class="text-green-300 text-xs"><i class="fa-solid fa-circle text-[7px] mr-1"></i>ONLINE</span>
      </div>
      <div class="rounded-xl bg-[#e8e3d8] text-[#20343a] p-7 min-h-[240px] flex flex-col justify-between">
-      <div class="flex justify-between text-[10px] font-bold tracking-widest"><span>YOUR BRAND</span><span>MENU ☰</span></div>
+      <div class="flex justify-between text-[10px] font-bold tracking-widest"><span>SUA MARCA</span><span>MENU</span></div>
       <div>
        <p class="text-[9px] tracking-[3px] mb-3">UMA NOVA EXPERIÊNCIA</p>
-       <h2 class="font-editorial text-4xl leading-tight">Ideias que<br><i>ganham vida.</i></h2>
-       <div class="mt-5 bg-[#20343a] text-white rounded-full px-5 py-3 w-max text-[10px]">DESCUBRA MAIS ↗</div>
+       <h2 class="font-editorial text-4xl leading-tight preview-headline">Ideias que<br><i>ganham vida.</i></h2>
+       <div class="mt-5 bg-[#20343a] text-white rounded-full px-5 py-3 w-max text-[10px]">CONHEÇA O PROJETO <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></div>
       </div>
       <div class="flex justify-between text-[9px]"><span>DESIGN DIGITAL</span><span>2026</span></div>
      </div>
@@ -484,7 +859,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-dentist">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">ODONTO PRIME</span><div><h3 class="preview-heading">Seu sorriso, nossa missão.</h3><p class="text-xs mt-3">Cuidado e confiança em cada detalhe.</p></div><span class="preview-action">AGENDAR CONSULTA ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">ODONTO PRIME</span><div><h3 class="preview-heading">Seu sorriso, nossa missão.</h3><p class="text-xs mt-3">Cuidado e confiança em cada detalhe.</p></div><span class="preview-action">AGENDAR CONSULTA</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Clínica odontológica</h3><span class="text-[9px] text-nx-green">SAÚDE</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações, galeria e solicitação de agendamento.</p><button onclick="openDemo('dentist')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -492,7 +867,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="food">
     <div class="site-preview preview-burger">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">BUN & CO.</span><div><h3 class="preview-heading">Sabor que fala por si.</h3><p class="text-xs mt-3">Hambúrguer artesanal de verdade.</p></div><span class="preview-action">VER CARDÁPIO ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">BUN & CO.</span><div><h3 class="preview-heading">Sabor que fala por si.</h3><p class="text-xs mt-3">Hambúrguer artesanal de verdade.</p></div><span class="preview-action">VER CARDÁPIO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Hamburgueria</h3><span class="text-[9px] text-nx-gold">GASTRONOMIA</span></div><p class="text-sm text-nx-muted mb-5">Cardápio com filtros, carrinho demonstrativo e pedido via WhatsApp.</p><button onclick="openDemo('burger')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -500,7 +875,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-barber">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">BARBER CLUB</span><div><h3 class="preview-heading">Estilo é identidade.</h3><p class="text-xs mt-3">Seu próximo visual começa aqui.</p></div><span class="preview-action">RESERVAR HORÁRIO ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">BARBER CLUB</span><div><h3 class="preview-heading">Estilo é identidade.</h3><p class="text-xs mt-3">Seu próximo visual começa aqui.</p></div><span class="preview-action">RESERVAR HORÁRIO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Barbearia</h3><span class="text-[9px] text-nx-gold">ESTILO</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de agendamento.</p><button onclick="openDemo('barber')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -508,7 +883,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="retail">
     <div class="site-preview preview-fashion">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">ATELIER 08</span><div><h3 class="preview-heading">Vista sua essência.</h3><p class="text-xs mt-3">Uma coleção feita para expressar.</p></div><span class="preview-action">EXPLORAR COLEÇÃO ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">ATELIER 08</span><div><h3 class="preview-heading">Vista sua essência.</h3><p class="text-xs mt-3">Uma coleção feita para expressar.</p></div><span class="preview-action">EXPLORAR COLEÇÃO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Loja de moda</h3><span class="text-[9px] text-nx-gold">VAREJO</span></div><p class="text-sm text-nx-muted mb-5">Catálogo, filtros, seleção de tamanhos e sacola demonstrativa.</p><button onclick="openDemo('fashion')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -516,7 +891,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="wellness">
     <div class="site-preview preview-fitness">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">PULSE FITNESS</span><div><h3 class="preview-heading">Movimento transforma.</h3><p class="text-xs mt-3">Descubra uma rotina ativa.</p></div><span class="preview-action">CONHECER PLANOS ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">PULSE FITNESS</span><div><h3 class="preview-heading">Movimento transforma.</h3><p class="text-xs mt-3">Descubra uma rotina ativa.</p></div><span class="preview-action">CONHECER PLANOS</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Academia</h3><span class="text-[9px] text-nx-green">FITNESS</span></div><p class="text-sm text-nx-muted mb-5">Modalidades, planos, avaliações e contato.</p><button onclick="openDemo('fitness')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -524,7 +899,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-pet">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">PET & CIA</span><div><h3 class="preview-heading">Carinho em cada cuidado.</h3><p class="text-xs mt-3">Seu pet merece o melhor.</p></div><span class="preview-action">AGENDAR SERVIÇO ↗</span></div>
+     <div class="preview-content"><span class="preview-brand">PET & CIA</span><div><h3 class="preview-heading">Carinho em cada cuidado.</h3><p class="text-xs mt-3">Seu pet merece o melhor.</p></div><span class="preview-action">AGENDAR SERVIÇO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Pet shop</h3><span class="text-[9px] text-nx-green">PET</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de atendimento.</p><button onclick="openDemo('pet')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -806,7 +1181,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
   <div class="flex flex-col md:flex-row justify-between gap-8">
    <div>
     <div class="font-extrabold tracking-[3px] text-xl">NEXORA<span class="gold-text">'S</span></div>
-    <p class="text-xs text-nx-muted mt-2">Digital Studio · Ideias que ganham vida.</p>
+    <p class="text-xs text-nx-muted mt-2">Estúdio Digital · Ideias que ganham vida.</p>
    </div>
    <div class="flex flex-wrap gap-5 text-xs text-nx-muted">
     <button onclick="goPage('home')">Início</button>
@@ -824,7 +1199,7 @@ body.cb-highcontrast {filter:contrast(1.5)}
 </footer>
 
 <!-- BOTÃO WHATSAPP -->
-<button onclick="openWhatsApp()" aria-label="Conversar pelo WhatsApp" class="fixed bottom-20 md:bottom-7 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white text-2xl shadow-xl hover:scale-105 transition">
+<button onclick="openWhatsApp()" aria-label="Conversar pelo WhatsApp" class="nx-whatsapp-float rounded-full bg-[#25D366] text-white text-2xl hover:scale-105 transition">
  <i class="fa-brands fa-whatsapp"></i>
 </button>
 
@@ -1063,8 +1438,8 @@ function renderDemoHome() {
         </div>
 
         <button onclick="renderDemoBooking()"
-          style="margin-top:20px;padding:13px 19px;background:#d1b47d;color:#151515;border-radius:5px;font-size:10px;font-weight:900;letter-spacing:1px">
-          SOLICITAR ATENDIMENTO ↗
+          style="margin-top:20px;padding:13px 19px;background:#d1b47d;color:#151515;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:1px">
+          SOLICITAR ATENDIMENTO <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:7px"></i>
         </button>
       </div>
     </div>
@@ -1342,7 +1717,7 @@ const featureGrid = document.getElementById('featureGrid');
 featureGrid.innerHTML = featureList.map((f,i) => `
   <article class="nx-card p-4 flex flex-col">
 
-    <div class="feature-preview" aria-label="Prévia animada do recurso">
+    <div class="feature-preview feature-preview-variant-${i % 6}" aria-label="Prévia visual do recurso ${i+1}">
       <span class="preview-orb"></span>
       <span class="preview-line"></span>
       <span class="preview-dot"></span>
