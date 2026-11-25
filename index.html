@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#F7F5F0">
-<meta name="description" content="NEXORA Studio. Direção de arte, design editorial e desenvolvimento web minimalista para negócios locais.">
-<title>NEXORA Studio — Design & Web Autoral</title>
+<meta name="theme-color" content="#0B0A10">
+<meta name="description" content="NEXORA Studio — Arquitetura visual minimalista, 10 demonstrações interativas, módulo de IA e painel administrativo.">
+<title>NEXORA — Arquitetura & Web</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -18,19 +18,19 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        paper: '#F7F5F0',
-        surface: '#FFFFFF',
-        sand: '#ECE7DC',
-        ink: '#181A1F',
-        graphite: '#5A5F6A',
-        line: '#E2DDD2',
-        accent: '#9E532E',
-        accentSoft: '#F4EAE4',
-        moss: '#2D5A47'
+        obsidian: '#0B0A10',
+        nightPlum: '#13101D',
+        panelPlum: '#1A1529',
+        lineDark: 'rgba(167, 139, 250, 0.16)',
+        ghostWhite: '#F5F4F8',
+        silverMist: '#A8A3B8',
+        violetCore: '#7C3AED',
+        violetGlow: '#9F67FF',
+        violetSoft: 'rgba(124, 58, 237, 0.16)'
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'sans-serif'],
-        serif: ['Instrument Serif', 'Georgia', 'serif']
+        serif: ['Cormorant Garamond', 'Georgia', 'serif']
       }
     }
   }
@@ -39,15 +39,14 @@ tailwind.config = {
 
 <style>
 :root {
-  --bg: #F7F5F0;
-  --surface: #FFFFFF;
-  --sand: #ECE7DC;
-  --ink: #181A1F;
-  --graphite: #5A5F6A;
-  --line: #E2DDD2;
-  --accent: #9E532E;
-  --accent-hover: #834222;
-  --moss: #2D5A47;
+  --bg: #0B0A10;
+  --surface: #13101D;
+  --surface-2: #1A1529;
+  --ink: #F5F4F8;
+  --muted: #A8A3B8;
+  --line: rgba(167, 139, 250, 0.16);
+  --violet: #7C3AED;
+  --violet-light: #9F67FF;
 }
 
 * {
@@ -66,6 +65,10 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(to right, rgba(167, 139, 250, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
+  background-size: 120px 120px;
 }
 
 button,
@@ -80,8 +83,8 @@ button {
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--violet);
+  color: #FFFFFF;
 }
 
 .hidden-page {
@@ -89,10 +92,10 @@ button {
 }
 
 .page-view {
-  animation: pageFade .35s ease;
+  animation: fadeSlide .35s ease;
 }
 
-@keyframes pageFade {
+@keyframes fadeSlide {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -103,537 +106,521 @@ button {
   }
 }
 
-.topbar {
-  background: rgba(247, 245, 240, 0.92);
+.arch-header {
+  background: rgba(11, 10, 16, 0.88);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
 
-.nav-link {
-  color: var(--graphite);
-  font-size: 13px;
-  font-weight: 500;
-  padding: 6px 2px;
+.arch-nav-btn {
+  position: relative;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 2px;
   border-bottom: 1.5px solid transparent;
   transition: color .2s, border-color .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.arch-nav-btn:hover,
+.arch-nav-btn.active {
   color: var(--ink);
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--violet-light);
 }
 
-.editorial-card {
+/* Faixa amarela cobrindo parte da aba IA */
+.ai-ribbon-badge {
+  background: #FACC15;
+  color: #121006;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #CA8A04;
+  transform: rotate(-5deg) translateY(-2px);
+  box-shadow: 0 3px 10px rgba(250, 204, 21, 0.25);
+  line-height: 1.1;
+}
+
+.reforma-strip {
+  background: #FACC15;
+  color: #121006;
+  border-bottom: 1px solid #CA8A04;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 16px;
+}
+
+.arch-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  transition: border-color .25s, transform .25s, box-shadow .25s;
+  transition: border-color .25s, transform .25s;
 }
 
-.editorial-card:hover {
-  border-color: #C8C0B0;
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(24, 26, 31, 0.06);
+.arch-card:hover {
+  border-color: rgba(159, 103, 255, 0.45);
+  transform: translateY(-2px);
 }
 
-.editorial-card-static {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-}
-
-.btn-dark {
+.arch-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--bg);
-  font-size: 13px;
-  font-weight: 600;
-  transition: background .2s, transform .2s;
-}
-
-.btn-dark:hover {
-  background: #2C303A;
-  transform: translateY(-1px);
-}
-
-.btn-terracotta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  background: var(--accent);
+  padding: 11px 20px;
+  background: var(--violet);
   color: #FFFFFF;
-  font-size: 13px;
-  font-weight: 600;
-  transition: background .2s, transform .2s;
-}
-
-.btn-terracotta:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 18px;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
-  font-size: 13px;
-  font-weight: 500;
-  transition: border-color .2s, background .2s;
-}
-
-.btn-ghost:hover {
-  border-color: var(--ink);
-  background: var(--sand);
-}
-
-.eyebrow {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  border: 1px solid var(--violet-light);
+  transition: background .2s, transform .2s;
 }
 
-.display-title {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-weight: 400;
-  line-height: 1.03;
-  letter-spacing: -0.02em;
+.arch-btn-primary:hover {
+  background: #6D28D9;
+  transform: translateY(-1px);
 }
 
-.field-input {
-  width: 100%;
-  padding: 11px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--bg);
+.arch-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
   color: var(--ink);
-  outline: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
   transition: border-color .2s, background .2s;
 }
 
-.field-input:focus {
-  border-color: var(--ink);
-  background: #FFFFFF;
+.arch-btn-ghost:hover {
+  border-color: var(--violet-light);
+  background: rgba(124, 58, 237, 0.1);
 }
 
-.progress-track {
+.arch-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--violet-light);
+}
+
+.arch-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.arch-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.arch-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 13px;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.arch-input:focus {
+  border-color: var(--violet-light);
+}
+
+.progress-line {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
   width: 0;
-  background: var(--accent);
+  background: linear-gradient(90deg, #7C3AED, #C4B5FD);
   z-index: 1200;
 }
 
-.modal-backdrop {
+.modal-layer {
   position: fixed;
   inset: 0;
   z-index: 600;
-  background: rgba(24, 26, 31, 0.56);
-  backdrop-filter: blur(4px);
+  background: rgba(6, 5, 10, 0.78);
+  backdrop-filter: blur(5px);
   display: none;
   align-items: center;
   justify-content: center;
   padding: 16px;
 }
 
-.modal-backdrop.open {
+.modal-layer.open {
   display: flex;
 }
 
-.modal-panel {
+.modal-box {
   width: min(100%, 960px);
-  max-height: 90vh;
+  max-height: 88vh;
   overflow: auto;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 22px;
   padding: 24px;
-  box-shadow: 0 24px 64px rgba(24, 26, 31, 0.22);
+  color: var(--ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
 }
 
-.mobile-nav {
+#systemPauseLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(11, 10, 16, 0.94);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#systemPauseLayer.active {
+  display: flex;
+}
+
+.mobile-bar {
   display: none;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 120;
-  background: rgba(247, 245, 240, 0.96);
+  background: rgba(11, 10, 16, 0.96);
   border-top: 1px solid var(--line);
   backdrop-filter: blur(12px);
-  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  padding-bottom: max(6px, env(safe-area-inset-bottom));
 }
 
-.wa-fab {
-  position: fixed;
-  right: 20px;
-  bottom: 22px;
-  z-index: 80;
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--bg);
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  box-shadow: 0 10px 24px rgba(24, 26, 31, 0.18);
-  transition: transform .2s, background .2s;
-}
-
-.wa-fab:hover {
-  transform: translateY(-2px);
-  background: var(--accent);
-  color: #FFFFFF;
-}
-
-body.cb-protanopia {
-  filter: contrast(1.06) saturate(0.8);
-}
-
-body.cb-deuteranopia {
-  filter: contrast(1.06) saturate(0.75);
-}
-
-body.cb-highcontrast {
-  filter: contrast(1.35);
-}
-
-#flowerOverlay.flower-active {
-  display: flex;
-}
-
-.flower-petal {
-  position: absolute;
-  width: 38px;
-  height: 60px;
-  left: 50%;
-  top: 50%;
-  margin-left: -19px;
-  margin-top: -54px;
-  border-radius: 50% 50% 45% 45%;
-  background: linear-gradient(160deg, #E8B98A, #9E532E);
-  transform-origin: 50% 100%;
-}
-
-.flower-particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #9E532E;
-  left: 50%;
-  top: 50%;
-  animation: flowerFloat 2.8s ease-in-out infinite;
-}
-
-@keyframes flowerFloat {
-  0% {
-    transform: translate(0, 0) scale(.6);
-    opacity: 0;
-  }
-  25% {
-    opacity: .85;
-  }
-  100% {
-    transform: translate(var(--tx), var(--ty)) scale(0);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 820px) {
-  .desktop-nav {
+@media (max-width: 880px) {
+  .desktop-bar {
     display: none !important;
   }
-  .mobile-nav {
+  .mobile-bar {
     display: flex;
   }
   body {
-    padding-bottom: 72px;
-  }
-  .wa-fab {
-    right: 16px;
-    bottom: calc(78px + env(safe-area-inset-bottom));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+    padding-bottom: 66px;
   }
 }
 </style>
 </head>
 
 <body>
-<div class="progress-track" id="progressTrack"></div>
+<div class="progress-line" id="progressLine"></div>
+
+<!-- AVISO GLOBAL (CONFIGURÁVEL NO ADM) -->
+<div id="globalAlertBanner" class="hidden bg-violetCore text-white text-[11px] tracking-wider uppercase py-2 px-4 text-center font-semibold">
+ <span id="globalAlertText"></span>
+</div>
 
 <!-- CABEÇALHO -->
-<header class="fixed top-0 left-0 right-0 z-50 topbar">
- <div class="max-w-6xl mx-auto px-5 h-[72px] flex items-center justify-between">
-  <button onclick="goPage('home')" class="flex items-center gap-3 text-left">
-   <span class="w-9 h-9 rounded-full bg-ink text-paper grid place-items-center text-sm" title="Florescer" onclick="event.stopPropagation();triggerFlower()">
-    <i class="fa-solid fa-seedling"></i>
-   </span>
-   <span>
-    <span class="block font-semibold tracking-[0.18em] text-sm uppercase">NEXORA</span>
-    <span class="block text-[11px] text-graphite">Estúdio de Design & Web</span>
-   </span>
+<header class="fixed top-0 left-0 right-0 z-50 arch-header">
+ <div class="max-w-6xl mx-auto px-5 h-[72px] flex items-center justify-between gap-4">
+  <button onclick="goPage('home')" class="flex items-center gap-3 text-left shrink-0">
+   <span class="px-2.5 py-1 bg-panelPlum border border-line text-[11px] font-bold tracking-[0.2em] text-violetGlow">nx.web</span>
+   <span class="hidden sm:inline text-[11px] tracking-[0.18em] uppercase text-silverMist">NEXORA</span>
   </button>
 
-  <nav class="desktop-nav flex items-center gap-6">
-   <button class="nav-link active" data-page="home" onclick="goPage('home')" data-i18n="nav_home">Início</button>
-   <button class="nav-link" data-page="catalog" onclick="goPage('catalog')" data-i18n="nav_catalog">Projetos</button>
-   <button class="nav-link" data-page="features" onclick="goPage('features')" data-i18n="nav_features">Recursos</button>
-   <button class="nav-link" data-page="contracts" onclick="goPage('contracts')" data-i18n="nav_plans">Planos</button>
-   <button class="nav-link" data-page="marketing" onclick="goPage('marketing')" data-i18n="nav_marketing">Direção</button>
-   <button class="nav-link" data-page="contact" onclick="goPage('contact')" data-i18n="nav_contact">Contato</button>
+  <nav class="desktop-bar flex items-center gap-6">
+   <button class="arch-nav-btn active" data-page="home" onclick="goPage('home')">Início</button>
+   <button class="arch-nav-btn" data-page="catalog" onclick="goPage('catalog')">10 Demos</button>
+   <button class="arch-nav-btn" data-page="features" onclick="goPage('features')">Recursos</button>
+   <button class="arch-nav-btn" data-page="ai" onclick="goPage('ai')">
+    <span>IA</span>
+    <span class="ai-ribbon-badge">Construindo!</span>
+   </button>
+   <button class="arch-nav-btn" data-page="contracts" onclick="goPage('contracts')">Planos</button>
+   <button class="arch-nav-btn" data-page="contact" onclick="goPage('contact')">Contato</button>
   </nav>
 
-  <div class="flex items-center gap-2.5">
-   <button onclick="togglePreferences()" class="w-9 h-9 rounded-full border border-line bg-surface text-ink grid place-items-center hover:border-ink transition" title="Preferências" aria-label="Preferências">
-    <i class="fa-solid fa-sliders text-xs"></i>
+  <div class="flex items-center gap-3 shrink-0">
+   <button onclick="openAdminModal()" class="text-[10px] text-silverMist/75 hover:text-violetGlow underline underline-offset-2 tracking-wide">
+    Codigos Administração
    </button>
-   <button onclick="openWhatsApp()" class="btn-dark !py-2 !px-4 text-xs">
-    <i class="fa-brands fa-whatsapp"></i><span class="hidden sm:inline"> WhatsApp</span>
+   <button onclick="openWhatsApp()" class="arch-btn-primary !py-2 !px-3.5 text-[10px]">
+    <i class="fa-brands fa-whatsapp"></i><span class="hidden sm:inline">WhatsApp</span>
    </button>
   </div>
  </div>
 </header>
 
 <!-- NAVEGAÇÃO MOBILE -->
-<nav class="mobile-nav justify-around items-center pt-2">
- <button onclick="goPage('home')" class="text-center text-[11px] font-medium text-accent"><i class="fa-solid fa-house block text-sm mb-0.5"></i>Início</button>
- <button onclick="goPage('catalog')" class="text-center text-[11px] font-medium text-graphite"><i class="fa-solid fa-layer-group block text-sm mb-0.5"></i>Projetos</button>
- <button onclick="goPage('features')" class="text-center text-[11px] font-medium text-graphite"><i class="fa-solid fa-sliders block text-sm mb-0.5"></i>Recursos</button>
- <button onclick="goPage('contracts')" class="text-center text-[11px] font-medium text-graphite"><i class="fa-solid fa-tag block text-sm mb-0.5"></i>Planos</button>
- <button onclick="goPage('contact')" class="text-center text-[11px] font-medium text-graphite"><i class="fa-regular fa-comment block text-sm mb-0.5"></i>Contato</button>
+<nav class="mobile-bar justify-around items-center pt-2">
+ <button onclick="goPage('home')" class="text-center text-[10px] uppercase tracking-wider text-violetGlow font-semibold"><i class="fa-solid fa-square block text-xs mb-0.5"></i>Início</button>
+ <button onclick="goPage('catalog')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-border-all block text-xs mb-0.5"></i>10 Demos</button>
+ <button onclick="goPage('ai')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-microchip block text-xs mb-0.5"></i>IA <span class="bg-[#FACC15] text-[#121006] text-[8px] font-extrabold px-1 rounded">Construindo!</span></button>
+ <button onclick="goPage('contracts')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-layer-group block text-xs mb-0.5"></i>Planos</button>
+ <button onclick="openAdminModal()" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-key block text-xs mb-0.5"></i>ADM</button>
 </nav>
 
 <main class="pt-[72px]">
 
-<!-- INÍCIO -->
+<!-- INÍCIO (COMPOSIÇÃO EM GRADE INSPIRADA NA REFERÊNCIA) -->
 <section id="page-home" class="page-view">
- <div class="max-w-6xl mx-auto px-5 pt-14 pb-20">
-  <div class="grid lg:grid-cols-12 gap-10 items-center">
-   <div class="lg:col-span-6">
-    <div class="eyebrow mb-4">ESTÚDIO AUTORAL • WEB & IDENTIDADE</div>
-    <h1 class="display-title text-5xl sm:text-6xl lg:text-[68px] mb-6">
-     Sites calmos, claros e feitos para <span class="italic text-accent">converter</span> de verdade.
-    </h1>
-    <p class="text-graphite text-base leading-relaxed max-w-xl mb-8">
-     Construímos interfaces sob medida para negócios locais e profissionais independentes — sem excessos visuais, com fotografia real, tipografia legível e ferramentas úteis para o seu cliente.
-    </p>
-    <div class="flex flex-wrap gap-3">
-     <button onclick="goPage('catalog')" class="btn-terracotta">Ver 6 modelos diferentes <i class="fa-solid fa-arrow-right text-xs"></i></button>
-     <button onclick="goPage('contact')" class="btn-ghost">Solicitar orçamento</button>
-    </div>
-
-    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-line max-w-lg">
-     <div>
-      <strong class="display-title text-4xl block text-ink">6</strong>
-      <span class="text-xs text-graphite">Conceitos únicos de site</span>
-     </div>
-     <div>
-      <strong class="display-title text-4xl block text-ink">18</strong>
-      <span class="text-xs text-graphite">Módulos interativos</span>
-     </div>
-     <div>
-      <strong class="display-title text-4xl block text-ink">48h</strong>
-      <span class="text-xs text-graphite">Prazo base de entrega</span>
-     </div>
-    </div>
-   </div>
-
-   <div class="lg:col-span-6">
-    <div class="editorial-card-static p-3 sm:p-4 bg-surface">
-     <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
-      <img
-        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85"
-        alt="Mesa de trabalho minimalista em estúdio de design com luz natural"
-        class="w-full h-full object-cover"
-      >
-     </div>
-     <div class="flex items-center justify-between gap-4 px-2 pt-4 pb-1 text-xs text-graphite">
-      <span>Direção editorial & código limpo</span>
-      <span class="font-medium text-ink">Responsivo em qualquer tela</span>
-     </div>
-    </div>
-   </div>
-  </div>
+ <div id="reforma-home" class="hidden reforma-strip">
+  Em reforma — Seção inicial temporariamente desativada pela administração.
  </div>
 
- <div class="border-y border-line bg-sand/70">
-  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-3 gap-8">
-   <div>
-    <span class="text-xs font-semibold text-accent">01 / CLAREZA</span>
-    <h2 class="display-title text-2xl mt-1 mb-2">Hierarquia que guia o olhar</h2>
-    <p class="text-sm text-graphite leading-relaxed">Cada seção tem um propósito claro: apresentar o serviço, responder dúvidas e facilitar o contato sem poluição.</p>
+ <!-- BLOCO SUPERIOR EM GRADE -->
+ <div class="max-w-6xl mx-auto border-x border-line">
+  <div class="grid lg:grid-cols-12 border-b border-line">
+   <!-- COLUNA ESQUERDA: NÚMERO + NAVEGAÇÃO DE SLIDE + AÇÕES -->
+   <div class="lg:col-span-4 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col justify-between bg-nightPlum/80">
+    <div>
+     <div class="text-xs tracking-[0.25em] text-silverMist mb-6">
+      <span id="heroSlideIndex" class="text-violetGlow font-bold text-lg">01</span> / 03
+     </div>
+     <div class="flex items-center gap-4 text-[10px] tracking-[0.22em] uppercase text-silverMist mb-8">
+      <button onclick="prevHeroSlide()" class="hover:text-violetGlow transition">← PREV</button>
+      <span>/</span>
+      <button onclick="nextHeroSlide()" class="hover:text-violetGlow transition">NEXT →</button>
+     </div>
+     <div class="arch-label mb-2">NEXORA • ARQUITETURA DIGITAL</div>
+     <h1 id="heroSlideTitle" class="arch-heading text-3xl sm:text-4xl text-ghostWhite mb-4">
+      SISTEMAS E SITES SOB MEDIDA
+     </h1>
+     <p id="heroSlideDesc" class="text-xs text-silverMist leading-relaxed mb-6">
+      Composição minimalista, estrutura clara e aplicações interativas criadas para cada segmento — sem repetir apenas lista de preços e WhatsApp.
+     </p>
+    </div>
+
+    <div class="flex flex-wrap gap-2.5 pt-4 border-t border-line">
+     <button onclick="goPage('catalog')" class="arch-btn-primary">Ver 10 demos</button>
+     <button onclick="goPage('contact')" class="arch-btn-ghost">Orçamento</button>
+    </div>
    </div>
-   <div>
-    <span class="text-xs font-semibold text-accent">02 / UTILIDADE</span>
-    <h2 class="display-title text-2xl mt-1 mb-2">Ferramentas próprias de cada nicho</h2>
-    <p class="text-sm text-graphite leading-relaxed">Em vez de repetir o mesmo template em todo lugar, cada segmento ganha dinâmicas adequadas à sua rotina.</p>
-   </div>
-   <div>
-    <span class="text-xs font-semibold text-accent">03 / DESEMPENHO</span>
-    <h2 class="display-title text-2xl mt-1 mb-2">Leveza no celular e no desktop</h2>
-    <p class="text-sm text-graphite leading-relaxed">Layouts fluidos e contrastes pensados para leitura confortável em qualquer horário ou iluminação.</p>
+
+   <!-- COLUNA DIREITA: IMAGEM EM DESTAQUE -->
+   <div class="lg:col-span-8 relative min-h-[380px] sm:min-h-[460px] bg-panelPlum overflow-hidden">
+    <img
+      id="heroSlideImg"
+      src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85"
+      alt="Arquitetura contemporânea minimalista com iluminação suave"
+      class="w-full h-full object-cover opacity-80"
+    >
+    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-transparent"></div>
+    <div class="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
+     <div>
+      <span class="arch-label block mb-1">IDENTIDADE NEXORA</span>
+      <span class="arch-serif italic text-2xl sm:text-3xl text-ghostWhite">Preto, roxo profundo e precisão visual.</span>
+     </div>
+     <span class="text-[10px] tracking-[0.2em] uppercase text-silverMist">10 APLICAÇÕES ATIVAS</span>
+    </div>
    </div>
   </div>
- </div>
 
- <div class="max-w-6xl mx-auto px-5 py-16">
-  <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
-   <div>
-    <div class="eyebrow mb-2">COMO TRABALHAMOS</div>
-    <h2 class="display-title text-4xl">Do briefing ao ar sem complicação</h2>
+  <!-- FAIXA CENTRAL: SOBRE A PROPOSTA + ESPECIALIDADES -->
+  <div class="p-6 sm:p-10 border-b border-line bg-nightPlum">
+   <div class="text-center mb-10">
+    <span class="arch-label">SOBRE A NEXORA</span>
+    <h2 class="arch-heading text-2xl sm:text-3xl mt-1">CONSTRUÍMOS FERRAMENTAS DIGITAIS COM CLAREZA</h2>
    </div>
-   <button onclick="goPage('contracts')" class="btn-ghost text-xs">Ver formatos e valores</button>
+
+   <div class="grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-5">
+     <h3 class="arch-serif text-3xl text-ghostWhite mb-3">Cada projeto resolve uma dinâmica real do negócio.</h3>
+     <p class="text-xs text-silverMist leading-relaxed">
+      Em vez de entregar páginas iguais mudando apenas o logotipo, cada uma das 10 demonstrações traz uma função interativa própria: simuladores, montadores, guias de escolha, grades semanais e calculadoras.
+     </p>
+    </div>
+
+    <div class="md:col-span-4 space-y-4 border-y md:border-y-0 md:border-x border-line py-5 md:py-0 md:px-6">
+     <div class="flex items-start gap-3">
+      <i class="fa-solid fa-compass-drafting text-violetGlow mt-0.5 text-sm"></i>
+      <div>
+       <strong class="block text-[11px] tracking-[0.18em] uppercase">ESTRUTURA</strong>
+       <span class="text-xs text-silverMist">Grade limpa e leitura direta</span>
+      </div>
+     </div>
+     <div class="flex items-start gap-3">
+      <i class="fa-solid fa-sliders text-violetGlow mt-0.5 text-sm"></i>
+      <div>
+       <strong class="block text-[11px] tracking-[0.18em] uppercase">APLICAÇÕES</strong>
+       <span class="text-xs text-silverMist">10 ferramentas interativas distintas</span>
+      </div>
+     </div>
+     <div class="flex items-start gap-3">
+      <i class="fa-solid fa-shield-halved text-violetGlow mt-0.5 text-sm"></i>
+      <div>
+       <strong class="block text-[11px] tracking-[0.18em] uppercase">CONTROLE</strong>
+       <span class="text-xs text-silverMist">Painel ADM por código de acesso</span>
+      </div>
+     </div>
+    </div>
+
+    <div class="md:col-span-3">
+     <div class="aspect-square overflow-hidden border border-line bg-panelPlum">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Detalhe arquitetônico moderno em linha reta" class="w-full h-full object-cover opacity-85">
+     </div>
+    </div>
+   </div>
   </div>
 
-  <div class="grid md:grid-cols-4 gap-4">
-   <div class="editorial-card-static p-5">
-    <span class="text-xs font-semibold text-accent">ETAPA 01</span>
-    <h3 class="display-title text-2xl mt-1 mb-2">Alinhamento</h3>
-    <p class="text-xs text-graphite leading-relaxed">Definimos o objetivo principal da página, o público local e os módulos necessários.</p>
+  <!-- BLOCO INFERIOR: 4 COLUNAS DE PRÉVIA DE PROJETOS -->
+  <div class="p-6 sm:p-10 bg-obsidian">
+   <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+    <div>
+     <span class="arch-label">SELEÇÃO RÁPIDA</span>
+     <h2 class="arch-heading text-2xl mt-1">DEMONSTRAÇÕES EM DESTAQUE</h2>
+    </div>
+    <button onclick="goPage('catalog')" class="arch-btn-ghost">Ver todas as 10 demos →</button>
    </div>
-   <div class="editorial-card-static p-5">
-    <span class="text-xs font-semibold text-accent">ETAPA 02</span>
-    <h3 class="display-title text-2xl mt-1 mb-2">Estrutura & Copy</h3>
-    <p class="text-xs text-graphite leading-relaxed">Organizamos textos diretos, fotografia coerente e chamadas claras para ação.</p>
-   </div>
-   <div class="editorial-card-static p-5">
-    <span class="text-xs font-semibold text-accent">ETAPA 03</span>
-    <h3 class="display-title text-2xl mt-1 mb-2">Interação</h3>
-    <p class="text-xs text-graphite leading-relaxed">Implementamos simuladores, montadores ou filtros úteis para o dia a dia do negócio.</p>
-   </div>
-   <div class="editorial-card-static p-5">
-    <span class="text-xs font-semibold text-accent">ETAPA 04</span>
-    <h3 class="display-title text-2xl mt-1 mb-2">Revisão & Entrega</h3>
-    <p class="text-xs text-graphite leading-relaxed">Testamos em telas de celular e computador para entregar uma base pronta para publicar.</p>
+
+   <div class="grid sm:grid-cols-2 lg:grid-cols-4 border border-line divide-y sm:divide-y-0 sm:divide-x divide-line">
+    <button onclick="goPage('catalog');setTimeout(()=>openDemo('dentist'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
+     <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=700&q=80" alt="Clínica Vera e Costa" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
+     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
+      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">01 / SIMULADOR</span>
+      <div>
+       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">CLÍNICA VERA & COSTA</strong>
+       <span class="text-[11px] text-silverMist">Etapas e estimativa clínica</span>
+      </div>
+     </div>
+    </button>
+
+    <button onclick="goPage('catalog');setTimeout(()=>openDemo('bakery'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
+     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Forno da Praça" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
+     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
+      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">02 / CAIXA</span>
+      <div>
+       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">FORNO DA PRAÇA</strong>
+       <span class="text-[11px] text-silverMist">Montador de encomenda</span>
+      </div>
+     </div>
+    </button>
+
+    <button onclick="goPage('catalog');setTimeout(()=>openDemo('arch'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
+     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Ponto e Compasso" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
+     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
+      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">07 / OBRA</span>
+      <div>
+       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">PONTO & COMPASSO</strong>
+       <span class="text-[11px] text-silverMist">Calculadora por m²</span>
+      </div>
+     </div>
+    </button>
+
+    <button onclick="goPage('catalog');setTimeout(()=>openDemo('photo'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
+     <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80" alt="Lente e Grão" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
+     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
+      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">08 / ENSAIO</span>
+      <div>
+       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">LENTE & GRÃO</strong>
+       <span class="text-[11px] text-silverMist">Planejador de sessão</span>
+      </div>
+     </div>
+    </button>
    </div>
   </div>
  </div>
 </section>
 
-<!-- PROJETOS (6 SITES COM DINÂMICAS E ESTÉTICAS PRÓPRIAS) -->
+<!-- 10 DEMOS -->
 <section id="page-catalog" class="page-view hidden-page">
+ <div id="reforma-catalog" class="hidden reforma-strip">
+  Em reforma — As 10 demonstrações estão temporariamente em reforma.
+ </div>
+
  <div class="max-w-6xl mx-auto px-5 py-14">
   <div class="max-w-2xl mb-10">
-   <div class="eyebrow mb-3">PORTFÓLIO DE DEMONSTRAÇÕES</div>
-   <h2 class="display-title text-4xl sm:text-5xl mb-4">Seis projetos com propostas diferentes.</h2>
-   <p class="text-graphite leading-relaxed">Cada demonstração abaixo foi construída com identidade visual própria, cores específicas e uma função interativa distinta.</p>
+   <span class="arch-label">CATÁLOGO INTERATIVO</span>
+   <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-3">10 DEMONSTRAÇÕES COM APLICAÇÕES PRÓPRIAS</h2>
+   <p class="text-xs sm:text-sm text-silverMist leading-relaxed">Cada demonstração abaixo funciona como uma aplicação diferente, com cálculos, montadores, guias ou grades próprias.</p>
   </div>
 
-  <div class="flex flex-wrap gap-2 mb-8" id="catalogFilters">
-   <button class="btn-dark !py-2 !px-4 text-xs" onclick="filterCatalog('all',this)">Todos (6)</button>
-   <button class="btn-ghost !py-2 !px-4 text-xs" onclick="filterCatalog('food',this)">Gastronomia</button>
-   <button class="btn-ghost !py-2 !px-4 text-xs" onclick="filterCatalog('services',this)">Serviços & Saúde</button>
-   <button class="btn-ghost !py-2 !px-4 text-xs" onclick="filterCatalog('retail',this)">Moda</button>
-   <button class="btn-ghost !py-2 !px-4 text-xs" onclick="filterCatalog('wellness',this)">Movimento & Pet</button>
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid">
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="services">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80" alt="Consultório odontológico iluminado e minimalista" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-moss">CLÍNICA VERA & COSTA</span>
-     <span>Simulador clínico</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Odontologia & Estética</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Estima semanas de acompanhamento, quantidade de sessões e faixa ilustrativa conforme o objetivo.</p>
-    <button onclick="openDemo('dentist')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+  <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4" id="demosGrid10">
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">01 • SIMULADOR</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Clínica Vera & Costa</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Estima semanas, visitas e faixa ilustrativa por objetivo clínico.</p>
+    <button onclick="openDemo('dentist')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 01</button>
    </article>
 
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="food">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Pães artesanais de fermentação natural sobre mesa de madeira" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-accent">FORNO DA PRAÇA</span>
-     <span>Caixa sob medida</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Padaria & Café da Manhã</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Montador de caixa de pães e massas com cálculo de retirada ou entrega e resumo de unidades.</p>
-    <button onclick="openDemo('bakery')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">02 • CAIXA</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Forno da Praça</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Montador de caixa de padaria com retirada ou entrega.</p>
+    <button onclick="openDemo('bakery')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 02</button>
    </article>
 
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="services">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80" alt="Cadeira clássica de barbearia com iluminação quente" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-ink">OFICINA NAVALHA FINA</span>
-     <span>Guia de visagismo</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Barbearia & Cuidados</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Recomenda corte, barba e tempo de rotina diária a partir do formato do rosto e densidade do cabelo.</p>
-    <button onclick="openDemo('barber')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">03 • VISAGISMO</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Navalha Fina</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Recomenda corte e barba conforme formato de rosto e tempo.</p>
+    <button onclick="openDemo('barber')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 03</button>
    </article>
 
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="retail">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Arara de roupas em linho e tons neutros em loja minimalista" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-accent">CASA LINHO & TRAMA</span>
-     <span>Montador de look</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Alfaiataria & Casual</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Combina peça base, sobreposição e acessório com seleção de tamanho e cálculo do conjunto.</p>
-    <button onclick="openDemo('fashion')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">04 • LOOKBOOK</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Linho & Trama</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Combina peça base, terceira peça, tamanho e valor total.</p>
+    <button onclick="openDemo('fashion')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 04</button>
    </article>
 
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="wellness">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="Estúdio de movimento e pilates com luz natural" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-moss">RITMO & FÔLEGO</span>
-     <span>Grade semanal</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Estúdio de Movimento</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Monta uma grade semanal de aulas conforme o nível, foco escolhido e quantidade de dias na semana.</p>
-    <button onclick="openDemo('fitness')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">05 • ROTINA</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Ritmo & Fôlego</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Gera grade semanal de treinos por foco e frequência.</p>
+    <button onclick="openDemo('fitness')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 05</button>
    </article>
 
-   <article class="editorial-card p-4 catalog-item flex flex-col" data-category="wellness">
-    <div class="rounded-xl overflow-hidden aspect-[16/10] mb-4 bg-sand">
-     <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=80" alt="Cachorro tranquilo em ambiente claro e acolhedor" class="w-full h-full object-cover">
-    </div>
-    <div class="flex items-center justify-between text-xs text-graphite mb-1">
-     <span class="font-semibold text-accent">QUINTAL DOS BICHOS</span>
-     <span>Rotina do pet</span>
-    </div>
-    <h3 class="display-title text-2xl mb-2">Banho, Tosa & Cuidados</h3>
-    <p class="text-sm text-graphite leading-relaxed mb-5 flex-1">Sugere periodicidade de banho, escovação e passeios de acordo com porte, pelagem e nível de energia.</p>
-    <button onclick="openDemo('pet')" class="btn-ghost w-full">Abrir projeto <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">06 • PET CARE</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Quintal dos Bichos</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Calcula banho, escovação e passeios por porte e pelo.</p>
+    <button onclick="openDemo('pet')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 06</button>
+   </article>
+
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">07 • OBRA</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Ponto & Compasso</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Estimativa de arquitetura/interiores por m² e acabamento.</p>
+    <button onclick="openDemo('arch')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 07</button>
+   </article>
+
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">08 • ENSAIO</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Lente & Grão</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Configura cenas, quantidade de fotos e entrega do ensaio.</p>
+    <button onclick="openDemo('photo')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 08</button>
+   </article>
+
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">09 • REFEIÇÕES</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Sabor & Rota</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Calcula pacote semanal de refeições por dia e duração.</p>
+    <button onclick="openDemo('meal')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 09</button>
+   </article>
+
+   <article class="arch-card p-4 flex flex-col">
+    <span class="arch-label">10 • ESTUDO</span>
+    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Acorde & Escala</h3>
+    <p class="text-[11px] text-silverMist flex-1 mb-4">Divide minutos diários entre técnica e repertório musical.</p>
+    <button onclick="openDemo('music')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 10</button>
    </article>
   </div>
  </div>
@@ -641,98 +628,123 @@ body.cb-highcontrast {
 
 <!-- RECURSOS -->
 <section id="page-features" class="page-view hidden-page">
- <div class="max-w-6xl mx-auto px-5 py-14">
-  <div class="max-w-2xl mb-12">
-   <div class="eyebrow mb-3">COMPONENTES & INTERAÇÃO</div>
-   <h2 class="display-title text-4xl sm:text-5xl mb-4">Recursos pensados para ajudar quem visita.</h2>
-   <p class="text-graphite leading-relaxed">Teste cada módulo e veja como pequenos recursos reduzem dúvidas e tornam a navegação mais objetiva.</p>
+ <div id="reforma-features" class="hidden reforma-strip">
+  Em reforma — A aba de recursos está temporariamente em reforma.
+ </div>
+
+ <div class="max-w-6xl mx-auto px-5 py-14 space-y-8">
+  <div>
+   <span class="arch-label">FERRAMENTAS EXTRA</span>
+   <h2 class="arch-heading text-3xl sm:text-4xl mt-1">RECURSOS ALÉM DO BÁSICO</h2>
   </div>
 
   <!-- COMPARADOR ANTES E DEPOIS -->
-  <div class="editorial-card-static p-6 sm:p-8 mb-12">
-   <div class="grid lg:grid-cols-12 gap-8 items-center">
-    <div class="lg:col-span-5">
-     <span class="eyebrow">DESTAQUE / COMPARADOR</span>
-     <h3 class="display-title text-3xl mt-2 mb-3">Antes e depois em tempo real</h3>
-     <p class="text-sm text-graphite leading-relaxed mb-4">Arraste o controle deslizante para comparar um cenário inicial desorganizado com uma apresentação mais clara e estruturada.</p>
-     <label class="block text-xs font-semibold text-ink mb-2" for="beforeAfterSlider">Posição do divisor: <span id="sliderPercent">50%</span></label>
-     <input id="beforeAfterSlider" type="range" min="5" max="95" value="50" class="w-full accent-[#9E532E]" oninput="updateBeforeAfter(this.value)">
-    </div>
-    <div class="lg:col-span-7">
-     <div class="relative rounded-2xl overflow-hidden aspect-[16/10] border border-line select-none bg-sand" id="baContainer">
-      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1100&q=80" alt="Apresentação profissional e estruturada" class="w-full h-full object-cover">
-      <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-ink text-paper">Depois</span>
-
-      <div id="baOverlay" class="absolute inset-y-0 left-0 overflow-hidden" style="width:50%">
-       <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1100&q=80" alt="Estado inicial com documentos sobre a mesa" class="w-full h-full object-cover grayscale contrast-75" style="width:100%;max-width:none">
-       <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-surface text-ink border border-line">Antes</span>
+  <div class="arch-card p-6 grid lg:grid-cols-12 gap-6 items-center">
+   <div class="lg:col-span-5">
+    <span class="arch-label">COMPARADOR</span>
+    <h3 class="arch-heading text-xl mt-1 mb-2">ANTES & DEPOIS</h3>
+    <p class="text-xs text-silverMist mb-4">Arraste o controle para comparar um bloco comum com uma grade organizada.</p>
+    <label class="text-[11px] uppercase tracking-wider block mb-1">Divisor: <span id="sliderPct" class="text-violetGlow font-bold">50%</span></label>
+    <input type="range" min="10" max="90" value="50" class="w-full accent-[#7C3AED]" oninput="updateBaSlider(this.value)">
+   </div>
+   <div class="lg:col-span-7">
+    <div class="relative h-56 border border-line overflow-hidden bg-panelPlum">
+     <div class="w-full h-full p-6 flex flex-col justify-between bg-gradient-to-br from-panelPlum to-nightPlum">
+      <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-violetGlow">DEPOIS • NEXORA</span>
+      <div>
+       <strong class="arch-heading text-xl block">GRADE LIMPA & FOCO NO CONTEÚDO</strong>
+       <span class="text-xs text-silverMist">Ações diretas e leitura confortável.</span>
+      </div>
+     </div>
+     <div id="baLeftPanel" class="absolute inset-y-0 left-0 overflow-hidden border-r border-violetGlow" style="width:50%">
+      <div class="w-full h-full p-6 flex flex-col justify-between bg-[#1E1C24] text-[#9E9AA8]">
+       <span class="text-[10px] font-bold tracking-[0.2em] uppercase">ANTES • COMUM</span>
+       <div>
+        <strong class="text-sm uppercase block">ELEMENTOS SOLTOS</strong>
+        <span class="text-xs">Sem hierarquia definida.</span>
+       </div>
       </div>
      </div>
     </div>
    </div>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="featureGrid"></div>
-
-  <!-- SIMULADOR DE ESTIMATIVA -->
-  <div class="mt-16 editorial-card-static p-6 sm:p-10">
-   <div class="grid md:grid-cols-2 gap-10 items-center">
-    <div>
-     <div class="eyebrow mb-2">SIMULADOR DE CENÁRIO</div>
-     <h3 class="display-title text-3xl sm:text-4xl mb-4">Estimativa ilustrativa de retorno</h3>
-     <p class="text-graphite text-sm leading-relaxed">Ajuste visitas mensais, ticket médio e taxa de conversão hipotética para visualizar um cenário matemático inicial (sem promessa de resultado).</p>
+  <!-- SIMULADOR DE CENÁRIO -->
+  <div class="arch-card p-6 grid md:grid-cols-2 gap-6 items-center">
+   <div>
+    <span class="arch-label">SIMULADOR</span>
+    <h3 class="arch-heading text-xl mt-1 mb-2">ESTIMATIVA HIPOTÉTICA</h3>
+    <p class="text-xs text-silverMist">Ajuste visitas, ticket médio e taxa de conversão hipotética para simular um cenário.</p>
+   </div>
+   <div class="space-y-3">
+    <div class="grid grid-cols-3 gap-2.5">
+     <label class="text-[10px] uppercase tracking-wider">Visitas
+      <input id="simVisits" type="number" min="0" value="500" class="arch-input mt-1" oninput="updateSimRoi()">
+     </label>
+     <label class="text-[10px] uppercase tracking-wider">Ticket R$
+      <input id="simTicket" type="number" min="0" value="90" class="arch-input mt-1" oninput="updateSimRoi()">
+     </label>
+     <label class="text-[10px] uppercase tracking-wider">Conv. %
+      <input id="simRate" type="number" min="0" max="100" step="0.1" value="2" class="arch-input mt-1" oninput="updateSimRoi()">
+     </label>
     </div>
-    <div class="space-y-4">
-     <label class="block text-xs font-semibold">Visitas mensais estimadas
-      <input id="roiVisits" class="field-input mt-1.5" type="number" min="0" max="1000000" value="500">
-     </label>
-     <label class="block text-xs font-semibold">Valor médio por venda (R$)
-      <input id="roiTicket" class="field-input mt-1.5" type="number" min="0" max="1000000" step="0.01" value="80">
-     </label>
-     <label class="block text-xs font-semibold">Taxa hipotética de conversão (%)
-      <input id="roiRate" class="field-input mt-1.5" type="number" min="0" max="100" step="0.1" value="2">
-     </label>
-     <button onclick="calculateROI()" class="btn-dark w-full">Atualizar simulação</button>
-     <div class="rounded-2xl bg-paper border border-line p-5">
-      <p class="text-xs text-graphite">Receita mensal hipotética</p>
-      <strong id="roiResult" class="display-title text-4xl block mt-1 text-accent">R$ 800,00</strong>
-      <p id="roiDetails" class="text-xs text-graphite mt-1.5">Estimativa de 10 vendas por mês.</p>
+    <div class="p-4 bg-panelPlum border border-line flex items-center justify-between">
+     <div>
+      <span class="text-[10px] uppercase tracking-widest text-silverMist block">Receita hipotética</span>
+      <strong id="simOutVal" class="text-2xl font-bold text-violetGlow">R$ 900,00</strong>
      </div>
+     <span id="simOutSales" class="text-xs text-silverMist">10 vendas/mês</span>
     </div>
    </div>
   </div>
+ </div>
+</section>
 
-  <!-- VISUALIZAÇÃO 3D -->
-  <div class="mt-16">
-   <div class="max-w-2xl mb-6">
-    <div class="eyebrow mb-2">ESTUDO EM 3D</div>
-    <h3 class="display-title text-3xl sm:text-4xl mb-2">Inspeção de produto em 3D</h3>
-    <p class="text-graphite text-sm">Gire, aproxime e teste variações de acabamento diretamente no navegador.</p>
-   </div>
+<!-- ABA IA (COM FAIXA AMARELA "Construindo!") -->
+<section id="page-ai" class="page-view hidden-page">
+ <div id="reforma-ai" class="hidden reforma-strip">
+  Em reforma — A aba IA está temporariamente em reforma.
+ </div>
 
-   <div class="editorial-card-static p-3 sm:p-5">
-    <div class="relative rounded-2xl overflow-hidden bg-sand border border-line">
-     <div id="car3DStage" style="width:100%;height:360px;position:relative;touch-action:none">
-      <div id="car3DLoading" class="absolute inset-0 grid place-items-center text-graphite text-sm">Carregando cena 3D...</div>
-     </div>
+ <div class="max-w-5xl mx-auto px-5 py-14">
+  <div class="arch-card p-6 sm:p-10 relative">
+   <span class="ai-ribbon-badge absolute top-5 right-5 !text-xs !px-3 !py-1.5">Construindo!</span>
+
+   <span class="arch-label">MÓDULO EXPERIMENTAL • IA</span>
+   <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-3">LABORATÓRIO DE ESTRUTURA COM IA</h2>
+   <p class="text-xs sm:text-sm text-silverMist max-w-2xl mb-6">
+    Esta aba está com a faixa <strong>Construindo!</strong> porque o módulo completo de IA ainda está em desenvolvimento. Enquanto isso, você pode testar um gerador local de arquitetura de página.
+   </p>
+
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="space-y-3">
+     <label class="text-[10px] uppercase tracking-widest block">Nome ou segmento do projeto
+      <input id="aiTopicInput" class="arch-input mt-1" placeholder="Ex.: Clínica de fisioterapia esportiva">
+     </label>
+     <label class="text-[10px] uppercase tracking-widest block">Tipo de aplicação desejada
+      <select id="aiAppType" class="arch-input mt-1">
+       <option value="Simulador de sessões e prazos">Simulador de sessões e prazos</option>
+       <option value="Montador de pacotes ou caixas">Montador de pacotes ou caixas</option>
+       <option value="Guia interativo de escolha">Guia interativo de escolha</option>
+      </select>
+     </label>
+     <button onclick="runAiSandbox()" class="arch-btn-primary w-full">
+      <i class="fa-solid fa-wand-magic-sparkles"></i> Gerar esboço (Construindo!)
+     </button>
     </div>
-    <div class="flex flex-wrap justify-between items-center gap-4 pt-4 px-1">
-     <div class="flex items-center gap-3">
-      <span class="text-xs font-medium text-graphite">Acabamento:</span>
-      <div class="flex gap-2">
-       <button aria-label="Azul petróleo" onclick="changeCarColor(0x284B63)" class="w-7 h-7 rounded-full border border-black/20" style="background:#284B63"></button>
-       <button aria-label="Grafite" onclick="changeCarColor(0x1F242D)" class="w-7 h-7 rounded-full border border-black/20" style="background:#1F242D"></button>
-       <button aria-label="Terracota" onclick="changeCarColor(0x9E532E)" class="w-7 h-7 rounded-full border border-black/20" style="background:#9E532E"></button>
-       <button aria-label="Areia" onclick="changeCarColor(0xC7AE82)" class="w-7 h-7 rounded-full border border-black/20" style="background:#C7AE82"></button>
-       <button aria-label="Cinza claro" onclick="changeCarColor(0x8D99AE)" class="w-7 h-7 rounded-full border border-black/20" style="background:#8D99AE"></button>
+
+    <div class="p-5 bg-panelPlum border border-line flex flex-col justify-between">
+     <div>
+      <div class="flex items-center justify-between mb-2">
+       <span class="text-[10px] uppercase tracking-widest text-violetGlow font-bold">Saída do rascunho</span>
+       <span class="ai-ribbon-badge !text-[8px] !px-2 !py-0.5">Construindo!</span>
+      </div>
+      <div id="aiSandboxResult" class="text-xs text-silverMist leading-relaxed">
+       Preencha um segmento ao lado para gerar uma estrutura inicial de seções e aplicação.
       </div>
      </div>
-     <div class="flex gap-2">
-      <button onclick="toggleCarRotation()" id="carRotateBtn" class="btn-ghost !py-2 !px-3.5 text-xs"><i class="fa-solid fa-pause"></i> Pausar</button>
-      <button onclick="resetCarView()" class="btn-ghost !py-2 !px-3.5 text-xs"><i class="fa-solid fa-rotate-left"></i> Reiniciar</button>
-     </div>
+     <span class="text-[10px] text-silverMist/70 mt-4 pt-3 border-t border-line block">Status: Em construção pela NEXORA.</span>
     </div>
-    <p class="text-[11px] text-graphite px-1 pt-2">Arraste para girar e use roda ou pinça para zoom. Valores de referência ilustrativos.</p>
    </div>
   </div>
  </div>
@@ -740,223 +752,142 @@ body.cb-highcontrast {
 
 <!-- PLANOS -->
 <section id="page-contracts" class="page-view hidden-page">
- <div class="max-w-6xl mx-auto px-5 py-14">
-  <div class="max-w-2xl mb-12">
-   <div class="eyebrow mb-3">FORMATOS E VALORES</div>
-   <h2 class="display-title text-4xl sm:text-5xl mb-4">Estrutura simples para começar.</h2>
-   <p class="text-graphite leading-relaxed">Valores de referência sujeitos à confirmação do escopo, domínio, hospedagem e eventuais integrações.</p>
-  </div>
-
-  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
-   <article class="editorial-card p-6 flex flex-col">
-    <span class="eyebrow">ESSENCIAL</span>
-    <h3 class="display-title text-2xl mt-2">Sem Manutenção</h3>
-    <div class="mt-4"><strong class="display-title text-4xl text-ink">R$89</strong><span class="text-xs text-graphite"> / base</span></div>
-    <p class="text-xs text-graphite mt-2">Página única objetiva para apresentar seu negócio.</p>
-    <ul class="text-xs text-graphite space-y-2.5 my-6 flex-1">
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Até 7 recursos</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Estrutura responsiva</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Atalho direto para WhatsApp</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Prazo base de 48h</li>
-    </ul>
-    <button onclick="choosePlan('Simples Sem Manutenção - R$89')" class="btn-ghost w-full">Selecionar formato</button>
-   </article>
-
-   <article class="editorial-card p-6 flex flex-col">
-    <span class="eyebrow">ESSENCIAL +</span>
-    <h3 class="display-title text-2xl mt-2">Com Manutenção</h3>
-    <div class="mt-4"><strong class="display-title text-4xl text-ink">R$119</strong><span class="text-xs text-graphite"> / base</span></div>
-    <p class="text-xs text-graphite mt-2">Acompanhamento para ajustes pontuais de texto e foto.</p>
-    <ul class="text-xs text-graphite space-y-2.5 my-6 flex-1">
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Até 7 recursos</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Atualizações combinadas</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Suporte contínuo</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Condições definidas em proposta</li>
-    </ul>
-    <button onclick="choosePlan('Simples Com Manutenção - R$119')" class="btn-ghost w-full">Selecionar formato</button>
-   </article>
-
-   <article class="editorial-card p-6 flex flex-col border-accent">
-    <span class="eyebrow">ESTÚDIO</span>
-    <h3 class="display-title text-2xl mt-2">Sem Manutenção</h3>
-    <div class="mt-4"><strong class="display-title text-4xl text-ink">R$149</strong><span class="text-xs text-graphite"> / base</span></div>
-    <p class="text-xs text-graphite mt-2">Mais módulos interativos e personalização de layout.</p>
-    <ul class="text-xs text-graphite space-y-2.5 my-6 flex-1">
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Até 12 recursos</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Ferramentas interativas</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Edição local demonstrativa</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Direção visual sob medida</li>
-    </ul>
-    <button onclick="choosePlan('Especial Sem Manutenção - R$149')" class="btn-terracotta w-full">Selecionar formato</button>
-   </article>
-
-   <article class="editorial-card p-6 flex flex-col">
-    <span class="eyebrow">COMPLETO</span>
-    <h3 class="display-title text-2xl mt-2">Com Manutenção</h3>
-    <div class="mt-4"><strong class="display-title text-4xl text-ink">R$179</strong><span class="text-xs text-graphite"> / base</span></div>
-    <p class="text-xs text-graphite mt-2">Para quem quer o projeto ativo e atualizado com apoio.</p>
-    <ul class="text-xs text-graphite space-y-2.5 my-6 flex-1">
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Até 12 recursos</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Ajustes de conteúdo conforme escopo</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Revisão de itens e preços</li>
-     <li><i class="fa-solid fa-check text-moss mr-2"></i>Suporte de manutenção</li>
-    </ul>
-    <button onclick="choosePlan('Especial Com Manutenção VIP - R$179')" class="btn-dark w-full">Selecionar formato</button>
-   </article>
-  </div>
-
-  <!-- CALCULADORA RÁPIDA DE ESCOPO -->
-  <div class="editorial-card-static p-6 sm:p-8 mt-10 bg-sand/50">
-   <div class="grid md:grid-cols-12 gap-6 items-center">
-    <div class="md:col-span-7">
-     <span class="eyebrow">SIMULADOR DE ESCOPO</span>
-     <h3 class="display-title text-3xl mt-1 mb-2">Prévia com recursos adicionais</h3>
-     <p class="text-xs text-graphite leading-relaxed">Escolha o formato base e quantos módulos extras deseja avaliar (R$ 11,99 por recurso extra ilustrativo).</p>
-    </div>
-    <div class="md:col-span-5 grid sm:grid-cols-2 gap-3">
-     <label class="text-xs font-semibold">Formato base
-      <select id="scopePlanSelect" class="field-input mt-1 bg-surface" onchange="calcScopeEstimate()">
-       <option value="89" data-label="Simples Sem Manutenção - R$89">Essencial (R$ 89)</option>
-       <option value="119" data-label="Simples Com Manutenção - R$119">Essencial + (R$ 119)</option>
-       <option value="149" data-label="Especial Sem Manutenção - R$149" selected>Estúdio (R$ 149)</option>
-       <option value="179" data-label="Especial Com Manutenção VIP - R$179">Completo (R$ 179)</option>
-      </select>
-     </label>
-     <label class="text-xs font-semibold">Recursos extras
-      <input id="scopeExtrasCount" type="number" min="0" max="20" value="2" class="field-input mt-1 bg-surface" oninput="calcScopeEstimate()">
-     </label>
-     <div class="sm:col-span-2 flex items-center justify-between pt-2">
-      <div>
-       <span class="text-[11px] text-graphite block">Total estimado de referência</span>
-       <strong id="scopeTotalOutput" class="display-title text-3xl text-accent">R$ 172,98</strong>
-      </div>
-      <button onclick="applyScopeToContact()" class="btn-dark !py-2.5 !px-4 text-xs">Levar para contato</button>
-     </div>
-    </div>
-   </div>
-  </div>
-
-  <p class="text-xs text-graphite mt-6">Recursos adicionais custam R$11,99 cada conforme viabilidade técnica e escopo acordado.</p>
+ <div id="reforma-contracts" class="hidden reforma-strip">
+  Em reforma — A aba de planos está temporariamente em reforma.
  </div>
-</section>
 
-<!-- DIREÇÃO / MARKETING -->
-<section id="page-marketing" class="page-view hidden-page">
  <div class="max-w-6xl mx-auto px-5 py-14">
-  <div class="grid lg:grid-cols-12 gap-10 items-center mb-14">
-   <div class="lg:col-span-7">
-    <div class="eyebrow mb-3">DIREÇÃO DE CONTEÚDO</div>
-    <h2 class="display-title text-4xl sm:text-5xl mb-4">Um bom site explica com calma o que você faz.</h2>
-    <p class="text-graphite leading-relaxed">Quando a proposta está clara e o caminho para falar com você é curto, o visitante toma decisão com mais segurança.</p>
-   </div>
-   <div class="lg:col-span-5">
-    <div class="editorial-card-static p-3">
-     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Equipe conversando sobre estratégia de projeto em mesa clara" class="w-full aspect-[4/3] object-cover rounded-xl">
-    </div>
-   </div>
-  </div>
+  <span class="arch-label">FORMATOS</span>
+  <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-8">PLANOS DE REFERÊNCIA</h2>
 
-  <div class="grid md:grid-cols-2 gap-5">
-   <article class="editorial-card p-6">
-    <h3 class="display-title text-2xl mb-2">Proposta direta no topo</h3>
-    <p class="text-sm text-graphite leading-relaxed">Quem chega precisa entender em poucos segundos o que o negócio oferece e para quem ele serve.</p>
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+   <article class="arch-card p-6 flex flex-col">
+    <span class="arch-label">01 • ESSENCIAL</span>
+    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Sem Manutenção</h3>
+    <strong class="text-3xl font-bold my-4">R$89</strong>
+    <p class="text-xs text-silverMist flex-1 mb-5">Página objetiva com até 7 recursos e estrutura responsiva.</p>
+    <button onclick="selectPlanAndContact('Simples Sem Manutenção - R$89')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
    </article>
-   <article class="editorial-card p-6">
-    <h3 class="display-title text-2xl mb-2">Informação verificável</h3>
-    <p class="text-sm text-graphite leading-relaxed">Horários, localização, serviços e depoimentos reais ajudam a construir confiança sem exageros.</p>
-   </article>
-   <article class="editorial-card p-6">
-    <h3 class="display-title text-2xl mb-2">Identidade reconhecível</h3>
-    <p class="text-sm text-graphite leading-relaxed">Tipografia e paleta coerentes evitam que seu site pareça genérico ou improvisado.</p>
-   </article>
-   <article class="editorial-card p-6">
-    <h3 class="display-title text-2xl mb-2">Próximo passo visível</h3>
-    <p class="text-sm text-graphite leading-relaxed">Botões e formulários bem posicionados transformam leitura em conversa natural.</p>
-   </article>
-  </div>
 
-  <div class="editorial-card-static p-8 sm:p-10 mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-sand/60">
-   <div>
-    <div class="eyebrow mb-1">PRÓXIMO PASSO</div>
-    <h3 class="display-title text-3xl">Quer tirar seu projeto do papel?</h3>
-   </div>
-   <button onclick="goPage('contact')" class="btn-terracotta shrink-0">Falar agora <i class="fa-solid fa-arrow-right text-xs"></i></button>
+   <article class="arch-card p-6 flex flex-col">
+    <span class="arch-label">02 • ESSENCIAL +</span>
+    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Com Manutenção</h3>
+    <strong class="text-3xl font-bold my-4">R$119</strong>
+    <p class="text-xs text-silverMist flex-1 mb-5">Até 7 recursos com acompanhamento e ajustes combinados.</p>
+    <button onclick="selectPlanAndContact('Simples Com Manutenção - R$119')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
+   </article>
+
+   <article class="arch-card p-6 flex flex-col border-violetGlow">
+    <span class="arch-label">03 • ESTÚDIO</span>
+    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Sem Manutenção</h3>
+    <strong class="text-3xl font-bold my-4 text-violetGlow">R$149</strong>
+    <p class="text-xs text-silverMist flex-1 mb-5">Até 12 recursos com ferramentas interativas e identidade própria.</p>
+    <button onclick="selectPlanAndContact('Especial Sem Manutenção - R$149')" class="arch-btn-primary w-full text-[10px]">Selecionar</button>
+   </article>
+
+   <article class="arch-card p-6 flex flex-col">
+    <span class="arch-label">04 • COMPLETO</span>
+    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Com Manutenção</h3>
+    <strong class="text-3xl font-bold my-4">R$179</strong>
+    <p class="text-xs text-silverMist flex-1 mb-5">Até 12 recursos com suporte ativo e atualizações.</p>
+    <button onclick="selectPlanAndContact('Especial Com Manutenção VIP - R$179')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
+   </article>
   </div>
  </div>
 </section>
 
 <!-- CONTATO -->
 <section id="page-contact" class="page-view hidden-page">
- <div class="max-w-5xl mx-auto px-5 py-14">
-  <div class="grid md:grid-cols-12 gap-10">
-   <div class="md:col-span-5">
-    <div class="eyebrow mb-3">CONTATO</div>
-    <h2 class="display-title text-4xl sm:text-5xl mb-4">Vamos conversar sobre o seu site.</h2>
-    <p class="text-graphite text-sm leading-relaxed mb-8">Preencha os campos ao lado para gerar uma mensagem organizada para o WhatsApp e revisar antes de enviar.</p>
-    <div class="space-y-4 text-sm">
-     <div class="editorial-card-static p-4">
-      <strong class="block text-ink">Atendimento direto</strong>
-      <span class="text-xs text-graphite">Alinhamento de escopo sem burocracia</span>
-     </div>
-     <div class="editorial-card-static p-4">
-      <strong class="block text-ink">Negócios locais e profissionais</strong>
-      <span class="text-xs text-graphite">Projetos sob medida para cada segmento</span>
-     </div>
-    </div>
-   </div>
+ <div id="reforma-contact" class="hidden reforma-strip">
+  Em reforma — A aba de contato está temporariamente em reforma.
+ </div>
 
-   <form class="md:col-span-7 editorial-card-static p-6 sm:p-8 space-y-4" onsubmit="sendCustomWhatsappMessage(event)">
+ <div class="max-w-3xl mx-auto px-5 py-14">
+  <span class="arch-label">BRIEFING</span>
+  <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-6">ENVIAR PROPOSTA</h2>
+
+  <form class="arch-card p-6 sm:p-8 space-y-4" onsubmit="submitContactForm(event)">
+   <div>
+    <label class="text-[10px] uppercase tracking-widest block mb-1">Seu nome</label>
+    <input id="cName" class="arch-input" required placeholder="Ex.: Rafael Costa">
+   </div>
+   <div class="grid sm:grid-cols-2 gap-4">
     <div>
-     <label class="text-xs font-semibold block mb-1.5" for="contactName">Seu nome</label>
-     <input id="contactName" class="field-input" required maxlength="70" placeholder="Ex.: Marina Souza">
-    </div>
-    <div>
-     <label class="text-xs font-semibold block mb-1.5" for="contactNiche">Segmento</label>
-     <select id="contactNiche" class="field-input" required>
+     <label class="text-[10px] uppercase tracking-widest block mb-1">Segmento</label>
+     <select id="cSegment" class="arch-input" required>
       <option value="">Selecione</option>
-      <option>Odontologia / Saúde</option>
-      <option>Padaria / Gastronomia</option>
-      <option>Barbearia / Cuidados</option>
-      <option>Moda / Loja</option>
-      <option>Estúdio de Movimento / Fitness</option>
+      <option>Odontologia</option>
+      <option>Padaria</option>
+      <option>Barbearia</option>
+      <option>Moda</option>
+      <option>Movimento / Fitness</option>
       <option>Pet Care</option>
-      <option>Outro segmento</option>
+      <option>Arquitetura</option>
+      <option>Fotografia</option>
+      <option>Marmitaria</option>
+      <option>Música</option>
      </select>
     </div>
     <div>
-     <label class="text-xs font-semibold block mb-1.5" for="contactPlan">Formato de interesse</label>
-     <select id="contactPlan" class="field-input" required>
+     <label class="text-[10px] uppercase tracking-widest block mb-1">Formato</label>
+     <select id="cPlan" class="arch-input" required>
       <option value="">Selecione</option>
       <option>Simples Sem Manutenção - R$89</option>
       <option>Simples Com Manutenção - R$119</option>
       <option>Especial Sem Manutenção - R$149</option>
       <option>Especial Com Manutenção VIP - R$179</option>
-      <option>Ainda quero tirar dúvidas</option>
      </select>
     </div>
-    <div>
-     <label class="text-xs font-semibold block mb-1.5" for="contactDetails">Detalhes ou função desejada (opcional)</label>
-     <textarea id="contactDetails" class="field-input" rows="3" maxlength="700" placeholder="Ex.: gostaria de um simulador de orçamento ou agendamento."></textarea>
-    </div>
-    <button type="submit" class="btn-terracotta w-full">Preparar mensagem no WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
-   </form>
+   </div>
+   <div>
+    <label class="text-[10px] uppercase tracking-widest block mb-1">Observações</label>
+    <textarea id="cNotes" class="arch-input" rows="3" placeholder="Descreva a função interativa que deseja..."></textarea>
+   </div>
+   <button type="submit" class="arch-btn-primary w-full">Abrir no WhatsApp</button>
+  </form>
+ </div>
+</section>
+
+<!-- PAINEL DE ADMINISTRAÇÃO (LIBERADO AUTOMATICAMENTE COM 062.151.210-96) -->
+<section id="page-admin" class="page-view hidden-page">
+ <div class="max-w-5xl mx-auto px-5 py-14">
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+   <div>
+    <span class="px-2.5 py-1 bg-violetCore text-white text-[10px] font-bold uppercase tracking-widest">Painel ADM Desbloqueado</span>
+    <h2 class="arch-heading text-3xl sm:text-4xl mt-2">ADMINISTRAÇÃO NEXORA</h2>
+   </div>
+   <button onclick="lockAdmin()" class="arch-btn-ghost"><i class="fa-solid fa-lock"></i> Bloquear</button>
   </div>
 
-  <div class="editorial-card-static p-6 sm:p-8 mt-12">
-   <h3 class="display-title text-3xl mb-5">Dúvidas frequentes</h3>
-   <div class="divide-y divide-line">
-    <details class="py-3.5">
-     <summary class="font-medium text-sm cursor-pointer">Qual é o prazo estimado de entrega?</summary>
-     <p class="text-xs text-graphite mt-2 leading-relaxed">O prazo base indicado é de até 48 horas para escopos compatíveis, contado após o envio completo de textos, imagens e informações.</p>
-    </details>
-    <details class="py-3.5">
-     <summary class="font-medium text-sm cursor-pointer">Posso adicionar recursos extras depois?</summary>
-     <p class="text-xs text-graphite mt-2 leading-relaxed">Sim. Recursos adicionais são avaliados conforme complexidade e orçados separadamente.</p>
-    </details>
-    <details class="py-3.5">
-     <summary class="font-medium text-sm cursor-pointer">Domínio e hospedagem já vêm inclusos?</summary>
-     <p class="text-xs text-graphite mt-2 leading-relaxed">Devem ser confirmados previamente na proposta conforme o formato escolhido.</p>
-    </details>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="arch-card p-6">
+    <h3 class="arch-heading text-base mb-1">DESATIVAR ABAS ("EM REFORMA")</h3>
+    <p class="text-xs text-silverMist mb-4">Escolha quais abas ficam desativadas exibindo a faixa amarela <strong>Em reforma</strong>.</p>
+    <div id="adminReformList" class="space-y-2.5"></div>
+   </div>
+
+   <div class="arch-card p-6 space-y-5">
+    <div>
+     <h3 class="arch-heading text-base mb-1">PAUSAR SISTEMA</h3>
+     <p class="text-xs text-silverMist mb-3">Congela a navegação do sistema com tela de pausa administrativa.</p>
+     <button onclick="togglePauseSystem()" id="pauseSystemActionBtn" class="arch-btn-primary w-full">
+      <i class="fa-solid fa-pause"></i> Pausar sistema
+     </button>
+    </div>
+
+    <div class="pt-4 border-t border-line">
+     <label class="text-[10px] uppercase tracking-widest block mb-1.5">Aviso global no topo</label>
+     <div class="flex gap-2">
+      <input id="adminAlertInput" class="arch-input text-xs" placeholder="Digite um aviso para o site...">
+      <button onclick="applyAdminAlert()" class="arch-btn-primary shrink-0">Salvar</button>
+     </div>
+     <button onclick="clearAdminAlert()" class="text-[11px] text-silverMist underline mt-2">Limpar aviso</button>
+    </div>
+
+    <div class="pt-4 border-t border-line flex flex-wrap gap-2">
+     <button onclick="resetAdminAll()" class="arch-btn-ghost text-[10px]">Restaurar tudo</button>
+     <button onclick="copyAdminStateText()" class="arch-btn-ghost text-[10px]">Copiar status</button>
+    </div>
    </div>
   </div>
  </div>
@@ -965,1057 +896,597 @@ body.cb-highcontrast {
 </main>
 
 <!-- RODAPÉ -->
-<footer class="border-t border-line bg-surface">
- <div class="max-w-6xl mx-auto px-5 py-10">
-  <div class="flex flex-col sm:flex-row justify-between gap-6">
-   <div>
-    <div class="font-semibold tracking-[0.18em] text-sm uppercase">NEXORA</div>
-    <p class="text-xs text-graphite mt-1">Web minimalista, clara e funcional.</p>
-   </div>
-   <div class="flex flex-wrap gap-5 text-xs text-graphite">
-    <button onclick="goPage('home')" class="hover:text-ink">Início</button>
-    <button onclick="goPage('catalog')" class="hover:text-ink">Projetos</button>
-    <button onclick="goPage('features')" class="hover:text-ink">Recursos</button>
-    <button onclick="goPage('contracts')" class="hover:text-ink">Planos</button>
-    <button onclick="goPage('contact')" class="hover:text-ink">Contato</button>
-   </div>
-  </div>
-  <div class="border-t border-line mt-8 pt-5 flex flex-col sm:flex-row justify-between gap-2 text-[11px] text-graphite">
-   <span>© <span id="currentYear"></span> NEXORA Studio.</span>
-   <span>Demonstrações com dados ilustrativos.</span>
+<footer class="border-t border-line bg-nightPlum">
+ <div class="max-w-6xl mx-auto px-5 py-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-silverMist">
+  <span class="tracking-[0.18em] uppercase">NEXORA • ARQUITETURA & WEB</span>
+  <div class="flex items-center gap-4">
+   <button onclick="goPage('catalog')" class="hover:text-ghostWhite uppercase tracking-wider">10 Demos</button>
+   <button onclick="goPage('ai')" class="hover:text-ghostWhite uppercase tracking-wider">IA</button>
+   <button onclick="openAdminModal()" class="text-[10px] underline text-silverMist/75 hover:text-violetGlow">Codigos Administração</button>
   </div>
  </div>
 </footer>
 
-<!-- BOTÃO WHATSAPP -->
-<button onclick="openWhatsApp()" aria-label="Conversar pelo WhatsApp" class="wa-fab">
- <i class="fa-brands fa-whatsapp"></i>
-</button>
+<!-- TELA DE SISTEMA PAUSADO -->
+<div id="systemPauseLayer">
+ <div class="max-w-md w-full arch-card p-7 text-center bg-nightPlum">
+  <span class="reforma-strip inline-block mb-4">Sistema Pausado</span>
+  <h2 class="arch-heading text-2xl mb-2">SISTEMA EM PAUSA</h2>
+  <p class="text-xs text-silverMist mb-6">O sistema foi pausado pela administração.</p>
+  <button onclick="togglePauseSystem()" class="arch-btn-primary w-full">
+   <i class="fa-solid fa-play"></i> Retomar sistema
+  </button>
+ </div>
+</div>
+
+<!-- MODAL DE CÓDIGO DE ADMINISTRAÇÃO -->
+<div id="adminGateModal" class="modal-layer" onclick="if(event.target===this)closeAdminModal()">
+ <div class="modal-box" style="max-width:420px">
+  <div class="flex items-center justify-between mb-4">
+   <h3 class="arch-heading text-lg">Codigos Administração</h3>
+   <button onclick="closeAdminModal()" class="w-8 h-8 border border-line grid place-items-center text-xs"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <p class="text-xs text-silverMist mb-3">Digite o código para liberar a versão de administração automaticamente.</p>
+  <input id="adminCodeField" type="text" class="arch-input font-mono tracking-wider" placeholder="Digite o código..." oninput="watchAdminCode(this.value)">
+  <p id="adminCodeHint" class="text-[11px] text-silverMist mt-2">Aguardando código...</p>
+ </div>
+</div>
 
 <!-- MODAL DE DEMONSTRAÇÃO -->
-<div id="demoModal" class="modal-backdrop" onclick="if(event.target===this)closeDemo()">
- <div class="modal-panel">
+<div id="demoModal" class="modal-layer" onclick="if(event.target===this)closeDemoModal()">
+ <div class="modal-box">
   <div class="flex items-start justify-between gap-4 pb-4 mb-5 border-b border-line">
    <div>
-    <div class="eyebrow" id="demoTag">DEMONSTRAÇÃO</div>
-    <h2 id="demoTitle" class="display-title text-3xl sm:text-4xl mt-1">Projeto</h2>
+    <span class="arch-label" id="demoModalTag">APLICAÇÃO</span>
+    <h2 id="demoModalTitle" class="arch-heading text-2xl sm:text-3xl mt-1">DEMO</h2>
    </div>
-   <button onclick="closeDemo()" class="w-9 h-9 rounded-full border border-line bg-surface text-ink grid place-items-center hover:border-ink" aria-label="Fechar"><i class="fa-solid fa-xmark text-xs"></i></button>
+   <button onclick="closeDemoModal()" class="w-9 h-9 border border-line grid place-items-center text-xs" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
   </div>
-  <div id="demoContent"></div>
-  <p class="text-[11px] text-graphite mt-5 text-center">Ambiente ilustrativo de demonstração — sem cobranças ou transações reais.</p>
+  <div id="demoModalBody"></div>
  </div>
 </div>
-
-<!-- MODAL DE PREFERÊNCIAS -->
-<div id="preferencesModal" class="modal-backdrop" onclick="if(event.target===this)togglePreferences()">
- <div class="modal-panel" style="max-width:460px">
-  <div class="flex justify-between items-center mb-5">
-   <h3 class="display-title text-3xl">Preferências</h3>
-   <button onclick="togglePreferences()" class="w-9 h-9 rounded-full border border-line bg-surface text-ink grid place-items-center" aria-label="Fechar preferências"><i class="fa-solid fa-xmark text-xs"></i></button>
-  </div>
-
-  <label class="text-xs font-semibold block mb-2 text-graphite">IDIOMA</label>
-  <div class="grid grid-cols-3 gap-2 mb-6">
-   <button onclick="setStudioLanguage('pt')" class="btn-ghost !py-2 text-xs">Português</button>
-   <button onclick="setStudioLanguage('en')" class="btn-ghost !py-2 text-xs">English</button>
-   <button onclick="setStudioLanguage('es')" class="btn-ghost !py-2 text-xs">Español</button>
-  </div>
-
-  <label class="text-xs font-semibold block mb-2 text-graphite">AJUSTE VISUAL</label>
-  <div class="grid grid-cols-2 gap-2">
-   <button onclick="setColorblindMode('normal')" class="btn-ghost !py-2 text-xs">Padrão</button>
-   <button onclick="setColorblindMode('protanopia')" class="btn-ghost !py-2 text-xs">Protanopia</button>
-   <button onclick="setColorblindMode('deuteranopia')" class="btn-ghost !py-2 text-xs">Deuteranopia</button>
-   <button onclick="setColorblindMode('highcontrast')" class="btn-ghost !py-2 text-xs">Alto contraste</button>
-  </div>
- </div>
-</div>
-
-<!-- EASTER EGG DA FLOR -->
-<div id="flowerOverlay" class="fixed inset-0 z-[700] hidden items-center justify-center p-5 bg-paper/95 backdrop-blur-sm">
- <button onclick="closeFlower()" class="absolute top-6 right-6 w-10 h-10 rounded-full border border-line bg-surface text-ink grid place-items-center" aria-label="Fechar"><i class="fa-solid fa-xmark text-xs"></i></button>
- <div class="max-w-lg w-full text-center">
-  <div class="eyebrow mb-3">UM NOVO COMEÇO</div>
-  <div id="flowerScene" class="relative mx-auto" style="height:280px;max-width:280px">
-   <div class="absolute bottom-5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-accent" id="flowerSeed"></div>
-   <div id="flowerStem" class="absolute bottom-7 left-1/2 -translate-x-1/2 w-1.5 rounded-full" style="height:0;background:var(--moss);transform-origin:bottom;transition:height 1.8s ease"></div>
-   <div id="flowerLeafLeft" class="absolute left-1/2 bottom-[110px] w-10 h-6 rounded-tl-full rounded-br-full opacity-0" style="background:var(--moss);transform:rotate(-35deg);transition:opacity .9s"></div>
-   <div id="flowerLeafRight" class="absolute left-1/2 bottom-[145px] w-10 h-6 rounded-tr-full rounded-bl-full opacity-0" style="background:#3F785F;transform:rotate(35deg);transition:opacity .9s"></div>
-   <div id="flowerHead" class="absolute left-1/2 top-[44px] -translate-x-1/2 w-32 h-32 opacity-0 scale-0" style="transition:all 1.3s cubic-bezier(.2,.8,.2,1)">
-    <div id="flowerPetals" class="absolute inset-0"></div>
-    <div class="absolute w-8 h-8 rounded-full bg-ink top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"></div>
-   </div>
-   <div id="flowerParticles" class="absolute inset-0 pointer-events-none"></div>
-  </div>
-  <h2 id="flowerPhrase" class="display-title text-3xl sm:text-4xl opacity-0 transition-opacity duration-700">
-   Ideias bem cuidadas ganham forma com o tempo.
-  </h2>
-  <p id="flowerSubtext" class="text-graphite text-sm mt-3 opacity-0 transition-opacity duration-700">Se quiser estruturar o seu projeto agora, estamos por aqui.</p>
-  <button id="flowerCTA" onclick="closeFlower();goPage('contact')" class="btn-dark mt-6 opacity-0 transition-opacity duration-700">Ir para o contato <i class="fa-solid fa-arrow-right text-xs"></i></button>
- </div>
-</div>
-
-<!-- THREE.JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-const NEXORA_WHATSAPP = '555189761893';
+const WA_NUMBER = '555189761893';
+const ADM_CODE = '062.151.210-96';
 
-/* =========================================================================
-   6 DEMONSTRAÇÕES COM ESTRUTURAS, CORES E DINÂMICAS DIFERENTES
-========================================================================= */
+/* SLIDES DO HERO */
+const heroSlides = [
+  {
+    idx: '01',
+    title: 'SISTEMAS E SITES SOB MEDIDA',
+    desc: 'Composição minimalista, estrutura clara e aplicações interativas criadas para cada segmento — sem repetir apenas lista de preços e WhatsApp.',
+    img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85'
+  },
+  {
+    idx: '02',
+    title: '10 APLICAÇÕES DIFERENTES',
+    desc: 'Simuladores, montadores de caixa, visagismo, lookbook, grade de treinos, rotina pet, cálculo de obra, ensaio, refeições e estudo musical.',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85'
+  },
+  {
+    idx: '03',
+    title: 'CONTROLE E MÓDULO IA',
+    desc: 'Aba de IA em construção com faixa amarela e painel de administração liberado pelo código de acesso.',
+    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85'
+  }
+];
+let currentHeroSlide = 0;
 
-function openDemo(type) {
-  const modal = document.getElementById('demoModal');
-  const titleEl = document.getElementById('demoTitle');
-  const tagEl = document.getElementById('demoTag');
-  const bodyEl = document.getElementById('demoContent');
+function renderHeroSlide() {
+  const s = heroSlides[currentHeroSlide];
+  if (!s) return;
+  document.getElementById('heroSlideIndex').textContent = s.idx;
+  document.getElementById('heroSlideTitle').textContent = s.title;
+  document.getElementById('heroSlideDesc').textContent = s.desc;
+  document.getElementById('heroSlideImg').src = s.img;
+}
 
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+function nextHeroSlide() {
+  currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+  renderHeroSlide();
+}
 
-  if (type === 'dentist') {
-    tagEl.textContent = 'SIMULADOR CLÍNICO • CLÍNICA VERA & COSTA';
-    titleEl.textContent = 'Odontologia & Estética';
-    bodyEl.innerHTML = renderDentistSim();
-    calcDentistSim();
-  } else if (type === 'bakery') {
-    tagEl.textContent = 'MONTADOR DE CAIXA • FORNO DA PRAÇA';
-    titleEl.textContent = 'Padaria & Café da Manhã';
-    bodyEl.innerHTML = renderBakeryBoxBuilder();
-    updateBakeryBox();
-  } else if (type === 'barber') {
-    tagEl.textContent = 'VISAGISMO E CORTE • OFICINA NAVALHA FINA';
-    titleEl.textContent = 'Barbearia & Cuidados';
-    bodyEl.innerHTML = renderBarberVisagism();
-    updateBarberRecommendation();
-  } else if (type === 'fashion') {
-    tagEl.textContent = 'MONTADOR DE LOOK • CASA LINHO & TRAMA';
-    titleEl.textContent = 'Alfaiataria & Casual';
-    bodyEl.innerHTML = renderFashionLookBuilder();
-    updateFashionLook();
-  } else if (type === 'fitness') {
-    tagEl.textContent = 'GRADE SEMANAL • RITMO & FÔLEGO';
-    titleEl.textContent = 'Estúdio de Movimento';
-    bodyEl.innerHTML = renderFitnessSchedule();
-    updateFitnessSchedule();
-  } else if (type === 'pet') {
-    tagEl.textContent = 'ROTINA POR PORTE • QUINTAL DOS BICHOS';
-    titleEl.textContent = 'Banho, Tosa & Cuidados';
-    bodyEl.innerHTML = renderPetRoutine();
-    updatePetRoutine();
+function prevHeroSlide() {
+  currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
+  renderHeroSlide();
+}
+
+/* ESTADO ADM */
+const admSections = [
+  { id: 'home', name: 'Início' },
+  { id: 'catalog', name: '10 Demos' },
+  { id: 'features', name: 'Recursos' },
+  { id: 'ai', name: 'IA (Construindo!)' },
+  { id: 'contracts', name: 'Planos' },
+  { id: 'contact', name: 'Contato' }
+];
+
+let admData = {
+  unlocked: false,
+  paused: false,
+  reforma: {},
+  alert: ''
+};
+
+try {
+  const raw = JSON.parse(localStorage.getItem('nx_arch_adm') || 'null');
+  if (raw && typeof raw === 'object') admData = { ...admData, ...raw };
+} catch (e) {}
+
+function saveAdmData() {
+  try { localStorage.setItem('nx_arch_adm', JSON.stringify(admData)); } catch (e) {}
+  syncAdmUI();
+}
+
+function openAdminModal() {
+  if (admData.unlocked) {
+    goPage('admin');
+    return;
+  }
+  document.getElementById('adminGateModal').classList.add('open');
+  const inp = document.getElementById('adminCodeField');
+  inp.value = '';
+  document.getElementById('adminCodeHint').textContent = 'Digite o código para liberar automaticamente.';
+  setTimeout(() => inp.focus(), 40);
+}
+
+function closeAdminModal() {
+  document.getElementById('adminGateModal').classList.remove('open');
+}
+
+function watchAdminCode(val) {
+  if ((val || '').trim() === ADM_CODE) {
+    admData.unlocked = true;
+    saveAdmData();
+    document.getElementById('adminCodeHint').textContent = 'Código confirmado! Abrindo administração...';
+    setTimeout(() => {
+      closeAdminModal();
+      goPage('admin');
+    }, 180);
   }
 }
 
-function closeDemo() {
-  document.getElementById('demoModal').classList.remove('open');
-  document.body.style.overflow = '';
+function lockAdmin() {
+  admData.unlocked = false;
+  saveAdmData();
+  goPage('home');
 }
 
-/* 1. ODONTOLOGIA: Simulador clínico com etapas, retorno e complexidade */
-function renderDentistSim() {
-  return `
-    <div class="rounded-2xl bg-[#EEF5F3] border border-[#C9DDD7] p-5 sm:p-6 text-[#182826]">
-      <div class="grid md:grid-cols-12 gap-6 items-start">
-        <div class="md:col-span-5">
-          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80" alt="Atendimento odontológico" class="w-full aspect-[4/3] object-cover rounded-xl mb-3">
-          <div class="rounded-xl bg-white/80 border border-[#C9DDD7] p-3.5 text-xs text-[#3F5854] space-y-1">
-            <strong class="block text-[#182826]">Como funciona a simulação</strong>
-            <span>• Combina objetivo clínico e ritmo de retorno.</span>
-            <span>• Estima duração média e faixa ilustrativa.</span>
-          </div>
-        </div>
-        <div class="md:col-span-7 space-y-4">
-          <label class="block text-xs font-semibold">Objetivo principal
-            <select id="dentGoal" class="field-input mt-1 bg-white" onchange="calcDentistSim()">
-              <option value="align" data-weeks="18" data-sessions="7" data-base="3200">Alinhamento discreto</option>
-              <option value="whitening" data-weeks="3" data-sessions="2" data-base="1150">Clareamento e limpeza</option>
-              <option value="rehab" data-weeks="10" data-sessions="5" data-base="2600">Restauração e estética</option>
-            </select>
-          </label>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <label class="block text-xs font-semibold">Frequência de retorno
-              <select id="dentPace" class="field-input mt-1 bg-white" onchange="calcDentistSim()">
-                <option value="1" data-mult="1">A cada 3 semanas</option>
-                <option value="0.85" data-mult="0.85">Acompanhamento quinzenal</option>
-              </select>
-            </label>
-            <label class="block text-xs font-semibold">Caso inicial
-              <select id="dentCase" class="field-input mt-1 bg-white" onchange="calcDentistSim()">
-                <option value="1">Leve a moderado</option>
-                <option value="1.15">Mais detalhado</option>
-              </select>
-            </label>
-          </div>
-          <div class="rounded-xl bg-white border border-[#C9DDD7] p-4">
-            <div class="text-xs text-[#455E5A]">Estimativa ilustrativa</div>
-            <div id="dentSummary" class="display-title text-2xl text-[#1D4E48] mt-1"></div>
-            <p id="dentDetail" class="text-xs text-[#455E5A] mt-1"></p>
-          </div>
-          <button onclick="sendDemoConsult('Clínica Vera & Costa', document.getElementById('dentSummary').textContent + ' — ' + document.getElementById('dentDetail').textContent)" class="btn-dark w-full">Agendar avaliação ilustrativa</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-function calcDentistSim() {
-  const goalSel = document.getElementById('dentGoal');
-  const paceSel = document.getElementById('dentPace');
-  const caseFactor = Number(document.getElementById('dentCase')?.value || 1);
-  if (!goalSel || !paceSel) return;
-  const opt = goalSel.options[goalSel.selectedIndex];
-  const mult = Number(paceSel.options[paceSel.selectedIndex].dataset.mult || 1);
-  const weeks = Math.max(2, Math.round(Number(opt.dataset.weeks) * mult * caseFactor));
-  const sessions = Math.max(2, Math.round(Number(opt.dataset.sessions) * caseFactor));
-  const val = Math.round(Number(opt.dataset.base) * caseFactor * (mult < 1 ? 1.06 : 1));
-  document.getElementById('dentSummary').textContent = `${opt.text} • ~${weeks} semanas (${sessions} visitas)`;
-  document.getElementById('dentDetail').textContent = `Faixa de referência ilustrativa: R$ ${val.toLocaleString('pt-BR')},00 (sujeita a avaliação presencial).`;
-}
-
-/* 2. PADARIA: Montador de caixa de encomenda com retirada ou entrega */
-const bakeryItems = [
-  { id: 'sourdough', name: 'Pão de fermentação natural', price: 18, note: 'Casca crocante e miolo úmido' },
-  { id: 'croissant', name: 'Croissant amanteigado', price: 14, note: 'Massa folhada na manteiga' },
-  { id: 'brioche', name: 'Brioche de canela', price: 13, note: 'Cobertura leve de açúcar e canela' },
-  { id: 'focaccia', name: 'Focaccia com alecrim', price: 16, note: 'Azeite extra virgem e flor de sal' }
-];
-let bakeryBox = { sourdough: 2, croissant: 2, brioche: 1, focaccia: 1 };
-
-function renderBakeryBoxBuilder() {
-  return `
-    <div class="rounded-2xl bg-[#261D18] border border-[#49372D] p-5 sm:p-6 text-[#F7EFE6]">
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+function renderAdmSwitches() {
+  const wrap = document.getElementById('adminReformList');
+  if (!wrap) return;
+  wrap.innerHTML = admSections.map(s => {
+    const activeReforma = !!admData.reforma[s.id];
+    return `
+      <div class="p-3 bg-panelPlum border border-line flex items-center justify-between gap-3">
         <div>
-          <span class="text-[11px] uppercase tracking-widest text-[#E0B084] font-semibold">Forno da Praça</span>
-          <h3 class="display-title text-3xl text-white mt-0.5">Monte sua caixa da manhã</h3>
+          <strong class="text-xs uppercase tracking-wider block">${s.name}</strong>
+          <span class="text-[11px] ${activeReforma ? 'text-[#FACC15] font-bold' : 'text-silverMist'}">${activeReforma ? 'Desativada — Em reforma' : 'Ativa'}</span>
         </div>
-        <select id="bakeryPickup" class="field-input !w-auto bg-[#342720] text-[#F7EFE6] border-[#584438] text-xs" onchange="updateBakeryBox()">
-          <option value="pickup" data-fee="0" data-label="Retirada no balcão (08h–10h)">Retirada no balcão (sem taxa)</option>
-          <option value="delivery" data-fee="9" data-label="Entrega local no bairro (+R$ 9,00)">Entrega local (+R$ 9,00)</option>
-        </select>
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-3 mb-5">
-        ${bakeryItems.map(item => `
-          <div class="rounded-xl bg-[#32261F] border border-[#4A382E] p-3.5 flex items-center justify-between gap-3">
-            <div>
-              <strong class="text-sm font-medium block">${item.name}</strong>
-              <span class="text-[11px] text-[#C8B5A5] block">${item.note}</span>
-              <span class="text-xs text-[#E0B084] font-medium">R$ ${item.price},00 un.</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="changeBakeryQty('${item.id}', -1)" class="w-7 h-7 rounded-full border border-[#6E5547] text-xs">-</button>
-              <span id="bq_${item.id}" class="text-sm font-semibold w-5 text-center">${bakeryBox[item.id]}</span>
-              <button onclick="changeBakeryQty('${item.id}', 1)" class="w-7 h-7 rounded-full bg-[#E0B084] text-[#261D18] text-xs font-bold">+</button>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#49372D]">
-        <div>
-          <span id="bakeryCount" class="text-xs text-[#D6C4B4] block"></span>
-          <strong id="bakeryTotal" class="display-title text-3xl text-[#E0B084]"></strong>
-        </div>
-        <button onclick="sendDemoConsult('Forno da Praça', document.getElementById('bakeryCount').textContent + ' — ' + document.getElementById('bakeryTotal').textContent + ' (' + document.getElementById('bakeryPickup').selectedOptions[0].dataset.label + ')')" class="btn-terracotta">Enviar encomenda de teste</button>
-      </div>
-    </div>`;
+        <button onclick="toggleSectionReforma('${s.id}')" class="${activeReforma ? 'arch-btn-primary' : 'arch-btn-ghost'} !py-1.5 !px-3 text-[10px]">
+          ${activeReforma ? 'Reativar' : 'Em reforma'}
+        </button>
+      </div>`;
+  }).join('');
 }
 
-function changeBakeryQty(id, delta) {
-  bakeryBox[id] = Math.max(0, Math.min(12, (bakeryBox[id] || 0) + delta));
-  const el = document.getElementById('bq_' + id);
-  if (el) el.textContent = bakeryBox[id];
-  updateBakeryBox();
+function toggleSectionReforma(id) {
+  admData.reforma[id] = !admData.reforma[id];
+  saveAdmData();
+  renderAdmSwitches();
 }
 
-function updateBakeryBox() {
-  const countEl = document.getElementById('bakeryCount');
-  const totalEl = document.getElementById('bakeryTotal');
-  const pickSel = document.getElementById('bakeryPickup');
-  if (!countEl || !totalEl || !pickSel) return;
-  const fee = Number(pickSel.selectedOptions[0]?.dataset.fee || 0);
-  let totalQty = 0;
-  let subtotal = 0;
-  bakeryItems.forEach(item => {
-    const q = bakeryBox[item.id] || 0;
-    totalQty += q;
-    subtotal += q * item.price;
+function togglePauseSystem() {
+  admData.paused = !admData.paused;
+  saveAdmData();
+}
+
+function applyAdminAlert() {
+  admData.alert = (document.getElementById('adminAlertInput')?.value || '').trim();
+  saveAdmData();
+}
+
+function clearAdminAlert() {
+  admData.alert = '';
+  const inp = document.getElementById('adminAlertInput');
+  if (inp) inp.value = '';
+  saveAdmData();
+}
+
+function resetAdminAll() {
+  admData.paused = false;
+  admData.reforma = {};
+  admData.alert = '';
+  const inp = document.getElementById('adminAlertInput');
+  if (inp) inp.value = '';
+  saveAdmData();
+  renderAdmSwitches();
+}
+
+function copyAdminStateText() {
+  const txt = `NEXORA ADM | Pausado: ${admData.paused ? 'SIM' : 'NÃO'} | Em reforma: ${Object.keys(admData.reforma).filter(k => admData.reforma[k]).join(', ') || 'Nenhuma'}`;
+  navigator.clipboard?.writeText(txt).catch(() => {});
+}
+
+function syncAdmUI() {
+  document.getElementById('systemPauseLayer')?.classList.toggle('active', !!admData.paused);
+  const pBtn = document.getElementById('pauseSystemActionBtn');
+  if (pBtn) {
+    pBtn.innerHTML = admData.paused
+      ? '<i class="fa-solid fa-play"></i> Retomar sistema'
+      : '<i class="fa-solid fa-pause"></i> Pausar sistema';
+  }
+  admSections.forEach(s => {
+    document.getElementById('reforma-' + s.id)?.classList.toggle('hidden', !admData.reforma[s.id]);
   });
-  const totalPrice = totalQty > 0 ? subtotal + fee : 0;
-  countEl.textContent = `${totalQty} ${totalQty === 1 ? 'unidade' : 'unidades'}${fee > 0 && totalQty > 0 ? ' + taxa de entrega' : ''}`;
-  totalEl.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-}
-
-/* 3. BARBEARIA: Guia de visagismo por formato de rosto e densidade */
-let selectedFaceShape = 'Oval';
-
-function renderBarberVisagism() {
-  return `
-    <div class="rounded-2xl bg-[#181C22] border border-[#2F3642] p-5 sm:p-6 text-[#ECEFF4]">
-      <div class="grid md:grid-cols-2 gap-6 items-start">
-        <div class="space-y-4">
-          <h3 class="display-title text-3xl text-white">Consultor de corte e barba</h3>
-          <p class="text-xs text-[#A3ABB8]">Escolha o formato do rosto, a densidade dos fios e o tempo disponível de manhã.</p>
-          <div>
-            <span class="text-xs font-semibold block mb-2 text-[#D5C39E]">Formato do rosto</span>
-            <div class="grid grid-cols-3 gap-2" id="faceShapeGroup">
-              <button type="button" data-face="Oval" onclick="selectFaceShape(this)" class="btn-ghost !border-[#D5C39E] !text-[#ECEFF4] !py-2 text-xs !bg-[#232933]">Oval</button>
-              <button type="button" data-face="Quadrado" onclick="selectFaceShape(this)" class="btn-ghost !border-[#3D4654] !text-[#ECEFF4] !py-2 text-xs">Quadrado</button>
-              <button type="button" data-face="Redondo" onclick="selectFaceShape(this)" class="btn-ghost !border-[#3D4654] !text-[#ECEFF4] !py-2 text-xs">Redondo</button>
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <label class="block text-xs font-semibold text-[#D5C39E]">Densidade do cabelo
-              <select id="barberDensity" class="field-input mt-1 bg-[#232933] text-white border-[#3D4654]" onchange="updateBarberRecommendation()">
-                <option value="normal">Média / equilibrada</option>
-                <option value="dense">Cheia / volumosa</option>
-              </select>
-            </label>
-            <label class="block text-xs font-semibold text-[#D5C39E]">Rotina matinal
-              <select id="barberRoutine" class="field-input mt-1 bg-[#232933] text-white border-[#3D4654]" onchange="updateBarberRecommendation()">
-                <option value="quick">Até 3 min (prático)</option>
-                <option value="styled">5 a 8 min (modelado)</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="rounded-xl bg-[#222832] border border-[#353E4D] p-5">
-          <span class="text-[11px] uppercase tracking-wider text-[#D5C39E] font-semibold">Sugestão recomendada</span>
-          <h4 id="barberStyleTitle" class="display-title text-2xl text-white mt-1 mb-2"></h4>
-          <p id="barberStyleDesc" class="text-xs text-[#C4CBD6] leading-relaxed mb-4"></p>
-          <button onclick="sendDemoConsult('Oficina Navalha Fina', document.getElementById('barberStyleTitle').textContent)" class="btn-terracotta w-full">Reservar este estilo</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-function selectFaceShape(btn) {
-  selectedFaceShape = btn.dataset.face;
-  document.querySelectorAll('#faceShapeGroup button').forEach(b => {
-    b.classList.remove('!bg-[#232933]', '!border-[#D5C39E]');
-    b.classList.add('!border-[#3D4654]');
-  });
-  btn.classList.remove('!border-[#3D4654]');
-  btn.classList.add('!bg-[#232933]', '!border-[#D5C39E]');
-  updateBarberRecommendation();
-}
-
-function updateBarberRecommendation() {
-  const titleEl = document.getElementById('barberStyleTitle');
-  const descEl = document.getElementById('barberStyleDesc');
-  if (!titleEl || !descEl) return;
-  const routine = document.getElementById('barberRoutine')?.value || 'quick';
-  const density = document.getElementById('barberDensity')?.value || 'normal';
-  const extraTip = density === 'dense' ? ' Alívio de volume nas laterais ajuda no caimento.' : ' Textura leve preserva o movimento natural.';
-  const map = {
-    Oval: {
-      quick: ['Corte social alinhado + barba curta', 'Mantém a harmonia natural do rosto com acabamento limpo e prático.' + extraTip],
-      styled: ['Texturizado médio + barba desenhada', 'Traz volume leve no topo para modelar com pasta fosca sem pesar.' + extraTip]
-    },
-    Quadrado: {
-      quick: ['Laterais baixas limpas + contorno natural', 'Valoriza a linha da mandíbula com manutenção rápida no dia a dia.' + extraTip],
-      styled: ['Corte clássico repartido + barba aparada', 'Reforça a estrutura angular com caimento definido.' + extraTip]
-    },
-    Redondo: {
-      quick: ['Laterais mais curtas + leve altura no topo', 'Alongam visualmente o rosto mantendo praticidade nas manhãs.' + extraTip],
-      styled: ['Topete suave + barba mais alongada no queixo', 'Equilibra proporções com finalização leve.' + extraTip]
+  const bar = document.getElementById('globalAlertBanner');
+  const txt = document.getElementById('globalAlertText');
+  if (bar && txt) {
+    if (admData.alert) {
+      txt.textContent = admData.alert;
+      bar.classList.remove('hidden');
+    } else {
+      bar.classList.add('hidden');
     }
-  };
-  const pair = map[selectedFaceShape]?.[routine] || map.Oval.quick;
-  titleEl.textContent = pair[0];
-  descEl.textContent = pair[1];
-}
-
-/* 4. MODA AUTORAL: Montador de look em camadas (base + sobreposição + acessório) */
-const basePieces = [
-  { name: 'Camisa de linho cru', price: 169 },
-  { name: 'Camiseta malha penteada', price: 89 }
-];
-const outerPieces = [
-  { name: 'Sobretudo leve areia', price: 249 },
-  { name: 'Jaqueta sarja carvão', price: 210 },
-  { name: 'Sem terceira peça', price: 0 }
-];
-const accessoryPieces = [
-  { name: 'Cinto couro tabaco', price: 79 },
-  { name: 'Lenço algodão cru', price: 54 },
-  { name: 'Sem acessório extra', price: 0 }
-];
-
-function renderFashionLookBuilder() {
-  return `
-    <div class="rounded-2xl bg-[#F3EFE6] border border-[#D8D0C0] p-5 sm:p-6 text-[#1E1C19]">
-      <h3 class="display-title text-3xl mb-1">Montador de conjunto</h3>
-      <p class="text-xs text-[#5E584F] mb-5">Monte uma combinação de peças e veja o valor total do conjunto.</p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
-        <label class="text-xs font-semibold">Peça base
-          <select id="lookBase" class="field-input mt-1 bg-white" onchange="updateFashionLook()">
-            ${basePieces.map((p,i)=>`<option value="${i}">${p.name} (R$ ${p.price})</option>`).join('')}
-          </select>
-        </label>
-        <label class="text-xs font-semibold">Sobreposição
-          <select id="lookOuter" class="field-input mt-1 bg-white" onchange="updateFashionLook()">
-            ${outerPieces.map((p,i)=>`<option value="${i}">${p.name}${p.price?` (+R$ ${p.price})`:''}</option>`).join('')}
-          </select>
-        </label>
-        <label class="text-xs font-semibold">Acessório
-          <select id="lookAcc" class="field-input mt-1 bg-white" onchange="updateFashionLook()">
-            ${accessoryPieces.map((p,i)=>`<option value="${i}">${p.name}${p.price?` (+R$ ${p.price})`:''}</option>`).join('')}
-          </select>
-        </label>
-        <label class="text-xs font-semibold">Tamanho
-          <select id="lookSize" class="field-input mt-1 bg-white" onchange="updateFashionLook()">
-            <option>P</option><option selected>M</option><option>G</option><option>GG</option>
-          </select>
-        </label>
-      </div>
-      <div class="rounded-xl bg-white border border-[#D8D0C0] p-4 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div id="lookDesc" class="text-sm font-medium"></div>
-          <div id="lookTotal" class="display-title text-3xl text-[#9E532E] mt-0.5"></div>
-        </div>
-        <button onclick="sendDemoConsult('Casa Linho & Trama', document.getElementById('lookDesc').textContent + ' — ' + document.getElementById('lookTotal').textContent)" class="btn-dark">Consultar disponibilidade</button>
-      </div>
-    </div>`;
-}
-
-function updateFashionLook() {
-  const bIdx = Number(document.getElementById('lookBase')?.value || 0);
-  const oIdx = Number(document.getElementById('lookOuter')?.value || 0);
-  const aIdx = Number(document.getElementById('lookAcc')?.value || 0);
-  const size = document.getElementById('lookSize')?.value || 'M';
-  const base = basePieces[bIdx] || basePieces[0];
-  const outer = outerPieces[oIdx] || outerPieces[0];
-  const acc = accessoryPieces[aIdx] || accessoryPieces[0];
-  const total = base.price + outer.price + acc.price;
-  const parts = [base.name];
-  if (outer.price > 0) parts.push(outer.name);
-  if (acc.price > 0) parts.push(acc.name);
-  const descEl = document.getElementById('lookDesc');
-  const totEl = document.getElementById('lookTotal');
-  if (descEl) descEl.textContent = `${parts.join(' + ')} (Tam. ${size})`;
-  if (totEl) totEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-}
-
-/* 5. ESTÚDIO DE MOVIMENTO: Planejador semanal de treinos */
-function renderFitnessSchedule() {
-  return `
-    <div class="rounded-2xl bg-[#EBF1EE] border border-[#C6D6CE] p-5 sm:p-6 text-[#182620]">
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-        <div>
-          <h3 class="display-title text-3xl">Grade semanal de prática</h3>
-          <p class="text-xs text-[#485E54]">Escolha o foco principal e a quantidade de dias para montar uma rotina.</p>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <select id="fitFocus" class="field-input !w-auto bg-white text-xs" onchange="updateFitnessSchedule()">
-            <option value="balance">Equilíbrio e postura</option>
-            <option value="strength">Força e resistência</option>
-          </select>
-          <select id="fitDays" class="field-input !w-auto bg-white text-xs" onchange="updateFitnessSchedule()">
-            <option value="3">3x na semana</option>
-            <option value="4">4x na semana</option>
-          </select>
-        </div>
-      </div>
-      <div id="fitDaysGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5"></div>
-      <button onclick="sendDemoConsult('Ritmo & Fôlego', 'Grade ' + document.getElementById('fitDays').value + 'x/semana — ' + document.getElementById('fitFocus').selectedOptions[0].text)" class="btn-dark">Agendar aula experimental</button>
-    </div>`;
-}
-
-function updateFitnessSchedule() {
-  const grid = document.getElementById('fitDaysGrid');
-  if (!grid) return;
-  const focus = document.getElementById('fitFocus')?.value || 'balance';
-  const days = Number(document.getElementById('fitDays')?.value || 3);
-  const basePlan = focus === 'strength'
-    ? [
-        ['Segunda', 'Força funcional (45 min)'],
-        ['Quarta', 'Estabilidade e core (40 min)'],
-        ['Sexta', 'Condicionamento ritmo (45 min)'],
-        ['Sábado', 'Mobilidade leve (30 min)']
-      ]
-    : [
-        ['Terça', 'Mobilidade articular (35 min)'],
-        ['Quinta', 'Controle e postura (45 min)'],
-        ['Sábado', 'Movimento livre e alongamento (40 min)'],
-        ['Segunda', 'Ritmo aeróbico moderado (35 min)']
-      ];
-  grid.innerHTML = basePlan.slice(0, days).map(([day, act]) => `
-    <div class="rounded-xl bg-white border border-[#C6D6CE] p-4">
-      <span class="text-[11px] font-bold uppercase text-[#2D5A47]">${day}</span>
-      <strong class="block text-sm font-medium mt-1">${act}</strong>
-    </div>
-  `).join('');
-}
-
-/* 6. PET CARE: Calculadora de rotina e cuidados por porte e energia */
-function renderPetRoutine() {
-  return `
-    <div class="rounded-2xl bg-[#F7F1E5] border border-[#DFD2BC] p-5 sm:p-6 text-[#272118]">
-      <h3 class="display-title text-3xl mb-1">Cronograma de cuidados do pet</h3>
-      <p class="text-xs text-[#615646] mb-5">Selecione porte, pelagem e nível de energia para ver uma rotina sugerida.</p>
-      <div class="grid sm:grid-cols-3 gap-3 mb-5">
-        <label class="text-xs font-semibold">Porte do animal
-          <select id="petSize" class="field-input mt-1 bg-white" onchange="updatePetRoutine()">
-            <option value="Pequeno">Pequeno (até 10 kg)</option>
-            <option value="Médio" selected>Médio (10 a 25 kg)</option>
-            <option value="Grande">Grande (+25 kg)</option>
-          </select>
-        </label>
-        <label class="text-xs font-semibold">Pelagem
-          <select id="petCoat" class="field-input mt-1 bg-white" onchange="updatePetRoutine()">
-            <option value="curta">Pelo curto</option>
-            <option value="longa">Pelo longo ou denso</option>
-          </select>
-        </label>
-        <label class="text-xs font-semibold">Energia diária
-          <select id="petEnergy" class="field-input mt-1 bg-white" onchange="updatePetRoutine()">
-            <option value="calma">Calma / moderada</option>
-            <option value="alta" selected>Alta / ativa</option>
-          </select>
-        </label>
-      </div>
-      <div id="petResultBox" class="rounded-xl bg-white border border-[#DFD2BC] p-4 mb-4 text-xs leading-relaxed"></div>
-      <button onclick="sendDemoConsult('Quintal dos Bichos', document.getElementById('petResultBox').innerText)" class="btn-terracotta">Solicitar atendimento do pet</button>
-    </div>`;
-}
-
-function updatePetRoutine() {
-  const box = document.getElementById('petResultBox');
-  if (!box) return;
-  const size = document.getElementById('petSize')?.value || 'Médio';
-  const coat = document.getElementById('petCoat')?.value || 'curta';
-  const energy = document.getElementById('petEnergy')?.value || 'alta';
-  const bathFreq = coat === 'longa' ? 'a cada 10 a 14 dias' : 'a cada 14 a 21 dias';
-  const brushTip = coat === 'longa' ? 'escovação 3x por semana' : 'escovação semanal';
-  const walkNote = energy === 'alta'
-    ? 'Passeios diários mais longos com estímulo físico e mental.'
-    : 'Saídas tranquilas e curtas no ritmo do animal.';
-  box.innerHTML = `<strong>Porte ${size} • Pelo ${coat}:</strong> Banho sugerido ${bathFreq}, ${brushTip} e ${walkNote.toLowerCase()}`;
-}
-
-function sendDemoConsult(brand, summary) {
-  const msg = `Olá! Vi a demonstração do ${brand} na NEXORA Studio. Seleção: ${summary}`;
-  window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=` + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
-}
-
-/* =========================================================================
-   18 RECURSOS INTERATIVOS
-========================================================================= */
-const featureList = [
-  ['Aparição suave', 'Elementos surgem de forma discreta conforme a leitura avança.', 'fa-eye'],
-  ['Contadores numéricos', 'Indicadores exibem valores de referência com fluidez.', 'fa-arrow-up-9-1'],
-  ['Resposta ao toque', 'Cartões reagem com sutileza ao cursor ou toque.', 'fa-hand-pointer'],
-  ['Barra de progresso', 'Linha superior acompanha o avanço na página.', 'fa-minus'],
-  ['Troca de seções', 'Navegação entre abas e páginas sem recarregar.', 'fa-shuffle'],
-  ['Identidade por segmento', 'Paleta e estrutura ajustadas ao perfil de cada negócio.', 'fa-palette'],
-  ['Base mobile-first', 'Leitura confortável em telas pequenas e grandes.', 'fa-mobile-screen'],
-  ['Cartões informativos', 'Organização clara de serviços, etapas e destaques.', 'fa-id-card'],
-  ['Comparativo de cenários', 'Lado a lado para comparar abordagens visuais.', 'fa-columns'],
-  ['Slider antes e depois', 'Controle deslizante para comparar dois estados.', 'fa-sliders'],
-  ['Catálogo filtrável', 'Filtro rápido por categoria para explorar projetos.', 'fa-filter'],
-  ['Simuladores', 'Cálculos interativos baseados nos dados informados.', 'fa-calculator'],
-  ['Assistente de escolha', 'Perguntas curtas que apontam opções adequadas.', 'fa-compass'],
-  ['FAQ expansível', 'Respostas diretas que abrem apenas quando necessário.', 'fa-circle-question'],
-  ['Prévia editável', 'Teste local de alteração de texto antes de publicar.', 'fa-pen'],
-  ['Mensagem pronta', 'Abertura rápida de conversa com contexto preenchido.', 'fa-comment-dots'],
-  ['Copiar texto', 'Cópia prática de informações para a área de transferência.', 'fa-copy'],
-  ['Etapas guiadas', 'Coleta de informações dividida em passos simples.', 'fa-list-check']
-];
-
-const featureGrid = document.getElementById('featureGrid');
-featureGrid.innerHTML = featureList.map((f, i) => `
-  <article class="editorial-card p-5 flex flex-col">
-    <div class="flex items-center justify-between mb-3">
-      <span class="w-9 h-9 rounded-full bg-sand text-ink grid place-items-center text-xs"><i class="fa-solid ${f[2]}"></i></span>
-      <span class="text-[11px] font-medium text-graphite">${String(i+1).padStart(2,'0')}</span>
-    </div>
-    <h3 class="display-title text-2xl mb-1.5">${f[0]}</h3>
-    <p class="text-xs text-graphite leading-relaxed flex-1">${f[1]}</p>
-    <button onclick="testFeature(${i})" class="btn-ghost w-full mt-4 !py-2 text-xs">Testar módulo</button>
-  </article>
-`).join('');
-
-function updateBeforeAfter(val) {
-  const pct = Math.max(5, Math.min(95, Number(val) || 50));
-  const overlay = document.getElementById('baOverlay');
-  const label = document.getElementById('sliderPercent');
-  if (overlay) overlay.style.width = pct + '%';
-  if (label) label.textContent = pct + '%';
-}
-
-function testFeature(index) {
-  const actions = [
-    () => showFeatureModal('Aparição suave', 'As seções entram com deslocamento curto e discreto ao navegar.'),
-    () => showFeatureModal('Contador numérico', '<span id="testCounter" class="display-title text-5xl text-accent block mb-2">0</span>Progresso ilustrativo de 0 a 100.'),
-    () => showFeatureModal('Resposta ao toque', '<div id="tiltBox" class="p-6 rounded-xl bg-sand border border-line text-center text-ink text-xs font-medium transition-transform duration-150">Mova o mouse ou toque aqui</div>'),
-    () => showFeatureModal('Barra de progresso', 'A linha fina no topo da janela indica sua posição na página.'),
-    () => showFeatureModal('Troca de seções', 'A navegação alterna entre Início, Projetos, Recursos, Planos, Direção e Contato.'),
-    () => { closeFeatureModal(); goPage('catalog'); },
-    () => showFeatureModal('Base mobile-first', 'O layout se adapta às larguras de celular mantendo botões acessíveis.'),
-    () => showFeatureModal('Cartões informativos', 'Agrupam título, contexto e ação sem excesso de elementos.'),
-    () => showFeatureModal('Comparativo de cenários', 'Permite contrastar duas propostas visuais ou de serviço.'),
-    () => { closeFeatureModal(); document.getElementById('beforeAfterSlider')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
-    () => { closeFeatureModal(); goPage('catalog'); },
-    () => { closeFeatureModal(); document.getElementById('roiVisits')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
-    () => showFeatureModal('Assistente de escolha', '<p class="mb-3">Que tipo de fluxo você prefere para seus clientes?</p><div class="grid gap-2"><button class="btn-ghost text-xs" onclick="showFeatureModal(\'Sugestão\',\'Simulador ou orçamento rápido para reduzir dúvidas.\')">Simulador ou estimativa</button><button class="btn-ghost text-xs" onclick="showFeatureModal(\'Sugestão\',\'Página direta com serviços claros e contato imediato.\')">Apresentação direta</button></div>'),
-    () => showFeatureModal('FAQ expansível', '<details class="py-2 border-b border-line"><summary class="font-medium text-xs cursor-pointer">Funciona bem no celular?</summary><p class="text-xs mt-1">Sim, o layout se reorganiza para telas pequenas.</p></details><details class="py-2"><summary class="font-medium text-xs cursor-pointer">Como solicito alterações?</summary><p class="text-xs mt-1">Conforme o escopo ou plano acordado no projeto.</p></details>'),
-    () => showFeatureModal('Prévia editável', '<p class="mb-2">Altere o texto abaixo apenas para teste local:</p><input id="liveEditInput" class="field-input mb-2" value="Atendimento com hora marcada"><button class="btn-dark text-xs" onclick="document.getElementById(\'liveEditPreview\').textContent=document.getElementById(\'liveEditInput\').value">Aplicar prévia</button><p id="liveEditPreview" class="mt-3 p-3 rounded-xl bg-sand text-ink font-medium">Atendimento com hora marcada</p>'),
-    () => { const msg = 'Olá! Gostaria de conversar com a NEXORA sobre um site.'; window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=` + encodeURIComponent(msg), '_blank', 'noopener,noreferrer'); },
-    () => {
-      const txt = 'NEXORA Studio — Design e desenvolvimento web sob medida.';
-      if (navigator.clipboard?.writeText) {
-        navigator.clipboard.writeText(txt).then(() => showFeatureModal('Copiado', 'Texto copiado para a área de transferência.')).catch(() => showFeatureModal('Texto', txt));
-      } else {
-        showFeatureModal('Texto', txt);
-      }
-    },
-    () => showFeatureModal('Etapas guiadas', '<div id="step1"><p class="mb-2">Passo 1 de 2: nome do seu negócio</p><input id="stepBusiness" class="field-input mb-2" placeholder="Ex.: Café Central"><button class="btn-dark text-xs" onclick="nextGuidedStep()">Próximo passo</button></div>')
-  ];
-  actions[index]?.();
-}
-
-function nextGuidedStep() {
-  const val = document.getElementById('stepBusiness')?.value.trim();
-  if (!val) return;
-  document.getElementById('step1').innerHTML = `<p class="mb-2">Passo 2 de 2: segmento de <strong>${val}</strong></p><select class="field-input mb-3"><option>Serviços</option><option>Alimentação</option><option>Comércio</option><option>Saúde / Bem-estar</option></select><button class="btn-terracotta text-xs" onclick="showFeatureModal('Pronto','Etapa concluída para ${val}.')">Concluir teste</button>`;
-}
-
-function showFeatureModal(title, html) {
-  let modal = document.getElementById('featureTestModal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'featureTestModal';
-    modal.className = 'modal-backdrop';
-    modal.innerHTML = `<div class="modal-panel" style="max-width:480px"><div class="flex justify-between items-center mb-4"><h3 id="featureTestTitle" class="display-title text-3xl"></h3><button onclick="closeFeatureModal()" class="w-8 h-8 rounded-full border border-line bg-surface text-ink grid place-items-center"><i class="fa-solid fa-xmark text-xs"></i></button></div><div id="featureTestBody" class="text-xs text-graphite leading-relaxed"></div></div>`;
-    document.body.appendChild(modal);
-  }
-  document.getElementById('featureTestTitle').textContent = title;
-  document.getElementById('featureTestBody').innerHTML = html;
-  modal.classList.add('open');
-
-  const counter = document.getElementById('testCounter');
-  if (counter) {
-    let n = 0;
-    const timer = setInterval(() => {
-      n += 5;
-      counter.textContent = n;
-      if (n >= 100) clearInterval(timer);
-    }, 30);
-  }
-
-  const tilt = document.getElementById('tiltBox');
-  if (tilt) {
-    tilt.addEventListener('pointermove', e => {
-      const r = tilt.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width;
-      const y = (e.clientY - r.top) / r.height;
-      tilt.style.transform = `perspective(400px) rotateX(${(0.5 - y) * 12}deg) rotateY(${(x - 0.5) * 12}deg)`;
-    });
-    tilt.addEventListener('pointerleave', () => { tilt.style.transform = 'none'; });
   }
 }
 
-function closeFeatureModal() {
-  document.getElementById('featureTestModal')?.classList.remove('open');
-}
-
-/* =========================================================================
-   SIMULADOR ROI E ESCOPO
-========================================================================= */
-function calculateROI() {
-  const visits = Number(document.getElementById('roiVisits').value);
-  const ticket = Number(document.getElementById('roiTicket').value);
-  const rate = Number(document.getElementById('roiRate').value);
-  if (!Number.isFinite(visits) || !Number.isFinite(ticket) || !Number.isFinite(rate) || visits < 0 || ticket < 0 || rate < 0 || rate > 100) {
-    return;
-  }
-  const sales = visits * rate / 100;
-  const revenue = sales * ticket;
-  document.getElementById('roiResult').textContent = revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  document.getElementById('roiDetails').textContent = `Estimativa de ${sales.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} vendas/mês (cenário hipotético).`;
-}
-
-function calcScopeEstimate() {
-  const sel = document.getElementById('scopePlanSelect');
-  const extrasInput = document.getElementById('scopeExtrasCount');
-  const out = document.getElementById('scopeTotalOutput');
-  if (!sel || !extrasInput || !out) return;
-  const base = Number(sel.value || 149);
-  const extras = Math.max(0, Math.min(20, Number(extrasInput.value || 0)));
-  extrasInput.value = extras;
-  const total = base + extras * 11.99;
-  out.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-function applyScopeToContact() {
-  const sel = document.getElementById('scopePlanSelect');
-  const extras = Math.max(0, Number(document.getElementById('scopeExtrasCount')?.value || 0));
-  const totalTxt = document.getElementById('scopeTotalOutput')?.textContent || '';
-  const planLabel = sel?.selectedOptions[0]?.dataset.label || '';
-  goPage('contact');
-  const contactPlan = document.getElementById('contactPlan');
-  const contactDetails = document.getElementById('contactDetails');
-  if (contactPlan && planLabel) {
-    const opt = [...contactPlan.options].find(o => o.text === planLabel);
-    if (opt) contactPlan.value = opt.value;
-  }
-  if (contactDetails) {
-    contactDetails.value = `Simulação de escopo: ${planLabel}, com ${extras} recurso(s) extra(s) (estimativa ilustrativa de ${totalTxt}).`;
-  }
-}
-
-/* =========================================================================
-   THREE.JS 3D
-========================================================================= */
-let carScene = null, carCamera = null, carRenderer = null, carGroup = null;
-let carBodyMaterial = null, carAutoRotate = true;
-let carDragging = false, carLastX = 0, carLastY = 0, carPointerY = 0;
-let carZoom = 8, carInitialized = false;
-
-function initCar3D() {
-  const stage = document.getElementById('car3DStage');
-  if (!stage || carInitialized) return;
-  if (!window.THREE) {
-    document.getElementById('car3DLoading').textContent = 'Visualização 3D indisponível no momento.';
-    return;
-  }
-  carInitialized = true;
-  const THREE = window.THREE;
-  carScene = new THREE.Scene();
-  carScene.background = new THREE.Color(0xECE7DC);
-  carScene.fog = new THREE.Fog(0xECE7DC, 13, 28);
-
-  carCamera = new THREE.PerspectiveCamera(40, stage.clientWidth / stage.clientHeight, .1, 100);
-  carCamera.position.set(6, 4, carZoom);
-
-  carRenderer = new THREE.WebGLRenderer({ antialias: true });
-  carRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  carRenderer.setSize(stage.clientWidth, stage.clientHeight);
-  carRenderer.shadowMap.enabled = true;
-  carRenderer.outputEncoding = THREE.sRGBEncoding;
-  stage.appendChild(carRenderer.domElement);
-  document.getElementById('car3DLoading')?.remove();
-
-  carScene.add(new THREE.HemisphereLight(0xFFFFFF, 0xCFC7B6, 2.2));
-  const key = new THREE.DirectionalLight(0xFFF6E5, 2.2);
-  key.position.set(4, 8, 5);
-  key.castShadow = true;
-  carScene.add(key);
-
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 200),
-    new THREE.MeshStandardMaterial({ color: 0xE3DDD0, roughness: .85 })
-  );
-  floor.rotation.x = -Math.PI / 2;
-  floor.position.y = -.8;
-  floor.receiveShadow = true;
-  carScene.add(floor);
-
-  const grid = new THREE.GridHelper(28, 28, 0xB5AEA0, 0xD5CFC2);
-  grid.position.y = -.78;
-  carScene.add(grid);
-
-  carGroup = new THREE.Group();
-  carScene.add(carGroup);
-
-  const paint = new THREE.MeshStandardMaterial({ color: 0x284B63, metalness: .65, roughness: .28 });
-  carBodyMaterial = paint;
-  const glass = new THREE.MeshStandardMaterial({ color: 0x202933, metalness: .35, roughness: .15 });
-  const rubber = new THREE.MeshStandardMaterial({ color: 0x181A1F, roughness: .9 });
-  const metal = new THREE.MeshStandardMaterial({ color: 0x8C95A2, metalness: .8, roughness: .25 });
-  const lamp = new THREE.MeshStandardMaterial({ color: 0xFFF4D2, emissive: 0xE6C27A, emissiveIntensity: .9 });
-
-  function box(w, h, d, mat, x, y, z) {
-    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-    m.position.set(x, y, z);
-    m.castShadow = true;
-    m.receiveShadow = true;
-    carGroup.add(m);
-    return m;
-  }
-
-  box(3.8, .65, 1.65, paint, 0, 0, 0);
-  box(1.1, .35, 1.65, paint, 1.25, .28, 0);
-  box(.85, .35, 1.65, paint, -1.35, .28, 0);
-  const roof = new THREE.Mesh(new THREE.BoxGeometry(1.9, .65, 1.42), paint);
-  roof.position.set(-.05, .75, 0);
-  roof.castShadow = true;
-  carGroup.add(roof);
-
-  box(.08, .48, 1.37, glass, .92, .76, 0);
-  box(.08, .48, 1.37, glass, -1.02, .76, 0);
-
-  function wheel(x, z) {
-    const tire = new THREE.Mesh(new THREE.CylinderGeometry(.42, .42, .28, 28), rubber);
-    tire.rotation.x = Math.PI / 2;
-    tire.position.set(x, -.34, z);
-    tire.castShadow = true;
-    carGroup.add(tire);
-    const rim = new THREE.Mesh(new THREE.CylinderGeometry(.23, .23, .295, 20), metal);
-    rim.rotation.x = Math.PI / 2;
-    rim.position.set(x, -.34, z);
-    carGroup.add(rim);
-  }
-  wheel(1.25, .88); wheel(1.25, -.88);
-  wheel(-1.25, .88); wheel(-1.25, -.88);
-
-  box(.12, .16, .5, lamp, 1.94, .03, .48);
-  box(.12, .16, .5, lamp, 1.94, .03, -.48);
-  carGroup.rotation.y = -.45;
-
-  const canvas = carRenderer.domElement;
-  canvas.addEventListener('pointerdown', e => {
-    carDragging = true;
-    carLastX = e.clientX;
-    carLastY = e.clientY;
-    canvas.setPointerCapture(e.pointerId);
-  });
-  canvas.addEventListener('pointermove', e => {
-    if (!carDragging) return;
-    carGroup.rotation.y += (e.clientX - carLastX) * .009;
-    carPointerY = Math.max(-.35, Math.min(.35, carPointerY + (e.clientY - carLastY) * .004));
-    carLastX = e.clientX;
-    carLastY = e.clientY;
-  });
-  canvas.addEventListener('pointerup', () => { carDragging = false; });
-  canvas.addEventListener('pointercancel', () => { carDragging = false; });
-  canvas.addEventListener('wheel', e => {
-    e.preventDefault();
-    carZoom = Math.max(5, Math.min(13, carZoom + e.deltaY * .008));
-    updateCarCamera();
-  }, { passive: false });
-
-  function animate() {
-    requestAnimationFrame(animate);
-    if (carAutoRotate && !carDragging) carGroup.rotation.y += .003;
-    carGroup.rotation.x = carPointerY;
-    carRenderer.render(carScene, carCamera);
-  }
-  animate();
-  window.addEventListener('resize', resizeCar3D);
-}
-
-function updateCarCamera() {
-  if (!carCamera) return;
-  const a = Math.atan2(carCamera.position.x, carCamera.position.z);
-  carCamera.position.x = Math.sin(a) * carZoom;
-  carCamera.position.z = Math.cos(a) * carZoom;
-  carCamera.lookAt(0, .1, 0);
-}
-
-function resizeCar3D() {
-  const stage = document.getElementById('car3DStage');
-  if (!stage || !carRenderer || !carCamera) return;
-  carCamera.aspect = stage.clientWidth / stage.clientHeight;
-  carCamera.updateProjectionMatrix();
-  carRenderer.setSize(stage.clientWidth, stage.clientHeight);
-}
-
-function changeCarColor(hex) {
-  if (carBodyMaterial) carBodyMaterial.color.setHex(hex);
-}
-
-function toggleCarRotation() {
-  carAutoRotate = !carAutoRotate;
-  const btn = document.getElementById('carRotateBtn');
-  if (btn) btn.innerHTML = carAutoRotate ? '<i class="fa-solid fa-pause"></i> Pausar' : '<i class="fa-solid fa-play"></i> Girar';
-}
-
-function resetCarView() {
-  if (!carGroup) return;
-  carGroup.rotation.set(0, -.45, 0);
-  carPointerY = 0;
-  carZoom = 8;
-  carCamera.position.set(6, 4, carZoom);
-  carCamera.lookAt(0, .1, 0);
-}
-
-/* =========================================================================
-   NAVEGAÇÃO, PREFERÊNCIAS, IDIOMAS E FLOR
-========================================================================= */
-const pageNames = ['home', 'catalog', 'features', 'contracts', 'marketing', 'contact'];
-
+/* NAVEGAÇÃO */
+const validPages = ['home', 'catalog', 'features', 'ai', 'contracts', 'contact', 'admin'];
 function goPage(page) {
-  if (!pageNames.includes(page)) page = 'home';
-  document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden-page'));
+  if (!validPages.includes(page)) page = 'home';
+  if (page === 'admin' && !admData.unlocked) {
+    openAdminModal();
+    return;
+  }
+  document.querySelectorAll('.page-view').forEach(sec => sec.classList.add('hidden-page'));
   document.getElementById('page-' + page)?.classList.remove('hidden-page');
-
-  document.querySelectorAll('.nav-link').forEach(btn => {
+  document.querySelectorAll('.arch-nav-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page);
   });
-
-  document.querySelectorAll('.mobile-nav button').forEach((btn, idx) => {
-    const active = pageNames[idx] === page;
-    btn.classList.toggle('text-accent', active);
-    btn.classList.toggle('text-graphite', !active);
-  });
-
+  if (page === 'admin') renderAdmSwitches();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (page === 'features') setTimeout(initCar3D, 100);
 }
 
 window.addEventListener('scroll', () => {
-  const doc = document.documentElement;
-  const max = doc.scrollHeight - doc.clientHeight;
+  const el = document.documentElement;
+  const max = el.scrollHeight - el.clientHeight;
   const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-  document.getElementById('progressTrack').style.width = pct + '%';
+  document.getElementById('progressLine').style.width = pct + '%';
 }, { passive: true });
 
-function openWhatsApp(customMessage) {
-  const message = customMessage || 'Olá! Conheci a NEXORA Studio e gostaria de saber mais sobre a criação de um site.';
-  window.open(`https://wa.me/${NEXORA_WHATSAPP}?text=` + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
-}
+/* 10 DEMOS */
+function openDemo(key) {
+  const modal = document.getElementById('demoModal');
+  const tag = document.getElementById('demoModalTag');
+  const title = document.getElementById('demoModalTitle');
+  const body = document.getElementById('demoModalBody');
+  modal.classList.add('open');
 
-function choosePlan(plan) {
-  goPage('contact');
-  const select = document.getElementById('contactPlan');
-  if (select) {
-    const opt = [...select.options].find(o => o.text === plan);
-    if (opt) select.value = opt.value;
-  }
-}
-
-function sendCustomWhatsappMessage(event) {
-  if (event) event.preventDefault();
-  const name = document.getElementById('contactName').value.trim();
-  const niche = document.getElementById('contactNiche').value;
-  const plan = document.getElementById('contactPlan').value;
-  const details = document.getElementById('contactDetails').value.trim();
-  if (!name || !niche || !plan) return;
-  const message = `Olá, NEXORA Studio! Meu nome é ${name}. Segmento: ${niche}. Formato: ${plan}.${details ? ' Observações: ' + details : ''}`;
-  openWhatsApp(message);
-}
-
-function togglePreferences() {
-  document.getElementById('preferencesModal').classList.toggle('open');
-}
-
-function setColorblindMode(mode) {
-  const body = document.body;
-  body.classList.remove('cb-protanopia', 'cb-deuteranopia', 'cb-highcontrast');
-  const allowed = ['normal', 'protanopia', 'deuteranopia', 'highcontrast'];
-  if (!allowed.includes(mode)) mode = 'normal';
-  if (mode !== 'normal') body.classList.add('cb-' + mode);
-  try { localStorage.setItem('nx_accessibility', mode); } catch (e) {}
-}
-
-const translations = {
-  pt: { nav_home: 'Início', nav_catalog: 'Projetos', nav_features: 'Recursos', nav_plans: 'Planos', nav_marketing: 'Direção', nav_contact: 'Contato' },
-  en: { nav_home: 'Home', nav_catalog: 'Projects', nav_features: 'Features', nav_plans: 'Plans', nav_marketing: 'Direction', nav_contact: 'Contact' },
-  es: { nav_home: 'Inicio', nav_catalog: 'Proyectos', nav_features: 'Funciones', nav_plans: 'Planes', nav_marketing: 'Dirección', nav_contact: 'Contacto' }
-};
-
-function setStudioLanguage(langKey) {
-  if (!translations[langKey]) return;
-  document.documentElement.lang = langKey === 'pt' ? 'pt-BR' : langKey;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (translations[langKey][key]) el.textContent = translations[langKey][key];
-  });
-  try { localStorage.setItem('nx_language', langKey); } catch (e) {}
-}
-
-function filterCatalog(category, button) {
-  document.querySelectorAll('.catalog-item').forEach(item => {
-    item.style.display = (category === 'all' || item.dataset.category === category) ? '' : 'none';
-  });
-  document.querySelectorAll('#catalogFilters button').forEach(btn => {
-    btn.classList.remove('btn-dark');
-    btn.classList.add('btn-ghost');
-  });
-  if (button) {
-    button.classList.remove('btn-ghost');
-    button.classList.add('btn-dark');
-  }
-}
-
-/* FLOR */
-let flowerTimers = [];
-function clearFlowerTimers() {
-  flowerTimers.forEach(t => clearTimeout(t));
-  flowerTimers = [];
-}
-
-function triggerFlower() {
-  clearFlowerTimers();
-  const overlay = document.getElementById('flowerOverlay');
-  overlay.classList.remove('hidden');
-  overlay.classList.add('flower-active');
-  document.getElementById('flowerPhrase').style.opacity = 0;
-  document.getElementById('flowerSubtext').style.opacity = 0;
-  document.getElementById('flowerCTA').style.opacity = 0;
-  document.getElementById('flowerStem').style.height = '0';
-  document.getElementById('flowerHead').style.opacity = 0;
-  document.getElementById('flowerHead').style.transform = 'translateX(-50%) scale(0)';
-  document.getElementById('flowerLeafLeft').style.opacity = 0;
-  document.getElementById('flowerLeafRight').style.opacity = 0;
-  document.getElementById('flowerParticles').innerHTML = '';
-
-  const petals = document.getElementById('flowerPetals');
-  petals.innerHTML = '';
-  for (let i = 0; i < 8; i++) {
-    const p = document.createElement('div');
-    p.className = 'flower-petal';
-    p.style.transform = `rotate(${i * 45}deg) translateY(-12px) scale(.15)`;
-    p.style.transition = 'transform 1.1s cubic-bezier(.2,.8,.2,1)';
-    petals.appendChild(p);
-    flowerTimers.push(setTimeout(() => { p.style.transform = `rotate(${i * 45}deg) translateY(-12px) scale(1)`; }, 1900 + i * 70));
-  }
-
-  flowerTimers.push(setTimeout(() => { document.getElementById('flowerStem').style.height = '155px'; }, 250));
-  flowerTimers.push(setTimeout(() => {
-    document.getElementById('flowerLeafLeft').style.opacity = 1;
-    document.getElementById('flowerLeafRight').style.opacity = 1;
-  }, 1200));
-  flowerTimers.push(setTimeout(() => {
-    document.getElementById('flowerHead').style.opacity = 1;
-    document.getElementById('flowerHead').style.transform = 'translateX(-50%) scale(1)';
-  }, 1800));
-  flowerTimers.push(setTimeout(() => {
-    const c = document.getElementById('flowerParticles');
-    for (let i = 0; i < 18; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'flower-particle';
-      dot.style.setProperty('--tx', (Math.random() * 200 - 100) + 'px');
-      dot.style.setProperty('--ty', (Math.random() * -180 - 20) + 'px');
-      dot.style.animationDelay = (Math.random() * 1.2) + 's';
-      c.appendChild(dot);
+  const map = {
+    dentist: {
+      tag: '01 • SIMULADOR CLÍNICO',
+      title: 'CLÍNICA VERA & COSTA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <label class="text-[10px] uppercase tracking-widest block">Objetivo clínico
+          <select id="m1Goal" class="arch-input mt-1" onchange="runM1()">
+            <option value="18|3200">Alinhamento discreto</option>
+            <option value="3|1150">Clareamento e limpeza</option>
+            <option value="10|2500">Estética e restauração</option>
+          </select>
+        </label>
+        <div id="m1Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
+      </div>`,
+      fn: runM1
+    },
+    bakery: {
+      tag: '02 • MONTADOR DE CAIXA',
+      title: 'FORNO DA PRAÇA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Pães levain (R$ 18)
+            <input id="m2A" type="number" min="0" max="15" value="2" class="arch-input mt-1" oninput="runM2()">
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Croissants (R$ 14)
+            <input id="m2B" type="number" min="0" max="15" value="3" class="arch-input mt-1" oninput="runM2()">
+          </label>
+        </div>
+        <div id="m2Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
+      </div>`,
+      fn: runM2
+    },
+    barber: {
+      tag: '03 • VISAGISMO',
+      title: 'OFICINA NAVALHA FINA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Formato do rosto
+            <select id="m3Face" class="arch-input mt-1" onchange="runM3()">
+              <option>Oval</option><option>Quadrado</option><option>Redondo</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Tempo matinal
+            <select id="m3Time" class="arch-input mt-1" onchange="runM3()">
+              <option>2 min (prático)</option><option>6 min (modelado)</option>
+            </select>
+          </label>
+        </div>
+        <div id="m3Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
+      </div>`,
+      fn: runM3
+    },
+    fashion: {
+      tag: '04 • MONTADOR DE LOOK',
+      title: 'CASA LINHO & TRAMA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Peça base
+            <select id="m4Base" class="arch-input mt-1" onchange="runM4()">
+              <option value="169|Camisa linho">Camisa linho (R$ 169)</option>
+              <option value="89|Malha">Malha (R$ 89)</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Sobreposição
+            <select id="m4Top" class="arch-input mt-1" onchange="runM4()">
+              <option value="240|Sobretudo">Sobretudo (+R$ 240)</option>
+              <option value="0|Sem extra">Sem extra (+R$ 0)</option>
+            </select>
+          </label>
+        </div>
+        <div id="m4Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
+      </div>`,
+      fn: runM4
+    },
+    fitness: {
+      tag: '05 • GRADE SEMANAL',
+      title: 'RITMO & FÔLEGO',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <label class="text-[10px] uppercase tracking-widest block">Foco da semana
+          <select id="m5Focus" class="arch-input mt-1" onchange="runM5()">
+            <option value="mobilidade">Mobilidade & Postura</option>
+            <option value="forca">Força & Resistência</option>
+          </select>
+        </label>
+        <div id="m5Out" class="grid sm:grid-cols-3 gap-2.5 text-xs"></div>
+      </div>`,
+      fn: runM5
+    },
+    pet: {
+      tag: '06 • ROTINA PET',
+      title: 'QUINTAL DOS BICHOS',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Porte
+            <select id="m6Size" class="arch-input mt-1" onchange="runM6()">
+              <option>Pequeno</option><option selected>Médio</option><option>Grande</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Pelagem
+            <select id="m6Coat" class="arch-input mt-1" onchange="runM6()">
+              <option value="curta">Curta</option><option value="longa">Longa</option>
+            </select>
+          </label>
+        </div>
+        <div id="m6Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
+      </div>`,
+      fn: runM6
+    },
+    arch: {
+      tag: '07 • CALCULADORA DE OBRA',
+      title: 'PONTO & COMPASSO',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Área (m²)
+            <input id="m7Area" type="number" min="1" value="50" class="arch-input mt-1" oninput="runM7()">
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Padrão
+            <select id="m7Std" class="arch-input mt-1" onchange="runM7()">
+              <option value="150">Essencial (R$ 150/m² ref.)</option>
+              <option value="250">Autoral (R$ 250/m² ref.)</option>
+            </select>
+          </label>
+        </div>
+        <div id="m7Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
+      </div>`,
+      fn: runM7
+    },
+    photo: {
+      tag: '08 • PLANEJADOR DE ENSAIO',
+      title: 'LENTE & GRÃO',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Cenas
+            <select id="m8Scenes" class="arch-input mt-1" onchange="runM8()">
+              <option value="2|25">2 cenas (25 fotos)</option>
+              <option value="4|45">4 cenas (45 fotos)</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Entrega
+            <select id="m8Del" class="arch-input mt-1" onchange="runM8()">
+              <option>Galeria digital</option><option>Digital + Álbum</option>
+            </select>
+          </label>
+        </div>
+        <div id="m8Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
+      </div>`,
+      fn: runM8
+    },
+    meal: {
+      tag: '09 • PLANO DE REFEIÇÕES',
+      title: 'SABOR & ROTA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Por dia
+            <select id="m9Day" class="arch-input mt-1" onchange="runM9()">
+              <option value="1">1 refeição/dia</option><option value="2" selected>2 refeições/dia</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Dias
+            <select id="m9Days" class="arch-input mt-1" onchange="runM9()">
+              <option value="5">5 dias</option><option value="7">7 dias</option>
+            </select>
+          </label>
+        </div>
+        <div id="m9Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
+      </div>`,
+      fn: runM9
+    },
+    music: {
+      tag: '10 • TRILHA DE ESTUDO',
+      title: 'ACORDE & ESCALA',
+      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-[10px] uppercase tracking-widest">Instrumento
+            <select id="m10Inst" class="arch-input mt-1" onchange="runM10()">
+              <option>Teclado</option><option>Violão</option>
+            </select>
+          </label>
+          <label class="text-[10px] uppercase tracking-widest">Tempo diário
+            <select id="m10Min" class="arch-input mt-1" onchange="runM10()">
+              <option value="25">25 min/dia</option><option value="45">45 min/dia</option>
+            </select>
+          </label>
+        </div>
+        <div id="m10Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
+      </div>`,
+      fn: runM10
     }
-  }, 2400));
-  flowerTimers.push(setTimeout(() => { document.getElementById('flowerPhrase').style.opacity = 1; }, 2900));
-  flowerTimers.push(setTimeout(() => { document.getElementById('flowerSubtext').style.opacity = 1; }, 3500));
-  flowerTimers.push(setTimeout(() => { document.getElementById('flowerCTA').style.opacity = 1; }, 4000));
+  };
+
+  const d = map[key] || map.dentist;
+  tag.textContent = d.tag;
+  title.textContent = d.title;
+  body.innerHTML = d.html;
+  d.fn?.();
 }
 
-function closeFlower() {
-  clearFlowerTimers();
-  const overlay = document.getElementById('flowerOverlay');
-  overlay.classList.add('hidden');
-  overlay.classList.remove('flower-active');
+function closeDemoModal() {
+  document.getElementById('demoModal').classList.remove('open');
+}
+
+function runM1() {
+  const [w, v] = (document.getElementById('m1Goal')?.value || '18|3200').split('|');
+  const el = document.getElementById('m1Out');
+  if (el) el.textContent = `Duração estimada: ~${w} semanas • Ref. ilustrativa R$ ${Number(v).toLocaleString('pt-BR')},00`;
+}
+function runM2() {
+  const a = Math.max(0, Number(document.getElementById('m2A')?.value || 0));
+  const b = Math.max(0, Number(document.getElementById('m2B')?.value || 0));
+  const el = document.getElementById('m2Out');
+  if (el) el.textContent = `${a + b} itens • Total: R$ ${(a * 18 + b * 14).toFixed(2).replace('.', ',')}`;
+}
+function runM3() {
+  const f = document.getElementById('m3Face')?.value || 'Oval';
+  const t = document.getElementById('m3Time')?.value || '2 min';
+  const el = document.getElementById('m3Out');
+  if (el) el.textContent = `Rosto ${f} com rotina de ${t}: corte alinhado com acabamento limpo e fácil manutenção.`;
+}
+function runM4() {
+  const [bp, bn] = (document.getElementById('m4Base')?.value || '169|Camisa linho').split('|');
+  const [tp, tn] = (document.getElementById('m4Top')?.value || '240|Sobretudo').split('|');
+  const el = document.getElementById('m4Out');
+  if (el) el.textContent = `${bn} + ${tn} = R$ ${(Number(bp) + Number(tp)).toFixed(2).replace('.', ',')}`;
+}
+function runM5() {
+  const f = document.getElementById('m5Focus')?.value || 'mobilidade';
+  const el = document.getElementById('m5Out');
+  const rows = f === 'forca' ? [['SEG', 'Força base'], ['QUA', 'Ritmo'], ['SEX', 'Core']] : [['TER', 'Mobilidade'], ['QUI', 'Postura'], ['SÁB', 'Alongamento']];
+  if (el) el.innerHTML = rows.map(([d, a]) => `<div class="p-3 bg-obsidian border border-line"><strong class="text-violetGlow block text-[10px]">${d}</strong><span>${a}</span></div>`).join('');
+}
+function runM6() {
+  const s = document.getElementById('m6Size')?.value || 'Médio';
+  const c = document.getElementById('m6Coat')?.value || 'curta';
+  const el = document.getElementById('m6Out');
+  if (el) el.textContent = `Porte ${s} e pelagem ${c}: banho a cada ${c === 'longa' ? '12' : '18'} dias em média.`;
+}
+function runM7() {
+  const area = Math.max(1, Number(document.getElementById('m7Area')?.value || 50));
+  const std = Number(document.getElementById('m7Std')?.value || 150);
+  const el = document.getElementById('m7Out');
+  if (el) el.textContent = `${area} m² • Estimativa de referência: R$ ${(area * std).toLocaleString('pt-BR')},00`;
+}
+function runM8() {
+  const [sc, ph] = (document.getElementById('m8Scenes')?.value || '2|25').split('|');
+  const del = document.getElementById('m8Del')?.value || 'Galeria digital';
+  const el = document.getElementById('m8Out');
+  if (el) el.textContent = `${sc} cenas • ${ph} fotos • ${del}`;
+}
+function runM9() {
+  const per = Number(document.getElementById('m9Day')?.value || 2);
+  const days = Number(document.getElementById('m9Days')?.value || 5);
+  const total = per * days;
+  const el = document.getElementById('m9Out');
+  if (el) el.textContent = `${total} refeições • Ref. ilustrativa R$ ${(total * 24).toFixed(2).replace('.', ',')}`;
+}
+function runM10() {
+  const inst = document.getElementById('m10Inst')?.value || 'Teclado';
+  const min = Number(document.getElementById('m10Min')?.value || 25);
+  const el = document.getElementById('m10Out');
+  if (el) el.textContent = `${inst} (${min} min/dia): ${Math.round(min * 0.4)} min de técnica e ${Math.round(min * 0.6)} min de repertório.`;
+}
+
+/* RECURSOS, IA & CONTATO */
+function updateBaSlider(v) {
+  const pct = Math.max(10, Math.min(90, Number(v) || 50));
+  document.getElementById('baLeftPanel').style.width = pct + '%';
+  document.getElementById('sliderPct').textContent = pct + '%';
+}
+
+function updateSimRoi() {
+  const v = Math.max(0, Number(document.getElementById('simVisits')?.value || 0));
+  const t = Math.max(0, Number(document.getElementById('simTicket')?.value || 0));
+  const r = Math.max(0, Math.min(100, Number(document.getElementById('simRate')?.value || 0)));
+  const sales = v * r / 100;
+  const rev = sales * t;
+  document.getElementById('simOutVal').textContent = rev.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.getElementById('simOutSales').textContent = `${sales.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} vendas/mês`;
+}
+
+function runAiSandbox() {
+  const topic = (document.getElementById('aiTopicInput')?.value || '').trim() || 'Projeto NEXORA';
+  const app = document.getElementById('aiAppType')?.value || 'Simulador';
+  document.getElementById('aiSandboxResult').innerHTML = `
+    <p><strong class="text-ghostWhite">Projeto:</strong> ${topic}</p>
+    <p class="mt-1"><strong class="text-violetGlow">Aplicação proposta:</strong> ${app}</p>
+    <p class="mt-1">Seções sugeridas: Hero em grade, aplicação interativa, comparativo e formulário direto.</p>
+  `;
+}
+
+function openWhatsApp(msg) {
+  const text = msg || 'Olá! Vim pelo site da NEXORA.';
+  window.open(`https://wa.me/${WA_NUMBER}?text=` + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+}
+
+function selectPlanAndContact(plan) {
+  goPage('contact');
+  const sel = document.getElementById('cPlan');
+  if (sel) {
+    const opt = [...sel.options].find(o => o.text === plan);
+    if (opt) sel.value = opt.value;
+  }
+}
+
+function submitContactForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('cName').value.trim();
+  const seg = document.getElementById('cSegment').value;
+  const plan = document.getElementById('cPlan').value;
+  const notes = document.getElementById('cNotes').value.trim();
+  if (!name || !seg || !plan) return;
+  openWhatsApp(`Olá, NEXORA! Sou ${name}. Segmento: ${seg}. Formato: ${plan}.${notes ? ' Obs: ' + notes : ''}`);
 }
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    closeDemo();
-    closeFeatureModal();
-    closeFlower();
-    document.getElementById('preferencesModal').classList.remove('open');
+    closeDemoModal();
+    closeAdminModal();
   }
 });
 
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-try {
-  const savedLang = localStorage.getItem('nx_language');
-  if (savedLang) setStudioLanguage(savedLang);
-  const savedMode = localStorage.getItem('nx_accessibility');
-  if (savedMode) setColorblindMode(savedMode);
-} catch (e) {}
-
-calculateROI();
-calcScopeEstimate();
+renderHeroSlide();
+syncAdmUI();
+updateSimRoi();
 goPage('home');
 </script>
 
