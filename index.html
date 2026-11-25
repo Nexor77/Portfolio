@@ -3,50 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0B0A10">
-<meta name="description" content="NEXORA Studio — Arquitetura visual minimalista, 10 demonstrações interativas, módulo de IA e painel administrativo.">
-<title>NEXORA — Arquitetura & Web</title>
+<meta name="description" content="NEXORA Studio — Portfólio criativo com 10 sites amostra completos, fotos, recursos interativos e laboratório de IA.">
+<title>NEXORA — Portfólio & 10 Sites Amostra</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        obsidian: '#0B0A10',
-        nightPlum: '#13101D',
-        panelPlum: '#1A1529',
-        lineDark: 'rgba(167, 139, 250, 0.16)',
-        ghostWhite: '#F5F4F8',
-        silverMist: '#A8A3B8',
-        violetCore: '#7C3AED',
-        violetGlow: '#9F67FF',
-        violetSoft: 'rgba(124, 58, 237, 0.16)'
-      },
-      fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Georgia', 'serif']
-      }
-    }
-  }
-}
-</script>
-
 <style>
 :root {
-  --bg: #0B0A10;
-  --surface: #13101D;
-  --surface-2: #1A1529;
-  --ink: #F5F4F8;
-  --muted: #A8A3B8;
-  --line: rgba(167, 139, 250, 0.16);
-  --violet: #7C3AED;
-  --violet-light: #9F67FF;
+  --ink: #14111F;
+  --muted: #4A445E;
+  --purple: #6D28D9;
+  --purple-deep: #3B0764;
+  --pink: #DB2777;
+  --amber: #F59E0B;
+  --card: rgba(255, 255, 255, 0.94);
+  --line: rgba(109, 40, 217, 0.18);
 }
 
 * {
@@ -59,16 +34,30 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--ink);
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  /* Fundo decorado com múltiplas camadas, pontos, linhas e luzes */
+  background-color: #F5F0FF;
   background-image:
-    linear-gradient(to right, rgba(167, 139, 250, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
-  background-size: 120px 120px;
+    radial-gradient(circle at 8% 12%, rgba(139, 92, 246, 0.24) 0%, transparent 34%),
+    radial-gradient(circle at 92% 14%, rgba(236, 72, 153, 0.18) 0%, transparent 32%),
+    radial-gradient(circle at 82% 72%, rgba(59, 130, 246, 0.15) 0%, transparent 36%),
+    radial-gradient(circle at 18% 85%, rgba(251, 191, 36, 0.18) 0%, transparent 34%),
+    radial-gradient(rgba(109, 40, 217, 0.16) 1.3px, transparent 1.3px),
+    repeating-linear-gradient(
+      45deg,
+      rgba(109, 40, 217, 0.025) 0px,
+      rgba(109, 40, 217, 0.025) 2px,
+      transparent 2px,
+      transparent 26px
+    );
+  background-size: auto, auto, auto, auto, 22px 22px, auto;
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
 }
 
 button,
@@ -83,7 +72,7 @@ button {
 }
 
 ::selection {
-  background: var(--violet);
+  background: #6D28D9;
   color: #FFFFFF;
 }
 
@@ -92,13 +81,13 @@ button {
 }
 
 .page-view {
-  animation: fadeSlide .35s ease;
+  animation: fadeUp .35s ease;
 }
 
-@keyframes fadeSlide {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -106,731 +95,807 @@ button {
   }
 }
 
-.arch-header {
-  background: rgba(11, 10, 16, 0.88);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
+/* Faixa amarela no topo da página (sem backdrop-filter / sem blur) */
+.top-building-strip {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  background: #FACC15;
+  color: #181200;
+  border-bottom: 2px solid #CA8A04;
+  padding: 9px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
-.arch-nav-btn {
-  position: relative;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+/* Cabeçalho decorado sem fundo borrado */
+.site-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #FFFDF8;
+  border-bottom: 2px solid var(--line);
+  box-shadow: 0 8px 26px rgba(20, 17, 31, 0.06);
+}
+
+.site-topbar.with-ribbon {
+  top: 38px;
+}
+
+.nav-chip {
+  font-size: 12.5px;
+  font-weight: 700;
   color: var(--muted);
-  padding: 8px 2px;
-  border-bottom: 1.5px solid transparent;
-  transition: color .2s, border-color .2s;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: all .2s;
 }
 
-.arch-nav-btn:hover,
-.arch-nav-btn.active {
+.nav-chip:hover {
   color: var(--ink);
-  border-bottom-color: var(--violet-light);
+  background: rgba(109, 40, 217, 0.08);
+  border-color: rgba(109, 40, 217, 0.16);
 }
 
-/* Faixa amarela cobrindo parte da aba IA */
-.ai-ribbon-badge {
-  background: #FACC15;
-  color: #121006;
-  font-size: 9px;
+.nav-chip.active {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #6D28D9, #9333EA);
+  box-shadow: 0 6px 18px rgba(109, 40, 217, 0.28);
+}
+
+.decor-box {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 26px;
+  box-shadow: 0 14px 36px rgba(20, 17, 31, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+.decor-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(20, 17, 31, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+.decor-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(109, 40, 217, 0.38);
+  box-shadow: 0 20px 40px rgba(109, 40, 217, 0.14);
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 3px;
-  border: 1px solid #CA8A04;
-  transform: rotate(-5deg) translateY(-2px);
-  box-shadow: 0 3px 10px rgba(250, 204, 21, 0.25);
-  line-height: 1.1;
+  letter-spacing: 0.07em;
+  background: #F3E8FF;
+  color: #5B21B6;
+  border: 1px solid rgba(109, 40, 217, 0.2);
 }
 
-.reforma-strip {
-  background: #FACC15;
-  color: #121006;
-  border-bottom: 1px solid #CA8A04;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 8px 16px;
-}
-
-.arch-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  transition: border-color .25s, transform .25s;
-}
-
-.arch-card:hover {
-  border-color: rgba(159, 103, 255, 0.45);
-  transform: translateY(-2px);
-}
-
-.arch-btn-primary {
+.btn-grad {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 11px 20px;
-  background: var(--violet);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6D28D9, #9333EA);
   color: #FFFFFF;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border: 1px solid var(--violet-light);
-  transition: background .2s, transform .2s;
+  border: none;
+  box-shadow: 0 8px 20px rgba(109, 40, 217, 0.28);
+  transition: transform .2s, box-shadow .2s;
 }
 
-.arch-btn-primary:hover {
-  background: #6D28D9;
-  transform: translateY(-1px);
+.btn-grad:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(109, 40, 217, 0.38);
 }
 
-.arch-btn-ghost {
+.btn-outline-decor {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 18px;
-  background: transparent;
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border: 1px solid var(--line);
-  transition: border-color .2s, background .2s;
-}
-
-.arch-btn-ghost:hover {
-  border-color: var(--violet-light);
-  background: rgba(124, 58, 237, 0.1);
-}
-
-.arch-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--violet-light);
-}
-
-.arch-heading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.15;
-}
-
-.arch-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-}
-
-.arch-input {
-  width: 100%;
-  padding: 10px 12px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #FFFFFF;
   color: var(--ink);
   font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid rgba(109, 40, 217, 0.22);
+  transition: all .2s;
+}
+
+.btn-outline-decor:hover {
+  border-color: #6D28D9;
+  background: #FAF5FF;
+}
+
+.form-field {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(109, 40, 217, 0.22);
+  background: #FFFFFF;
+  color: var(--ink);
   outline: none;
-  transition: border-color .2s;
 }
 
-.arch-input:focus {
-  border-color: var(--violet-light);
+.form-field:focus {
+  border-color: #6D28D9;
 }
 
-.progress-line {
+.scroll-bar-top {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   width: 0;
-  background: linear-gradient(90deg, #7C3AED, #C4B5FD);
-  z-index: 1200;
+  background: linear-gradient(90deg, #6D28D9, #EC4899, #FACC15);
+  z-index: 200;
 }
 
-.modal-layer {
+/* Janela do site amostra (sem blur no fundo escuro) */
+.sample-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 600;
-  background: rgba(6, 5, 10, 0.78);
-  backdrop-filter: blur(5px);
+  z-index: 500;
+  background: rgba(16, 12, 28, 0.76);
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 12px;
 }
 
-.modal-layer.open {
+.sample-backdrop.open {
   display: flex;
 }
 
-.modal-box {
-  width: min(100%, 960px);
-  max-height: 88vh;
-  overflow: auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 24px;
-  color: var(--ink);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+.sample-window {
+  width: min(100%, 1080px);
+  height: min(92vh, 800px);
+  background: #FFFDF9;
+  border-radius: 26px;
+  border: 2px solid rgba(109, 40, 217, 0.28);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.38);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
 }
 
-#systemPauseLayer {
-  position: fixed;
+.sample-loader-screen {
+  position: absolute;
   inset: 0;
-  z-index: 900;
-  background: rgba(11, 10, 16, 0.94);
-  backdrop-filter: blur(8px);
-  display: none;
+  z-index: 40;
+  background: linear-gradient(135deg, #1E1338 0%, #4C1D95 55%, #831843 100%);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  gap: 14px;
+  transition: opacity .35s ease, visibility .35s ease;
 }
 
-#systemPauseLayer.active {
-  display: flex;
+.sample-loader-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.mobile-bar {
+.loader-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 4px solid rgba(255, 255, 255, 0.22);
+  border-top-color: #FACC15;
+  animation: spinRing .85s linear infinite;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+.mobile-nav-bar {
   display: none;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 120;
-  background: rgba(11, 10, 16, 0.96);
-  border-top: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-  padding-bottom: max(6px, env(safe-area-inset-bottom));
+  z-index: 110;
+  background: #FFFDF8;
+  border-top: 2px solid var(--line);
+  padding: 8px 6px max(8px, env(safe-area-inset-bottom));
 }
 
-@media (max-width: 880px) {
-  .desktop-bar {
+.wa-btn-float {
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  z-index: 95;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background: #16A34A;
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.35);
+  transition: transform .2s;
+}
+
+.wa-btn-float:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 860px) {
+  .desktop-nav-list {
     display: none !important;
   }
-  .mobile-bar {
+  .mobile-nav-bar {
     display: flex;
   }
   body {
-    padding-bottom: 66px;
+    padding-bottom: 74px;
+  }
+  .wa-btn-float {
+    bottom: calc(80px + env(safe-area-inset-bottom));
   }
 }
 </style>
 </head>
 
 <body>
-<div class="progress-line" id="progressLine"></div>
+<div class="scroll-bar-top" id="scrollBarTop"></div>
 
-<!-- AVISO GLOBAL (CONFIGURÁVEL NO ADM) -->
-<div id="globalAlertBanner" class="hidden bg-violetCore text-white text-[11px] tracking-wider uppercase py-2 px-4 text-center font-semibold">
- <span id="globalAlertText"></span>
+<!-- FAIXA AMARELA EM CIMA DA PÁGINA (QUANDO NA ABA IA) -->
+<div id="topPageConstructionBanner" class="hidden top-building-strip">
+ <i class="fa-solid fa-helmet-safety mr-1.5"></i> CONSTRUINDO! • MÓDULO DE IA EM DESENVOLVIMENTO CONTÍNUO
 </div>
 
 <!-- CABEÇALHO -->
-<header class="fixed top-0 left-0 right-0 z-50 arch-header">
- <div class="max-w-6xl mx-auto px-5 h-[72px] flex items-center justify-between gap-4">
+<header id="mainSiteHeader" class="site-topbar">
+ <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
   <button onclick="goPage('home')" class="flex items-center gap-3 text-left shrink-0">
-   <span class="px-2.5 py-1 bg-panelPlum border border-line text-[11px] font-bold tracking-[0.2em] text-violetGlow">nx.web</span>
-   <span class="hidden sm:inline text-[11px] tracking-[0.18em] uppercase text-silverMist">NEXORA</span>
+   <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-purple-700 via-fuchsia-600 to-amber-400 text-white grid place-items-center font-extrabold text-sm shadow-md">NX</span>
+   <span>
+    <span class="block font-extrabold tracking-[0.16em] text-sm uppercase">NEXORA</span>
+    <span class="block text-[11px] font-bold text-purple-800">Portfólio & 10 Sites Reais</span>
+   </span>
   </button>
 
-  <nav class="desktop-bar flex items-center gap-6">
-   <button class="arch-nav-btn active" data-page="home" onclick="goPage('home')">Início</button>
-   <button class="arch-nav-btn" data-page="catalog" onclick="goPage('catalog')">10 Demos</button>
-   <button class="arch-nav-btn" data-page="features" onclick="goPage('features')">Recursos</button>
-   <button class="arch-nav-btn" data-page="ai" onclick="goPage('ai')">
-    <span>IA</span>
-    <span class="ai-ribbon-badge">Construindo!</span>
-   </button>
-   <button class="arch-nav-btn" data-page="contracts" onclick="goPage('contracts')">Planos</button>
-   <button class="arch-nav-btn" data-page="contact" onclick="goPage('contact')">Contato</button>
+  <nav class="desktop-nav-list flex items-center gap-1.5 flex-wrap">
+   <button class="nav-chip active" data-page="home" onclick="goPage('home')"><i class="fa-solid fa-house text-xs"></i> Início</button>
+   <button class="nav-chip" data-page="catalog" onclick="goPage('catalog')"><i class="fa-solid fa-globe text-xs"></i> 10 Sites Amostra</button>
+   <button class="nav-chip" data-page="features" onclick="goPage('features')"><i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Recursos</button>
+   <button class="nav-chip" data-page="ai" onclick="goPage('ai')"><i class="fa-solid fa-robot text-xs"></i> IA</button>
+   <button class="nav-chip" data-page="contracts" onclick="goPage('contracts')"><i class="fa-solid fa-file-signature text-xs"></i> Planos</button>
+   <button class="nav-chip" data-page="contact" onclick="goPage('contact')"><i class="fa-solid fa-paper-plane text-xs"></i> Contato</button>
   </nav>
 
-  <div class="flex items-center gap-3 shrink-0">
-   <button onclick="openAdminModal()" class="text-[10px] text-silverMist/75 hover:text-violetGlow underline underline-offset-2 tracking-wide">
-    Codigos Administração
-   </button>
-   <button onclick="openWhatsApp()" class="arch-btn-primary !py-2 !px-3.5 text-[10px]">
-    <i class="fa-brands fa-whatsapp"></i><span class="hidden sm:inline">WhatsApp</span>
-   </button>
-  </div>
+  <button onclick="openWhatsApp()" class="btn-grad !py-2 !px-4 text-xs shrink-0">
+   <i class="fa-brands fa-whatsapp text-sm"></i><span>WhatsApp</span>
+  </button>
  </div>
 </header>
 
 <!-- NAVEGAÇÃO MOBILE -->
-<nav class="mobile-bar justify-around items-center pt-2">
- <button onclick="goPage('home')" class="text-center text-[10px] uppercase tracking-wider text-violetGlow font-semibold"><i class="fa-solid fa-square block text-xs mb-0.5"></i>Início</button>
- <button onclick="goPage('catalog')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-border-all block text-xs mb-0.5"></i>10 Demos</button>
- <button onclick="goPage('ai')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-microchip block text-xs mb-0.5"></i>IA <span class="bg-[#FACC15] text-[#121006] text-[8px] font-extrabold px-1 rounded">Construindo!</span></button>
- <button onclick="goPage('contracts')" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-layer-group block text-xs mb-0.5"></i>Planos</button>
- <button onclick="openAdminModal()" class="text-center text-[10px] uppercase tracking-wider text-silverMist"><i class="fa-solid fa-key block text-xs mb-0.5"></i>ADM</button>
+<nav class="mobile-nav-bar justify-around items-center">
+ <button onclick="goPage('home')" class="text-center text-[11px] font-bold text-purple-800"><i class="fa-solid fa-house block text-sm mb-0.5"></i>Início</button>
+ <button onclick="goPage('catalog')" class="text-center text-[11px] font-semibold text-gray-600"><i class="fa-solid fa-globe block text-sm mb-0.5"></i>10 Sites</button>
+ <button onclick="goPage('ai')" class="text-center text-[11px] font-semibold text-gray-600"><i class="fa-solid fa-robot block text-sm mb-0.5"></i>IA</button>
+ <button onclick="goPage('contracts')" class="text-center text-[11px] font-semibold text-gray-600"><i class="fa-solid fa-file-signature block text-sm mb-0.5"></i>Planos</button>
+ <button onclick="goPage('contact')" class="text-center text-[11px] font-semibold text-gray-600"><i class="fa-solid fa-paper-plane block text-sm mb-0.5"></i>Contato</button>
 </nav>
 
-<main class="pt-[72px]">
+<main>
 
-<!-- INÍCIO (COMPOSIÇÃO EM GRADE INSPIRADA NA REFERÊNCIA) -->
-<section id="page-home" class="page-view">
- <div id="reforma-home" class="hidden reforma-strip">
-  Em reforma — Seção inicial temporariamente desativada pela administração.
- </div>
+<!-- =====================================================================
+     PÁGINA 1: INÍCIO (HERO DECORADO + COLAGEM DE FOTOS + DESTAQUES + BASTIDORES + FAQ)
+====================================================================== -->
+<section id="page-home" class="page-view max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-12">
+ <div class="decor-box p-6 sm:p-10 grid lg:grid-cols-12 gap-8 items-center">
+  <span class="hidden sm:inline-flex badge-pill absolute top-5 right-6 rotate-2 !bg-amber-100 !text-amber-950 !border-amber-300">
+   <i class="fa-solid fa-crown text-amber-600"></i> Portfólio Profissional com Charme
+  </span>
 
- <!-- BLOCO SUPERIOR EM GRADE -->
- <div class="max-w-6xl mx-auto border-x border-line">
-  <div class="grid lg:grid-cols-12 border-b border-line">
-   <!-- COLUNA ESQUERDA: NÚMERO + NAVEGAÇÃO DE SLIDE + AÇÕES -->
-   <div class="lg:col-span-4 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col justify-between bg-nightPlum/80">
-    <div>
-     <div class="text-xs tracking-[0.25em] text-silverMist mb-6">
-      <span id="heroSlideIndex" class="text-violetGlow font-bold text-lg">01</span> / 03
-     </div>
-     <div class="flex items-center gap-4 text-[10px] tracking-[0.22em] uppercase text-silverMist mb-8">
-      <button onclick="prevHeroSlide()" class="hover:text-violetGlow transition">← PREV</button>
-      <span>/</span>
-      <button onclick="nextHeroSlide()" class="hover:text-violetGlow transition">NEXT →</button>
-     </div>
-     <div class="arch-label mb-2">NEXORA • ARQUITETURA DIGITAL</div>
-     <h1 id="heroSlideTitle" class="arch-heading text-3xl sm:text-4xl text-ghostWhite mb-4">
-      SISTEMAS E SITES SOB MEDIDA
-     </h1>
-     <p id="heroSlideDesc" class="text-xs text-silverMist leading-relaxed mb-6">
-      Composição minimalista, estrutura clara e aplicações interativas criadas para cada segmento — sem repetir apenas lista de preços e WhatsApp.
-     </p>
-    </div>
-
-    <div class="flex flex-wrap gap-2.5 pt-4 border-t border-line">
-     <button onclick="goPage('catalog')" class="arch-btn-primary">Ver 10 demos</button>
-     <button onclick="goPage('contact')" class="arch-btn-ghost">Orçamento</button>
-    </div>
+  <div class="lg:col-span-7 space-y-5">
+   <div class="flex flex-wrap gap-2">
+    <span class="badge-pill"><i class="fa-solid fa-camera-retro"></i> Fotos de Equipe, Produto & Resultado</span>
+    <span class="badge-pill !bg-pink-100 !text-pink-900 !border-pink-200"><i class="fa-solid fa-gears"></i> Funções Reais em Cada Site</span>
    </div>
 
-   <!-- COLUNA DIREITA: IMAGEM EM DESTAQUE -->
-   <div class="lg:col-span-8 relative min-h-[380px] sm:min-h-[460px] bg-panelPlum overflow-hidden">
-    <img
-      id="heroSlideImg"
-      src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85"
-      alt="Arquitetura contemporânea minimalista com iluminação suave"
-      class="w-full h-full object-cover opacity-80"
-    >
-    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-transparent"></div>
-    <div class="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
-     <div>
-      <span class="arch-label block mb-1">IDENTIDADE NEXORA</span>
-      <span class="arch-serif italic text-2xl sm:text-3xl text-ghostWhite">Preto, roxo profundo e precisão visual.</span>
-     </div>
-     <span class="text-[10px] tracking-[0.2em] uppercase text-silverMist">10 APLICAÇÕES ATIVAS</span>
-    </div>
-   </div>
-  </div>
+   <h1 class="font-display text-4xl sm:text-6xl font-bold leading-[1.07] text-gray-950">
+    Sites com <span class="italic text-purple-700 underline decoration-wavy decoration-amber-400">identidade forte</span>, fotos e funções que rodam.
+   </h1>
 
-  <!-- FAIXA CENTRAL: SOBRE A PROPOSTA + ESPECIALIDADES -->
-  <div class="p-6 sm:p-10 border-b border-line bg-nightPlum">
-   <div class="text-center mb-10">
-    <span class="arch-label">SOBRE A NEXORA</span>
-    <h2 class="arch-heading text-2xl sm:text-3xl mt-1">CONSTRUÍMOS FERRAMENTAS DIGITAIS COM CLAREZA</h2>
-   </div>
-
-   <div class="grid md:grid-cols-12 gap-8 items-center">
-    <div class="md:col-span-5">
-     <h3 class="arch-serif text-3xl text-ghostWhite mb-3">Cada projeto resolve uma dinâmica real do negócio.</h3>
-     <p class="text-xs text-silverMist leading-relaxed">
-      Em vez de entregar páginas iguais mudando apenas o logotipo, cada uma das 10 demonstrações traz uma função interativa própria: simuladores, montadores, guias de escolha, grades semanais e calculadoras.
-     </p>
-    </div>
-
-    <div class="md:col-span-4 space-y-4 border-y md:border-y-0 md:border-x border-line py-5 md:py-0 md:px-6">
-     <div class="flex items-start gap-3">
-      <i class="fa-solid fa-compass-drafting text-violetGlow mt-0.5 text-sm"></i>
-      <div>
-       <strong class="block text-[11px] tracking-[0.18em] uppercase">ESTRUTURA</strong>
-       <span class="text-xs text-silverMist">Grade limpa e leitura direta</span>
-      </div>
-     </div>
-     <div class="flex items-start gap-3">
-      <i class="fa-solid fa-sliders text-violetGlow mt-0.5 text-sm"></i>
-      <div>
-       <strong class="block text-[11px] tracking-[0.18em] uppercase">APLICAÇÕES</strong>
-       <span class="text-xs text-silverMist">10 ferramentas interativas distintas</span>
-      </div>
-     </div>
-     <div class="flex items-start gap-3">
-      <i class="fa-solid fa-shield-halved text-violetGlow mt-0.5 text-sm"></i>
-      <div>
-       <strong class="block text-[11px] tracking-[0.18em] uppercase">CONTROLE</strong>
-       <span class="text-xs text-silverMist">Painel ADM por código de acesso</span>
-      </div>
-     </div>
-    </div>
-
-    <div class="md:col-span-3">
-     <div class="aspect-square overflow-hidden border border-line bg-panelPlum">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Detalhe arquitetônico moderno em linha reta" class="w-full h-full object-cover opacity-85">
-     </div>
-    </div>
-   </div>
-  </div>
-
-  <!-- BLOCO INFERIOR: 4 COLUNAS DE PRÉVIA DE PROJETOS -->
-  <div class="p-6 sm:p-10 bg-obsidian">
-   <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-    <div>
-     <span class="arch-label">SELEÇÃO RÁPIDA</span>
-     <h2 class="arch-heading text-2xl mt-1">DEMONSTRAÇÕES EM DESTAQUE</h2>
-    </div>
-    <button onclick="goPage('catalog')" class="arch-btn-ghost">Ver todas as 10 demos →</button>
-   </div>
-
-   <div class="grid sm:grid-cols-2 lg:grid-cols-4 border border-line divide-y sm:divide-y-0 sm:divide-x divide-line">
-    <button onclick="goPage('catalog');setTimeout(()=>openDemo('dentist'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
-     <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=700&q=80" alt="Clínica Vera e Costa" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
-     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
-      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">01 / SIMULADOR</span>
-      <div>
-       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">CLÍNICA VERA & COSTA</strong>
-       <span class="text-[11px] text-silverMist">Etapas e estimativa clínica</span>
-      </div>
-     </div>
-    </button>
-
-    <button onclick="goPage('catalog');setTimeout(()=>openDemo('bakery'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
-     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Forno da Praça" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
-     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
-      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">02 / CAIXA</span>
-      <div>
-       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">FORNO DA PRAÇA</strong>
-       <span class="text-[11px] text-silverMist">Montador de encomenda</span>
-      </div>
-     </div>
-    </button>
-
-    <button onclick="goPage('catalog');setTimeout(()=>openDemo('arch'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
-     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Ponto e Compasso" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
-     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
-      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">07 / OBRA</span>
-      <div>
-       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">PONTO & COMPASSO</strong>
-       <span class="text-[11px] text-silverMist">Calculadora por m²</span>
-      </div>
-     </div>
-    </button>
-
-    <button onclick="goPage('catalog');setTimeout(()=>openDemo('photo'),80)" class="group relative aspect-[3/4] text-left overflow-hidden bg-nightPlum">
-     <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80" alt="Lente e Grão" class="w-full h-full object-cover opacity-55 group-hover:scale-105 transition duration-500">
-     <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent p-5 flex flex-col justify-between">
-      <span class="text-[10px] tracking-[0.22em] uppercase text-violetGlow font-bold">08 / ENSAIO</span>
-      <div>
-       <strong class="block text-xs tracking-[0.16em] uppercase text-ghostWhite">LENTE & GRÃO</strong>
-       <span class="text-[11px] text-silverMist">Planejador de sessão</span>
-      </div>
-     </div>
-    </button>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- 10 DEMOS -->
-<section id="page-catalog" class="page-view hidden-page">
- <div id="reforma-catalog" class="hidden reforma-strip">
-  Em reforma — As 10 demonstrações estão temporariamente em reforma.
- </div>
-
- <div class="max-w-6xl mx-auto px-5 py-14">
-  <div class="max-w-2xl mb-10">
-   <span class="arch-label">CATÁLOGO INTERATIVO</span>
-   <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-3">10 DEMONSTRAÇÕES COM APLICAÇÕES PRÓPRIAS</h2>
-   <p class="text-xs sm:text-sm text-silverMist leading-relaxed">Cada demonstração abaixo funciona como uma aplicação diferente, com cálculos, montadores, guias ou grades próprias.</p>
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4" id="demosGrid10">
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">01 • SIMULADOR</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Clínica Vera & Costa</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Estima semanas, visitas e faixa ilustrativa por objetivo clínico.</p>
-    <button onclick="openDemo('dentist')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 01</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">02 • CAIXA</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Forno da Praça</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Montador de caixa de padaria com retirada ou entrega.</p>
-    <button onclick="openDemo('bakery')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 02</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">03 • VISAGISMO</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Navalha Fina</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Recomenda corte e barba conforme formato de rosto e tempo.</p>
-    <button onclick="openDemo('barber')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 03</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">04 • LOOKBOOK</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Linho & Trama</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Combina peça base, terceira peça, tamanho e valor total.</p>
-    <button onclick="openDemo('fashion')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 04</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">05 • ROTINA</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Ritmo & Fôlego</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Gera grade semanal de treinos por foco e frequência.</p>
-    <button onclick="openDemo('fitness')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 05</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">06 • PET CARE</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Quintal dos Bichos</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Calcula banho, escovação e passeios por porte e pelo.</p>
-    <button onclick="openDemo('pet')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 06</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">07 • OBRA</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Ponto & Compasso</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Estimativa de arquitetura/interiores por m² e acabamento.</p>
-    <button onclick="openDemo('arch')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 07</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">08 • ENSAIO</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Lente & Grão</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Configura cenas, quantidade de fotos e entrega do ensaio.</p>
-    <button onclick="openDemo('photo')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 08</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">09 • REFEIÇÕES</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Sabor & Rota</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Calcula pacote semanal de refeições por dia e duração.</p>
-    <button onclick="openDemo('meal')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 09</button>
-   </article>
-
-   <article class="arch-card p-4 flex flex-col">
-    <span class="arch-label">10 • ESTUDO</span>
-    <h3 class="text-xs font-bold tracking-[0.12em] uppercase mt-1 mb-1.5">Acorde & Escala</h3>
-    <p class="text-[11px] text-silverMist flex-1 mb-4">Divide minutos diários entre técnica e repertório musical.</p>
-    <button onclick="openDemo('music')" class="arch-btn-ghost w-full !py-2 text-[10px]">Abrir 10</button>
-   </article>
-  </div>
- </div>
-</section>
-
-<!-- RECURSOS -->
-<section id="page-features" class="page-view hidden-page">
- <div id="reforma-features" class="hidden reforma-strip">
-  Em reforma — A aba de recursos está temporariamente em reforma.
- </div>
-
- <div class="max-w-6xl mx-auto px-5 py-14 space-y-8">
-  <div>
-   <span class="arch-label">FERRAMENTAS EXTRA</span>
-   <h2 class="arch-heading text-3xl sm:text-4xl mt-1">RECURSOS ALÉM DO BÁSICO</h2>
-  </div>
-
-  <!-- COMPARADOR ANTES E DEPOIS -->
-  <div class="arch-card p-6 grid lg:grid-cols-12 gap-6 items-center">
-   <div class="lg:col-span-5">
-    <span class="arch-label">COMPARADOR</span>
-    <h3 class="arch-heading text-xl mt-1 mb-2">ANTES & DEPOIS</h3>
-    <p class="text-xs text-silverMist mb-4">Arraste o controle para comparar um bloco comum com uma grade organizada.</p>
-    <label class="text-[11px] uppercase tracking-wider block mb-1">Divisor: <span id="sliderPct" class="text-violetGlow font-bold">50%</span></label>
-    <input type="range" min="10" max="90" value="50" class="w-full accent-[#7C3AED]" oninput="updateBaSlider(this.value)">
-   </div>
-   <div class="lg:col-span-7">
-    <div class="relative h-56 border border-line overflow-hidden bg-panelPlum">
-     <div class="w-full h-full p-6 flex flex-col justify-between bg-gradient-to-br from-panelPlum to-nightPlum">
-      <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-violetGlow">DEPOIS • NEXORA</span>
-      <div>
-       <strong class="arch-heading text-xl block">GRADE LIMPA & FOCO NO CONTEÚDO</strong>
-       <span class="text-xs text-silverMist">Ações diretas e leitura confortável.</span>
-      </div>
-     </div>
-     <div id="baLeftPanel" class="absolute inset-y-0 left-0 overflow-hidden border-r border-violetGlow" style="width:50%">
-      <div class="w-full h-full p-6 flex flex-col justify-between bg-[#1E1C24] text-[#9E9AA8]">
-       <span class="text-[10px] font-bold tracking-[0.2em] uppercase">ANTES • COMUM</span>
-       <div>
-        <strong class="text-sm uppercase block">ELEMENTOS SOLTOS</strong>
-        <span class="text-xs">Sem hierarquia definida.</span>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-
-  <!-- SIMULADOR DE CENÁRIO -->
-  <div class="arch-card p-6 grid md:grid-cols-2 gap-6 items-center">
-   <div>
-    <span class="arch-label">SIMULADOR</span>
-    <h3 class="arch-heading text-xl mt-1 mb-2">ESTIMATIVA HIPOTÉTICA</h3>
-    <p class="text-xs text-silverMist">Ajuste visitas, ticket médio e taxa de conversão hipotética para simular um cenário.</p>
-   </div>
-   <div class="space-y-3">
-    <div class="grid grid-cols-3 gap-2.5">
-     <label class="text-[10px] uppercase tracking-wider">Visitas
-      <input id="simVisits" type="number" min="0" value="500" class="arch-input mt-1" oninput="updateSimRoi()">
-     </label>
-     <label class="text-[10px] uppercase tracking-wider">Ticket R$
-      <input id="simTicket" type="number" min="0" value="90" class="arch-input mt-1" oninput="updateSimRoi()">
-     </label>
-     <label class="text-[10px] uppercase tracking-wider">Conv. %
-      <input id="simRate" type="number" min="0" max="100" step="0.1" value="2" class="arch-input mt-1" oninput="updateSimRoi()">
-     </label>
-    </div>
-    <div class="p-4 bg-panelPlum border border-line flex items-center justify-between">
-     <div>
-      <span class="text-[10px] uppercase tracking-widest text-silverMist block">Receita hipotética</span>
-      <strong id="simOutVal" class="text-2xl font-bold text-violetGlow">R$ 900,00</strong>
-     </div>
-     <span id="simOutSales" class="text-xs text-silverMist">10 vendas/mês</span>
-    </div>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- ABA IA (COM FAIXA AMARELA "Construindo!") -->
-<section id="page-ai" class="page-view hidden-page">
- <div id="reforma-ai" class="hidden reforma-strip">
-  Em reforma — A aba IA está temporariamente em reforma.
- </div>
-
- <div class="max-w-5xl mx-auto px-5 py-14">
-  <div class="arch-card p-6 sm:p-10 relative">
-   <span class="ai-ribbon-badge absolute top-5 right-5 !text-xs !px-3 !py-1.5">Construindo!</span>
-
-   <span class="arch-label">MÓDULO EXPERIMENTAL • IA</span>
-   <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-3">LABORATÓRIO DE ESTRUTURA COM IA</h2>
-   <p class="text-xs sm:text-sm text-silverMist max-w-2xl mb-6">
-    Esta aba está com a faixa <strong>Construindo!</strong> porque o módulo completo de IA ainda está em desenvolvimento. Enquanto isso, você pode testar um gerador local de arquitetura de página.
+   <p class="text-sm sm:text-base text-gray-700 leading-relaxed max-w-2xl">
+    Aqui cada demonstração é um <strong>site de amostra completo</strong>: tem <strong>tela de loading</strong>, <strong>entrada</strong>, <strong>fotos de pessoas, produtos ou resultados</strong>, abas internas e <strong>ferramentas funcionando</strong> (simulador, carrinho, agenda, provador, grade de treinos, banho pet, calculadora, ensaio, combo de marmitas e metrônomo).
    </p>
 
-   <div class="grid md:grid-cols-2 gap-6">
-    <div class="space-y-3">
-     <label class="text-[10px] uppercase tracking-widest block">Nome ou segmento do projeto
-      <input id="aiTopicInput" class="arch-input mt-1" placeholder="Ex.: Clínica de fisioterapia esportiva">
-     </label>
-     <label class="text-[10px] uppercase tracking-widest block">Tipo de aplicação desejada
-      <select id="aiAppType" class="arch-input mt-1">
-       <option value="Simulador de sessões e prazos">Simulador de sessões e prazos</option>
-       <option value="Montador de pacotes ou caixas">Montador de pacotes ou caixas</option>
-       <option value="Guia interativo de escolha">Guia interativo de escolha</option>
-      </select>
-     </label>
-     <button onclick="runAiSandbox()" class="arch-btn-primary w-full">
-      <i class="fa-solid fa-wand-magic-sparkles"></i> Gerar esboço (Construindo!)
-     </button>
-    </div>
+   <div class="flex flex-wrap gap-3 pt-1">
+    <button onclick="goPage('catalog')" class="btn-grad">
+     <i class="fa-solid fa-play"></i> Explorar os 10 sites amostra
+    </button>
+    <button onclick="goPage('features')" class="btn-outline-decor">
+     <i class="fa-solid fa-sliders"></i> Ver recursos & simuladores
+    </button>
+   </div>
 
-    <div class="p-5 bg-panelPlum border border-line flex flex-col justify-between">
-     <div>
-      <div class="flex items-center justify-between mb-2">
-       <span class="text-[10px] uppercase tracking-widest text-violetGlow font-bold">Saída do rascunho</span>
-       <span class="ai-ribbon-badge !text-[8px] !px-2 !py-0.5">Construindo!</span>
-      </div>
-      <div id="aiSandboxResult" class="text-xs text-silverMist leading-relaxed">
-       Preencha um segmento ao lado para gerar uma estrutura inicial de seções e aplicação.
-      </div>
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-purple-200/80">
+    <div class="p-3.5 rounded-2xl bg-purple-50 border border-purple-200/80">
+     <strong class="font-display text-3xl text-purple-800 block">10</strong>
+     <span class="text-[11px] font-bold text-gray-700">Sites amostra completos</span>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-pink-50 border border-pink-200/80">
+     <strong class="font-display text-3xl text-pink-700 block">30+</strong>
+     <span class="text-[11px] font-bold text-gray-700">Fotos de pessoas e cases</span>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-300/80">
+     <strong class="font-display text-3xl text-amber-800 block">100%</strong>
+     <span class="text-[11px] font-bold text-gray-700">Ferramentas ativas</span>
+    </div>
+    <div class="p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200/80">
+     <strong class="font-display text-3xl text-indigo-800 block">IA</strong>
+     <span class="text-[11px] font-bold text-gray-700">Aba em construção</span>
+    </div>
+   </div>
+  </div>
+
+  <!-- Colagem decorada com fotos -->
+  <div class="lg:col-span-5">
+   <div class="grid grid-cols-2 gap-3.5">
+    <div class="space-y-3.5">
+     <div class="rounded-2xl overflow-hidden border-2 border-white shadow-lg aspect-[4/5] -rotate-1">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="Equipe criativa em reunião de projeto" class="w-full h-full object-cover">
      </div>
-     <span class="text-[10px] text-silverMist/70 mt-4 pt-3 border-t border-line block">Status: Em construção pela NEXORA.</span>
+     <div class="p-3.5 rounded-2xl bg-amber-100 border border-amber-300 text-amber-950 shadow">
+      <span class="text-[10px] font-extrabold uppercase tracking-wider block">DIFERENCIAL</span>
+      <span class="text-xs font-semibold block mt-0.5">Loading, entrada, fotos e abas dentro de cada amostra.</span>
+     </div>
+    </div>
+    <div class="space-y-3.5 pt-6">
+     <div class="p-3.5 rounded-2xl bg-gradient-to-br from-purple-900 to-fuchsia-800 text-white shadow-lg">
+      <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 block">ESTILO NEXORA</span>
+      <span class="text-xs font-medium block mt-0.5">Camadas visuais, selos, cartões e fotos em destaque.</span>
+     </div>
+     <div class="rounded-2xl overflow-hidden border-2 border-white shadow-lg aspect-[4/5] rotate-2">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80" alt="Resultado de prato pronto e colorido" class="w-full h-full object-cover">
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- VITRINE EM DESTAQUE NA HOME -->
+ <div class="space-y-5">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+   <div>
+    <span class="badge-pill"><i class="fa-solid fa-fire"></i> Experimente Agora</span>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Sites amostra em destaque</h2>
+   </div>
+   <button onclick="goPage('catalog')" class="btn-outline-decor">Ver todos os 10 sites →</button>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+   <article class="decor-card p-4 flex flex-col">
+    <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-4">
+     <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Clínica odontológica e resultado" class="w-full h-full object-cover">
+     <span class="absolute top-3 left-3 badge-pill !bg-white !text-purple-950 shadow">01 • Saúde</span>
+    </div>
+    <h3 class="font-display text-2xl font-bold">Clínica Sorriso & Estética</h3>
+    <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Profissional, galeria de resultados, FAQ, simulador de sessões e agendamento interativo.</p>
+    <button onclick="openSampleSite('dentist')" class="btn-grad w-full text-xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir site completo</button>
+   </article>
+
+   <article class="decor-card p-4 flex flex-col">
+    <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-4">
+     <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Padaria e confeitaria" class="w-full h-full object-cover">
+     <span class="absolute top-3 left-3 badge-pill !bg-amber-200 !text-amber-950 shadow">02 • Padaria</span>
+    </div>
+    <h3 class="font-display text-2xl font-bold">Padaria & Confeitaria</h3>
+    <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos de produtos, carrinho funcional com quantidades, entrega e finalização de pedido.</p>
+    <button onclick="openSampleSite('bakery')" class="btn-grad w-full text-xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir site completo</button>
+   </article>
+
+   <article class="decor-card p-4 flex flex-col">
+    <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-4">
+     <img src="https://images.unsplash.com/photo-1554048612-b6a482bc6727?auto=format&fit=crop&w=800&q=80" alt="Estúdio fotográfico" class="w-full h-full object-cover">
+     <span class="absolute top-3 left-3 badge-pill !bg-pink-100 !text-pink-950 shadow">08 • Fotografia</span>
+    </div>
+    <h3 class="font-display text-2xl font-bold">Estúdio Fotográfico</h3>
+    <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto do fotógrafo, portfólio de ensaios, calculadora de fotos extras e reserva de data.</p>
+    <button onclick="openSampleSite('photo')" class="btn-grad w-full text-xs"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir site completo</button>
+   </article>
+  </div>
+ </div>
+
+ <!-- BLOCO EXTRA: COMO CADA AMOSTRA É MONTADA + PERGUNTAS RÁPIDAS -->
+ <div class="grid lg:grid-cols-12 gap-6">
+  <div class="lg:col-span-7 decor-box p-6 sm:p-8 space-y-4">
+   <span class="badge-pill"><i class="fa-solid fa-layer-group"></i> Anatomia de Cada Demonstração</span>
+   <h2 class="font-display text-3xl font-bold">O que vem dentro de cada site amostra</h2>
+   <div class="grid sm:grid-cols-2 gap-3.5 text-xs">
+    <div class="p-4 rounded-2xl bg-purple-50/90 border border-purple-200">
+     <strong class="text-purple-900 text-sm block mb-1">1. Tela de Loading & Entrada</strong>
+     <span>Abertura animada com identidade do segmento e apresentação clara do negócio.</span>
+    </div>
+    <div class="p-4 rounded-2xl bg-pink-50/90 border border-pink-200">
+     <strong class="text-pink-900 text-sm block mb-1">2. Fotos Reais de Contexto</strong>
+     <span>Imagem da pessoa/equipe e foto do produto, espaço ou resultado final.</span>
+    </div>
+    <div class="p-4 rounded-2xl bg-amber-50/90 border border-amber-300">
+     <strong class="text-amber-950 text-sm block mb-1">3. Função Interativa Pronta</strong>
+     <span>Simuladores, carrinhos, agendas, montadores ou metrônomo funcionando na hora.</span>
+    </div>
+    <div class="p-4 rounded-2xl bg-indigo-50/90 border border-indigo-200">
+     <strong class="text-indigo-950 text-sm block mb-1">4. Abas Internas (Galeria & FAQ)</strong>
+     <span>Navegação interna dentro do próprio site amostra para explorar detalhes e dúvidas.</span>
+    </div>
+   </div>
+  </div>
+
+  <div class="lg:col-span-5 decor-box p-6 sm:p-8 space-y-3">
+   <span class="badge-pill !bg-amber-100 !text-amber-950 !border-amber-300"><i class="fa-solid fa-circle-question"></i> Dúvidas Rápidas</span>
+   <h2 class="font-display text-3xl font-bold">Perguntas frequentes</h2>
+   <div class="space-y-2.5 text-xs">
+    <details class="p-3.5 rounded-2xl bg-white border border-purple-200" open>
+     <summary class="font-bold cursor-pointer text-purple-950">Posso testar as funções dentro das demos?</summary>
+     <p class="text-gray-600 mt-1.5">Sim! Todos os 10 sites amostra têm controles que calculam, adicionam itens, mudam abas e simulam ações na hora.</p>
+    </details>
+    <details class="p-3.5 rounded-2xl bg-white border border-purple-200">
+     <summary class="font-bold cursor-pointer text-purple-950">Por que a aba IA tem uma faixa de construção?</summary>
+     <p class="text-gray-600 mt-1.5">Porque o módulo completo de IA está em construção — ao abrir a aba IA, aparece a faixa amarela no topo da página.</p>
+    </details>
+    <details class="p-3.5 rounded-2xl bg-white border border-purple-200">
+     <summary class="font-bold cursor-pointer text-purple-950">Como peço um site parecido com alguma amostra?</summary>
+     <p class="text-gray-600 mt-1.5">Vá em Planos ou Contato, escolha o formato e envie os detalhes direto para o WhatsApp.</p>
+    </details>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- =====================================================================
+     PÁGINA 2: 10 SITES AMOSTRA
+====================================================================== -->
+<section id="page-catalog" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
+ <div class="decor-box p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+  <div class="space-y-2 max-w-2xl">
+   <span class="badge-pill"><i class="fa-solid fa-globe"></i> 10 Sites Amostra Completos</span>
+   <h2 class="font-display text-3xl sm:text-5xl font-bold">Escolha um site amostra para abrir</h2>
+   <p class="text-xs sm:text-sm text-gray-700">
+    Cada card abre um site com loading, tela de entrada, fotos da pessoa/produto/resultado, abas internas e funções reais.
+   </p>
+  </div>
+  <div class="flex flex-wrap gap-2" id="sampleFilterBar">
+   <button onclick="filterSamples('all',this)" class="btn-grad !py-2 !px-4 text-xs">Todos (10)</button>
+   <button onclick="filterSamples('comercio',this)" class="btn-outline-decor !py-2 !px-3.5 text-xs">Comércio & Comida</button>
+   <button onclick="filterSamples('servicos',this)" class="btn-outline-decor !py-2 !px-3.5 text-xs">Saúde, Pet & Estilo</button>
+   <button onclick="filterSamples('criativo',this)" class="btn-outline-decor !py-2 !px-3.5 text-xs">Criativo & Aulas</button>
+  </div>
+ </div>
+
+ <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="allTenSamplesGrid">
+  <!-- 01 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="servicos">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" alt="Clínica Sorriso e Estética" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-white !text-purple-950">01 • Clínica</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Clínica Sorriso & Estética</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos da dentista e resultado, abas internas, simulador de sessões e agendamento.</p>
+   <button onclick="openSampleSite('dentist')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 01</button>
+  </article>
+
+  <!-- 02 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="comercio">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Padaria e Confeitaria" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-amber-200 !text-amber-950">02 • Padaria</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Padaria & Confeitaria</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos de padeiro e massas, carrinho interativo com +/- itens, entrega e pedido.</p>
+   <button onclick="openSampleSite('bakery')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 02</button>
+  </article>
+
+  <!-- 03 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="servicos">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Barbearia e Estilo" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-purple-100 !text-purple-950">03 • Barbearia</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Barbearia & Estilo</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto do barbeiro e corte finalizado, escolha de barbeiro, horário e confirmação.</p>
+   <button onclick="openSampleSite('barber')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 03</button>
+  </article>
+
+  <!-- 04 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="comercio">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Loja de Moda e Lookbook" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-pink-100 !text-pink-950">04 • Moda</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Loja de Moda & Lookbook</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos de curadoria e arara, seleção de tamanho, quantidade e sacola interativa.</p>
+   <button onclick="openSampleSite('fashion')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 04</button>
+  </article>
+
+  <!-- 05 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="servicos">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Academia e Treinos" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-indigo-100 !text-indigo-950">05 • Fitness</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Academia & Treinos</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto de treinador e espaço, divisão semanal de treinos e checklist de dias.</p>
+   <button onclick="openSampleSite('fitness')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 05</button>
+  </article>
+
+  <!-- 06 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="servicos">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80" alt="Pet Shop e Banho" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-amber-200 !text-amber-950">06 • Pet Shop</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Pet Shop & Banho</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos de pets e cuidado, simulador por porte e tosa higiênica e agendamento.</p>
+   <button onclick="openSampleSite('pet')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 06</button>
+  </article>
+
+  <!-- 07 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="criativo">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Arquitetura e Interiores" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-purple-100 !text-purple-950">07 • Arquitetura</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Arquitetura & Interiores</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto da arquiteta e ambiente entregue, calculadora de m² e tipo de projeto.</p>
+   <button onclick="openSampleSite('arch')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 07</button>
+  </article>
+
+  <!-- 08 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="criativo">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc6727?auto=format&fit=crop&w=800&q=80" alt="Estúdio Fotográfico" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-pink-100 !text-pink-950">08 • Fotografia</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Estúdio Fotográfico</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto do fotógrafo e ensaio, pacotes de fotos, fotos extras e cálculo total.</p>
+   <button onclick="openSampleSite('photo')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 08</button>
+  </article>
+
+  <!-- 09 -->
+  <article class="decor-card p-4 flex flex-col sample-card" data-group="comercio">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Marmitaria Fit e Sabor" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-amber-200 !text-amber-950">09 • Refeições</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Marmitaria Fit & Sabor</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Fotos da cozinha e pratos prontos, montador de combo semanal de marmitas.</p>
+   <button onclick="openSampleSite('meal')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 09</button>
+  </article>
+
+  <!-- 10 -->
+  <article class="decor-card p-4 flex flex-col sample-card md:col-span-2 lg:col-span-1" data-group="criativo">
+   <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-3">
+    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80" alt="Escola de Música" class="w-full h-full object-cover">
+    <span class="absolute top-2.5 left-2.5 badge-pill !bg-indigo-100 !text-indigo-950">10 • Música</span>
+   </div>
+   <h3 class="font-display text-2xl font-bold">Escola de Música & Ritmo</h3>
+   <p class="text-xs text-gray-600 mt-1 mb-4 flex-1">Foto de professor e estúdio, metrônomo interativo com som e controle de BPM.</p>
+   <button onclick="openSampleSite('music')" class="btn-grad w-full text-xs"><i class="fa-solid fa-play"></i> Abrir Site 10</button>
+  </article>
+ </div>
+</section>
+
+<!-- =====================================================================
+     PÁGINA 3: RECURSOS
+====================================================================== -->
+<section id="page-features" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
+ <div class="decor-box p-6 sm:p-8">
+  <span class="badge-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Recursos Interativos</span>
+  <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2 mb-2">Ferramentas e simuladores prontos</h2>
+  <p class="text-xs sm:text-sm text-gray-700">Arraste o comparador com fotos, simule cenários e monte um checklist de recursos para o seu site.</p>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-6">
+  <div class="decor-box p-6 space-y-4">
+   <h3 class="font-display text-2xl font-bold">Comparador Antes & Depois com Fotos</h3>
+   <p class="text-xs text-gray-600">Arraste a barra para comparar o antes e o depois.</p>
+   <div class="relative h-64 rounded-2xl overflow-hidden border-2 border-purple-200 select-none">
+    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80" alt="Projeto finalizado" class="w-full h-full object-cover">
+    <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-purple-700 text-white text-xs font-bold shadow">DEPOIS</span>
+    <div id="featBaClip" class="absolute inset-y-0 left-0 overflow-hidden border-r-4 border-amber-400" style="width:50%">
+     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Etapa inicial" class="w-full h-full object-cover grayscale contrast-75">
+     <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-gray-950 text-white text-xs font-bold shadow">ANTES</span>
+    </div>
+   </div>
+   <input type="range" min="10" max="90" value="50" class="w-full accent-purple-700" oninput="moveFeatBa(this.value)">
+  </div>
+
+  <div class="decor-box p-6 space-y-4">
+   <h3 class="font-display text-2xl font-bold">Simulador de Cenário Mensal</h3>
+   <p class="text-xs text-gray-600">Ajuste os campos para simular clientes e faturamento hipotético.</p>
+   <div class="grid grid-cols-3 gap-3">
+    <label class="text-xs font-bold">Visitas/mês
+     <input id="fVis" type="number" min="0" value="900" class="form-field mt-1" oninput="calcFeatSim()">
+    </label>
+    <label class="text-xs font-bold">Ticket (R$)
+     <input id="fTic" type="number" min="0" value="120" class="form-field mt-1" oninput="calcFeatSim()">
+    </label>
+    <label class="text-xs font-bold">Conversão (%)
+     <input id="fCnv" type="number" min="0" max="100" step="0.1" value="3.5" class="form-field mt-1" oninput="calcFeatSim()">
+    </label>
+   </div>
+   <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 flex items-center justify-between">
+    <div>
+     <span class="text-xs text-purple-900 font-semibold block">Estimativa mensal</span>
+     <strong id="fSimMoney" class="font-display text-3xl text-purple-800">R$ 3.780,00</strong>
+    </div>
+    <span id="fSimClients" class="text-xs font-bold text-purple-900">~31 clientes/mês</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- =====================================================================
+     PÁGINA 4: ABA IA (FAIXA AMARELA EM CIMA DA PÁGINA)
+====================================================================== -->
+<section id="page-ai" class="page-view hidden-page max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-16">
+ <div class="decor-box p-6 sm:p-10 space-y-6">
+  <div class="flex flex-wrap items-center gap-3">
+   <span class="badge-pill"><i class="fa-solid fa-robot"></i> Laboratório NEXORA IA</span>
+   <span class="px-3 py-1 rounded-full bg-amber-300 text-amber-950 text-xs font-extrabold uppercase">Construindo!</span>
+  </div>
+
+  <div class="grid md:grid-cols-12 gap-6 items-center">
+   <div class="md:col-span-7 space-y-3">
+    <h2 class="font-display text-3xl sm:text-5xl font-bold">Gerador de Estrutura com IA</h2>
+    <p class="text-xs sm:text-sm text-gray-700">
+     A faixa amarela <strong>CONSTRUINDO!</strong> fica em cima da página enquanto você navega nesta aba. Teste o gerador interativo de estrutura abaixo:
+    </p>
+    <label class="text-xs font-bold block">Nome ou segmento do negócio
+     <input id="aiNameInp" class="form-field mt-1" placeholder="Ex.: Confeitaria artesanal de bolos decorados">
+    </label>
+    <label class="text-xs font-bold block">Ferramenta principal no site
+     <select id="aiToolSel" class="form-field mt-1">
+      <option value="Carrinho com cálculo de entrega e quantidades">Carrinho com cálculo de entrega e quantidades</option>
+      <option value="Simulador de pacotes, prazos e sessões">Simulador de pacotes, prazos e sessões</option>
+      <option value="Agenda interativa com escolha de profissional e horário">Agenda interativa com escolha de profissional e horário</option>
+     </select>
+    </label>
+    <button onclick="generateAiBlueprint()" class="btn-grad"><i class="fa-solid fa-sparkles"></i> Gerar estrutura completa</button>
+   </div>
+
+   <div class="md:col-span-5 space-y-3">
+    <div class="rounded-2xl overflow-hidden border-2 border-purple-200 aspect-[16/10]">
+     <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="Laboratório de IA" class="w-full h-full object-cover">
+    </div>
+    <div id="aiBlueprintBox" class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-gray-800 space-y-1.5">
+     <strong>Prévia:</strong> Preencha o campo ao lado e clique em gerar estrutura.
     </div>
    </div>
   </div>
  </div>
 </section>
 
-<!-- PLANOS -->
-<section id="page-contracts" class="page-view hidden-page">
- <div id="reforma-contracts" class="hidden reforma-strip">
-  Em reforma — A aba de planos está temporariamente em reforma.
+<!-- =====================================================================
+     PÁGINA 5: PLANOS
+====================================================================== -->
+<section id="page-contracts" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
+ <div class="decor-box p-6 sm:p-8">
+  <span class="badge-pill"><i class="fa-solid fa-file-signature"></i> Planos & Formatos</span>
+  <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2 mb-2">Escolha o plano do seu site</h2>
+  <p class="text-xs sm:text-sm text-gray-700">Clique em selecionar para preencher o formulário de contato automaticamente.</p>
  </div>
 
- <div class="max-w-6xl mx-auto px-5 py-14">
-  <span class="arch-label">FORMATOS</span>
-  <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-8">PLANOS DE REFERÊNCIA</h2>
+ <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+  <article class="decor-card p-6 flex flex-col">
+   <span class="badge-pill self-start">Simples</span>
+   <h3 class="font-display text-2xl font-bold mt-3">Sem Manutenção</h3>
+   <strong class="font-display text-4xl text-purple-800 my-3">R$89</strong>
+   <ul class="text-xs text-gray-700 space-y-2 mb-6 flex-1">
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Até 7 recursos</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Design responsivo</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Entrega base rápida</li>
+   </ul>
+   <button onclick="selectPlan('Simples Sem Manutenção - R$89')" class="btn-outline-decor w-full text-xs">Selecionar</button>
+  </article>
 
-  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
-   <article class="arch-card p-6 flex flex-col">
-    <span class="arch-label">01 • ESSENCIAL</span>
-    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Sem Manutenção</h3>
-    <strong class="text-3xl font-bold my-4">R$89</strong>
-    <p class="text-xs text-silverMist flex-1 mb-5">Página objetiva com até 7 recursos e estrutura responsiva.</p>
-    <button onclick="selectPlanAndContact('Simples Sem Manutenção - R$89')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
-   </article>
+  <article class="decor-card p-6 flex flex-col">
+   <span class="badge-pill self-start">Simples +</span>
+   <h3 class="font-display text-2xl font-bold mt-3">Com Manutenção</h3>
+   <strong class="font-display text-4xl text-purple-800 my-3">R$119</strong>
+   <ul class="text-xs text-gray-700 space-y-2 mb-6 flex-1">
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Até 7 recursos</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Ajustes combinados</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Suporte contínuo</li>
+   </ul>
+   <button onclick="selectPlan('Simples Com Manutenção - R$119')" class="btn-outline-decor w-full text-xs">Selecionar</button>
+  </article>
 
-   <article class="arch-card p-6 flex flex-col">
-    <span class="arch-label">02 • ESSENCIAL +</span>
-    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Com Manutenção</h3>
-    <strong class="text-3xl font-bold my-4">R$119</strong>
-    <p class="text-xs text-silverMist flex-1 mb-5">Até 7 recursos com acompanhamento e ajustes combinados.</p>
-    <button onclick="selectPlanAndContact('Simples Com Manutenção - R$119')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
-   </article>
+  <article class="decor-card p-6 flex flex-col border-purple-500">
+   <span class="badge-pill self-start !bg-amber-200 !text-amber-950">Especial</span>
+   <h3 class="font-display text-2xl font-bold mt-3">Sem Manutenção</h3>
+   <strong class="font-display text-4xl text-purple-800 my-3">R$149</strong>
+   <ul class="text-xs text-gray-700 space-y-2 mb-6 flex-1">
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Até 12 recursos</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Ferramentas interativas</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Visual autoral</li>
+   </ul>
+   <button onclick="selectPlan('Especial Sem Manutenção - R$149')" class="btn-grad w-full text-xs">Selecionar</button>
+  </article>
 
-   <article class="arch-card p-6 flex flex-col border-violetGlow">
-    <span class="arch-label">03 • ESTÚDIO</span>
-    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Sem Manutenção</h3>
-    <strong class="text-3xl font-bold my-4 text-violetGlow">R$149</strong>
-    <p class="text-xs text-silverMist flex-1 mb-5">Até 12 recursos com ferramentas interativas e identidade própria.</p>
-    <button onclick="selectPlanAndContact('Especial Sem Manutenção - R$149')" class="arch-btn-primary w-full text-[10px]">Selecionar</button>
-   </article>
-
-   <article class="arch-card p-6 flex flex-col">
-    <span class="arch-label">04 • COMPLETO</span>
-    <h3 class="text-xs font-bold uppercase tracking-widest mt-1">Com Manutenção</h3>
-    <strong class="text-3xl font-bold my-4">R$179</strong>
-    <p class="text-xs text-silverMist flex-1 mb-5">Até 12 recursos com suporte ativo e atualizações.</p>
-    <button onclick="selectPlanAndContact('Especial Com Manutenção VIP - R$179')" class="arch-btn-ghost w-full text-[10px]">Selecionar</button>
-   </article>
-  </div>
+  <article class="decor-card p-6 flex flex-col">
+   <span class="badge-pill self-start !bg-pink-100 !text-pink-950">Especial VIP</span>
+   <h3 class="font-display text-2xl font-bold mt-3">Com Manutenção</h3>
+   <strong class="font-display text-4xl text-purple-800 my-3">R$179</strong>
+   <ul class="text-xs text-gray-700 space-y-2 mb-6 flex-1">
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Até 12 recursos</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Atualizações periódicas</li>
+    <li><i class="fa-solid fa-check text-purple-700 mr-1.5"></i>Acompanhamento VIP</li>
+   </ul>
+   <button onclick="selectPlan('Especial Com Manutenção VIP - R$179')" class="btn-outline-decor w-full text-xs">Selecionar</button>
+  </article>
  </div>
 </section>
 
-<!-- CONTATO -->
-<section id="page-contact" class="page-view hidden-page">
- <div id="reforma-contact" class="hidden reforma-strip">
-  Em reforma — A aba de contato está temporariamente em reforma.
- </div>
+<!-- =====================================================================
+     PÁGINA 6: CONTATO
+====================================================================== -->
+<section id="page-contact" class="page-view hidden-page max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-16">
+ <div class="decor-box p-6 sm:p-8">
+  <span class="badge-pill"><i class="fa-solid fa-paper-plane"></i> Enviar Pedido</span>
+  <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2 mb-6">Monte sua mensagem</h2>
 
- <div class="max-w-3xl mx-auto px-5 py-14">
-  <span class="arch-label">BRIEFING</span>
-  <h2 class="arch-heading text-3xl sm:text-4xl mt-1 mb-6">ENVIAR PROPOSTA</h2>
-
-  <form class="arch-card p-6 sm:p-8 space-y-4" onsubmit="submitContactForm(event)">
+  <form class="space-y-4" onsubmit="submitWaForm(event)">
    <div>
-    <label class="text-[10px] uppercase tracking-widest block mb-1">Seu nome</label>
-    <input id="cName" class="arch-input" required placeholder="Ex.: Rafael Costa">
+    <label class="text-xs font-bold block mb-1">Seu nome</label>
+    <input id="cNameInp" class="form-field" required placeholder="Ex.: Lucas Ferreira">
    </div>
    <div class="grid sm:grid-cols-2 gap-4">
     <div>
-     <label class="text-[10px] uppercase tracking-widest block mb-1">Segmento</label>
-     <select id="cSegment" class="arch-input" required>
+     <label class="text-xs font-bold block mb-1">Segmento / Site amostra</label>
+     <select id="cSegmentSel" class="form-field" required>
       <option value="">Selecione</option>
-      <option>Odontologia</option>
-      <option>Padaria</option>
-      <option>Barbearia</option>
-      <option>Moda</option>
-      <option>Movimento / Fitness</option>
-      <option>Pet Care</option>
-      <option>Arquitetura</option>
-      <option>Fotografia</option>
-      <option>Marmitaria</option>
-      <option>Música</option>
+      <option>01 • Clínica Sorriso & Estética</option>
+      <option>02 • Padaria & Confeitaria</option>
+      <option>03 • Barbearia & Estilo</option>
+      <option>04 • Loja de Moda & Lookbook</option>
+      <option>05 • Academia & Treinos</option>
+      <option>06 • Pet Shop & Banho</option>
+      <option>07 • Arquitetura & Interiores</option>
+      <option>08 • Estúdio Fotográfico</option>
+      <option>09 • Marmitaria Fit & Sabor</option>
+      <option>10 • Escola de Música & Ritmo</option>
      </select>
     </div>
     <div>
-     <label class="text-[10px] uppercase tracking-widest block mb-1">Formato</label>
-     <select id="cPlan" class="arch-input" required>
+     <label class="text-xs font-bold block mb-1">Plano</label>
+     <select id="cPlanSel" class="form-field" required>
       <option value="">Selecione</option>
       <option>Simples Sem Manutenção - R$89</option>
       <option>Simples Com Manutenção - R$119</option>
@@ -840,312 +905,81 @@ button {
     </div>
    </div>
    <div>
-    <label class="text-[10px] uppercase tracking-widest block mb-1">Observações</label>
-    <textarea id="cNotes" class="arch-input" rows="3" placeholder="Descreva a função interativa que deseja..."></textarea>
+    <label class="text-xs font-bold block mb-1">Detalhes do projeto</label>
+    <textarea id="cNotesInp" class="form-field" rows="3" placeholder="Conte quais fotos, funções ou abas você quer no seu site..."></textarea>
    </div>
-   <button type="submit" class="arch-btn-primary w-full">Abrir no WhatsApp</button>
+   <button type="submit" class="btn-grad w-full"><i class="fa-brands fa-whatsapp"></i> Enviar no WhatsApp</button>
   </form>
- </div>
-</section>
-
-<!-- PAINEL DE ADMINISTRAÇÃO (LIBERADO AUTOMATICAMENTE COM 062.151.210-96) -->
-<section id="page-admin" class="page-view hidden-page">
- <div class="max-w-5xl mx-auto px-5 py-14">
-  <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-   <div>
-    <span class="px-2.5 py-1 bg-violetCore text-white text-[10px] font-bold uppercase tracking-widest">Painel ADM Desbloqueado</span>
-    <h2 class="arch-heading text-3xl sm:text-4xl mt-2">ADMINISTRAÇÃO NEXORA</h2>
-   </div>
-   <button onclick="lockAdmin()" class="arch-btn-ghost"><i class="fa-solid fa-lock"></i> Bloquear</button>
-  </div>
-
-  <div class="grid md:grid-cols-2 gap-6">
-   <div class="arch-card p-6">
-    <h3 class="arch-heading text-base mb-1">DESATIVAR ABAS ("EM REFORMA")</h3>
-    <p class="text-xs text-silverMist mb-4">Escolha quais abas ficam desativadas exibindo a faixa amarela <strong>Em reforma</strong>.</p>
-    <div id="adminReformList" class="space-y-2.5"></div>
-   </div>
-
-   <div class="arch-card p-6 space-y-5">
-    <div>
-     <h3 class="arch-heading text-base mb-1">PAUSAR SISTEMA</h3>
-     <p class="text-xs text-silverMist mb-3">Congela a navegação do sistema com tela de pausa administrativa.</p>
-     <button onclick="togglePauseSystem()" id="pauseSystemActionBtn" class="arch-btn-primary w-full">
-      <i class="fa-solid fa-pause"></i> Pausar sistema
-     </button>
-    </div>
-
-    <div class="pt-4 border-t border-line">
-     <label class="text-[10px] uppercase tracking-widest block mb-1.5">Aviso global no topo</label>
-     <div class="flex gap-2">
-      <input id="adminAlertInput" class="arch-input text-xs" placeholder="Digite um aviso para o site...">
-      <button onclick="applyAdminAlert()" class="arch-btn-primary shrink-0">Salvar</button>
-     </div>
-     <button onclick="clearAdminAlert()" class="text-[11px] text-silverMist underline mt-2">Limpar aviso</button>
-    </div>
-
-    <div class="pt-4 border-t border-line flex flex-wrap gap-2">
-     <button onclick="resetAdminAll()" class="arch-btn-ghost text-[10px]">Restaurar tudo</button>
-     <button onclick="copyAdminStateText()" class="arch-btn-ghost text-[10px]">Copiar status</button>
-    </div>
-   </div>
-  </div>
  </div>
 </section>
 
 </main>
 
 <!-- RODAPÉ -->
-<footer class="border-t border-line bg-nightPlum">
- <div class="max-w-6xl mx-auto px-5 py-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-silverMist">
-  <span class="tracking-[0.18em] uppercase">NEXORA • ARQUITETURA & WEB</span>
-  <div class="flex items-center gap-4">
-   <button onclick="goPage('catalog')" class="hover:text-ghostWhite uppercase tracking-wider">10 Demos</button>
-   <button onclick="goPage('ai')" class="hover:text-ghostWhite uppercase tracking-wider">IA</button>
-   <button onclick="openAdminModal()" class="text-[10px] underline text-silverMist/75 hover:text-violetGlow">Codigos Administração</button>
+<footer class="bg-white/95 border-t-2 border-purple-200/80 py-8 px-4">
+ <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+  <div class="flex items-center gap-2.5 font-bold text-gray-950">
+   <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-700 to-fuchsia-600 text-white grid place-items-center text-xs">NX</span>
+   <span>NEXORA — Portfólio & 10 Sites Amostra</span>
+  </div>
+  <div class="flex flex-wrap gap-4 font-bold">
+   <button onclick="goPage('home')" class="hover:text-purple-700">Início</button>
+   <button onclick="goPage('catalog')" class="hover:text-purple-700">10 Sites</button>
+   <button onclick="goPage('features')" class="hover:text-purple-700">Recursos</button>
+   <button onclick="goPage('ai')" class="hover:text-purple-700">IA</button>
+   <button onclick="goPage('contracts')" class="hover:text-purple-700">Planos</button>
+   <button onclick="goPage('contact')" class="hover:text-purple-700">Contato</button>
   </div>
  </div>
 </footer>
 
-<!-- TELA DE SISTEMA PAUSADO -->
-<div id="systemPauseLayer">
- <div class="max-w-md w-full arch-card p-7 text-center bg-nightPlum">
-  <span class="reforma-strip inline-block mb-4">Sistema Pausado</span>
-  <h2 class="arch-heading text-2xl mb-2">SISTEMA EM PAUSA</h2>
-  <p class="text-xs text-silverMist mb-6">O sistema foi pausado pela administração.</p>
-  <button onclick="togglePauseSystem()" class="arch-btn-primary w-full">
-   <i class="fa-solid fa-play"></i> Retomar sistema
-  </button>
- </div>
-</div>
-
-<!-- MODAL DE CÓDIGO DE ADMINISTRAÇÃO -->
-<div id="adminGateModal" class="modal-layer" onclick="if(event.target===this)closeAdminModal()">
- <div class="modal-box" style="max-width:420px">
-  <div class="flex items-center justify-between mb-4">
-   <h3 class="arch-heading text-lg">Codigos Administração</h3>
-   <button onclick="closeAdminModal()" class="w-8 h-8 border border-line grid place-items-center text-xs"><i class="fa-solid fa-xmark"></i></button>
+<!-- JANELA DO SITE AMOSTRA (LOADING + ENTRADA + FOTOS + ABAS INTERNAS + FUNÇÃO ATIVA) -->
+<div id="sampleModalBackdrop" class="sample-backdrop" onclick="if(event.target===this)closeSampleModal()">
+ <div class="sample-window">
+  <div id="sampleLoaderOverlay" class="sample-loader-screen">
+   <div class="loader-ring"></div>
+   <div id="sampleLoaderMsg" class="text-xs font-extrabold uppercase tracking-widest text-amber-300">Carregando site amostra...</div>
   </div>
-  <p class="text-xs text-silverMist mb-3">Digite o código para liberar a versão de administração automaticamente.</p>
-  <input id="adminCodeField" type="text" class="arch-input font-mono tracking-wider" placeholder="Digite o código..." oninput="watchAdminCode(this.value)">
-  <p id="adminCodeHint" class="text-[11px] text-silverMist mt-2">Aguardando código...</p>
- </div>
-</div>
 
-<!-- MODAL DE DEMONSTRAÇÃO -->
-<div id="demoModal" class="modal-layer" onclick="if(event.target===this)closeDemoModal()">
- <div class="modal-box">
-  <div class="flex items-start justify-between gap-4 pb-4 mb-5 border-b border-line">
-   <div>
-    <span class="arch-label" id="demoModalTag">APLICAÇÃO</span>
-    <h2 id="demoModalTitle" class="arch-heading text-2xl sm:text-3xl mt-1">DEMO</h2>
+  <div class="bg-gray-950 text-white px-4 py-3 flex items-center justify-between gap-3 shrink-0">
+   <div class="flex items-center gap-2 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-amber-300"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+    <span id="sampleBrowserUrl" class="ml-2 text-xs text-purple-200 truncate font-mono">https://exemplo.nexora.site</span>
    </div>
-   <button onclick="closeDemoModal()" class="w-9 h-9 border border-line grid place-items-center text-xs" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+   <button onclick="closeSampleModal()" class="px-3.5 py-1 rounded-full bg-white/15 hover:bg-white/25 text-xs font-bold">
+    <i class="fa-solid fa-xmark mr-1"></i> Fechar
+   </button>
   </div>
-  <div id="demoModalBody"></div>
+
+  <div id="sampleWindowBody" class="flex-1 overflow-y-auto p-4 sm:p-7 space-y-6"></div>
  </div>
 </div>
 
+<!-- BOTÃO WHATSAPP -->
+<button onclick="openWhatsApp()" aria-label="WhatsApp" class="wa-btn-float">
+ <i class="fa-brands fa-whatsapp"></i>
+</button>
 <script>
-const WA_NUMBER = '555189761893';
-const ADM_CODE = '062.151.210-96';
+const WA_NUMBER_NX = '555189761893';
+const ALL_PAGES_NX = ['home', 'catalog', 'features', 'ai', 'contracts', 'contact'];
 
-/* SLIDES DO HERO */
-const heroSlides = [
-  {
-    idx: '01',
-    title: 'SISTEMAS E SITES SOB MEDIDA',
-    desc: 'Composição minimalista, estrutura clara e aplicações interativas criadas para cada segmento — sem repetir apenas lista de preços e WhatsApp.',
-    img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85'
-  },
-  {
-    idx: '02',
-    title: '10 APLICAÇÕES DIFERENTES',
-    desc: 'Simuladores, montadores de caixa, visagismo, lookbook, grade de treinos, rotina pet, cálculo de obra, ensaio, refeições e estudo musical.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85'
-  },
-  {
-    idx: '03',
-    title: 'CONTROLE E MÓDULO IA',
-    desc: 'Aba de IA em construção com faixa amarela e painel de administração liberado pelo código de acesso.',
-    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85'
-  }
-];
-let currentHeroSlide = 0;
-
-function renderHeroSlide() {
-  const s = heroSlides[currentHeroSlide];
-  if (!s) return;
-  document.getElementById('heroSlideIndex').textContent = s.idx;
-  document.getElementById('heroSlideTitle').textContent = s.title;
-  document.getElementById('heroSlideDesc').textContent = s.desc;
-  document.getElementById('heroSlideImg').src = s.img;
-}
-
-function nextHeroSlide() {
-  currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-  renderHeroSlide();
-}
-
-function prevHeroSlide() {
-  currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
-  renderHeroSlide();
-}
-
-/* ESTADO ADM */
-const admSections = [
-  { id: 'home', name: 'Início' },
-  { id: 'catalog', name: '10 Demos' },
-  { id: 'features', name: 'Recursos' },
-  { id: 'ai', name: 'IA (Construindo!)' },
-  { id: 'contracts', name: 'Planos' },
-  { id: 'contact', name: 'Contato' }
-];
-
-let admData = {
-  unlocked: false,
-  paused: false,
-  reforma: {},
-  alert: ''
-};
-
-try {
-  const raw = JSON.parse(localStorage.getItem('nx_arch_adm') || 'null');
-  if (raw && typeof raw === 'object') admData = { ...admData, ...raw };
-} catch (e) {}
-
-function saveAdmData() {
-  try { localStorage.setItem('nx_arch_adm', JSON.stringify(admData)); } catch (e) {}
-  syncAdmUI();
-}
-
-function openAdminModal() {
-  if (admData.unlocked) {
-    goPage('admin');
-    return;
-  }
-  document.getElementById('adminGateModal').classList.add('open');
-  const inp = document.getElementById('adminCodeField');
-  inp.value = '';
-  document.getElementById('adminCodeHint').textContent = 'Digite o código para liberar automaticamente.';
-  setTimeout(() => inp.focus(), 40);
-}
-
-function closeAdminModal() {
-  document.getElementById('adminGateModal').classList.remove('open');
-}
-
-function watchAdminCode(val) {
-  if ((val || '').trim() === ADM_CODE) {
-    admData.unlocked = true;
-    saveAdmData();
-    document.getElementById('adminCodeHint').textContent = 'Código confirmado! Abrindo administração...';
-    setTimeout(() => {
-      closeAdminModal();
-      goPage('admin');
-    }, 180);
-  }
-}
-
-function lockAdmin() {
-  admData.unlocked = false;
-  saveAdmData();
-  goPage('home');
-}
-
-function renderAdmSwitches() {
-  const wrap = document.getElementById('adminReformList');
-  if (!wrap) return;
-  wrap.innerHTML = admSections.map(s => {
-    const activeReforma = !!admData.reforma[s.id];
-    return `
-      <div class="p-3 bg-panelPlum border border-line flex items-center justify-between gap-3">
-        <div>
-          <strong class="text-xs uppercase tracking-wider block">${s.name}</strong>
-          <span class="text-[11px] ${activeReforma ? 'text-[#FACC15] font-bold' : 'text-silverMist'}">${activeReforma ? 'Desativada — Em reforma' : 'Ativa'}</span>
-        </div>
-        <button onclick="toggleSectionReforma('${s.id}')" class="${activeReforma ? 'arch-btn-primary' : 'arch-btn-ghost'} !py-1.5 !px-3 text-[10px]">
-          ${activeReforma ? 'Reativar' : 'Em reforma'}
-        </button>
-      </div>`;
-  }).join('');
-}
-
-function toggleSectionReforma(id) {
-  admData.reforma[id] = !admData.reforma[id];
-  saveAdmData();
-  renderAdmSwitches();
-}
-
-function togglePauseSystem() {
-  admData.paused = !admData.paused;
-  saveAdmData();
-}
-
-function applyAdminAlert() {
-  admData.alert = (document.getElementById('adminAlertInput')?.value || '').trim();
-  saveAdmData();
-}
-
-function clearAdminAlert() {
-  admData.alert = '';
-  const inp = document.getElementById('adminAlertInput');
-  if (inp) inp.value = '';
-  saveAdmData();
-}
-
-function resetAdminAll() {
-  admData.paused = false;
-  admData.reforma = {};
-  admData.alert = '';
-  const inp = document.getElementById('adminAlertInput');
-  if (inp) inp.value = '';
-  saveAdmData();
-  renderAdmSwitches();
-}
-
-function copyAdminStateText() {
-  const txt = `NEXORA ADM | Pausado: ${admData.paused ? 'SIM' : 'NÃO'} | Em reforma: ${Object.keys(admData.reforma).filter(k => admData.reforma[k]).join(', ') || 'Nenhuma'}`;
-  navigator.clipboard?.writeText(txt).catch(() => {});
-}
-
-function syncAdmUI() {
-  document.getElementById('systemPauseLayer')?.classList.toggle('active', !!admData.paused);
-  const pBtn = document.getElementById('pauseSystemActionBtn');
-  if (pBtn) {
-    pBtn.innerHTML = admData.paused
-      ? '<i class="fa-solid fa-play"></i> Retomar sistema'
-      : '<i class="fa-solid fa-pause"></i> Pausar sistema';
-  }
-  admSections.forEach(s => {
-    document.getElementById('reforma-' + s.id)?.classList.toggle('hidden', !admData.reforma[s.id]);
-  });
-  const bar = document.getElementById('globalAlertBanner');
-  const txt = document.getElementById('globalAlertText');
-  if (bar && txt) {
-    if (admData.alert) {
-      txt.textContent = admData.alert;
-      bar.classList.remove('hidden');
-    } else {
-      bar.classList.add('hidden');
-    }
-  }
-}
-
-/* NAVEGAÇÃO */
-const validPages = ['home', 'catalog', 'features', 'ai', 'contracts', 'contact', 'admin'];
 function goPage(page) {
-  if (!validPages.includes(page)) page = 'home';
-  if (page === 'admin' && !admData.unlocked) {
-    openAdminModal();
-    return;
-  }
+  if (!ALL_PAGES_NX.includes(page)) page = 'home';
   document.querySelectorAll('.page-view').forEach(sec => sec.classList.add('hidden-page'));
   document.getElementById('page-' + page)?.classList.remove('hidden-page');
-  document.querySelectorAll('.arch-nav-btn').forEach(btn => {
+
+  document.querySelectorAll('.nav-chip').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page);
   });
-  if (page === 'admin') renderAdmSwitches();
+
+  const banner = document.getElementById('topPageConstructionBanner');
+  const header = document.getElementById('mainSiteHeader');
+  const isAi = page === 'ai';
+  if (banner) banner.classList.toggle('hidden', !isAi);
+  if (header) header.classList.toggle('with-ribbon', isAi);
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1153,340 +987,700 @@ window.addEventListener('scroll', () => {
   const el = document.documentElement;
   const max = el.scrollHeight - el.clientHeight;
   const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-  document.getElementById('progressLine').style.width = pct + '%';
+  const bar = document.getElementById('scrollBarTop');
+  if (bar) bar.style.width = pct + '%';
 }, { passive: true });
 
-/* 10 DEMOS */
-function openDemo(key) {
-  const modal = document.getElementById('demoModal');
-  const tag = document.getElementById('demoModalTag');
-  const title = document.getElementById('demoModalTitle');
-  const body = document.getElementById('demoModalBody');
-  modal.classList.add('open');
+/* =========================================================================
+   FILTRO DOS 10 SITES AMOSTRA
+========================================================================= */
+function filterSamples(group, btn) {
+  document.querySelectorAll('.sample-card').forEach(card => {
+    card.style.display = (group === 'all' || card.dataset.group === group) ? '' : 'none';
+  });
+  document.querySelectorAll('#sampleFilterBar button').forEach(b => {
+    b.classList.remove('btn-grad');
+    b.classList.add('btn-outline-decor');
+  });
+  if (btn) {
+    btn.classList.remove('btn-outline-decor');
+    btn.classList.add('btn-grad');
+  }
+}
 
-  const map = {
-    dentist: {
-      tag: '01 • SIMULADOR CLÍNICO',
-      title: 'CLÍNICA VERA & COSTA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <label class="text-[10px] uppercase tracking-widest block">Objetivo clínico
-          <select id="m1Goal" class="arch-input mt-1" onchange="runM1()">
-            <option value="18|3200">Alinhamento discreto</option>
-            <option value="3|1150">Clareamento e limpeza</option>
-            <option value="10|2500">Estética e restauração</option>
+/* =========================================================================
+   10 SITES AMOSTRA COMPLETOS (LOADING + ENTRADA + FOTOS + ABAS + FUNÇÕES)
+========================================================================= */
+const SAMPLE_SITES_NX = {
+  dentist: {
+    url: 'https://sorriso-estetica.nexora.site',
+    loading: 'Carregando Clínica Sorriso & Estética...',
+    brand: 'Clínica Sorriso & Estética',
+    heroTitle: 'Odontologia estética com planejamento claro',
+    heroDesc: 'Veja a equipe, os resultados de tratamentos e simule sessões e horários.',
+    personImg: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Dra. Camila Ribeiro • Especialista em Estética Dental',
+    resultImg: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Clareamento e alinhamento harmônico',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Consultório equipado e atendimento humanizado',
+    faq: [
+      ['As sessões são agendadas conforme minha rotina?', 'Sim, o simulador abaixo permite escolher o dia e horário preferido.'],
+      ['Posso ver o orçamento estimado antes da consulta?', 'Sim, o simulador exibe uma faixa de referência imediata.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold text-purple-950">Simulador de Sessões & Pré-Agendamento</h4>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <label class="text-xs font-bold">Tratamento
+            <select id="nx1Proc" class="form-field mt-1" onchange="nx1Calc()">
+              <option value="Clareamento LED|4|R$ 890">Clareamento LED (4 sessões)</option>
+              <option value="Alinhamento Estético|12|R$ 2.950">Alinhamento Estético (12 sessões)</option>
+              <option value="Lentes de Contato|6|R$ 1.850">Lentes de Contato (6 sessões)</option>
+            </select>
+          </label>
+          <label class="text-xs font-bold">Horário
+            <select id="nx1Time" class="form-field mt-1" onchange="nx1Calc()">
+              <option>Terça • 09h30</option>
+              <option>Quinta • 14h00</option>
+              <option>Sábado • 10h00</option>
+            </select>
+          </label>
+          <label class="text-xs font-bold">Paciente
+            <input id="nx1Pat" class="form-field mt-1" placeholder="Seu nome" oninput="nx1Calc()">
+          </label>
+        </div>
+        <div id="nx1Out" class="p-3.5 rounded-xl bg-white border border-purple-200 text-xs font-bold text-gray-800"></div>
+        <button onclick="nx1Save()" class="btn-grad text-xs"><i class="fa-solid fa-calendar-check"></i> Confirmar pré-agendamento</button>
+        <div id="nx1Msg" class="text-xs font-bold text-emerald-700"></div>
+      </div>`
+  },
+
+  bakery: {
+    url: 'https://forno-trigo.nexora.site',
+    loading: 'Preparando vitrine da Padaria & Confeitaria...',
+    brand: 'Padaria & Confeitaria Trigo Dourado',
+    heroTitle: 'Pães de fermentação natural e folhados quentes',
+    heroDesc: 'Adicione itens na caixa, ajuste quantidades, calcule entrega e finalize.',
+    personImg: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Henrique Dias • Mestre padeiro',
+    resultImg: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Croissants e pães assados no dia',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Fornada artesanal de levain',
+    faq: [
+      ['Posso alterar as quantidades antes de finalizar?', 'Sim, use os botões + e - dentro do carrinho.'],
+      ['Há opção de entrega local?', 'Sim, selecione a modalidade de entrega no seletor.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-amber-50 border border-amber-300 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h4 class="font-display text-2xl font-bold text-amber-950">Carrinho de Encomendas</h4>
+          <select id="nx2Mode" class="form-field !w-auto text-xs font-bold" onchange="nx2Calc()">
+            <option value="0">Retirada no balcão (R$ 0)</option>
+            <option value="9">Entrega local (+R$ 9)</option>
           </select>
-        </label>
-        <div id="m1Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
-      </div>`,
-      fn: runM1
-    },
-    bakery: {
-      tag: '02 • MONTADOR DE CAIXA',
-      title: 'FORNO DA PRAÇA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Pães levain (R$ 18)
-            <input id="m2A" type="number" min="0" max="15" value="2" class="arch-input mt-1" oninput="runM2()">
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Croissants (R$ 14)
-            <input id="m2B" type="number" min="0" max="15" value="3" class="arch-input mt-1" oninput="runM2()">
-          </label>
         </div>
-        <div id="m2Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
-      </div>`,
-      fn: runM2
-    },
-    barber: {
-      tag: '03 • VISAGISMO',
-      title: 'OFICINA NAVALHA FINA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
         <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Formato do rosto
-            <select id="m3Face" class="arch-input mt-1" onchange="runM3()">
-              <option>Oval</option><option>Quadrado</option><option>Redondo</option>
-            </select>
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Tempo matinal
-            <select id="m3Time" class="arch-input mt-1" onchange="runM3()">
-              <option>2 min (prático)</option><option>6 min (modelado)</option>
-            </select>
-          </label>
+          <div class="p-3.5 rounded-xl bg-white border border-amber-200 flex items-center justify-between">
+            <div><strong class="text-sm block">Pão Levain (R$ 18)</strong><span class="text-[11px] text-gray-500">700g • Fermentação natural</span></div>
+            <div class="flex items-center gap-2">
+              <button onclick="nx2Step('nx2A',-1)" class="w-7 h-7 rounded-full bg-amber-100 font-bold">-</button>
+              <span id="nx2A" class="font-bold text-sm">2</span>
+              <button onclick="nx2Step('nx2A',1)" class="w-7 h-7 rounded-full bg-amber-400 font-bold">+</button>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-amber-200 flex items-center justify-between">
+            <div><strong class="text-sm block">Croissant Manteiga (R$ 14)</strong><span class="text-[11px] text-gray-500">Massa folhada na hora</span></div>
+            <div class="flex items-center gap-2">
+              <button onclick="nx2Step('nx2B',-1)" class="w-7 h-7 rounded-full bg-amber-100 font-bold">-</button>
+              <span id="nx2B" class="font-bold text-sm">3</span>
+              <button onclick="nx2Step('nx2B',1)" class="w-7 h-7 rounded-full bg-amber-400 font-bold">+</button>
+            </div>
+          </div>
         </div>
-        <div id="m3Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
-      </div>`,
-      fn: runM3
-    },
-    fashion: {
-      tag: '04 • MONTADOR DE LOOK',
-      title: 'CASA LINHO & TRAMA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Peça base
-            <select id="m4Base" class="arch-input mt-1" onchange="runM4()">
-              <option value="169|Camisa linho">Camisa linho (R$ 169)</option>
-              <option value="89|Malha">Malha (R$ 89)</option>
-            </select>
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Sobreposição
-            <select id="m4Top" class="arch-input mt-1" onchange="runM4()">
-              <option value="240|Sobretudo">Sobretudo (+R$ 240)</option>
-              <option value="0|Sem extra">Sem extra (+R$ 0)</option>
-            </select>
-          </label>
-        </div>
-        <div id="m4Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
-      </div>`,
-      fn: runM4
-    },
-    fitness: {
-      tag: '05 • GRADE SEMANAL',
-      title: 'RITMO & FÔLEGO',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <label class="text-[10px] uppercase tracking-widest block">Foco da semana
-          <select id="m5Focus" class="arch-input mt-1" onchange="runM5()">
-            <option value="mobilidade">Mobilidade & Postura</option>
-            <option value="forca">Força & Resistência</option>
+        <div id="nx2Out" class="p-3.5 rounded-xl bg-white border border-amber-300 text-sm font-extrabold text-amber-950"></div>
+        <button onclick="nx2Send()" class="btn-grad text-xs"><i class="fa-solid fa-bag-shopping"></i> Enviar pedido da caixa</button>
+        <div id="nx2Msg" class="text-xs font-bold text-emerald-700"></div>
+      </div>`
+  },
+
+  barber: {
+    url: 'https://navalha-estilo.nexora.site',
+    loading: 'Abrindo Barbearia & Estilo...',
+    brand: 'Barbearia Navalha & Estilo',
+    heroTitle: 'Cortes clássicos e modernos com precisão',
+    heroDesc: 'Escolha o serviço, o barbeiro e o horário em poucos cliques.',
+    personImg: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Marcos Tavares • Barbeiro fundador',
+    resultImg: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Acabamento limpo e alinhado',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Cadeiras e ferramentas de precisão',
+    faq: [
+      ['Posso escolher o barbeiro?', 'Sim, o seletor abaixo inclui os profissionais disponíveis.'],
+      ['Quanto tempo dura o atendimento?', 'Em média 35 a 55 minutos conforme o serviço.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Agenda Interativa da Barbearia</h4>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <select id="nx3Srv" class="form-field" onchange="nx3Calc()">
+            <option value="Corte Degradê|R$ 45">Corte Degradê (R$ 45)</option>
+            <option value="Corte + Barba|R$ 75">Corte + Barba (R$ 75)</option>
           </select>
-        </label>
-        <div id="m5Out" class="grid sm:grid-cols-3 gap-2.5 text-xs"></div>
-      </div>`,
-      fn: runM5
-    },
-    pet: {
-      tag: '06 • ROTINA PET',
-      title: 'QUINTAL DOS BICHOS',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+          <select id="nx3Barb" class="form-field" onchange="nx3Calc()">
+            <option>Marcos Tavares</option>
+            <option>Diego Rocha</option>
+          </select>
+          <select id="nx3Slot" class="form-field" onchange="nx3Calc()">
+            <option>13:30</option><option>15:30</option><option>17:45</option>
+          </select>
+        </div>
+        <div id="nx3Out" class="p-3.5 rounded-xl bg-white border border-purple-200 text-xs font-bold"></div>
+        <button onclick="nx3Book()" class="btn-grad text-xs"><i class="fa-solid fa-scissors"></i> Confirmar horário</button>
+        <div id="nx3Msg" class="text-xs font-bold text-emerald-700"></div>
+      </div>`
+  },
+
+  fashion: {
+    url: 'https://lookbook-casa.nexora.site',
+    loading: 'Carregando Loja de Moda & Lookbook...',
+    brand: 'Casa de Moda & Lookbook',
+    heroTitle: 'Peças selecionadas para o dia a dia e ocasiões especiais',
+    heroDesc: 'Monte seu look, escolha o tamanho e adicione à sacola.',
+    personImg: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Luísa Mendes • Direção de estilo',
+    resultImg: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Coleção curada e pronta para envio',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Tecidos e cortes da estação',
+    faq: [
+      ['Como escolho o tamanho?', 'Selecione P, M ou G direto no provador abaixo.'],
+      ['Posso adicionar mais de uma unidade?', 'Sim, ajuste a quantidade para calcular o subtotal.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-pink-50 border border-pink-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Provador & Sacola de Compras</h4>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <select id="nx4Prod" class="form-field" onchange="nx4Calc()">
+            <option value="Conjunto Linho|260">Conjunto Linho (R$ 260)</option>
+            <option value="Blazer Estruturado|320">Blazer Estruturado (R$ 320)</option>
+            <option value="Camisa Casual|135">Camisa Casual (R$ 135)</option>
+          </select>
+          <select id="nx4Size" class="form-field" onchange="nx4Calc()">
+            <option>Tamanho P</option><option selected>Tamanho M</option><option>Tamanho G</option>
+          </select>
+          <select id="nx4Qty" class="form-field" onchange="nx4Calc()">
+            <option value="1">1 peça</option><option value="2">2 peças</option><option value="3">3 peças</option>
+          </select>
+        </div>
+        <div id="nx4Out" class="p-3.5 rounded-xl bg-white border border-pink-200 text-xs font-bold"></div>
+        <button onclick="nx4Add()" class="btn-grad text-xs"><i class="fa-solid fa-cart-plus"></i> Adicionar à sacola</button>
+        <div id="nx4Msg" class="text-xs font-bold text-emerald-700"></div>
+      </div>`
+  },
+
+  fitness: {
+    url: 'https://ritmo-treino.nexora.site',
+    loading: 'Montando grade da Academia & Treinos...',
+    brand: 'Academia & Treinos Ritmo',
+    heroTitle: 'Planejamento semanal de treino e evolução',
+    heroDesc: 'Troque o foco da semana e marque os treinos realizados.',
+    personImg: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Bruno Alves • Treinador físico',
+    resultImg: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Ambiente completo para treino',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Sessões guiadas de força e ritmo',
+    faq: [
+      ['Posso alternar entre força e condicionamento?', 'Sim, mude o seletor abaixo para gerar a grade correspondente.'],
+      ['Os checkboxes funcionam na hora?', 'Sim, clique nos dias para marcar seu progresso na demo.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Grade Semanal Interativa</h4>
+        <select id="nx5Focus" class="form-field" onchange="nx5Calc()">
+          <option value="forca">Força e Hipertrofia</option>
+          <option value="cond">Condicionamento e Resistência</option>
+        </select>
+        <div id="nx5List" class="grid sm:grid-cols-3 gap-3 text-xs"></div>
+      </div>`
+  },
+
+  pet: {
+    url: 'https://quintal-pet.nexora.site',
+    loading: 'Abrindo Pet Shop & Banho...',
+    brand: 'Pet Shop & Cuidados Quintal',
+    heroTitle: 'Banho, tosa e cuidado atento para o seu pet',
+    heroDesc: 'Calcule o serviço conforme o porte e agende o banho.',
+    personImg: 'https://images.unsplash.com/photo-1537151625747-768eb6df7d2b?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Equipe Quintal Pet • Cuidado animal',
+    resultImg: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Pets limpos, cheirosos e tranquilos',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Atendimento adaptado para cada porte',
+    faq: [
+      ['O valor muda pelo porte do animal?', 'Sim, o simulador calcula de acordo com pequeno, médio ou grande.'],
+      ['Posso incluir tosa higiênica?', 'Sim, selecione a opção extra no simulador.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-amber-50 border border-amber-300 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Simulador de Banho & Tosa</h4>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <select id="nx6Size" class="form-field" onchange="nx6Calc()">
+            <option value="55">Porte Pequeno (R$ 55)</option>
+            <option value="75" selected>Porte Médio (R$ 75)</option>
+            <option value="98">Porte Grande (R$ 98)</option>
+          </select>
+          <select id="nx6Extra" class="form-field" onchange="nx6Calc()">
+            <option value="0">Banho tradicional (+R$ 0)</option>
+            <option value="25">Banho + tosa higiênica (+R$ 25)</option>
+          </select>
+          <input id="nx6PetName" class="form-field" placeholder="Nome do pet" oninput="nx6Calc()">
+        </div>
+        <div id="nx6Out" class="p-3.5 rounded-xl bg-white border border-amber-300 text-xs font-bold"></div>
+        <button onclick="nx6Book()" class="btn-grad text-xs"><i class="fa-solid fa-paw"></i> Agendar banho</button>
+        <div id="nx6Msg" class="text-xs font-bold text-emerald-700"></div>
+      </div>`
+  },
+
+  arch: {
+    url: 'https://ponto-compasso.nexora.site',
+    loading: 'Carregando Arquitetura & Interiores...',
+    brand: 'Arquitetura & Interiores Ponto & Compasso',
+    heroTitle: 'Espaços funcionais com estética e luz natural',
+    heroDesc: 'Simule a estimativa por metragem quadrada e o tipo de projeto.',
+    personImg: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Arq. Helena Campos • Projetos de interiores',
+    resultImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Ambiente entregue com acabamento planejado',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Integração de sala, luz e marcenaria',
+    faq: [
+      ['Como funciona o cálculo por m²?', 'Informe a metragem e o nível do projeto para ver uma referência.'],
+      ['Atende ambientes comerciais e residenciais?', 'Sim, o cálculo serve de base inicial para ambos.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Calculadora de Projeto por m²</h4>
         <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Porte
-            <select id="m6Size" class="arch-input mt-1" onchange="runM6()">
-              <option>Pequeno</option><option selected>Médio</option><option>Grande</option>
-            </select>
+          <label class="text-xs font-bold">Metragem (m²)
+            <input id="nx7Area" type="number" min="5" value="60" class="form-field mt-1" oninput="nx7Calc()">
           </label>
-          <label class="text-[10px] uppercase tracking-widest">Pelagem
-            <select id="m6Coat" class="arch-input mt-1" onchange="runM6()">
-              <option value="curta">Curta</option><option value="longa">Longa</option>
+          <label class="text-xs font-bold">Escopo
+            <select id="nx7Scope" class="form-field mt-1" onchange="nx7Calc()">
+              <option value="135">Projeto de interiores completo (R$ 135/m² ref.)</option>
+              <option value="90">Layout e consultoria (R$ 90/m² ref.)</option>
             </select>
           </label>
         </div>
-        <div id="m6Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
-      </div>`,
-      fn: runM6
-    },
-    arch: {
-      tag: '07 • CALCULADORA DE OBRA',
-      title: 'PONTO & COMPASSO',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
+        <div id="nx7Out" class="p-3.5 rounded-xl bg-white border border-purple-200 text-sm font-bold text-purple-950"></div>
+      </div>`
+  },
+
+  photo: {
+    url: 'https://lente-grao.nexora.site',
+    loading: 'Revelando Estúdio Fotográfico...',
+    brand: 'Estúdio Fotográfico Luz & Retrato',
+    heroTitle: 'Retratos, ensaios e direção criativa',
+    heroDesc: 'Escolha o pacote, adicione fotos extras e veja o resumo do ensaio.',
+    personImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Lucas Martins • Fotógrafo e diretor de cena',
+    resultImg: 'https://images.unsplash.com/photo-1554048612-b6a482bc6727?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Retratos com cor e luz tratadas',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Equipamento e produção de ensaio',
+    faq: [
+      ['Posso pedir fotos extras além do pacote?', 'Sim, adicione quantas fotos extras desejar no simulador.'],
+      ['As fotos passam por tratamento de cor?', 'Sim, o pacote já considera edição e seleção final.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-pink-50 border border-pink-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Planejador de Ensaio Fotográfico</h4>
         <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Área (m²)
-            <input id="m7Area" type="number" min="1" value="50" class="arch-input mt-1" oninput="runM7()">
+          <select id="nx8Pack" class="form-field" onchange="nx8Calc()">
+            <option value="450|25">Essencial — 25 fotos (R$ 450)</option>
+            <option value="780|50">Estúdio — 50 fotos (R$ 780)</option>
+          </select>
+          <label class="text-xs font-bold">Fotos extras (+R$ 15 cada)
+            <input id="nx8Extra" type="number" min="0" max="60" value="6" class="form-field mt-1" oninput="nx8Calc()">
           </label>
-          <label class="text-[10px] uppercase tracking-widest">Padrão
-            <select id="m7Std" class="arch-input mt-1" onchange="runM7()">
-              <option value="150">Essencial (R$ 150/m² ref.)</option>
-              <option value="250">Autoral (R$ 250/m² ref.)</option>
+        </div>
+        <div id="nx8Out" class="p-3.5 rounded-xl bg-white border border-pink-200 text-sm font-bold text-pink-950"></div>
+      </div>`
+  },
+
+  meal: {
+    url: 'https://sabor-rota.nexora.site',
+    loading: 'Preparando Marmitaria Fit & Sabor...',
+    brand: 'Marmitaria Fit & Sabor',
+    heroTitle: 'Marmitas prontas para facilitar sua semana',
+    heroDesc: 'Monte seu pacote semanal, escolha o objetivo e veja o total.',
+    personImg: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Cozinha Sabor & Rota • Preparo diário',
+    resultImg: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Pratos equilibrados e embalados',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1490645939684-fd827e30f2d4?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Ingredientes frescos selecionados',
+    faq: [
+      ['Posso escolher a quantidade de refeições?', 'Sim, digite o número de marmitas no montador abaixo.'],
+      ['Qual o valor unitário de referência?', 'R$ 22,00 por marmita na simulação desta demo.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-amber-50 border border-amber-300 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Montador de Combo Semanal</h4>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="text-xs font-bold">Quantidade de marmitas (R$ 22 cada)
+            <input id="nx9Qty" type="number" min="1" max="40" value="12" class="form-field mt-1" oninput="nx9Calc()">
+          </label>
+          <label class="text-xs font-bold">Objetivo alimentar
+            <select id="nx9Goal" class="form-field mt-1" onchange="nx9Calc()">
+              <option>Rotina equilibrada</option>
+              <option>Foco proteico / treino</option>
             </select>
           </label>
         </div>
-        <div id="m7Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
-      </div>`,
-      fn: runM7
-    },
-    photo: {
-      tag: '08 • PLANEJADOR DE ENSAIO',
-      title: 'LENTE & GRÃO',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Cenas
-            <select id="m8Scenes" class="arch-input mt-1" onchange="runM8()">
-              <option value="2|25">2 cenas (25 fotos)</option>
-              <option value="4|45">4 cenas (45 fotos)</option>
-            </select>
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Entrega
-            <select id="m8Del" class="arch-input mt-1" onchange="runM8()">
-              <option>Galeria digital</option><option>Digital + Álbum</option>
-            </select>
-          </label>
+        <div id="nx9Out" class="p-3.5 rounded-xl bg-white border border-amber-300 text-sm font-bold text-amber-950"></div>
+      </div>`
+  },
+
+  music: {
+    url: 'https://acorde-escola.nexora.site',
+    loading: 'Afinando Escola de Música & Ritmo...',
+    brand: 'Escola de Música & Ritmo',
+    heroTitle: 'Aulas de música com prática guiada e ritmo',
+    heroDesc: 'Teste o metrônomo com som em tempo real e ajuste o BPM.',
+    personImg: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80',
+    personLabel: 'Prof. Rafael Costa • Teclado, violão e ritmo',
+    resultImg: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80',
+    resultLabel: 'Resultado: Sala de prática e repertório',
+    galleryExtraImg: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=800&q=80',
+    galleryExtraLabel: 'Estudo de acordes, escalas e percepção',
+    faq: [
+      ['O metrônomo funciona mesmo?', 'Sim! Clique em Tocar batida e arraste o BPM para acelerar ou desacelerar.'],
+      ['Serve para iniciantes?', 'Sim, começar em 60–80 BPM ajuda a manter regularidade.']
+    ],
+    toolHtml: () => `
+      <div class="p-5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-4">
+        <h4 class="font-display text-2xl font-bold">Metrônomo Interativo com Áudio</h4>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <span class="text-xs font-extrabold">BPM: <span id="nx10BpmVal" class="text-purple-800 text-lg">92</span></span>
+          <input id="nx10Bpm" type="range" min="50" max="180" value="92" class="flex-1 min-w-[160px] accent-purple-700" oninput="document.getElementById('nx10BpmVal').textContent=this.value">
+          <button onclick="nx10Toggle()" id="nx10Btn" class="btn-grad text-xs"><i class="fa-solid fa-play"></i> Tocar batida</button>
         </div>
-        <div id="m8Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
-      </div>`,
-      fn: runM8
-    },
-    meal: {
-      tag: '09 • PLANO DE REFEIÇÕES',
-      title: 'SABOR & ROTA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Por dia
-            <select id="m9Day" class="arch-input mt-1" onchange="runM9()">
-              <option value="1">1 refeição/dia</option><option value="2" selected>2 refeições/dia</option>
-            </select>
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Dias
-            <select id="m9Days" class="arch-input mt-1" onchange="runM9()">
-              <option value="5">5 dias</option><option value="7">7 dias</option>
-            </select>
-          </label>
-        </div>
-        <div id="m9Out" class="p-4 bg-obsidian border border-line text-sm text-violetGlow font-semibold"></div>
-      </div>`,
-      fn: runM9
-    },
-    music: {
-      tag: '10 • TRILHA DE ESTUDO',
-      title: 'ACORDE & ESCALA',
-      html: `<div class="p-5 bg-panelPlum border border-line space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <label class="text-[10px] uppercase tracking-widest">Instrumento
-            <select id="m10Inst" class="arch-input mt-1" onchange="runM10()">
-              <option>Teclado</option><option>Violão</option>
-            </select>
-          </label>
-          <label class="text-[10px] uppercase tracking-widest">Tempo diário
-            <select id="m10Min" class="arch-input mt-1" onchange="runM10()">
-              <option value="25">25 min/dia</option><option value="45">45 min/dia</option>
-            </select>
-          </label>
-        </div>
-        <div id="m10Out" class="p-4 bg-obsidian border border-line text-xs text-silverMist"></div>
-      </div>`,
-      fn: runM10
-    }
+        <div id="nx10Beat" class="p-3.5 rounded-xl bg-white border border-indigo-200 text-xs font-extrabold text-center text-purple-950">Batida parada</div>
+      </div>`
+  }
+};
+
+let nxMetroLoop = null;
+let nxAudio = null;
+let currentSampleKey = 'dentist';
+
+function stopNxMetro() {
+  if (nxMetroLoop) {
+    clearInterval(nxMetroLoop);
+    nxMetroLoop = null;
+  }
+  const btn = document.getElementById('nx10Btn');
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i> Tocar batida';
+  const beat = document.getElementById('nx10Beat');
+  if (beat) beat.textContent = 'Batida parada';
+}
+
+function nx10Toggle() {
+  if (nxMetroLoop) {
+    stopNxMetro();
+    return;
+  }
+  const bpm = Math.max(50, Math.min(180, Number(document.getElementById('nx10Bpm')?.value || 92)));
+  const ms = Math.round(60000 / bpm);
+  const btn = document.getElementById('nx10Btn');
+  const beatEl = document.getElementById('nx10Beat');
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-stop"></i> Parar batida';
+  let step = 0;
+
+  const pulse = () => {
+    step = (step % 4) + 1;
+    if (beatEl) beatEl.textContent = `Tempo ${step} de 4 • ${bpm} BPM`;
+    try {
+      nxAudio = nxAudio || new (window.AudioContext || window.webkitAudioContext)();
+      const osc = nxAudio.createOscillator();
+      const gain = nxAudio.createGain();
+      osc.frequency.value = step === 1 ? 880 : 587;
+      gain.gain.value = 0.06;
+      osc.connect(gain);
+      gain.connect(nxAudio.destination);
+      osc.start();
+      osc.stop(nxAudio.currentTime + 0.05);
+    } catch (e) {}
   };
 
-  const d = map[key] || map.dentist;
-  tag.textContent = d.tag;
-  title.textContent = d.title;
-  body.innerHTML = d.html;
-  d.fn?.();
+  pulse();
+  nxMetroLoop = setInterval(pulse, ms);
 }
 
-function closeDemoModal() {
-  document.getElementById('demoModal').classList.remove('open');
+function switchSampleTab(tabName) {
+  ['tool', 'gallery', 'faq'].forEach(t => {
+    document.getElementById('sampleTabPane-' + t)?.classList.toggle('hidden', t !== tabName);
+    const btn = document.getElementById('sampleTabBtn-' + t);
+    if (btn) {
+      btn.className = t === tabName ? 'btn-grad !py-1.5 !px-3.5 text-xs' : 'btn-outline-decor !py-1.5 !px-3.5 text-xs';
+    }
+  });
 }
 
-function runM1() {
-  const [w, v] = (document.getElementById('m1Goal')?.value || '18|3200').split('|');
-  const el = document.getElementById('m1Out');
-  if (el) el.textContent = `Duração estimada: ~${w} semanas • Ref. ilustrativa R$ ${Number(v).toLocaleString('pt-BR')},00`;
-}
-function runM2() {
-  const a = Math.max(0, Number(document.getElementById('m2A')?.value || 0));
-  const b = Math.max(0, Number(document.getElementById('m2B')?.value || 0));
-  const el = document.getElementById('m2Out');
-  if (el) el.textContent = `${a + b} itens • Total: R$ ${(a * 18 + b * 14).toFixed(2).replace('.', ',')}`;
-}
-function runM3() {
-  const f = document.getElementById('m3Face')?.value || 'Oval';
-  const t = document.getElementById('m3Time')?.value || '2 min';
-  const el = document.getElementById('m3Out');
-  if (el) el.textContent = `Rosto ${f} com rotina de ${t}: corte alinhado com acabamento limpo e fácil manutenção.`;
-}
-function runM4() {
-  const [bp, bn] = (document.getElementById('m4Base')?.value || '169|Camisa linho').split('|');
-  const [tp, tn] = (document.getElementById('m4Top')?.value || '240|Sobretudo').split('|');
-  const el = document.getElementById('m4Out');
-  if (el) el.textContent = `${bn} + ${tn} = R$ ${(Number(bp) + Number(tp)).toFixed(2).replace('.', ',')}`;
-}
-function runM5() {
-  const f = document.getElementById('m5Focus')?.value || 'mobilidade';
-  const el = document.getElementById('m5Out');
-  const rows = f === 'forca' ? [['SEG', 'Força base'], ['QUA', 'Ritmo'], ['SEX', 'Core']] : [['TER', 'Mobilidade'], ['QUI', 'Postura'], ['SÁB', 'Alongamento']];
-  if (el) el.innerHTML = rows.map(([d, a]) => `<div class="p-3 bg-obsidian border border-line"><strong class="text-violetGlow block text-[10px]">${d}</strong><span>${a}</span></div>`).join('');
-}
-function runM6() {
-  const s = document.getElementById('m6Size')?.value || 'Médio';
-  const c = document.getElementById('m6Coat')?.value || 'curta';
-  const el = document.getElementById('m6Out');
-  if (el) el.textContent = `Porte ${s} e pelagem ${c}: banho a cada ${c === 'longa' ? '12' : '18'} dias em média.`;
-}
-function runM7() {
-  const area = Math.max(1, Number(document.getElementById('m7Area')?.value || 50));
-  const std = Number(document.getElementById('m7Std')?.value || 150);
-  const el = document.getElementById('m7Out');
-  if (el) el.textContent = `${area} m² • Estimativa de referência: R$ ${(area * std).toLocaleString('pt-BR')},00`;
-}
-function runM8() {
-  const [sc, ph] = (document.getElementById('m8Scenes')?.value || '2|25').split('|');
-  const del = document.getElementById('m8Del')?.value || 'Galeria digital';
-  const el = document.getElementById('m8Out');
-  if (el) el.textContent = `${sc} cenas • ${ph} fotos • ${del}`;
-}
-function runM9() {
-  const per = Number(document.getElementById('m9Day')?.value || 2);
-  const days = Number(document.getElementById('m9Days')?.value || 5);
-  const total = per * days;
-  const el = document.getElementById('m9Out');
-  if (el) el.textContent = `${total} refeições • Ref. ilustrativa R$ ${(total * 24).toFixed(2).replace('.', ',')}`;
-}
-function runM10() {
-  const inst = document.getElementById('m10Inst')?.value || 'Teclado';
-  const min = Number(document.getElementById('m10Min')?.value || 25);
-  const el = document.getElementById('m10Out');
-  if (el) el.textContent = `${inst} (${min} min/dia): ${Math.round(min * 0.4)} min de técnica e ${Math.round(min * 0.6)} min de repertório.`;
-}
+function openSampleSite(key) {
+  stopNxMetro();
+  currentSampleKey = SAMPLE_SITES_NX[key] ? key : 'dentist';
+  const site = SAMPLE_SITES_NX[currentSampleKey];
 
-/* RECURSOS, IA & CONTATO */
-function updateBaSlider(v) {
-  const pct = Math.max(10, Math.min(90, Number(v) || 50));
-  document.getElementById('baLeftPanel').style.width = pct + '%';
-  document.getElementById('sliderPct').textContent = pct + '%';
-}
+  const backdrop = document.getElementById('sampleModalBackdrop');
+  const loader = document.getElementById('sampleLoaderOverlay');
+  const loaderMsg = document.getElementById('sampleLoaderMsg');
+  const browserUrl = document.getElementById('sampleBrowserUrl');
+  const body = document.getElementById('sampleWindowBody');
 
-function updateSimRoi() {
-  const v = Math.max(0, Number(document.getElementById('simVisits')?.value || 0));
-  const t = Math.max(0, Number(document.getElementById('simTicket')?.value || 0));
-  const r = Math.max(0, Math.min(100, Number(document.getElementById('simRate')?.value || 0)));
-  const sales = v * r / 100;
-  const rev = sales * t;
-  document.getElementById('simOutVal').textContent = rev.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  document.getElementById('simOutSales').textContent = `${sales.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} vendas/mês`;
-}
+  browserUrl.textContent = site.url;
+  loaderMsg.textContent = site.loading;
+  loader.classList.remove('hide');
+  backdrop.classList.add('open');
 
-function runAiSandbox() {
-  const topic = (document.getElementById('aiTopicInput')?.value || '').trim() || 'Projeto NEXORA';
-  const app = document.getElementById('aiAppType')?.value || 'Simulador';
-  document.getElementById('aiSandboxResult').innerHTML = `
-    <p><strong class="text-ghostWhite">Projeto:</strong> ${topic}</p>
-    <p class="mt-1"><strong class="text-violetGlow">Aplicação proposta:</strong> ${app}</p>
-    <p class="mt-1">Seções sugeridas: Hero em grade, aplicação interativa, comparativo e formulário direto.</p>
+  const faqHtml = site.faq.map(([q, a]) => `
+    <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs">
+      <strong class="text-purple-950 block text-sm mb-1">${q}</strong>
+      <p class="text-gray-700">${a}</p>
+    </div>`).join('');
+
+  body.innerHTML = `
+    <!-- Tela de entrada do site amostra -->
+    <div class="rounded-3xl bg-gradient-to-br from-purple-950 via-purple-900 to-fuchsia-900 text-white p-6 sm:p-8 shadow-md">
+      <span class="inline-block px-3 py-1 rounded-full bg-amber-300 text-amber-950 text-[10px] font-extrabold uppercase tracking-wider mb-3">
+        Entrada • ${site.brand}
+      </span>
+      <h3 class="font-display text-3xl sm:text-4xl font-bold leading-tight">${site.heroTitle}</h3>
+      <p class="text-xs sm:text-sm text-purple-100 mt-2 max-w-2xl">${site.heroDesc}</p>
+    </div>
+
+    <!-- Fotos da pessoa e do produto / resultado -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden border border-purple-200 bg-white shadow-sm">
+        <img src="${site.personImg}" alt="${site.personLabel}" class="w-full h-48 object-cover">
+        <div class="p-3 text-xs font-bold text-gray-800"><i class="fa-solid fa-user text-purple-700 mr-1.5"></i> ${site.personLabel}</div>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-purple-200 bg-white shadow-sm">
+        <img src="${site.resultImg}" alt="${site.resultLabel}" class="w-full h-48 object-cover">
+        <div class="p-3 text-xs font-bold text-gray-800"><i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> ${site.resultLabel}</div>
+      </div>
+    </div>
+
+    <!-- Navegação interna do site amostra -->
+    <div class="flex flex-wrap gap-2 pt-1">
+      <button id="sampleTabBtn-tool" onclick="switchSampleTab('tool')" class="btn-grad !py-1.5 !px-3.5 text-xs"><i class="fa-solid fa-sliders"></i> Função Ativa</button>
+      <button id="sampleTabBtn-gallery" onclick="switchSampleTab('gallery')" class="btn-outline-decor !py-1.5 !px-3.5 text-xs"><i class="fa-solid fa-images"></i> Mais Fotos</button>
+      <button id="sampleTabBtn-faq" onclick="switchSampleTab('faq')" class="btn-outline-decor !py-1.5 !px-3.5 text-xs"><i class="fa-solid fa-circle-question"></i> Dúvidas</button>
+    </div>
+
+    <div id="sampleTabPane-tool">${site.toolHtml()}</div>
+
+    <div id="sampleTabPane-gallery" class="hidden">
+      <div class="rounded-2xl overflow-hidden border border-purple-200 bg-white">
+        <img src="${site.galleryExtraImg}" alt="${site.galleryExtraLabel}" class="w-full h-56 object-cover">
+        <div class="p-3.5 text-xs font-bold text-gray-800">${site.galleryExtraLabel}</div>
+      </div>
+    </div>
+
+    <div id="sampleTabPane-faq" class="hidden space-y-3">${faqHtml}</div>
   `;
+
+  if (currentSampleKey === 'dentist') nx1Calc();
+  if (currentSampleKey === 'bakery') nx2Calc();
+  if (currentSampleKey === 'barber') nx3Calc();
+  if (currentSampleKey === 'fashion') nx4Calc();
+  if (currentSampleKey === 'fitness') nx5Calc();
+  if (currentSampleKey === 'pet') nx6Calc();
+  if (currentSampleKey === 'arch') nx7Calc();
+  if (currentSampleKey === 'photo') nx8Calc();
+  if (currentSampleKey === 'meal') nx9Calc();
+
+  setTimeout(() => loader.classList.add('hide'), 650);
+}
+
+function closeSampleModal() {
+  stopNxMetro();
+  document.getElementById('sampleModalBackdrop').classList.remove('open');
+}
+
+/* Funções internas de cada site amostra */
+function nx1Calc() {
+  const [proc, sess, ref] = (document.getElementById('nx1Proc')?.value || 'Clareamento LED|4|R$ 890').split('|');
+  const time = document.getElementById('nx1Time')?.value || '';
+  const pat = (document.getElementById('nx1Pat')?.value || '').trim() || 'Paciente';
+  const el = document.getElementById('nx1Out');
+  if (el) el.textContent = `${pat} • ${proc} (${sess} sessões) • Ref.: ${ref} • ${time}`;
+}
+function nx1Save() {
+  const el = document.getElementById('nx1Msg');
+  if (el) el.textContent = 'Pré-agendamento confirmado nesta demonstração!';
+}
+
+function nx2Step(id, delta) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = String(Math.max(0, Number(el.textContent || 0) + delta));
+  nx2Calc();
+}
+function nx2Calc() {
+  const a = Number(document.getElementById('nx2A')?.textContent || 0);
+  const b = Number(document.getElementById('nx2B')?.textContent || 0);
+  const ship = Number(document.getElementById('nx2Mode')?.value || 0);
+  const sum = a * 18 + b * 14 + ((a + b) > 0 ? ship : 0);
+  const el = document.getElementById('nx2Out');
+  if (el) el.textContent = `Total (${a + b} itens): R$ ${sum.toFixed(2).replace('.', ',')}`;
+}
+function nx2Send() {
+  const el = document.getElementById('nx2Msg');
+  if (el) el.textContent = 'Pedido enviado para a cozinha da padaria (simulação)!';
+}
+
+function nx3Calc() {
+  const [srv, pr] = (document.getElementById('nx3Srv')?.value || 'Corte Degradê|R$ 45').split('|');
+  const barb = document.getElementById('nx3Barb')?.value || '';
+  const slot = document.getElementById('nx3Slot')?.value || '';
+  const el = document.getElementById('nx3Out');
+  if (el) el.textContent = `${srv} (${pr}) • Barbeiro: ${barb} • Horário: ${slot}`;
+}
+function nx3Book() {
+  const el = document.getElementById('nx3Msg');
+  if (el) el.textContent = 'Horário reservado na demonstração!';
+}
+
+function nx4Calc() {
+  const [prod, pr] = (document.getElementById('nx4Prod')?.value || 'Conjunto Linho|260').split('|');
+  const sz = document.getElementById('nx4Size')?.value || 'Tamanho M';
+  const qty = Number(document.getElementById('nx4Qty')?.value || 1);
+  const total = Number(pr) * qty;
+  const el = document.getElementById('nx4Out');
+  if (el) el.textContent = `${prod} (${sz}) • Qtd: ${qty} • Subtotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+}
+function nx4Add() {
+  const el = document.getElementById('nx4Msg');
+  if (el) el.textContent = 'Peça adicionada à sacola da loja!';
+}
+
+function nx5Calc() {
+  const f = document.getElementById('nx5Focus')?.value || 'forca';
+  const el = document.getElementById('nx5List');
+  const plan = f === 'forca'
+    ? [['Seg', 'Superiores + Core'], ['Qua', 'Inferiores + Glúteos'], ['Sex', 'Full Body Força']]
+    : [['Seg', 'Ritmo aeróbico'], ['Qua', 'Circuito funcional'], ['Sex', 'Resistência + Alongamento']];
+  if (el) {
+    el.innerHTML = plan.map(([d, t]) => `
+      <label class="p-3 rounded-xl bg-white border border-indigo-200 flex items-start gap-2 cursor-pointer">
+        <input type="checkbox" class="mt-0.5 accent-purple-700">
+        <span><strong class="block text-purple-950">${d}</strong><span class="text-gray-600">${t}</span></span>
+      </label>`).join('');
+  }
+}
+
+function nx6Calc() {
+  const size = Number(document.getElementById('nx6Size')?.value || 75);
+  const extra = Number(document.getElementById('nx6Extra')?.value || 0);
+  const pet = (document.getElementById('nx6PetName')?.value || '').trim() || 'Seu pet';
+  const el = document.getElementById('nx6Out');
+  if (el) el.textContent = `${pet} • Total estimado: R$ ${(size + extra).toFixed(2).replace('.', ',')}`;
+}
+function nx6Book() {
+  const el = document.getElementById('nx6Msg');
+  if (el) el.textContent = 'Banho agendado na demonstração!';
+}
+
+function nx7Calc() {
+  const m2 = Math.max(1, Number(document.getElementById('nx7Area')?.value || 60));
+  const rate = Number(document.getElementById('nx7Scope')?.value || 135);
+  const el = document.getElementById('nx7Out');
+  if (el) el.textContent = `${m2} m² • Referência estimada: R$ ${(m2 * rate).toLocaleString('pt-BR')},00`;
+}
+
+function nx8Calc() {
+  const [base, ph] = (document.getElementById('nx8Pack')?.value || '450|25').split('|');
+  const extra = Math.max(0, Number(document.getElementById('nx8Extra')?.value || 0));
+  const tot = Number(base) + extra * 15;
+  const el = document.getElementById('nx8Out');
+  if (el) el.textContent = `${Number(ph) + extra} fotos • Valor estimado: R$ ${tot.toFixed(2).replace('.', ',')}`;
+}
+
+function nx9Calc() {
+  const qty = Math.max(1, Number(document.getElementById('nx9Qty')?.value || 12));
+  const goal = document.getElementById('nx9Goal')?.value || '';
+  const el = document.getElementById('nx9Out');
+  if (el) el.textContent = `${qty} marmitas (${goal}) • Total: R$ ${(qty * 22).toFixed(2).replace('.', ',')}`;
+}
+
+/* =========================================================================
+   RECURSOS, IA & WHATSAPP
+========================================================================= */
+function moveFeatBa(val) {
+  const pct = Math.max(10, Math.min(90, Number(val) || 50));
+  const clip = document.getElementById('featBaClip');
+  if (clip) clip.style.width = pct + '%';
+}
+
+function calcFeatSim() {
+  const v = Math.max(0, Number(document.getElementById('fVis')?.value || 0));
+  const t = Math.max(0, Number(document.getElementById('fTic')?.value || 0));
+  const c = Math.max(0, Math.min(100, Number(document.getElementById('fCnv')?.value || 0)));
+  const clients = v * c / 100;
+  const money = clients * t;
+  const mEl = document.getElementById('fSimMoney');
+  const cEl = document.getElementById('fSimClients');
+  if (mEl) mEl.textContent = money.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  if (cEl) cEl.textContent = `~${clients.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} clientes/mês`;
+}
+
+function generateAiBlueprint() {
+  const name = (document.getElementById('aiNameInp')?.value || '').trim() || 'Projeto NEXORA';
+  const tool = document.getElementById('aiToolSel')?.value || '';
+  const box = document.getElementById('aiBlueprintBox');
+  if (box) {
+    box.innerHTML = `
+      <p><strong>Projeto:</strong> ${name}</p>
+      <p><strong>Função sugerida:</strong> ${tool}</p>
+      <p><strong>Estrutura:</strong> Loading animado, entrada, fotos reais e abas internas.</p>
+    `;
+  }
 }
 
 function openWhatsApp(msg) {
-  const text = msg || 'Olá! Vim pelo site da NEXORA.';
-  window.open(`https://wa.me/${WA_NUMBER}?text=` + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+  const text = msg || 'Olá! Vim pelo portfólio NEXORA.';
+  window.open(`https://wa.me/${WA_NUMBER_NX}?text=` + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
 }
 
-function selectPlanAndContact(plan) {
+function selectPlan(plan) {
   goPage('contact');
-  const sel = document.getElementById('cPlan');
+  const sel = document.getElementById('cPlanSel');
   if (sel) {
     const opt = [...sel.options].find(o => o.text === plan);
     if (opt) sel.value = opt.value;
   }
 }
 
-function submitContactForm(e) {
+function submitWaForm(e) {
   e.preventDefault();
-  const name = document.getElementById('cName').value.trim();
-  const seg = document.getElementById('cSegment').value;
-  const plan = document.getElementById('cPlan').value;
-  const notes = document.getElementById('cNotes').value.trim();
+  const name = document.getElementById('cNameInp').value.trim();
+  const seg = document.getElementById('cSegmentSel').value;
+  const plan = document.getElementById('cPlanSel').value;
+  const notes = document.getElementById('cNotesInp').value.trim();
   if (!name || !seg || !plan) return;
-  openWhatsApp(`Olá, NEXORA! Sou ${name}. Segmento: ${seg}. Formato: ${plan}.${notes ? ' Obs: ' + notes : ''}`);
+  openWhatsApp(`Olá, NEXORA! Sou ${name}. Segmento/Amostra: ${seg}. Plano: ${plan}.${notes ? ' Detalhes: ' + notes : ''}`);
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeDemoModal();
-    closeAdminModal();
-  }
+  if (e.key === 'Escape') closeSampleModal();
 });
 
-renderHeroSlide();
-syncAdmUI();
-updateSimRoi();
+calcFeatSim();
 goPage('home');
 </script>
 
