@@ -9,7 +9,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -731,6 +731,269 @@ header button[aria-label="Preferências"] i {
   }
 }
 
+/* =========================================
+   NEXORA LUXURY EXPERIENCE
+   Identidade visual global
+========================================= */
+
+:root {
+  --nx-bg: #080d12;
+  --nx-bg-soft: #101820;
+  --nx-card: #131e27;
+  --nx-card-light: #192630;
+
+  --nx-gold: #c6a66b;
+  --nx-gold-light: #e5d0a5;
+  --nx-gold-dark: #927344;
+
+  --nx-white: #f5f2eb;
+  --nx-muted: #a5adb2;
+  --nx-border: rgba(198, 166, 107, .20);
+
+  --nx-radius: 22px;
+  --nx-radius-small: 14px;
+
+  --nx-shadow:
+    0 18px 55px rgba(0, 0, 0, .28);
+
+  --nx-transition:
+    .35s cubic-bezier(.2, .7, .2, 1);
+}
+
+body {
+  font-family: "Inter", "DM Sans", "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+}
+
+::selection {
+  background: var(--nx-gold);
+  color: #080d12;
+}
+
+button,
+.btn,
+.button,
+a.btn,
+a.button {
+  border-radius: 999px;
+  font-family: "Inter", "DM Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: .015em;
+  transition:
+    transform var(--nx-transition),
+    background var(--nx-transition),
+    border-color var(--nx-transition),
+    box-shadow var(--nx-transition);
+}
+
+button:hover,
+.btn:hover,
+.button:hover,
+a.btn:hover,
+a.button:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary,
+.button-primary,
+button.primary {
+  background: linear-gradient(
+    135deg,
+    var(--nx-gold-light),
+    var(--nx-gold-dark)
+  );
+  color: #11151a;
+  border: 1px solid var(--nx-gold-light);
+  box-shadow: 0 8px 25px rgba(198,166,107,.18);
+}
+
+.btn-secondary,
+.button-secondary {
+  background: rgba(255,255,255,.035);
+  color: var(--nx-white);
+  border: 1px solid var(--nx-border);
+}
+
+.nx-card img,
+.demo-card img,
+.preview-card img,
+.demo-image {
+  border-radius: 16px;
+}
+
+.eyebrow,
+.section-label,
+.badge-gold {
+  color: var(--nx-gold-light);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+hr,
+.section-divider {
+  border: 0;
+  border-top: 1px solid var(--nx-border);
+}
+
+nav {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================
+   CORREÇÕES DE INTERFACE
+========================================= */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(5,10,15,.88) 0%,
+    rgba(5,10,15,.55) 55%,
+    rgba(5,10,15,.12) 100%
+  );
+}
+
+.card h2,
+.card h3,
+.feature-card h2,
+.feature-card h3,
+.preview-card h2,
+.preview-card h3 {
+  color: var(--nx-white);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.metric {
+  min-width: 0;
+}
+
+.metric strong {
+  display: block;
+  color: var(--nx-gold-light);
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.1;
+}
+
+.metric span {
+  display: block;
+  color: var(--nx-muted);
+}
+
+.demo-card,
+.feature-card,
+.resource-card {
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.demo-card > *,
+.feature-card > *,
+.resource-card > * {
+  max-width: 100%;
+}
+
+.preview-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.demo-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(8,13,18,.94);
+  border-top: 1px solid var(--nx-border);
+  backdrop-filter: blur(18px);
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--nx-border);
+  background: rgba(255,255,255,.05);
+  color: var(--nx-gold-light);
+}
+
+@media (max-width: 650px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .metric span {
+    font-size: .72rem;
+    line-height: 1.35;
+  }
+
+  .card,
+  .demo-card,
+  .feature-card,
+  .resource-card,
+  .preview-card,
+  .plan-card {
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .metrics-grid {
+    gap: 3px;
+  }
+
+  .metric strong {
+    font-size: 1.55rem;
+  }
+
+  .metric span {
+    font-size: .67rem;
+  }
+}
 </style>
 </head>
 
@@ -781,7 +1044,7 @@ header button[aria-label="Preferências"] i {
 <main class="pt-[76px]">
 
 <!-- INÍCIO -->
-<section id="page-home" class="page-view">
+<section id="page-home" class="page-view hero">
  <div class="max-w-7xl mx-auto px-5 pt-20 pb-24">
   <div class="hero-grid grid grid-cols-2 gap-12 items-center">
    <div>
@@ -796,10 +1059,10 @@ header button[aria-label="Preferências"] i {
      <button onclick="goPage('catalog')" class="nx-btn nx-btn-primary">Explorar demonstrações <i class="fa-solid fa-arrow-right"></i></button>
      <button onclick="goPage('contact')" class="nx-btn nx-btn-outline">Criar meu site</button>
     </div>
-    <div class="hero-metrics mt-12 pt-8 border-t border-nx-border">
-     <div class="hero-metric"><strong>6+</strong><span>Segmentos demonstrativos</span></div>
-     <div class="hero-metric"><strong>18</strong><span>Recursos interativos</span></div>
-     <div class="hero-metric"><strong>100%</strong><span>Design responsivo</span></div>
+    <div class="hero-metrics metrics-grid mt-12 pt-8 border-t border-nx-border">
+     <div class="hero-metric metric"><strong>6+</strong><span>Segmentos demonstrativos</span></div>
+     <div class="hero-metric metric"><strong>18</strong><span>Recursos interativos</span></div>
+     <div class="hero-metric metric"><strong>100%</strong><span>Design responsivo</span></div>
     </div>
    </div>
 
@@ -815,7 +1078,7 @@ header button[aria-label="Preferências"] i {
       <div class="flex justify-between text-[10px] font-bold tracking-widest"><span>SUA MARCA</span><span>MENU</span></div>
       <div>
        <p class="text-[9px] tracking-[3px] mb-3">UMA NOVA EXPERIÊNCIA</p>
-       <h2 class="font-editorial text-4xl leading-tight preview-headline">Ideias que<br><i>ganham vida.</i></h2>
+       <h2 class="font-editorial text-4xl leading-tight preview-headline preview-title">Ideias que<br><i>ganham vida.</i></h2>
        <div class="mt-5 bg-[#20343a] text-white rounded-full px-5 py-3 w-max text-[10px]">CONHEÇA O PROJETO <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></div>
       </div>
       <div class="flex justify-between text-[9px]"><span>DESIGN DIGITAL</span><span>2026</span></div>
@@ -859,7 +1122,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-dentist">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">ODONTO PRIME</span><div><h3 class="preview-heading">Seu sorriso, nossa missão.</h3><p class="text-xs mt-3">Cuidado e confiança em cada detalhe.</p></div><span class="preview-action">AGENDAR CONSULTA</span></div>
+     <div class="preview-content"><span class="preview-brand">ODONTO PRIME</span><div><h3 class="preview-heading preview-title">Seu sorriso, nossa missão.</h3><p class="text-xs mt-3">Cuidado e confiança em cada detalhe.</p></div><span class="preview-action">AGENDAR CONSULTA</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Clínica odontológica</h3><span class="text-[9px] text-nx-green">SAÚDE</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações, galeria e solicitação de agendamento.</p><button onclick="openDemo('dentist')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -867,7 +1130,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="food">
     <div class="site-preview preview-burger">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">BUN & CO.</span><div><h3 class="preview-heading">Sabor que fala por si.</h3><p class="text-xs mt-3">Hambúrguer artesanal de verdade.</p></div><span class="preview-action">VER CARDÁPIO</span></div>
+     <div class="preview-content"><span class="preview-brand">BUN & CO.</span><div><h3 class="preview-heading preview-title">Sabor que fala por si.</h3><p class="text-xs mt-3">Hambúrguer artesanal de verdade.</p></div><span class="preview-action">VER CARDÁPIO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Hamburgueria</h3><span class="text-[9px] text-nx-gold">GASTRONOMIA</span></div><p class="text-sm text-nx-muted mb-5">Cardápio com filtros, carrinho demonstrativo e pedido via WhatsApp.</p><button onclick="openDemo('burger')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -875,7 +1138,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-barber">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">BARBER CLUB</span><div><h3 class="preview-heading">Estilo é identidade.</h3><p class="text-xs mt-3">Seu próximo visual começa aqui.</p></div><span class="preview-action">RESERVAR HORÁRIO</span></div>
+     <div class="preview-content"><span class="preview-brand">BARBER CLUB</span><div><h3 class="preview-heading preview-title">Estilo é identidade.</h3><p class="text-xs mt-3">Seu próximo visual começa aqui.</p></div><span class="preview-action">RESERVAR HORÁRIO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Barbearia</h3><span class="text-[9px] text-nx-gold">ESTILO</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de agendamento.</p><button onclick="openDemo('barber')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -883,7 +1146,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="retail">
     <div class="site-preview preview-fashion">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">ATELIER 08</span><div><h3 class="preview-heading">Vista sua essência.</h3><p class="text-xs mt-3">Uma coleção feita para expressar.</p></div><span class="preview-action">EXPLORAR COLEÇÃO</span></div>
+     <div class="preview-content"><span class="preview-brand">ATELIER 08</span><div><h3 class="preview-heading preview-title">Vista sua essência.</h3><p class="text-xs mt-3">Uma coleção feita para expressar.</p></div><span class="preview-action">EXPLORAR COLEÇÃO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Loja de moda</h3><span class="text-[9px] text-nx-gold">VAREJO</span></div><p class="text-sm text-nx-muted mb-5">Catálogo, filtros, seleção de tamanhos e sacola demonstrativa.</p><button onclick="openDemo('fashion')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -891,7 +1154,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="wellness">
     <div class="site-preview preview-fitness">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">PULSE FITNESS</span><div><h3 class="preview-heading">Movimento transforma.</h3><p class="text-xs mt-3">Descubra uma rotina ativa.</p></div><span class="preview-action">CONHECER PLANOS</span></div>
+     <div class="preview-content"><span class="preview-brand">PULSE FITNESS</span><div><h3 class="preview-heading preview-title">Movimento transforma.</h3><p class="text-xs mt-3">Descubra uma rotina ativa.</p></div><span class="preview-action">CONHECER PLANOS</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Academia</h3><span class="text-[9px] text-nx-green">FITNESS</span></div><p class="text-sm text-nx-muted mb-5">Modalidades, planos, avaliações e contato.</p><button onclick="openDemo('fitness')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -899,7 +1162,7 @@ header button[aria-label="Preferências"] i {
    <article class="nx-card p-3 catalog-item" data-category="services">
     <div class="site-preview preview-pet">
      <span class="demo-badge">DEMO INTERATIVA</span>
-     <div class="preview-content"><span class="preview-brand">PET & CIA</span><div><h3 class="preview-heading">Carinho em cada cuidado.</h3><p class="text-xs mt-3">Seu pet merece o melhor.</p></div><span class="preview-action">AGENDAR SERVIÇO</span></div>
+     <div class="preview-content"><span class="preview-brand">PET & CIA</span><div><h3 class="preview-heading preview-title">Carinho em cada cuidado.</h3><p class="text-xs mt-3">Seu pet merece o melhor.</p></div><span class="preview-action">AGENDAR SERVIÇO</span></div>
     </div>
     <div class="p-4"><div class="flex justify-between items-center mb-2"><h3 class="font-bold text-lg">Pet shop</h3><span class="text-[9px] text-nx-green">PET</span></div><p class="text-sm text-nx-muted mb-5">Serviços, avaliações e solicitação de atendimento.</p><button onclick="openDemo('pet')" class="nx-btn nx-btn-outline w-full">Experimentar site <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
    </article>
@@ -1426,12 +1689,12 @@ function renderDemoHome() {
   };
 
   const content = `
-    <div class="demo-hero"
+    <div class="demo-hero demo-image"
       style="background-image:url('https://images.unsplash.com/${v.photo}?auto=format&fit=crop&w=1400&q=85')">
 
       <div>
         <p>${v.eyebrow}</p>
-        <h2>${v.headline}</h2>
+        <h2 class="preview-title">${v.headline}</h2>
 
         <div style="max-width:460px;font-size:13px;line-height:1.7;color:#eee5d7">
           ${v.sub}
@@ -1463,7 +1726,7 @@ function renderDemoHome() {
             <span style="font-size:9px;color:#bd9d69;letter-spacing:1px">
               0${i+1} / DESTAQUE
             </span>
-            <strong style="display:block;font:18px Georgia,serif;margin:8px 0">
+            <strong class="preview-title" style="display:block;font:18px Georgia,serif;margin:8px 0">
               ${item[0]}
             </strong>
             <span style="font-size:10px;opacity:.68;line-height:1.6">
@@ -1490,7 +1753,7 @@ function renderDemoServices(){
  let cards=data.services.map((item,index)=>`
  <div style="padding:15px;background:rgba(255,255,255,.14);border:1px solid rgba(120,120,120,.2);border-radius:12px">
   <div style="font-size:10px;opacity:.6;margin-bottom:7px">OPÇÃO ${String(index+1).padStart(2,'0')}</div>
-  <strong style="font-size:14px">${item[0]}</strong>
+  <strong class="preview-title" style="font-size:14px">${item[0]}</strong>
   <p style="font-size:11px;opacity:.7;line-height:1.6;margin-top:7px">${item[1]}</p>
   <button onclick="selectDemoService(${index})" style="margin-top:13px;padding:9px 12px;border-radius:8px;background:#e7b96b;color:#17262c;font-size:10px;font-weight:900">SELECIONAR</button>
  </div>`).join('');
@@ -1567,7 +1830,7 @@ function submitDemoBooking(event){
 function renderBurgerMenu(){
  const products=[
   {name:'Classic Burger',price:28,category:'Hambúrguer',desc:'Carne, queijo e molho especial.'},
-  {name:'Cheese Bacon',price:34,category:'Hambúrguer',desc:'Queijo, bacon e molho da casa.'},
+  {name:'Cheese Bacon',price:34,category:'Hambúrguer',desc:'Queijo, bacon crocante e molho da casa.'},
   {name:'Veggie Burger',price:29,category:'Hambúrguer',desc:'Hambúrguer vegetal e salada.'},
   {name:'Batata da Casa',price:16,category:'Acompanhamento',desc:'Porção de batatas crocantes.'},
   {name:'Refrigerante',price:8,category:'Bebida',desc:'Lata gelada.'},
@@ -1598,7 +1861,7 @@ function renderBurgerProducts(category){
  const filtered=category==='Todos'?products:products.filter(p=>p.category===category);
  document.getElementById('burgerProducts').innerHTML=filtered.map(p=>`
  <div style="padding:13px;border:1px solid rgba(120,120,120,.2);border-radius:12px">
-  <strong style="font-size:12px">${p.name}</strong>
+  <strong class="preview-title" style="font-size:12px">${p.name}</strong>
   <p style="font-size:10px;opacity:.65;margin:7px 0">${p.desc}</p>
   <div class="flex justify-between items-center"><strong style="font-size:13px">R$ ${p.price.toFixed(2).replace('.',',')}</strong><button onclick="addBurger('${p.name}')" style="background:#e7b96b;color:#17262c;border-radius:7px;padding:7px 10px;font-size:10px;font-weight:900">+ ADICIONAR</button></div>
  </div>`).join('');
@@ -1666,7 +1929,7 @@ function filterFashion(category){
   return `
   <div style="padding:13px;border:1px solid rgba(120,120,120,.25);border-radius:12px">
    <div style="height:90px;border-radius:9px;background:rgba(90,70,60,.14);display:grid;place-items:center;font-size:28px"><i class="fa-solid fa-shirt"></i></div>
-   <strong style="font-size:12px;display:block;margin-top:10px">${p.name}</strong>
+   <strong class="preview-title" style="font-size:12px;display:block;margin-top:10px">${p.name}</strong>
    <p style="font-size:12px;margin:5px 0">R$ ${p.price.toFixed(2).replace('.',',')}</p>
    <label style="font-size:10px">Tamanho
     <select id="fashionSize${idx}" class="nx-input mt-1" style="padding:8px;color:#fff;background:#102d3b">
@@ -1737,7 +2000,7 @@ featureGrid.innerHTML = featureList.map((f,i) => `
       </span>
     </div>
 
-    <h3 class="font-bold text-base mb-2">${f[0]}</h3>
+    <h3 class="font-bold text-base mb-2 preview-title">${f[0]}</h3>
 
     <p class="text-sm text-nx-muted leading-6 flex-1">
       ${f[1]}
@@ -2280,7 +2543,6 @@ function playFlowerChime() {
     const c = flowerAudioContext;
     const n = c.currentTime;
 
-    // Pequena sequência musical suave, estilo sinos.
     [659.25, 783.99, 987.77, 1174.66, 987.77].forEach((hz,i) => {
 
       const t = n + i * .24;
