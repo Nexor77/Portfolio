@@ -3,1488 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NEXORA Studio — Criação de sites, arquitetura digital sofisticada, 10 demonstrações interativas e 16 recursos.">
-<title>NEXORA — Digital Excellence & 10 Demos</title>
-
+<meta name="description" content="NEXORA Studio — criação de sites sob medida, 10 demonstrações interativas e 17 recursos.">
+<meta property="og:title" content="NEXORA — Digital Excellence">
+<meta property="og:description" content="Sites sob medida com 10 demonstrações interativas.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080E18">
+<title>NEXORA — Digital Excellence</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23183447'/%3E%3Ctext x='32' y='42' font-size='28' font-family='Georgia' text-anchor='middle' fill='%23C6AA76'%3ENX%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-:root {
-  --navy: #080E18;
-  --obsidian: #0B0F14;
-  --gold: #C6AA76;
-  --ivory: #F1EEE6;
-  --steel: #8793A3;
-  --petrol: #183447;
-  --surface: rgba(14, 23, 38, 0.72);
-  --surface-elev: rgba(18, 30, 48, 0.86);
-  --line: rgba(198, 170, 118, 0.22);
-  --line-soft: rgba(135, 147, 163, 0.16);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  color: var(--ivory);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  line-height: 1.65;
-  overflow-x: hidden;
-  background-color: var(--navy);
-  background-image:
-    radial-gradient(circle at 14% 12%, rgba(24, 52, 71, 0.65) 0%, transparent 42%),
-    radial-gradient(circle at 86% 18%, rgba(198, 170, 118, 0.10) 0%, transparent 38%),
-    radial-gradient(circle at 75% 84%, rgba(24, 52, 71, 0.48) 0%, transparent 44%),
-    linear-gradient(180deg, #080E18 0%, #0B0F14 55%, #080E18 100%);
-}
-
-.font-display {
-  font-family: 'Fraunces', Georgia, serif;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-::selection {
-  background: var(--gold);
-  color: var(--navy);
-}
-
-.hidden-page {
-  display: none !important;
-}
-
-.page-view {
-  animation: luxReveal .35s ease;
-}
-
-@keyframes luxReveal {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Cabeçalho editorial de luxo */
-.lux-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(8, 14, 24, 0.84);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav-lux {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--steel);
-  padding: 7px 13px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color .2s, background .2s, border-color .2s;
-}
-
-.nav-lux:hover {
-  color: var(--ivory);
-  background: rgba(241, 238, 230, 0.04);
-  border-color: var(--line-soft);
-}
-
-.nav-lux.active {
-  color: var(--ivory);
-  background: rgba(24, 52, 71, 0.72);
-  border-color: rgba(198, 170, 118, 0.45);
-}
-
-/* Superfícies com profundidade discreta e transparência refinada */
-.lux-panel {
-  background: var(--surface);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(241, 238, 230, 0.06);
-}
-
-.lux-card {
-  background: var(--surface-elev);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--line-soft);
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(241, 238, 230, 0.05);
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-.lux-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(198, 170, 118, 0.45);
-  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(198, 170, 118, 0.14);
-}
-
-.lux-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 10.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--gold);
-  background: rgba(198, 170, 118, 0.09);
-  border: 1px solid rgba(198, 170, 118, 0.28);
-}
-
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #D1B888 0%, #B89962 100%);
-  color: var(--navy);
-  font-size: 12.5px;
-  font-weight: 800;
-  border: 1px solid rgba(241, 238, 230, 0.28);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  transition: transform .2s ease, filter .2s ease;
-}
-
-.btn-gold:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
-}
-
-.btn-petrol {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: rgba(24, 52, 71, 0.55);
-  color: var(--ivory);
-  font-size: 12.5px;
-  font-weight: 600;
-  border: 1px solid rgba(198, 170, 118, 0.28);
-  transition: background .2s ease, border-color .2s ease;
-}
-
-.btn-petrol:hover {
-  background: rgba(24, 52, 71, 0.85);
-  border-color: rgba(198, 170, 118, 0.55);
-}
-
-.lux-input {
-  width: 100%;
-  padding: 11px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(135, 147, 163, 0.26);
-  background: rgba(8, 14, 24, 0.78);
-  color: var(--ivory);
-  outline: none;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.lux-input:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(198, 170, 118, 0.14);
-}
-
-/* Navegação inferior compacta no mobile */
-.mobile-nav-lux {
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 110;
-  background: rgba(8, 14, 24, 0.94);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
-  padding: 6px 4px max(6px, env(safe-area-inset-bottom));
-}
-
-.mobile-nav-btn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 4px 2px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--steel);
-  border-radius: 8px;
-}
-
-.mobile-nav-btn.active {
-  color: var(--gold);
-}
-
-/* Modal dos 10 sites demonstrativos */
-.demo-backdrop-lux {
-  position: fixed;
-  inset: 0;
-  z-index: 500;
-  background: rgba(4, 7, 13, 0.84);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-}
-
-.demo-backdrop-lux.open {
-  display: flex;
-}
-
-.demo-window-lux {
-  width: min(100%, 1060px);
-  height: min(92vh, 780px);
-  background: var(--obsidian);
-  border-radius: 22px;
-  border: 1px solid rgba(198, 170, 118, 0.32);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-}
-
-.demo-loader-lux {
-  position: absolute;
-  inset: 0;
-  z-index: 40;
-  background: linear-gradient(135deg, #080E18 0%, #183447 100%);
-  color: var(--ivory);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  transition: opacity .35s ease, visibility .35s ease;
-}
-
-.demo-loader-lux.done {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.lux-spinner {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 3px solid rgba(241, 238, 230, 0.16);
-  border-top-color: var(--gold);
-  animation: spinLux .85s linear infinite;
-}
-
-@keyframes spinLux {
-  to { transform: rotate(360deg); }
-}
-
-.wa-fab-lux {
-  position: fixed;
-  right: 18px;
-  bottom: 20px;
-  z-index: 95;
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  background: #183447;
-  color: var(--gold);
-  border: 1px solid rgba(198, 170, 118, 0.42);
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
-  transition: transform .2s ease, border-color .2s ease;
-}
-
-.wa-fab-lux:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold);
-}
-
-@media (max-width: 860px) {
-  .desktop-nav-lux {
-    display: none !important;
-  }
-  .mobile-nav-lux {
-    display: flex;
-  }
-  body {
-    padding-bottom: 64px;
-  }
-  .wa-fab-lux {
-    bottom: calc(70px + env(safe-area-inset-bottom));
-  }
-}
+:root{--navy:#080E18;--gold:#C6AA76;--ivory:#F1EEE6;--steel:#8793A3;--petrol:#183447;--line:rgba(198,170,118,.22);--line-soft:rgba(135,147,163,.16)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ivory);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.65;overflow-x:hidden;background:radial-gradient(circle at 14% 12%,rgba(24,52,71,.65),transparent 42%),radial-gradient(circle at 86% 18%,rgba(198,170,118,.1),transparent 38%),linear-gradient(180deg,#080E18,#0B0F14 55%,#080E18);background-attachment:fixed}
+.font-display{font-family:'Fraunces',Georgia,serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+::selection{background:var(--gold);color:var(--navy)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hidden-page{display:none!important}
+.page-view{animation:rv .35s ease}
+@keyframes rv{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.lux-header{position:sticky;top:0;z-index:100;background:rgba(8,14,24,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-lux{font-size:13px;font-weight:600;color:var(--steel);padding:7px 13px;border-radius:10px;border:1px solid transparent;transition:.2s}
+.nav-lux:hover{color:var(--ivory);border-color:var(--line-soft)}
+.nav-lux.active{color:var(--ivory);background:rgba(24,52,71,.72);border-color:rgba(198,170,118,.45)}
+.lux-panel{background:rgba(14,23,38,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 42px rgba(0,0,0,.42),inset 0 1px 0 rgba(241,238,230,.06)}
+.lux-card{background:rgba(18,30,48,.86);border:1px solid var(--line-soft);border-radius:18px;box-shadow:0 12px 28px rgba(0,0,0,.34);transition:transform .25s,border-color .25s}
+@media(hover:hover){.lux-card:hover{transform:translateY(-4px);border-color:rgba(198,170,118,.45)}}
+.lux-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(198,170,118,.09);border:1px solid rgba(198,170,118,.28)}
+.btn-gold,.btn-petrol{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:12px;font-size:13px;font-weight:700;transition:.2s}
+.btn-gold{background:linear-gradient(135deg,#D1B888,#B89962);color:var(--navy);border:1px solid rgba(241,238,230,.28);font-weight:800}
+.btn-gold:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn-petrol{background:rgba(24,52,71,.55);color:var(--ivory);border:1px solid rgba(198,170,118,.28)}
+.btn-petrol:hover{background:rgba(24,52,71,.9)}
+.lux-input{width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(135,147,163,.3);background:rgba(8,14,24,.78);color:var(--ivory);font-size:13px}
+.chip{padding:8px 12px;border-radius:10px;border:1px solid var(--line-soft);background:#080E18;color:var(--ivory);font-size:13px}
+.chip[aria-pressed=true]{border-color:var(--gold);background:var(--petrol)}
+.mobile-nav-lux{display:none;position:fixed;left:0;right:0;bottom:0;z-index:110;background:rgba(8,14,24,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 4px max(6px,env(safe-area-inset-bottom))}
+.mobile-nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 2px;font-size:12px;font-weight:600;color:var(--steel)}
+.mobile-nav-btn.active{color:var(--gold)}
+.mb{position:fixed;inset:0;z-index:500;background:rgba(4,7,13,.85);display:none;align-items:center;justify-content:center;padding:12px}
+.mb.open{display:flex}
+.mw{width:min(100%,1060px);height:min(92vh,800px);background:#0B0F14;border-radius:22px;border:1px solid rgba(198,170,118,.32);box-shadow:0 32px 80px rgba(0,0,0,.75);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.ml{position:absolute;inset:0;z-index:40;background:linear-gradient(135deg,#080E18,#183447);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;transition:opacity .35s,visibility .35s}
+.ml.done{opacity:0;visibility:hidden;pointer-events:none}
+.sp{width:42px;height:42px;border-radius:50%;border:3px solid rgba(241,238,230,.16);border-top-color:var(--gold);animation:sp .85s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.fab{position:fixed;right:18px;bottom:20px;z-index:95;width:50px;height:50px;border-radius:14px;background:var(--petrol);color:var(--gold);border:1px solid rgba(198,170,118,.42);display:grid;place-items:center;font-size:20px;box-shadow:0 12px 26px rgba(0,0,0,.45)}
+@media(max-width:860px){.desk{display:none!important}.mobile-nav-lux{display:flex}body{padding-bottom:64px}.fab{bottom:calc(70px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-
 <body>
 
-<!-- CABEÇALHO -->
 <header class="lux-header">
- <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3">
-  <button onclick="goPage('home')" class="flex items-center gap-2.5 text-left shrink-0">
-   <span class="w-9 h-9 rounded-xl bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/45 grid place-items-center font-display font-bold text-sm tracking-wider">NX</span>
-   <span>
-    <span class="block font-extrabold tracking-[0.2em] text-xs sm:text-sm uppercase text-[#F1EEE6]">NEXORA</span>
-    <span class="hidden sm:block text-[10.5px] font-medium text-[#8793A3] tracking-wide">Digital Excellence</span>
-   </span>
+ <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+  <button data-go="home" class="flex items-center gap-2.5 text-left shrink-0" aria-label="NEXORA — início">
+   <span class="w-9 h-9 rounded-xl bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/45 grid place-items-center font-display font-bold text-sm">NX</span>
+   <span><span class="block font-extrabold tracking-[.2em] text-sm uppercase">NEXORA</span><span class="hidden sm:block text-xs text-[#8793A3]">Digital Excellence</span></span>
   </button>
-
-  <nav class="desktop-nav-lux flex items-center gap-1 flex-wrap">
-   <button class="nav-lux active" data-page="home" onclick="goPage('home')">Início</button>
-   <button class="nav-lux" data-page="catalog" onclick="goPage('catalog')">10 Sites</button>
-   <button class="nav-lux" data-page="features" onclick="goPage('features')">Recursos</button>
-   <button class="nav-lux" data-page="ai" onclick="goPage('ai')">IA</button>
-   <button class="nav-lux" data-page="contracts" onclick="goPage('contracts')">Planos</button>
-   <button class="nav-lux" data-page="contact" onclick="goPage('contact')">Contato</button>
-  </nav>
-
-  <button onclick="openWhatsApp()" class="btn-petrol !py-1.5 !px-3.5 text-xs shrink-0">
-   <i class="fa-brands fa-whatsapp text-[#C6AA76]"></i>
-   <span>WhatsApp</span>
-  </button>
+  <nav class="desk flex items-center gap-1" id="deskNav" aria-label="Principal"></nav>
+  <button data-wa class="btn-petrol !py-1.5 !px-3.5 shrink-0"><i class="fa-brands fa-whatsapp text-[#C6AA76]"></i><span>WhatsApp</span></button>
  </div>
 </header>
-
-<!-- NAVEGAÇÃO INFERIOR MOBILE (COMPACTA) -->
-<nav class="mobile-nav-lux justify-around items-center">
- <button class="mobile-nav-btn active" data-page="home" onclick="goPage('home')"><i class="fa-solid fa-house text-xs"></i><span>Início</span></button>
- <button class="mobile-nav-btn" data-page="catalog" onclick="goPage('catalog')"><i class="fa-solid fa-layer-group text-xs"></i><span>10 Sites</span></button>
- <button class="mobile-nav-btn" data-page="features" onclick="goPage('features')"><i class="fa-solid fa-sliders text-xs"></i><span>Recursos</span></button>
- <button class="mobile-nav-btn" data-page="ai" onclick="goPage('ai')"><i class="fa-solid fa-microchip text-xs"></i><span>IA</span></button>
- <button class="mobile-nav-btn" data-page="contracts" onclick="goPage('contracts')"><i class="fa-solid fa-file-lines text-xs"></i><span>Planos</span></button>
- <button class="mobile-nav-btn" data-page="contact" onclick="goPage('contact')"><i class="fa-solid fa-paper-plane text-xs"></i><span>Contato</span></button>
-</nav>
+<nav class="mobile-nav-lux" id="mobNav" aria-label="Principal"></nav>
 
 <main>
-
-<!-- =====================================================================
-     1. INÍCIO (HERO EDITORIAL + MÉTRICAS + DESTAQUES)
-====================================================================== -->
-<section id="page-home" class="page-view max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-16 space-y-12">
- <div class="lux-panel p-6 sm:p-10 lg:p-12 grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+<section id="page-home" class="page-view max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-16">
+ <div class="lux-panel p-6 sm:p-10 lg:p-12 grid lg:grid-cols-12 gap-8 items-center">
   <div class="lg:col-span-7 space-y-6">
-   <span class="lux-eyebrow"><i class="fa-solid fa-compass-drafting"></i> NEXORA • Digital Excellence</span>
-
-   <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.45rem] font-semibold leading-[1.12] tracking-tight text-[#F1EEE6]">
-    Arquitetura web sob medida<br>
-    com <span class="italic text-[#C6AA76]">precisão editorial</span><br>
-    e interfaces interativas.
-   </h1>
-
-   <p class="text-sm sm:text-base text-[#8793A3] leading-relaxed max-w-xl">
-    Projetamos sites com estética sóbria, leitura clara e recursos funcionais. Explore 10 demonstrações completas — incluindo comparador arrastável de clareamento dental, calculadoras, agendamentos e pedidos — e conheça nossos 16 recursos dedicados.
-   </p>
-
-   <div class="flex flex-wrap gap-3 pt-1">
-    <button onclick="goPage('catalog')" class="btn-gold">
-     <i class="fa-solid fa-arrow-right"></i> Explorar 10 Sites
-    </button>
-    <button onclick="goPage('features')" class="btn-petrol">
-     <i class="fa-solid fa-sliders"></i> Ver 16 Recursos
-    </button>
+   <span class="lux-eyebrow"><i class="fa-solid fa-compass-drafting"></i> Digital Excellence</span>
+   <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-semibold leading-[1.12] tracking-tight">Arquitetura web sob medida com <span class="italic text-[#C6AA76]">precisão editorial</span> e interfaces interativas.</h1>
+   <p class="text-sm sm:text-base text-[#8793A3] max-w-xl">Sites com estética sóbria, leitura clara e recursos funcionais. Explore 10 demonstrações completas — com comparador antes e depois, simuladores, cronômetro, metrônomo e agendas — e conheça nossos 17 recursos.</p>
+   <div class="flex flex-wrap gap-3">
+    <button data-go="catalog" class="btn-gold"><i class="fa-solid fa-arrow-right"></i> Explorar 10 sites</button>
+    <button data-go="features" class="btn-petrol"><i class="fa-solid fa-sliders"></i> Ver 17 recursos</button>
    </div>
-
-   <!-- Indicadores solicitados -->
-   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-5 border-t border-[#8793A3]/15">
-    <div class="p-3.5 rounded-xl bg-[#080E18]/75 border border-[#8793A3]/15">
-     <strong class="font-display text-2xl sm:text-3xl text-[#C6AA76] block">10</strong>
-     <span class="text-[11px] text-[#8793A3]">Sites demonstrativos</span>
-    </div>
-    <div class="p-3.5 rounded-xl bg-[#080E18]/75 border border-[#8793A3]/15">
-     <strong class="font-display text-2xl sm:text-3xl text-[#F1EEE6] block">16</strong>
-     <span class="text-[11px] text-[#8793A3]">Recursos apresentados</span>
-    </div>
-    <div class="p-3.5 rounded-xl bg-[#080E18]/75 border border-[#8793A3]/15">
-     <strong class="font-display text-2xl sm:text-3xl text-[#C6AA76] block">01</strong>
-     <span class="text-[11px] text-[#8793A3]">Seção IA em desenvolvimento</span>
-    </div>
-    <div class="p-3.5 rounded-xl bg-[#080E18]/75 border border-[#8793A3]/15">
-     <strong class="font-display text-2xl sm:text-3xl text-[#F1EEE6] block">100%</strong>
-     <span class="text-[11px] text-[#8793A3]">Foco em responsividade</span>
-    </div>
-   </div>
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-5 border-t border-[#8793A3]/15" id="metrics"></div>
   </div>
-
-  <!-- Composição visual limpa com imagem de criação web -->
   <div class="lg:col-span-5">
    <div class="rounded-2xl overflow-hidden border border-[#C6AA76]/30 bg-[#080E18] shadow-2xl">
-    <div class="aspect-[4/3] overflow-hidden">
-     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" alt="Desenvolvimento e estrutura de sites NEXORA" class="w-full h-full object-cover">
-    </div>
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=75" width="900" height="675" fetchpriority="high" alt="Código e estrutura de sites" class="w-full aspect-[4/3] object-cover">
     <div class="p-4 sm:p-5 flex items-center justify-between gap-4 border-t border-[#8793A3]/15">
-     <div>
-      <span class="text-[10px] font-bold uppercase tracking-widest text-[#C6AA76] block">Padrão NEXORA</span>
-      <span class="text-xs text-[#F1EEE6] font-medium">Identidade sob medida, clareza visual e código limpo.</span>
-     </div>
-     <button onclick="goPage('contact')" class="btn-petrol !py-2 !px-3 text-xs shrink-0">Solicitar</button>
+     <div><span class="text-xs font-bold uppercase tracking-widest text-[#C6AA76] block">Padrão NEXORA</span><span class="text-sm font-medium">Identidade sob medida, clareza visual e código limpo.</span></div>
+     <button data-go="contact" class="btn-petrol !py-2 !px-3 shrink-0">Solicitar</button>
     </div>
    </div>
   </div>
  </div>
 </section>
 
-<!-- =====================================================================
-     2. SEÇÃO DOS 10 SITES DEMONSTRATIVOS
-====================================================================== -->
-<section id="page-catalog" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-16 space-y-8">
+<section id="page-catalog" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
  <div class="lux-panel p-6 sm:p-8 flex flex-col md:flex-row md:items-end justify-between gap-5">
   <div class="space-y-2 max-w-2xl">
-   <span class="lux-eyebrow"><i class="fa-solid fa-layer-group"></i> 10 Sites Demonstrativos</span>
-   <h2 class="font-display text-3xl sm:text-4xl font-semibold text-[#F1EEE6]">Demonstrações interativas</h2>
-   <p class="text-xs sm:text-sm text-[#8793A3]">
-    Cada amostra apresenta uma estrutura completa de site — com carregamento, início, equipe, espaço, endereço, sobre, serviços, agenda e ferramenta interativa. O projeto final será totalmente personalizado.
-   </p>
+   <span class="lux-eyebrow"><i class="fa-solid fa-layer-group"></i> 10 sites demonstrativos</span>
+   <h2 class="font-display text-3xl sm:text-4xl font-semibold">Demonstrações interativas</h2>
+   <p class="text-sm text-[#8793A3]">Cada amostra tem início, equipe, espaço, endereço, sobre, serviços, depoimento, uma ferramenta interativa e agenda. O projeto final é totalmente personalizado.</p>
   </div>
-  <div class="flex flex-wrap gap-2" id="demoFilterBar">
-   <button onclick="filterDemos('all',this)" class="btn-gold !py-2 !px-3.5 text-xs">Todos (10)</button>
-   <button onclick="filterDemos('visual',this)" class="btn-petrol !py-2 !px-3 text-xs">Visual & Comparadores</button>
-   <button onclick="filterDemos('calculo',this)" class="btn-petrol !py-2 !px-3 text-xs">Calculadoras & Pedidos</button>
-   <button onclick="filterDemos('interativo',this)" class="btn-petrol !py-2 !px-3 text-xs">Agendas & Ferramentas</button>
-  </div>
+  <div class="flex flex-wrap gap-2" id="filters"></div>
  </div>
-
- <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="visual">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Odonto e Clareamento" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">01 • Odontologia</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Odonto & Clareamento</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Comparador arrastável antes (amarelado) e depois (branco), consultório, equipe, serviços e agenda.</p>
-   <button onclick="openDemoSite('whitening')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Padaria e Confeitaria" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">02 • Gastronomia</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Padaria & Confeitaria</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, equipe, loja, endereço, sobre, serviços, encomendas com desconto e retirada.</p>
-   <button onclick="openDemoSite('bakery')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="interativo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Barbearia e Estilo" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">03 • Estética Masculina</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Barbearia & Estilo</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, barbeiro, espaço, endereço, sobre, serviços e agenda de horários.</p>
-   <button onclick="openDemoSite('barber')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Loja de Moda e Alfaiataria" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">04 • Moda & Alfaiataria</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Loja de Moda & Lookbook</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, consultor, loja, endereço, sobre, catálogo, guia de medidas e reserva.</p>
-   <button onclick="openDemoSite('fashion')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="interativo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Academia e Treinos" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">05 • Performance</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Academia & Treinos</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, equipe, unidade, endereço, sobre, modalidades, cronômetro e aula experimental.</p>
-   <button onclick="openDemoSite('fitness')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80" alt="Pet Shop e Banho" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">06 • Cuidado Pet</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Pet Shop & Banho</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, equipe, espaço pet, endereço, sobre, serviços, simulador e agenda de banho.</p>
-   <button onclick="openDemoSite('pet')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Arquitetura e Interiores" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">07 • Arquitetura</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Arquitetura & Interiores</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, arquiteta, obra/espaço, endereço, sobre, projetos, estimativa por m² e reunião.</p>
-   <button onclick="openDemoSite('arch')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc6727?auto=format&fit=crop&w=800&q=80" alt="Estúdio Fotográfico" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">08 • Fotografia</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Estúdio Fotográfico</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, fotógrafo, estúdio, endereço, sobre, pacotes, calculadora e reserva de ensaio.</p>
-   <button onclick="openDemoSite('photo')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card" data-cat="calculo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Marmitaria Fit e Sabor" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">09 • Refeições</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Marmitaria Fit & Sabor</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, equipe, cozinha, endereço, sobre, cardápio, combo semanal e calorias.</p>
-   <button onclick="openDemoSite('meal')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
-
-  <article class="lux-card p-4 flex flex-col demo-card md:col-span-2 lg:col-span-1" data-cat="interativo">
-   <div class="rounded-xl overflow-hidden aspect-[16/10] mb-3.5 border border-[#8793A3]/15">
-    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80" alt="Escola de Música" loading="lazy" class="w-full h-full object-cover">
-   </div>
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">10 • Música</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-0.5">Escola de Música & Ritmo</h3>
-   <p class="text-xs text-[#8793A3] mt-1 mb-4 flex-1">Início, professor, salas, endereço, sobre, aulas, metrônomo com áudio e agendamento.</p>
-   <button onclick="openDemoSite('music')" class="btn-gold w-full text-xs">Abrir site amostra</button>
-  </article>
- </div>
+ <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards"></div>
 </section>
 
-<!-- =====================================================================
-     3. NOVA SEÇÃO: RECURSOS (16 RECURSOS INDIVIDUAIS)
-====================================================================== -->
-<section id="page-features" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-16 space-y-8">
+<section id="page-features" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
  <div class="lux-panel p-6 sm:p-8 space-y-3">
-  <span class="lux-eyebrow"><i class="fa-solid fa-sliders"></i> Catálogo Técnico • 16 Recursos</span>
-  <h2 class="font-display text-3xl sm:text-4xl font-semibold text-[#F1EEE6]">Recursos disponíveis na NEXORA</h2>
-  <p class="text-xs sm:text-sm text-[#8793A3] max-w-3xl">
-   Cada recurso abaixo pode ser planejado conforme o escopo e o plano escolhido — eles não são todos automaticamente incluídos em qualquer pacote sem definição prévia.
-  </p>
+  <span class="lux-eyebrow"><i class="fa-solid fa-sliders"></i> Catálogo técnico • 17 recursos</span>
+  <h2 class="font-display text-3xl sm:text-4xl font-semibold">Recursos disponíveis na NEXORA</h2>
+  <p class="text-sm text-[#8793A3] max-w-3xl">Cada recurso é planejado conforme o escopo e o plano escolhido — nem todos entram automaticamente em qualquer pacote.</p>
  </div>
-
- <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="sixteenFeaturesGrid"></div>
+ <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="featGrid"></div>
 </section>
 
-<!-- =====================================================================
-     4. SEÇÃO DE INTELIGÊNCIA ARTIFICIAL (EM DESENVOLVIMENTO, NÃO UTILIZÁVEL)
-====================================================================== -->
-<section id="page-ai" class="page-view hidden-page max-w-4xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-16">
- <div class="lux-panel p-8 sm:p-12 text-center space-y-5 border-[#C6AA76]/35">
-  <span class="lux-eyebrow"><i class="fa-solid fa-compass"></i> Em Desenvolvimento</span>
-  <h2 class="font-display text-3xl sm:text-5xl font-semibold text-[#F1EEE6]">NEXORA Intelligence</h2>
-  <p class="text-sm sm:text-base text-[#8793A3] max-w-xl mx-auto leading-relaxed">
-   Estamos desenvolvendo uma nova geração de soluções inteligentes. Em breve, novas possibilidades estarão disponíveis.
-  </p>
-  <div class="pt-2">
-   <button onclick="goPage('catalog')" class="btn-petrol text-xs">
-    <i class="fa-solid fa-arrow-left"></i> Voltar aos 10 sites demonstrativos
-   </button>
-  </div>
+<section id="page-ai" class="page-view hidden-page max-w-4xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+ <div class="lux-panel p-8 sm:p-12 text-center space-y-5">
+  <span class="lux-eyebrow"><i class="fa-solid fa-compass"></i> Em desenvolvimento</span>
+  <h2 class="font-display text-3xl sm:text-5xl font-semibold">NEXORA Intelligence</h2>
+  <p class="text-sm sm:text-base text-[#8793A3] max-w-xl mx-auto">Estamos desenvolvendo uma nova geração de soluções inteligentes. Em breve, novas possibilidades estarão disponíveis.</p>
+  <button data-go="catalog" class="btn-petrol"><i class="fa-solid fa-arrow-left"></i> Voltar aos 10 sites</button>
  </div>
 </section>
 
-<!-- =====================================================================
-     5. PLANOS E PREÇOS
-====================================================================== -->
-<section id="page-contracts" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-16 space-y-8">
+<section id="page-contracts" class="page-view hidden-page max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
  <div class="lux-panel p-6 sm:p-8 space-y-2">
-  <span class="lux-eyebrow"><i class="fa-solid fa-file-signature"></i> Planos & Manutenção</span>
-  <h2 class="font-display text-3xl sm:text-4xl font-semibold text-[#F1EEE6]">Formatos de contratação</h2>
-  <p class="text-xs sm:text-sm text-[#8793A3] max-w-3xl">
-   Planos <strong>Sem Manutenção</strong> entregam o projeto finalizado conforme o escopo acordado. Planos <strong>Com Manutenção</strong> incluem suporte contínuo e ajustes periódicos combinados.
-  </p>
+  <span class="lux-eyebrow"><i class="fa-solid fa-file-signature"></i> Planos e manutenção</span>
+  <h2 class="font-display text-3xl sm:text-4xl font-semibold">Formatos de contratação</h2>
+  <p class="text-sm text-[#8793A3] max-w-3xl">Todos os valores são <strong>pagamento único</strong>. Planos <strong>sem manutenção</strong> entregam o projeto conforme o escopo. Planos <strong>com manutenção</strong> incluem ajustes e suporte por <strong>2 meses</strong> após a entrega.</p>
  </div>
-
- <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-  <article class="lux-card p-6 flex flex-col">
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#8793A3]">Simples • Sem Manutenção</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-1">Essencial Base</h3>
-   <strong class="font-display text-4xl text-[#F1EEE6] my-4">R$89</strong>
-   <ul class="text-xs text-[#8793A3] space-y-2 mb-6 flex-1">
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Até 7 recursos selecionados</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Layout responsivo</li>
-    <li><i class="fa-solid fa-minus text-[#8793A3]/60 mr-1.5"></i>Sem manutenção contínua pós-entrega</li>
-   </ul>
-   <button onclick="selectLuxPlan('Simples Sem Manutenção - R$89')" class="btn-petrol w-full text-xs">Selecionar plano</button>
-  </article>
-
-  <article class="lux-card p-6 flex flex-col">
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#8793A3]">Simples • Com Manutenção</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-1">Essencial Suporte</h3>
-   <strong class="font-display text-4xl text-[#F1EEE6] my-4">R$119</strong>
-   <ul class="text-xs text-[#8793A3] space-y-2 mb-6 flex-1">
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Até 7 recursos selecionados</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Layout responsivo</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Manutenção e ajustes combinados</li>
-   </ul>
-   <button onclick="selectLuxPlan('Simples Com Manutenção - R$119')" class="btn-petrol w-full text-xs">Selecionar plano</button>
-  </article>
-
-  <article class="lux-card p-6 flex flex-col border-[#C6AA76]/45">
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">Especial • Sem Manutenção</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-1">Assinatura Studio</h3>
-   <strong class="font-display text-4xl text-[#C6AA76] my-4">R$149</strong>
-   <ul class="text-xs text-[#8793A3] space-y-2 mb-6 flex-1">
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Até 12 recursos selecionados</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Interações e estética expandidas</li>
-    <li><i class="fa-solid fa-minus text-[#8793A3]/60 mr-1.5"></i>Sem manutenção contínua pós-entrega</li>
-   </ul>
-   <button onclick="selectLuxPlan('Especial Sem Manutenção - R$149')" class="btn-gold w-full text-xs">Selecionar plano</button>
-  </article>
-
-  <article class="lux-card p-6 flex flex-col">
-   <span class="text-[10.5px] font-bold uppercase tracking-widest text-[#C6AA76]">Especial • Com Manutenção</span>
-   <h3 class="font-display text-xl font-semibold text-[#F1EEE6] mt-1">Assinatura VIP</h3>
-   <strong class="font-display text-4xl text-[#F1EEE6] my-4">R$179</strong>
-   <ul class="text-xs text-[#8793A3] space-y-2 mb-6 flex-1">
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Até 12 recursos selecionados</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Interações e estética expandidas</li>
-    <li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Manutenção e suporte contínuos</li>
-   </ul>
-   <button onclick="selectLuxPlan('Especial Com Manutenção - R$179')" class="btn-petrol w-full text-xs">Selecionar plano</button>
-  </article>
- </div>
+ <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" id="plans"></div>
 </section>
 
-<!-- =====================================================================
-     6. FORMULÁRIO DE CONTATO
-====================================================================== -->
-<section id="page-contact" class="page-view hidden-page max-w-3xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-16">
+<section id="page-contact" class="page-view hidden-page max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-16">
  <div class="lux-panel p-6 sm:p-8 space-y-6">
   <div class="space-y-1.5">
    <span class="lux-eyebrow"><i class="fa-solid fa-paper-plane"></i> Contato</span>
-   <h2 class="font-display text-3xl sm:text-4xl font-semibold text-[#F1EEE6]">Iniciar conversa</h2>
-   <p class="text-xs sm:text-sm text-[#8793A3]">Preencha os campos para enviar sua solicitação diretamente pelo WhatsApp.</p>
+   <h2 class="font-display text-3xl sm:text-4xl font-semibold">Iniciar conversa</h2>
+   <p class="text-sm text-[#8793A3]">Preencha os campos para enviar sua solicitação pelo WhatsApp.</p>
   </div>
-
-  <form class="space-y-4" onsubmit="submitLuxContact(event)">
-   <div>
-    <label class="text-xs font-semibold text-[#F1EEE6] block mb-1.5">Seu nome</label>
-    <input id="luxName" class="lux-input" required placeholder="Ex.: André Tavares">
-   </div>
-
+  <form class="space-y-4" id="cform">
+   <div><label for="cName" class="text-sm font-semibold block mb-1.5">Seu nome</label><input id="cName" class="lux-input" required autocomplete="name" placeholder="Ex.: André Tavares"></div>
    <div class="grid sm:grid-cols-2 gap-4">
-    <div>
-     <label class="text-xs font-semibold text-[#F1EEE6] block mb-1.5">Demonstração de referência</label>
-     <select id="luxDemo" class="lux-input" required>
-      <option value="">Selecione</option>
-      <option>01 • Odonto & Clareamento</option>
-      <option>02 • Padaria & Confeitaria</option>
-      <option>03 • Barbearia & Estilo</option>
-      <option>04 • Loja de Moda & Lookbook</option>
-      <option>05 • Academia & Treinos</option>
-      <option>06 • Pet Shop & Banho</option>
-      <option>07 • Arquitetura & Interiores</option>
-      <option>08 • Estúdio Fotográfico</option>
-      <option>09 • Marmitaria Fit & Sabor</option>
-      <option>10 • Escola de Música & Ritmo</option>
-     </select>
-    </div>
-
-    <div>
-     <label class="text-xs font-semibold text-[#F1EEE6] block mb-1.5">Plano</label>
-     <select id="luxPlan" class="lux-input" required>
-      <option value="">Selecione</option>
-      <option>Simples Sem Manutenção - R$89</option>
-      <option>Simples Com Manutenção - R$119</option>
-      <option>Especial Sem Manutenção - R$149</option>
-      <option>Especial Com Manutenção - R$179</option>
-     </select>
-    </div>
+    <div><label for="cDemo" class="text-sm font-semibold block mb-1.5">Demonstração de referência</label><select id="cDemo" class="lux-input" required></select></div>
+    <div><label for="cPlan" class="text-sm font-semibold block mb-1.5">Plano</label><select id="cPlan" class="lux-input" required></select></div>
    </div>
-
-   <div>
-    <label class="text-xs font-semibold text-[#F1EEE6] block mb-1.5">Detalhes do projeto</label>
-    <textarea id="luxNotes" class="lux-input" rows="3" placeholder="Descreva seu negócio, objetivo e recursos desejados..."></textarea>
-   </div>
-
+   <div><label for="cNotes" class="text-sm font-semibold block mb-1.5">Detalhes do projeto</label><textarea id="cNotes" class="lux-input" rows="3" placeholder="Descreva seu negócio, objetivo e recursos desejados..."></textarea></div>
    <button type="submit" class="btn-gold w-full"><i class="fa-brands fa-whatsapp"></i> Enviar pelo WhatsApp</button>
-   <div id="luxContactFeedback" class="text-xs font-semibold text-[#C6AA76] min-h-[18px]"></div>
+   <div id="cFb" class="text-sm font-semibold text-[#C6AA76] min-h-[20px]" role="status"></div>
   </form>
  </div>
 </section>
-
 </main>
 
-<!-- RODAPÉ -->
 <footer class="bg-[#080E18]/90 border-t border-[#8793A3]/15 py-7 px-4">
- <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8793A3]">
-  <div class="flex items-center gap-2.5 font-semibold text-[#F1EEE6]">
-   <span class="w-8 h-8 rounded-lg bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/40 grid place-items-center font-display font-bold text-xs">NX</span>
-   <span>NEXORA • Digital Excellence</span>
-  </div>
-  <div class="flex flex-wrap gap-4 font-medium">
-   <button onclick="goPage('home')" class="hover:text-[#F1EEE6]">Início</button>
-   <button onclick="goPage('catalog')" class="hover:text-[#F1EEE6]">10 Sites</button>
-   <button onclick="goPage('features')" class="hover:text-[#F1EEE6]">Recursos</button>
-   <button onclick="goPage('ai')" class="hover:text-[#F1EEE6]">IA</button>
-   <button onclick="goPage('contracts')" class="hover:text-[#F1EEE6]">Planos</button>
-   <button onclick="goPage('contact')" class="hover:text-[#F1EEE6]">Contato</button>
-  </div>
+ <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#8793A3]">
+  <div class="flex items-center gap-2.5 font-semibold text-[#F1EEE6]"><span class="w-8 h-8 rounded-lg bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/40 grid place-items-center font-display font-bold text-xs">NX</span><span>NEXORA • Digital Excellence</span></div>
+  <div class="flex flex-wrap gap-4 font-medium" id="footNav"></div>
  </div>
 </footer>
 
-<!-- MODAL DOS 10 SITES AMOSTRA COMPLETOS -->
-<div id="demoModalBackdrop" class="demo-backdrop-lux" onclick="if(event.target===this)closeDemoSite()">
- <div class="demo-window-lux">
-  <div id="demoLoaderScreen" class="demo-loader-lux">
-   <div class="lux-spinner"></div>
-   <div id="demoLoaderMsg" class="text-xs font-bold uppercase tracking-widest text-[#C6AA76]">Carregando site...</div>
+<div id="mb" class="mb" onclick="if(event.target===this)closeDemo()">
+ <div class="mw" role="dialog" aria-modal="true" aria-label="Site de demonstração">
+  <div id="ml" class="ml"><div class="sp"></div><div id="mlm" class="text-sm font-bold text-[#C6AA76]">Carregando…</div></div>
+  <div class="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-[#8793A3]/15 bg-[#080E18] shrink-0">
+   <span id="mu" class="text-xs text-[#8793A3] truncate font-mono"></span>
+   <button id="mc" onclick="closeDemo()" class="btn-petrol !py-1.5 !px-3">Fechar</button>
   </div>
-
-  <div class="bg-[#080E18] text-[#F1EEE6] px-4 py-2.5 flex items-center justify-between gap-3 border-b border-[#8793A3]/15 shrink-0">
-   <span id="demoModalUrl" class="text-xs text-[#8793A3] truncate font-mono">https://demo.nexora.site</span>
-   <button onclick="closeDemoSite()" class="px-3 py-1 rounded-lg bg-[#183447] hover:bg-[#183447]/80 text-xs font-semibold text-[#F1EEE6] border border-[#C6AA76]/30">
-    Fechar
-   </button>
-  </div>
-
-  <div id="demoModalBody" class="flex-1 overflow-y-auto p-4 sm:p-7 space-y-6"></div>
+  <div id="mbody" class="flex-1 overflow-y-auto p-4 sm:p-7 space-y-5"></div>
  </div>
 </div>
-
-<!-- BOTÃO WHATSAPP -->
-<button onclick="openWhatsApp()" aria-label="WhatsApp" class="wa-fab-lux">
- <i class="fa-brands fa-whatsapp"></i>
-</button>
+<button data-wa aria-label="WhatsApp" class="fab"><i class="fa-brands fa-whatsapp"></i></button>
 
 <script>
-const WA_LUX_NUMBER = '555189761893';
-const LUX_PAGES = ['home', 'catalog', 'features', 'ai', 'contracts', 'contact'];
+const $=id=>document.getElementById(id);
+const WA='555189761893';
+const R=n=>'R$ '+Number(n).toFixed(2).replace('.',',');
+const U=(id,w=800)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
+const PAGES=[['home','Início','fa-house'],['catalog','10 Sites','fa-layer-group'],['features','Recursos','fa-sliders'],['ai','IA','fa-microchip'],['contracts','Planos','fa-file-lines'],['contact','Contato','fa-paper-plane']];
 
-function goPage(page) {
-  if (!LUX_PAGES.includes(page)) page = 'home';
-  document.querySelectorAll('.page-view').forEach(sec => sec.classList.add('hidden-page'));
-  document.getElementById('page-' + page)?.classList.remove('hidden-page');
-
-  document.querySelectorAll('.nav-lux, .mobile-nav-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.page === page);
-  });
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+/* ---------- navegação com #hash ---------- */
+function goPage(p,push=true){
+  if(!PAGES.some(x=>x[0]===p))p='home';
+  document.querySelectorAll('.page-view').forEach(s=>s.classList.toggle('hidden-page',s.id!=='page-'+p));
+  document.querySelectorAll('[data-nav]').forEach(b=>{const on=b.dataset.nav===p;b.classList.toggle('active',on);on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
+  document.title=(p==='home'?'':PAGES.find(x=>x[0]===p)[1]+' — ')+'NEXORA — Digital Excellence';
+  if(push&&location.hash!=='#'+p)location.hash=p;
+  window.scrollTo(0,0);
 }
+addEventListener('hashchange',()=>goPage(location.hash.slice(1),false));
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g){closeDemo();goPage(g.dataset.go)}
+  if(e.target.closest('[data-wa]'))openWA();
+});
+$('deskNav').innerHTML=PAGES.map(p=>`<button class="nav-lux" data-nav="${p[0]}" data-go="${p[0]}">${p[1]}</button>`).join('');
+$('mobNav').innerHTML=PAGES.map(p=>`<button class="mobile-nav-btn" data-nav="${p[0]}" data-go="${p[0]}"><i class="fa-solid ${p[2]} text-sm"></i><span>${p[1]}</span></button>`).join('');
+$('footNav').innerHTML=PAGES.map(p=>`<button data-go="${p[0]}" class="hover:text-[#F1EEE6]">${p[1]}</button>`).join('');
+$('metrics').innerHTML=[['10','Sites demonstrativos','text-[#C6AA76]'],['17','Recursos apresentados',''],['01','Seção IA em desenvolvimento','text-[#C6AA76]'],['100%','Foco em responsividade','']].map(m=>`<div class="p-3.5 rounded-xl bg-[#080E18]/75 border border-[#8793A3]/15"><strong class="font-display text-2xl sm:text-3xl block ${m[2]}">${m[0]}</strong><span class="text-xs text-[#8793A3]">${m[1]}</span></div>`).join('');
 
-/* =========================================================================
-   16 RECURSOS INDIVIDUAIS
-========================================================================= */
-const SIXTEEN_FEATURES = [
-  ['01', 'fa-mobile-screen-button', 'Design responsivo', 'Adaptação fluida para smartphones, tablets e desktops.'],
-  ['02', 'fa-compass-drafting', 'Arquitetura visual personalizada', 'Estrutura de páginas e hierarquia feitas sob medida.'],
-  ['03', 'fa-gauge-high', 'Otimização de velocidade', 'Carregamento ágil com ativos leves e estrutura enxuta.'],
-  ['04', 'fa-magnifying-glass-chart', 'SEO técnico básico', 'Títulos, descrições e semântica prontos para indexação.'],
-  ['05', 'fa-brands fa-whatsapp', 'Integração com WhatsApp', 'Atalhos diretos e mensagens formatadas com dados do cliente.'],
-  ['06', 'fa-wpforms', 'Formulários inteligentes', 'Campos estruturados, validação e foco em conversão.'],
-  ['07', 'fa-wand-sparkles', 'Animações e microinterações', 'Transições discretas que respondem ao toque e à rolagem.'],
-  ['08', 'fa-sparkles', 'Efeitos visuais avançados', 'Camadas translúcidas, profundidade sutil e comparadores visuais.'],
-  ['09', 'fa-images', 'Galerias de imagens', 'Exibição organizada de fotos, ambientes e entregas.'],
-  ['10', 'fa-calculator', 'Calculadoras personalizadas', 'Simuladores de valores, pacotes, medidas ou combos.'],
-  ['11', 'fa-calendar-check', 'Sistemas de agendamento', 'Fluxos práticos para escolha de serviço, data e horário.'],
-  ['12', 'fa-store', 'Catálogos digitais', 'Apresentação clara de itens, variações e pedidos.'],
-  ['13', 'fa-share-nodes', 'Integração com redes sociais', 'Conexão direta com perfis e canais oficiais da marca.'],
-  ['14', 'fa-arrow-pointer', 'Botões e chamadas para ação', 'CTAs posicionados para orientar a navegação com clareza.'],
-  ['15', 'fa-sliders', 'Interfaces interativas', 'Controles ao vivo como filtros, abas e comparadores.'],
-  ['16', 'fa-shield-halved', 'Segurança e boas práticas web', 'Links seguros, sanitização e código confiável.']
+/* ---------- 17 recursos ---------- */
+const FEATS=[
+['fa-solid fa-mobile-screen-button','Design responsivo','Adaptação fluida para smartphones, tablets e desktops.'],
+['fa-solid fa-compass-drafting','Arquitetura visual personalizada','Estrutura de páginas e hierarquia feitas sob medida.'],
+['fa-solid fa-gauge-high','Otimização de velocidade','Carregamento ágil com ativos leves e estrutura enxuta.'],
+['fa-solid fa-magnifying-glass-chart','SEO técnico básico','Títulos, descrições e semântica prontos para indexação.'],
+['fa-brands fa-whatsapp','Integração com WhatsApp','Atalhos diretos e mensagens formatadas com dados do cliente.'],
+['fa-solid fa-file-pen','Formulários inteligentes','Campos estruturados, validação e foco em conversão.'],
+['fa-solid fa-wand-sparkles','Animações e microinterações','Transições discretas que respondem ao toque e à rolagem.'],
+['fa-solid fa-gem','Efeitos visuais avançados','Camadas translúcidas, profundidade sutil e comparadores visuais.'],
+['fa-solid fa-images','Galerias de imagens','Exibição organizada de fotos, ambientes e entregas.'],
+['fa-solid fa-calculator','Calculadoras personalizadas','Simuladores de valores, pacotes, medidas ou combos.'],
+['fa-solid fa-calendar-check','Sistemas de agendamento','Fluxos práticos para escolha de serviço, data e horário.'],
+['fa-solid fa-store','Catálogos digitais','Apresentação clara de itens, variações e pedidos.'],
+['fa-solid fa-share-nodes','Integração com redes sociais','Conexão direta com perfis e canais oficiais da marca.'],
+['fa-solid fa-arrow-pointer','Botões e chamadas para ação','CTAs posicionados para orientar a navegação com clareza.'],
+['fa-solid fa-sliders','Interfaces interativas','Controles ao vivo como filtros, abas e comparadores.'],
+['fa-solid fa-shield-halved','Segurança e boas práticas web','Links seguros, sanitização e código confiável.'],
+['fa-solid fa-circle-play','Demonstrações interativas','Mostre seu serviço em ação: antes e depois, simuladores, cronômetros, metrônomo e agendas de teste.']];
+$('featGrid').innerHTML=FEATS.map((f,i)=>`<article class="lux-card p-5"><div class="flex items-center justify-between mb-3"><span class="w-9 h-9 rounded-xl bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/30 grid place-items-center text-sm"><i class="${f[0]}"></i></span><span class="font-display text-sm font-semibold text-[#C6AA76]">${String(i+1).padStart(2,'0')}</span></div><h3 class="font-display text-lg font-semibold">${f[1]}</h3><p class="text-sm text-[#8793A3] mt-1.5">${f[2]}</p></article>`).join('');
+
+/* ---------- planos (pagamento único) ---------- */
+const PLANS=[['Simples','Sem manutenção','Essencial Base',89,7,0],['Simples','Com manutenção','Essencial Suporte',119,7,1],['Especial','Sem manutenção','Assinatura Studio',149,12,0],['Especial','Com manutenção','Assinatura VIP',179,12,1]];
+const planName=p=>`${p[0]} ${p[1].replace('manutenção','Manutenção').replace('Sem','Sem').replace('Com','Com')} - R$${p[3]}`;
+$('plans').innerHTML=PLANS.map((p,i)=>{const hi=i===2;return `<article class="lux-card p-6 flex flex-col ${hi?'border-[#C6AA76]/45':''}"><span class="text-xs font-bold uppercase tracking-widest ${hi?'text-[#C6AA76]':'text-[#8793A3]'}">${p[0]} • ${p[1]}</span><h3 class="font-display text-xl font-semibold mt-1">${p[2]}</h3><strong class="font-display text-4xl mt-4 ${hi?'text-[#C6AA76]':''}">R$${p[3]}</strong><span class="text-xs text-[#8793A3] mb-4">pagamento único</span><ul class="text-sm text-[#8793A3] space-y-2 mb-6 flex-1"><li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>Até ${p[4]} recursos selecionados</li><li><i class="fa-solid fa-check text-[#C6AA76] mr-1.5"></i>${p[4]>7?'Interações e estética expandidas':'Layout responsivo'}</li><li><i class="fa-solid ${p[5]?'fa-check text-[#C6AA76]':'fa-minus text-[#8793A3]/60'} mr-1.5"></i>${p[5]?'Manutenção e ajustes por 2 meses':'Sem manutenção após a entrega'}</li></ul><button data-plan="${i}" class="${hi?'btn-gold':'btn-petrol'} w-full">Selecionar plano</button></article>`}).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-plan]');if(!b)return;goPage('contact');$('cPlan').value=planName(PLANS[b.dataset.plan])});
+$('cPlan').innerHTML='<option value="">Selecione</option>'+PLANS.map(p=>`<option>${planName(p)}</option>`).join('');
+
+/* ---------- ferramentas ---------- */
+const N=(id,label,def,min,max)=>({id,label,t:'n',def,min,max});
+const S=(id,label,opts)=>({id,label,t:'s',opts});
+const SITES=[
+{k:'whitening',cat:'visual',seg:'Odontologia',card:'Odonto & Clareamento',n:'Clínica Sorriso & Clareamento',c:'photo-1588776814546-1ffcf47267a5',p:'photo-1559839734-2b71ea197ec2',s:'photo-1629909613654-28e377c37b09',desc:'Comparador arrastável antes e depois, consultório, equipe, serviços e agenda.',t:'Estética dental, clareamento e reabilitação do sorriso',a:'Av. Borges de Medeiros, 1420 • Sala 402 — Centro',h:'Seg a Sex 08h30–19h • Sáb 09h–13h',pn:'Dra. Camila Ribeiro • CRO 00000',pr:'Dentística e clareamento dental',sl:'Consultório e cadeira clínica',ab:'Estética dental conservadora, diagnóstico preciso e protocolos de clareamento com controle de sensibilidade.',st:[['12 anos','de experiência'],['3 técnicas','de clareamento'],['4,9','nota dos pacientes']],sv:[['Clareamento em consultório','Sessão clínica com proteção gengival.'],['Clareamento supervisionado','Moldeira personalizada para uso em casa.'],['Profilaxia e polimento','Remoção de manchas e brilho do esmalte.']],q:'Saí da primeira sessão sem sensibilidade e com o sorriso bem mais claro.',slots:['Ter 10h00','Qui 15h30','Sáb 09h30'],cta:'Agendar avaliação',tool:{k:'compare'}},
+{k:'bakery',cat:'calculo',seg:'Gastronomia',card:'Padaria & Confeitaria',n:'Forno & Confeitaria Real',c:'photo-1555507036-ab1f4038808a',p:'photo-1583394293214-28ded15ee548',s:'photo-1509440159596-0249088772ff',desc:'Pedido com desconto automático na caixa e retirada agendada.',t:'Pães de fermentação natural, folhados e cafés',a:'Rua dos Andradas, 890 • Loja 01 — Centro Histórico',h:'Ter a Dom 07h–20h',pn:'Henrique Dias',pr:'Padeiro responsável pelas fornadas',sl:'Vitrine e bancada de pães artesanais',ab:'Produção em pequenos lotes com farinhas selecionadas, longa fermentação e fornadas ao longo do dia.',st:[['3 fornadas','por dia'],['48 h','de fermentação'],['100%','manteiga de verdade']],sv:[['Pão levain','Casca crocante e miolo macio.'],['Croissant de manteiga','Massa folhada assada diariamente.'],['Caixas para eventos','Retirada ou entrega local.']],q:'O levain acaba cedo, então reservo pelo site e busco no fim da tarde.',slots:['Hoje 16h30','Hoje 18h00','Amanhã 08h30'],cta:'Reservar retirada',tool:{k:'calc',title:'Monte seu pedido',fields:[N('l','Pão levain (R$ 18)',2,0,20),N('c','Croissant (R$ 14)',2,0,20),N('b','Bolo no pote (R$ 12)',0,0,20)],f:v=>{const q=v.l+v.c+v.b,t=v.l*18+v.c*14+v.b*12,d=q>=6;return `${q} itens${d?' • 10% de desconto na caixa':''} • Total ${R(d?t*.9:t)}`}}},
+{k:'barber',cat:'interativo',seg:'Estética masculina',card:'Barbearia & Estilo',n:'Barbearia Clube & Navalha',c:'photo-1503951914875-452162b0f3f1',p:'photo-1621605815971-fbc98d665033',s:'photo-1585747860715-2ba37e788b70',desc:'Serviço com extras, duração estimada e horários com hora marcada.',t:'Barbearia clássica, corte de precisão e hora marcada',a:'Rua Coronel Vicente, 510 — Centro',h:'Ter a Sáb 09h–20h',pn:'Marcos Tavares',pr:'Barbeiro especialista em cortes e barba',sl:'Interior da barbearia e cadeiras',ab:'Ambiente masculino tradicional com pontualidade, higienização rigorosa e acabamento detalhado.',st:[['9 anos','de navalha'],['100%','hora marcada'],['3','cadeiras']],sv:[['Corte e acabamento','Máquina e tesoura com finalização.'],['Barba e toalha quente','Modelagem com óleo pós-barba.'],['Combo completo','Corte e barba no mesmo horário.']],q:'Nunca esperei mais de cinco minutos. O combo vale cada centavo.',slots:['Sex 10h00','Sex 14h00','Sáb 17h30'],cta:'Agendar horário',tool:{k:'calc',title:'Escolha o serviço',fields:[S('s','Serviço',[[45,'Corte e acabamento (R$ 45)'],[35,'Barba e toalha quente (R$ 35)'],[72,'Combo completo (R$ 72)']]),S('e','Extra',[[0,'Sem extra'],[15,'Hidratação (+R$ 15)'],[20,'Sobrancelha (+R$ 20)']])],f:v=>`Total de referência: ${R(v.s+v.e)} • duração aproximada ${v.s>=72?'1h10':'45 min'}`}},
+{k:'fashion',cat:'visual',seg:'Moda e alfaiataria',card:'Loja de Moda & Lookbook',n:'Casa de Alfaiataria & Estilo',c:'photo-1507679799987-c73779587ccf',p:'photo-1507679799987-c73779587ccf',s:'photo-1441986300917-64674bd600d8',desc:'Guia de tamanho por peso e altura e reserva de peça para prova.',t:'Peças selecionadas, caimento estruturado e atendimento presencial',a:'Av. Goethe, 320 • Loja 04 — Moinhos',h:'Seg a Sáb 10h–19h30',pn:'André Vasconcelos',pr:'Consultor de moda e alfaiataria',sl:'Loja física e araras de coleção',ab:'Curadoria de peças versáteis com orientação de medidas e prova presencial ou reserva para retirada.',st:[['40 peças','por coleção'],['Prova','presencial'],['Ajuste','incluso']],sv:[['Blazer estruturado','Corte alinhado para trabalho e ocasiões sociais.'],['Camisa em algodão','Toque leve, caimento regular ou slim.'],['Ajuste e consultoria','Indicação de tamanho conforme medidas.']],q:'Me indicaram o tamanho certo de primeira e o ajuste ficou pronto no mesmo dia.',slots:['Qua 11h00','Sex 16h00','Sáb 12h30'],cta:'Reservar peça',tool:{k:'calc',title:'Guia de tamanho',fields:[N('kg','Peso (kg)',76,40,140),N('h','Altura (cm)',178,140,210),S('i','Peça',[[240,'Blazer estruturado (R$ 240)'],[140,'Camisa em algodão (R$ 140)']])],f:v=>{const z=['P','M','G','GG'];let i=v.kg<65?0:v.kg<80?1:v.kg<95?2:3;if(v.h>185)i=Math.min(3,i+1);return `Tamanho sugerido: ${z[i]} • ${R(v.i)} • a prova presencial confirma o caimento`}}},
+{k:'fitness',cat:'interativo',seg:'Performance',card:'Academia & Treinos',n:'Centro de Treinamento Força & Base',c:'photo-1534438327276-14e5300c3a48',p:'photo-1571019614242-c5c5dee9f50b',s:'photo-1534438327276-14e5300c3a48',desc:'Cronômetro de descanso com três tempos e aula experimental.',t:'Treinamento físico, acompanhamento e musculação orientada',a:'Rua Bento Gonçalves, 740 — Centro',h:'Seg a Sex 06h–22h • Sáb 08h–14h',pn:'Bruno Alves',pr:'Coordenador técnico de treinamento',sl:'Área de musculação e treino funcional',ab:'Treinos estruturados por objetivo com orientação técnica no salão e aula experimental para começar.',st:[['16 h','abertas por dia'],['1:15','alunos por professor'],['Grátis','aula experimental']],sv:[['Musculação e força','Planilhas progressivas com acompanhamento.'],['Condicionamento','Sessões de resistência e ritmo.'],['Avaliação inicial','Primeiro treino com a equipe.']],q:'Comecei com a aula experimental e o professor montou a planilha na hora.',slots:['Ter 18h00','Qui 08h00','Sáb 09h00'],cta:'Agendar aula experimental',tool:{k:'timer'}},
+{k:'pet',cat:'calculo',seg:'Cuidado pet',card:'Pet Shop & Banho',n:'Espaço Pet & Cuidados',c:'photo-1548199973-03cce0bbc87b',p:'photo-1537151625747-768eb6df7d2b',s:'photo-1516734212186-a967f81ad0d7',desc:'Simulador de banho e tosa por porte, com desconto no pacote mensal.',t:'Banho, tosa e acompanhamento atento para cães e gatos',a:'Av. Protásio Alves, 2150 — Petrópolis',h:'Seg a Sáb 08h30–18h30',pn:'Equipe Espaço Pet',pr:'Cuidadores e tosadores especializados',sl:'Área de banho e cuidados',ab:'Atendimento tranquilo, respeitando o temperamento e o porte de cada animal, com agenda por horário.',st:[['1 pet','por vez no banho'],['Secagem','sem estresse'],['15%','off no pacote']],sv:[['Banho e secagem','Produtos adequados à pelagem.'],['Tosa higiênica e completa','Acabamento cuidadoso.'],['Pacote mensal','Rotina de 4 banhos no mês.']],q:'A Mel sempre volta calma e cheirosa. A agenda online facilitou muito.',slots:['Qua 09h00','Sex 14h30','Sáb 10h30'],cta:'Agendar banho',tool:{k:'calc',title:'Simulador de banho e tosa',fields:[S('p','Porte',[[60,'Pequeno (R$ 60)'],[80,'Médio (R$ 80)'],[105,'Grande (R$ 105)']]),S('x','Extra',[[0,'Só banho'],[35,'Tosa higiênica (+R$ 35)'],[60,'Tosa completa (+R$ 60)']]),N('m','Banhos no mês',1,1,8)],f:v=>{const t=(v.p+v.x)*v.m,d=v.m>=4;return `${v.m} banho(s)${d?' • 15% de desconto no pacote':''} • Total ${R(d?t*.85:t)}`}}},
+{k:'arch',cat:'calculo',seg:'Arquitetura',card:'Arquitetura & Interiores',n:'Campos & Associados Arquitetura',c:'photo-1600585154340-be6161a56a0c',p:'photo-1573496359142-b8d87734a5a2',s:'photo-1600585154340-be6161a56a0c',desc:'Estimativa por metragem com prazo e agendamento de reunião.',t:'Projetos residenciais, comerciais e interiores',a:'Rua Padre Chagas, 185 • Conj. 301 — Moinhos',h:'Seg a Sex 09h–18h30',pn:'Arq. Helena Campos • CAU 00000',pr:'Arquitetura e design de interiores',sl:'Ambiente residencial projetado',ab:'Estudo de layout, iluminação natural, marcenaria e acompanhamento técnico do projeto até a entrega.',st:[['120+','projetos entregues'],['3 etapas','estudo, projeto, obra'],['Visita','técnica inclusa']],sv:[['Projeto de interiores','Planta, layout, iluminação e materiais.'],['Reforma e ampliação','Planejamento técnico de espaços existentes.'],['Consultoria de ambiente','Paleta, mobiliário e circulação.']],q:'O projeto saiu como imaginei e o acompanhamento da obra evitou retrabalho.',slots:['Seg 10h00','Qua 15h00','Sex 11h00'],cta:'Agendar reunião',tool:{k:'calc',title:'Estimativa por metragem',fields:[N('m','Área (m²)',65,10,500),S('r','Padrão do projeto',[[140,'Essencial (R$ 140/m²)'],[220,'Completo (R$ 220/m²)']])],f:v=>`Estimativa de projeto: ${R(v.m*v.r)} • prazo aproximado de ${Math.ceil(v.m/20)+3} semanas`}},
+{k:'photo',cat:'visual',seg:'Fotografia',card:'Estúdio Fotográfico',n:'Estúdio Retrato & Imagem',c:'photo-1554048612-b6a482bc6727',p:'photo-1507003211169-0a1dd7228f2d',s:'photo-1554048612-b6a482bc6727',desc:'Pacotes com fotos extras, valor na hora e reserva de ensaio.',t:'Retratos profissionais, ensaios e direção de cena',a:'Rua Vasco da Gama, 410 — Bom Fim',h:'Ter a Sáb 09h–19h',pn:'Lucas Martins',pr:'Fotógrafo e diretor de iluminação',sl:'Estúdio e equipamento de captura',ab:'Sessões guiadas com controle de luz, curadoria das fotos e tratamento de cor entregue em galeria digital.',st:[['7 dias','para a galeria'],['Luz','de estúdio'],['Direção','de pose inclusa']],sv:[['Retrato profissional','Perfil executivo, portfólio e imprensa.'],['Ensaio em estúdio','Trocas de figurino e seleção final.'],['Fotos extras tratadas','Amplie o pacote de imagens.']],q:'Fiquei à vontade desde o início e as fotos chegaram bem antes do prazo.',slots:['Sex 14h00','Sáb 10h00','Sáb 15h00'],cta:'Reservar ensaio',tool:{k:'calc',title:'Simulador de ensaio',fields:[S('p','Pacote',[[480,'Retrato (R$ 480 • 10 fotos)'],[780,'Ensaio (R$ 780 • 20 fotos)']]),N('e','Fotos extras',6,0,60)],f:v=>`Total: ${R(v.p+v.e*15)} • entrega em galeria digital em 7 dias`}},
+{k:'meal',cat:'calculo',seg:'Refeições',card:'Marmitaria Fit & Sabor',n:'Cozinha Diária & Refeições',c:'photo-1546069901-ba9599a7e63c',p:'photo-1566554273541-37a9ca77b91f',s:'photo-1546069901-ba9599a7e63c',desc:'Combo semanal com linha tradicional ou fit, desconto e calorias.',t:'Refeições preparadas na rotina para almoço e jantar',a:'Av. Bento Gonçalves, 1980 — Partenon',h:'Seg a Sáb 08h–19h',pn:'Equipe Cozinha Diária',pr:'Preparo e montagem de refeições',sl:'Pratos montados e refeições prontas',ab:'Cardápio variado com porções generosas, preparo fresco e combos semanais para facilitar o dia a dia.',st:[['2 linhas','tradicional e fit'],['8%','off acima de 15'],['Entrega','ou retirada']],sv:[['Marmita tradicional','Arroz, feijão, proteína e guarnição.'],['Linha fit','Menos calorias, mesmo sabor.'],['Combo semanal','Pacote fechado para a semana.']],q:'Pedi o combo de 15 e resolvi a semana toda. A linha fit é a minha favorita.',slots:['Seg entrega manhã','Seg retirada 11h30','Ter entrega manhã'],cta:'Pedir combo',tool:{k:'calc',title:'Montador de combo semanal',fields:[N('q','Marmitas na semana',10,1,40),S('k','Linha',[[22,'Tradicional (R$ 22 • ~650 kcal)'],[26,'Fit (R$ 26 • ~480 kcal)']])],f:v=>{const kc=v.k===26?480:650,d=v.q>=15;return `${v.q} marmitas • Total ${R(v.q*v.k*(d?.92:1))}${d?' (8% off)':''} • cerca de ${(v.q*kc).toLocaleString('pt-BR')} kcal`}}},
+{k:'music',cat:'interativo',seg:'Música',card:'Escola de Música & Ritmo',n:'Conservatório & Escola de Música',c:'photo-1511379938547-c1f69419868d',p:'photo-1516280440614-37939bbacd81',s:'photo-1511379938547-c1f69419868d',desc:'Metrônomo com áudio e BPM ao vivo, mais aula experimental.',t:'Aulas individuais de teclado, violão, percepção e ritmo',a:'Rua João Abbott, 340 — Petrópolis',h:'Seg a Sáb 09h–20h',pn:'Prof. Rafael Costa',pr:'Piano, violão e teoria musical',sl:'Sala de aula e instrumentos',ab:'Ensino musical progressivo com prática em instrumento, leitura, harmonia e controle de andamento.',st:[['4 salas','tratadas'],['1:1','aulas individuais'],['Recital','duas vezes por ano']],sv:[['Teclado e piano','Técnica, leitura, acordes e repertório.'],['Violão e ritmo','Levadas, harmonia e acompanhamento.'],['Aula experimental','Conheça a sala e faça a avaliação inicial.']],q:'O metrônomo do site já me ajudou a estudar a levada antes da aula.',slots:['Qua 16h00','Sex 18h00','Sáb 10h00'],cta:'Agendar aula',tool:{k:'metro'}}
 ];
 
-function renderSixteenFeatures() {
-  const grid = document.getElementById('sixteenFeaturesGrid');
-  if (!grid) return;
-  grid.innerHTML = SIXTEEN_FEATURES.map(([num, icon, title, desc]) => `
-    <article class="lux-card p-5 flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between mb-3">
-          <span class="w-9 h-9 rounded-xl bg-[#183447] text-[#C6AA76] border border-[#C6AA76]/30 grid place-items-center text-sm">
-            <i class="${icon.startsWith('fa-brands') ? icon : 'fa-solid ' + icon}"></i>
-          </span>
-          <span class="font-display text-sm font-semibold text-[#C6AA76]">${num}</span>
-        </div>
-        <h3 class="font-display text-lg font-semibold text-[#F1EEE6]">${title}</h3>
-        <p class="text-xs text-[#8793A3] mt-1.5 leading-relaxed">${desc}</p>
-      </div>
-    </article>
-  `).join('');
+/* ---------- catálogo ---------- */
+const CATS=[['all','Todos (10)'],['visual','Visual & Galerias'],['calculo','Calculadoras & Pedidos'],['interativo','Agendas & Ferramentas']];
+$('filters').innerHTML=CATS.map((c,i)=>`<button class="${i?'btn-petrol':'btn-gold'} !py-2 !px-3.5" data-f="${c[0]}">${c[1]}</button>`).join('');
+$('filters').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;
+  document.querySelectorAll('.dcard').forEach(c=>c.style.display=(b.dataset.f==='all'||c.dataset.cat===b.dataset.f)?'':'none');
+  document.querySelectorAll('#filters button').forEach(x=>x.className=(x===b?'btn-gold':'btn-petrol')+' !py-2 !px-3.5')});
+$('cards').innerHTML=SITES.map((s,i)=>`<article class="lux-card p-4 flex flex-col dcard" data-cat="${s.cat}"><img src="${U(s.c)}" width="800" height="500" loading="lazy" alt="${s.card}" class="rounded-xl aspect-[16/10] object-cover mb-3.5 border border-[#8793A3]/15 w-full"><span class="text-xs font-bold uppercase tracking-widest text-[#C6AA76]">${String(i+1).padStart(2,'0')} • ${s.seg}</span><h3 class="font-display text-xl font-semibold mt-0.5">${s.card}</h3><p class="text-sm text-[#8793A3] mt-1 mb-4 flex-1">${s.desc}</p><button data-demo="${i}" class="btn-gold w-full">Abrir site amostra</button></article>`).join('');
+$('cDemo').innerHTML='<option value="">Selecione</option>'+SITES.map((s,i)=>`<option>${String(i+1).padStart(2,'0')} • ${s.card}</option>`).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-demo]');if(b)openDemo(+b.dataset.demo,b)});
+
+/* ---------- modal de demonstração ---------- */
+let cur=null,tmr=null,metro=null,ac=null,slot='',lastFocus=null;
+function stopAll(){clearInterval(tmr);clearTimeout(metro);tmr=metro=null}
+function openDemo(i,from){
+  stopAll();cur=SITES[i];slot='';lastFocus=from||null;const s=cur;
+  $('mu').textContent='https://demo.nexora.site/'+s.k;$('mlm').textContent='Carregando '+s.n+'…';
+  $('ml').classList.remove('done');$('mb').classList.add('open');document.body.style.overflow='hidden';
+  $('mbody').innerHTML=`
+  <div class="p-3.5 rounded-xl bg-[#183447]/65 border border-[#C6AA76]/40 text-sm flex flex-wrap items-center justify-between gap-2"><span><strong class="text-[#C6AA76]">Demonstração:</strong> nomes, textos, endereços e depoimentos são fictícios. Seu site final será <strong>totalmente personalizado</strong>.</span><button data-go="contact" class="text-sm font-bold text-[#C6AA76] underline">Quero personalizado</button></div>
+  <div class="rounded-2xl bg-gradient-to-br from-[#183447] to-[#080E18] p-6 sm:p-8 border border-[#C6AA76]/25 space-y-3">
+   <span class="lux-eyebrow">${s.seg}</span><h3 class="font-display text-2xl sm:text-4xl font-semibold">${s.n}</h3><p class="text-sm sm:text-base">${s.t}</p>
+   <div class="flex flex-wrap gap-4 text-sm text-[#8793A3]"><span><i class="fa-solid fa-location-dot text-[#C6AA76] mr-1.5"></i>${s.a}</span><span><i class="fa-solid fa-clock text-[#C6AA76] mr-1.5"></i>${s.h}</span></div>
+   <div class="grid grid-cols-3 gap-2 pt-2">${s.st.map(x=>`<div class="p-3 rounded-xl bg-[#080E18]/70 border border-[#8793A3]/15"><strong class="font-display text-lg text-[#C6AA76] block">${x[0]}</strong><span class="text-xs text-[#8793A3]">${x[1]}</span></div>`).join('')}</div>
+  </div>
+  <div class="grid sm:grid-cols-2 gap-4">
+   <div class="rounded-2xl overflow-hidden bg-[#080E18] border border-[#8793A3]/15"><img src="${U(s.p)}" width="800" height="500" alt="${s.pn}" class="w-full h-48 object-cover"><div class="p-3.5"><strong class="block">${s.pn}</strong><span class="text-sm text-[#8793A3]">${s.pr}</span></div></div>
+   <div class="rounded-2xl overflow-hidden bg-[#080E18] border border-[#8793A3]/15"><img src="${U(s.s)}" width="800" height="500" loading="lazy" alt="${s.sl}" class="w-full h-48 object-cover"><div class="p-3.5"><strong class="block">${s.sl}</strong><span class="text-sm text-[#8793A3]">${s.a}</span></div></div>
+  </div>
+  <div class="grid lg:grid-cols-12 gap-4">
+   <div class="lg:col-span-5 p-5 rounded-2xl bg-[#080E18] border border-[#8793A3]/15 space-y-2"><h4 class="font-display text-xl font-semibold">Sobre</h4><p class="text-sm text-[#8793A3]">${s.ab}</p><blockquote class="mt-3 pl-3 border-l-2 border-[#C6AA76] text-sm italic">“${s.q}”<footer class="not-italic text-xs text-[#8793A3] mt-1">Cliente (depoimento fictício)</footer></blockquote></div>
+   <div class="lg:col-span-7 p-5 rounded-2xl bg-[#080E18] border border-[#8793A3]/15 space-y-3"><h4 class="font-display text-xl font-semibold">Serviços</h4><div class="grid sm:grid-cols-3 gap-2.5">${s.sv.map(x=>`<div class="p-3.5 rounded-xl bg-[#0E1726] border border-[#8793A3]/15"><strong class="text-sm block">${x[0]}</strong><p class="text-sm text-[#8793A3] mt-1">${x[1]}</p></div>`).join('')}</div></div>
+  </div>
+  <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4" id="toolBox">${toolHTML(s.tool)}</div>
+  <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-3">
+   <h4 class="font-display text-xl font-semibold">Agenda</h4>
+   <div class="flex flex-wrap gap-2" id="slots">${s.slots.map(x=>`<button class="chip" aria-pressed="false" data-slot="${x}">${x}</button>`).join('')}</div>
+   <div class="grid sm:grid-cols-3 gap-3"><label class="sr-only" for="bkName">Seu nome</label><input id="bkName" class="lux-input sm:col-span-2" placeholder="Seu nome" autocomplete="name"><button id="bkGo" class="btn-gold">${s.cta}</button></div>
+   <div id="bkMsg" class="text-sm font-semibold text-[#C6AA76] min-h-[20px]" role="status"></div>
+  </div>`;
+  initTool(s.tool);
+  setTimeout(()=>{$('ml').classList.add('done');$('mc').focus()},500);
 }
-
-/* =========================================================================
-   FILTRO DOS 10 SITES AMOSTRA
-========================================================================= */
-function filterDemos(cat, btn) {
-  document.querySelectorAll('.demo-card').forEach(card => {
-    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-  });
-  document.querySelectorAll('#demoFilterBar button').forEach(b => {
-    b.classList.remove('btn-gold');
-    b.classList.add('btn-petrol');
-  });
-  if (btn) {
-    btn.classList.remove('btn-petrol');
-    btn.classList.add('btn-gold');
-  }
+function closeDemo(){
+  if(!$('mb').classList.contains('open'))return;
+  stopAll();$('mb').classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus();
 }
-
-/* =========================================================================
-   10 SITES AMOSTRA COMPLETOS (LOADING + AVISO DEMO + INÍCIO + PESSOAS +
-   ESPAÇO/CONSULTÓRIO + ENDEREÇO + SOBRE + SERVIÇOS + AGENDA/FUNÇÃO)
-========================================================================= */
-const FULL_REAL_SITES = {
-  whitening: {
-    url: 'https://sorriso-clinico.nexora.site',
-    loading: 'Carregando Clínica Sorriso & Clareamento...',
-    siteName: 'Clínica Sorriso & Clareamento',
-    tagline: 'Estética dental, clareamento e reabilitação do sorriso',
-    address: 'Av. Borges de Medeiros, 1420 • Sala 402 — Centro',
-    hours: 'Seg a Sex: 08h30 às 19h • Sáb: 09h às 13h',
-    personImg: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
-    personName: 'Dra. Camila Ribeiro • CRO-RS 28419',
-    personRole: 'Especialista em Dentística e Clareamento Dental',
-    spaceImg: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Consultório odontológico e cadeira clínica',
-    aboutText: 'Atendimento focado em estética dental conservadora, diagnóstico preciso e protocolos de clareamento com controle de sensibilidade.',
-    services: [
-      ['Clareamento em Consultório', 'Sessão clínica com proteção gengival e acompanhamento profissional.'],
-      ['Clareamento Supervisionado', 'Moldeira personalizada para manutenção gradual em casa.'],
-      ['Profilaxia & Polimento', 'Remoção de manchas extrínsecas e brilho do esmalte.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-5">
-        <div>
-          <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Antes e Depois do Clareamento — Arraste a Linha</h4>
-          <p class="text-xs text-[#8793A3] mt-0.5">Arraste o controle para comparar o sorriso amarelado (antes) com o sorriso bem branco (depois).</p>
-        </div>
-
-        <!-- Foto de sorriso em close: ANTES amarelado | DEPOIS bem branco -->
-        <div class="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-[#C6AA76]/30 select-none bg-black">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Sorriso branco após clareamento" class="w-full h-full object-cover object-center brightness-125 contrast-110 saturate-75">
-          <span class="absolute bottom-3 right-3 px-3 py-1 rounded bg-[#F1EEE6] text-[#080E18] text-[11px] font-extrabold tracking-wider shadow">DEPOIS • BRANCO</span>
-
-          <div id="smileBeforeClip" class="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-[#C6AA76]" style="width:50%">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Sorriso amarelado antes do clareamento" class="w-full h-full object-cover object-center sepia-[0.85] saturate-150 brightness-90 contrast-95">
-            <span class="absolute bottom-3 left-3 px-3 py-1 rounded bg-[#080E18]/90 text-[#C6AA76] text-[11px] font-extrabold tracking-wider border border-[#C6AA76]/40">ANTES • AMARELADO</span>
-          </div>
-        </div>
-
-        <input id="smileSliderRange" type="range" min="5" max="95" value="50" class="w-full accent-[#C6AA76]" oninput="updateSmileSplit(this.value)">
-        <div id="smileSplitReadout" class="text-xs text-[#8793A3]">Antes (amarelado): 50% • Depois (branco): 50%</div>
-
-        <!-- Agenda do consultório -->
-        <div class="pt-4 border-t border-[#8793A3]/15 grid sm:grid-cols-3 gap-3">
-          <input id="whPacName" class="lux-input text-xs" placeholder="Nome do paciente">
-          <select id="whDayTime" class="lux-input text-xs">
-            <option>Terça • 10h00</option>
-            <option>Quinta • 15h30</option>
-            <option>Sábado • 09h30</option>
-          </select>
-          <button onclick="confirmRealAgenda('whConfirmMsg', 'Consulta de avaliação e clareamento registrada na agenda da clínica.')" class="btn-gold text-xs">Agendar avaliação</button>
-        </div>
-        <div id="whConfirmMsg" class="text-xs font-semibold text-[#C6AA76]"></div>
-      </div>`
-  },
-
-  bakery: {
-    url: 'https://forno-artesanal.nexora.site',
-    loading: 'Carregando Forno & Confeitaria...',
-    siteName: 'Forno & Confeitaria Real',
-    tagline: 'Pães de fermentação natural, folhados e cafés',
-    address: 'Rua dos Andradas, 890 • Loja 01 — Centro Histórico',
-    hours: 'Ter a Dom: 07h às 20h',
-    personImg: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=800&q=80',
-    personName: 'Henrique Dias',
-    personRole: 'Padeiro responsável pelas fornadas diárias',
-    spaceImg: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Vitrine e bancada de pães artesanais',
-    aboutText: 'Produção em pequenos lotes com farinhas selecionadas, longa fermentação e fornadas programadas ao longo do dia.',
-    services: [
-      ['Pão Levain (R$ 18)', 'Casca crocante e miolo macio de fermentação natural.'],
-      ['Croissant Manteiga (R$ 14)', 'Massa folhada assada diariamente.'],
-      ['Encomenda para Eventos', 'Caixas fechadas com retirada ou entrega local.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Pedido & Agenda de Retirada</h4>
-        <div class="grid sm:grid-cols-2 gap-3">
-          <div class="p-3.5 rounded-xl bg-[#0E1726] border border-[#8793A3]/15 flex items-center justify-between">
-            <span class="text-xs font-semibold">Pão Levain (R$ 18)</span>
-            <div class="flex items-center gap-2">
-              <button onclick="stepRealQty('realBk1',-1)" class="w-7 h-7 rounded bg-[#183447] font-bold">-</button>
-              <span id="realBk1" class="text-sm font-bold">2</span>
-              <button onclick="stepRealQty('realBk1',1)" class="w-7 h-7 rounded bg-[#C6AA76] text-[#080E18] font-bold">+</button>
-            </div>
-          </div>
-          <div class="p-3.5 rounded-xl bg-[#0E1726] border border-[#8793A3]/15 flex items-center justify-between">
-            <span class="text-xs font-semibold">Croissant (R$ 14)</span>
-            <div class="flex items-center gap-2">
-              <button onclick="stepRealQty('realBk2',-1)" class="w-7 h-7 rounded bg-[#183447] font-bold">-</button>
-              <span id="realBk2" class="text-sm font-bold">2</span>
-              <button onclick="stepRealQty('realBk2',1)" class="w-7 h-7 rounded bg-[#C6AA76] text-[#080E18] font-bold">+</button>
-            </div>
-          </div>
-        </div>
-        <div id="realBkSummary" class="p-3.5 rounded-xl bg-[#0E1726] border border-[#C6AA76]/25 text-xs font-semibold text-[#C6AA76]"></div>
-        <div class="grid sm:grid-cols-2 gap-3">
-          <select id="realBkPickup" class="lux-input text-xs">
-            <option>Retirada hoje • 16h30</option>
-            <option>Retirada hoje • 18h00</option>
-            <option>Amanhã • 08h30</option>
-          </select>
-          <button onclick="confirmRealAgenda('realBkMsg', 'Pedido reservado para retirada no balcão.')" class="btn-gold text-xs">Reservar retirada</button>
-        </div>
-        <div id="realBkMsg" class="text-xs font-semibold text-[#C6AA76]"></div>
-      </div>`
-  },
-
-  barber: {
-    url: 'https://barbearia-clube.nexora.site',
-    loading: 'Carregando Barbearia & Clube...',
-    siteName: 'Barbearia Clube & Navalha',
-    tagline: 'Barbearia clássica, corte de precisão e atendimento com hora marcada',
-    address: 'Rua Coronel Vicente, 510 — Centro',
-    hours: 'Ter a Sáb: 09h às 20h',
-    personImg: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
-    personName: 'Marcos Tavares',
-    personRole: 'Barbeiro especialista em cortes e barba',
-    spaceImg: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Interior da barbearia e cadeiras de atendimento',
-    aboutText: 'Ambiente masculino tradicional com foco em pontualidade, higienização rigorosa e acabamento detalhado.',
-    services: [
-      ['Corte & Acabamento (R$ 45)', 'Corte alinhado na máquina e tesoura com finalização.'],
-      ['Barba & Toalha Quente (R$ 35)', 'Modelagem de barba com toalha aquecida e óleo pós-barba.'],
-      ['Combo Completo (R$ 72)', 'Corte + barba no mesmo horário agendado.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Agenda de Atendimento</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <select id="realBbSrv" class="lux-input text-xs" onchange="calcRealBarber()">
-            <option value="45|Corte & Acabamento">Corte & Acabamento (R$ 45)</option>
-            <option value="35|Barba & Toalha Quente">Barba & Toalha Quente (R$ 35)</option>
-            <option value="72|Combo Completo">Combo Completo (R$ 72)</option>
-          </select>
-          <select id="realBbHour" class="lux-input text-xs">
-            <option>10h00</option><option>14h00</option><option>17h30</option>
-          </select>
-          <button onclick="confirmRealAgenda('realBbMsg', 'Horário reservado na agenda da barbearia.')" class="btn-gold text-xs">Agendar horário</button>
-        </div>
-        <div id="realBbOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realBbMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  fashion: {
-    url: 'https://alfaiataria-loja.nexora.site',
-    loading: 'Carregando Alfaiataria & Loja...',
-    siteName: 'Casa de Alfaiataria & Estilo',
-    tagline: 'Peças selecionadas, caimento estruturado e atendimento presencial',
-    address: 'Av. Goethe, 320 • Loja 04 — Moinhos',
-    hours: 'Seg a Sáb: 10h às 19h30',
-    personImg: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
-    personName: 'André Vasconcelos',
-    personRole: 'Consultor de moda e alfaiataria',
-    spaceImg: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Loja física e araras de coleção',
-    aboutText: 'Curadoria de peças versáteis com orientação de medidas e prova presencial ou reserva para retirada.',
-    services: [
-      ['Blazer Estruturado (R$ 240)', 'Corte alinhado para ocasiões sociais e trabalho.'],
-      ['Camisa em Algodão (R$ 140)', 'Toque leve e caimento regular ou slim.'],
-      ['Ajuste & Consultoria', 'Indicação de tamanho conforme medidas do cliente.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Guia de Medidas & Reserva</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <input id="realFsKg" type="number" min="45" max="140" value="76" class="lux-input text-xs" placeholder="Peso (kg)" oninput="calcRealFashion()">
-          <select id="realFsItem" class="lux-input text-xs" onchange="calcRealFashion()">
-            <option value="240|Blazer Estruturado">Blazer Estruturado (R$ 240)</option>
-            <option value="140|Camisa em Algodão">Camisa em Algodão (R$ 140)</option>
-          </select>
-          <button onclick="confirmRealAgenda('realFsMsg', 'Peça separada para prova ou retirada na loja.')" class="btn-gold text-xs">Reservar peça</button>
-        </div>
-        <div id="realFsOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realFsMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  fitness: {
-    url: 'https://ct-performance.nexora.site',
-    loading: 'Carregando Centro de Treinamento...',
-    siteName: 'Centro de Treinamento Força & Base',
-    tagline: 'Treinamento físico, acompanhamento e musculação orientada',
-    address: 'Rua Bento Gonçalves, 740 — Centro',
-    hours: 'Seg a Sex: 06h às 22h • Sáb: 08h às 14h',
-    personImg: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80',
-    personName: 'Bruno Alves',
-    personRole: 'Coordenador técnico de treinamento',
-    spaceImg: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Área de musculação e treino funcional',
-    aboutText: 'Treinos estruturados por objetivo com orientação técnica presente no salão e agendamento de aula experimental.',
-    services: [
-      ['Musculação & Força', 'Planilhas progressivas com acompanhamento no salão.'],
-      ['Condicionamento Físico', 'Sessões focadas em resistência e ritmo.'],
-      ['Avaliação & Aula Experimental', 'Agendamento de primeiro treino com a equipe.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Cronômetro de Série (30s)</h4>
-            <p class="text-xs text-[#8793A3]">Controle de tempo de descanso durante o treino.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <span id="realFitTimer" class="font-display text-3xl text-[#C6AA76] font-semibold">30s</span>
-            <button onclick="startRealFitClock()" class="btn-gold text-xs">Iniciar</button>
-          </div>
-        </div>
-        <div class="pt-3 border-t border-[#8793A3]/15 flex flex-wrap items-center justify-between gap-3">
-          <select id="realFitDay" class="lux-input !w-auto text-xs">
-            <option>Aula experimental • Terça 18h</option>
-            <option>Aula experimental • Quinta 08h</option>
-          </select>
-          <button onclick="confirmRealAgenda('realFitMsg', 'Aula experimental marcada na recepção do CT.')" class="btn-petrol text-xs">Agendar aula experimental</button>
-        </div>
-        <div id="realFitMsg" class="text-xs font-semibold text-[#C6AA76]"></div>
-      </div>`
-  },
-
-  pet: {
-    url: 'https://clinica-pet.nexora.site',
-    loading: 'Carregando Clínica & Banho Pet...',
-    siteName: 'Espaço Pet & Cuidados',
-    tagline: 'Banho, tosa e acompanhamento atento para cães e gatos',
-    address: 'Av. Protásio Alves, 2150 — Petrópolis',
-    hours: 'Seg a Sáb: 08h30 às 18h30',
-    personImg: 'https://images.unsplash.com/photo-1537151625747-768eb6df7d2b?auto=format&fit=crop&w=800&q=80',
-    personName: 'Equipe Espaço Pet',
-    personRole: 'Cuidadores e tosadores especializados',
-    spaceImg: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Área de banho e cuidados pet',
-    aboutText: 'Atendimento tranquilo respeitando o temperamento e o porte de cada animal, com agenda organizada por horário.',
-    services: [
-      ['Banho & Secagem', 'Produtos adequados ao tipo de pelagem e pele.'],
-      ['Tosa Higiênica & Completa', 'Acabamento cuidadoso com atenção ao bem-estar.'],
-      ['Pacote Mensal (4 Banhos)', 'Rotina programada para o mês inteiro.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Simulador & Agenda de Banho</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <select id="realPtSize" class="lux-input text-xs" onchange="calcRealPet()">
-            <option value="60|Porte Pequeno">Porte Pequeno (R$ 60)</option>
-            <option value="80|Porte Médio" selected>Porte Médio (R$ 80)</option>
-            <option value="105|Porte Grande">Porte Grande (R$ 105)</option>
-          </select>
-          <input id="realPtName" class="lux-input text-xs" placeholder="Nome do pet">
-          <button onclick="confirmRealAgenda('realPtMsg', 'Horário de banho reservado para o pet.')" class="btn-gold text-xs">Agendar banho</button>
-        </div>
-        <div id="realPtOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realPtMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  arch: {
-    url: 'https://escritorio-arquitetura.nexora.site',
-    loading: 'Carregando Escritório de Arquitetura...',
-    siteName: 'Campos & Associados Arquitetura',
-    tagline: 'Projetos residenciais, comerciais e arquitetura de interiores',
-    address: 'Rua Padre Chagas, 185 • Conj. 301 — Moinhos',
-    hours: 'Seg a Sex: 09h às 18h30',
-    personImg: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-    personName: 'Arq. Helena Campos • CAU',
-    personRole: 'Arquitetura e design de interiores',
-    spaceImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Ambiente residencial projetado e executado',
-    aboutText: 'Estudo de layout, iluminação natural, marcenaria e acompanhamento técnico do projeto até a entrega.',
-    services: [
-      ['Projeto de Interiores', 'Planta, layout, iluminação e especificação de materiais.'],
-      ['Reforma & Ampliação', 'Planejamento técnico para transformar espaços existentes.'],
-      ['Consultoria de Ambiente', 'Direcionamento de paleta, mobiliário e circulação.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Estimativa por Metragem & Reunião</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <input id="realArM2" type="number" min="10" value="65" class="lux-input text-xs" placeholder="Área (m²)" oninput="calcRealArch()">
-          <select id="realArRate" class="lux-input text-xs" onchange="calcRealArch()">
-            <option value="140">R$ 140/m² (estimativa)</option>
-            <option value="220">R$ 220/m² (estimativa)</option>
-          </select>
-          <button onclick="confirmRealAgenda('realArMsg', 'Reunião inicial agendada com o escritório de arquitetura.')" class="btn-gold text-xs">Agendar reunião</button>
-        </div>
-        <div id="realArOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realArMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  photo: {
-    url: 'https://estudio-retrato.nexora.site',
-    loading: 'Carregando Estúdio Fotográfico...',
-    siteName: 'Estúdio Retrato & Imagem',
-    tagline: 'Retratos profissionais, ensaios e direção de cena em estúdio',
-    address: 'Rua Vasco da Gama, 410 — Bom Fim',
-    hours: 'Ter a Sáb: 09h às 19h',
-    personImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-    personName: 'Lucas Martins',
-    personRole: 'Fotógrafo e diretor de iluminação',
-    spaceImg: 'https://images.unsplash.com/photo-1554048612-b6a482bc6727?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Estúdio fotográfico e equipamento de captura',
-    aboutText: 'Sessões guiadas com controle de luz, curadoria das fotos e tratamento de cor entregue em galeria digital.',
-    services: [
-      ['Retrato Profissional', 'Fotos para perfil executivo, portfólio e imprensa.'],
-      ['Ensaio em Estúdio', 'Trocas de figurino, direção de pose e seleção final.'],
-      ['Fotos Extras Tratadas', 'Ampliação do pacote de imagens entregues.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Simulador de Ensaio & Data</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <input id="realPhExtra" type="number" min="0" max="60" value="6" class="lux-input text-xs" placeholder="Fotos extras" oninput="calcRealPhoto()">
-          <select id="realPhDate" class="lux-input text-xs">
-            <option>Sexta • 14h00</option>
-            <option>Sábado • 10h00</option>
-          </select>
-          <button onclick="confirmRealAgenda('realPhMsg', 'Data de ensaio reservada no estúdio fotográfico.')" class="btn-gold text-xs">Reservar ensaio</button>
-        </div>
-        <div id="realPhOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realPhMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  meal: {
-    url: 'https://cozinha-diaria.nexora.site',
-    loading: 'Carregando Cozinha & Marmitaria...',
-    siteName: 'Cozinha Diária & Refeições',
-    tagline: 'Refeições preparadas na rotina para almoço e jantar',
-    address: 'Av. Bento Gonçalves, 1980 — Partenon',
-    hours: 'Seg a Sáb: 08h às 19h',
-    personImg: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?auto=format&fit=crop&w=800&q=80',
-    personName: 'Equipe Cozinha Diária',
-    personRole: 'Preparo e montagem de refeições',
-    spaceImg: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Pratos montados e refeições prontas',
-    aboutText: 'Cardápio variado com porções pesadas, preparo fresco e combos semanais para facilitar o dia a dia.',
-    services: [
-      ['Marmita Tradicional (R$ 22)', 'Arroz, feijão, proteína e guarnição do dia.'],
-      ['Combo Semanal', 'Pacote fechado com múltiplas unidades para a semana.'],
-      ['Retirada ou Entrega', 'Programação conforme a rotina do cliente.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <h4 class="font-display text-xl sm:text-2xl font-semibold text-[#F1EEE6]">Montador de Combo Semanal</h4>
-        <div class="grid sm:grid-cols-3 gap-3">
-          <input id="realMlQty" type="number" min="1" max="40" value="10" class="lux-input text-xs" oninput="calcRealMeal()">
-          <select id="realMlSlot" class="lux-input text-xs">
-            <option>Entrega Segunda • Manhã</option>
-            <option>Retirada Segunda • 11h30</option>
-          </select>
-          <button onclick="confirmRealAgenda('realMlMsg', 'Combo semanal registrado para preparo.')" class="btn-gold text-xs">Pedir combo</button>
-        </div>
-        <div id="realMlOut" class="text-xs font-semibold text-[#C6AA76]"></div>
-        <div id="realMlMsg" class="text-xs font-semibold text-[#F1EEE6]"></div>
-      </div>`
-  },
-
-  music: {
-    url: 'https://escola-musica.nexora.site',
-    loading: 'Carregando Escola de Música...',
-    siteName: 'Conservatório & Escola de Música',
-    tagline: 'Aulas individuais de teclado, violão, percepção e ritmo',
-    address: 'Rua João Abbott, 340 — Petrópolis',
-    hours: 'Seg a Sáb: 09h às 20h',
-    personImg: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80',
-    personName: 'Prof. Rafael Costa',
-    personRole: 'Professor de piano, violão e teoria musical',
-    spaceImg: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80',
-    spaceLabel: 'Sala de aula e instrumentos musicais',
-    aboutText: 'Ensino musical progressivo com prática em instrumento, leitura, harmonia e controle de andamento.',
-    services: [
-      ['Aula Individual de Teclado/Piano', 'Técnica, leitura, acordes e repertório.'],
-      ['Violão & Ritmo', 'Levadas, harmonia e acompanhamento musical.'],
-      ['Aula Experimental', 'Conhecimento da sala e avaliação inicial.']
-    ],
-    renderInteractive: () => `
-      <div class="p-5 rounded-2xl bg-[#080E18] border border-[#C6AA76]/30 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <span class="text-xs font-semibold">Metrônomo • BPM: <strong id="realMsBpmVal" class="text-[#C6AA76] text-base">90</strong></span>
-          <input id="realMsBpmRange" type="range" min="50" max="180" value="90" class="flex-1 accent-[#C6AA76]" oninput="document.getElementById('realMsBpmVal').textContent=this.value">
-          <button onclick="toggleRealMetronome()" class="btn-gold text-xs">Batida</button>
-        </div>
-        <div id="realMsBeat" class="text-xs text-[#8793A3]">Metrônomo parado</div>
-        <div class="pt-3 border-t border-[#8793A3]/15 flex flex-wrap items-center justify-between gap-3">
-          <select id="realMsSlot" class="lux-input !w-auto text-xs">
-            <option>Aula experimental • Quarta 16h</option>
-            <option>Aula experimental • Sábado 10h</option>
-          </select>
-          <button onclick="confirmRealAgenda('realMsMsg', 'Aula experimental agendada na escola de música.')" class="btn-petrol text-xs">Agendar aula</button>
-        </div>
-        <div id="realMsMsg" class="text-xs font-semibold text-[#C6AA76]"></div>
-      </div>`
-  }
-};
-
-let realFitTimer = null;
-let realMetroTimer = null;
-let realAudioCtx = null;
-
-function stopAllRealTimers() {
-  if (realFitTimer) { clearInterval(realFitTimer); realFitTimer = null; }
-  if (realMetroTimer) { clearInterval(realMetroTimer); realMetroTimer = null; }
-}
-
-function openDemoSite(key) {
-  stopAllRealTimers();
-  const s = FULL_REAL_SITES[key] || FULL_REAL_SITES.whitening;
-  const backdrop = document.getElementById('demoModalBackdrop');
-  const loader = document.getElementById('demoLoaderScreen');
-  const loaderMsg = document.getElementById('demoLoaderMsg');
-  const urlEl = document.getElementById('demoModalUrl');
-  const body = document.getElementById('demoModalBody');
-
-  urlEl.textContent = s.url;
-  loaderMsg.textContent = s.loading;
-  loader.classList.remove('done');
-  backdrop.classList.add('open');
-
-  const servicesHtml = s.services.map(([title, desc]) => `
-    <div class="p-4 rounded-xl bg-[#080E18] border border-[#8793A3]/15">
-      <strong class="text-sm text-[#F1EEE6] block">${title}</strong>
-      <p class="text-xs text-[#8793A3] mt-1">${desc}</p>
-    </div>
-  `).join('');
-
-  body.innerHTML = `
-    <!-- Aviso de demonstração: projeto final totalmente personalizado -->
-    <div class="p-3.5 rounded-xl bg-[#183447]/65 border border-[#C6AA76]/40 text-xs text-[#F1EEE6] flex flex-wrap items-center justify-between gap-2">
-      <span><strong class="text-[#C6AA76]">Aviso de demonstração:</strong> Esta é uma amostra estruturada — o seu site final será <strong>totalmente personalizado</strong> com sua marca, fotos, textos e funções.</span>
-      <button onclick="closeDemoSite(); goPage('contact');" class="text-[11px] font-bold text-[#C6AA76] underline">Quero personalizado</button>
-    </div>
-
-    <!-- Início do site amostra -->
-    <div class="rounded-2xl bg-gradient-to-br from-[#183447] to-[#080E18] p-6 sm:p-8 border border-[#C6AA76]/25 space-y-2">
-      <span class="lux-eyebrow">Início • ${s.siteName}</span>
-      <h3 class="font-display text-2xl sm:text-4xl font-semibold text-[#F1EEE6]">${s.siteName}</h3>
-      <p class="text-xs sm:text-sm text-[#F1EEE6]/90">${s.tagline}</p>
-      <div class="pt-3 flex flex-wrap gap-4 text-xs text-[#8793A3]">
-        <span><i class="fa-solid fa-location-dot text-[#C6AA76] mr-1.5"></i>${s.address}</span>
-        <span><i class="fa-solid fa-clock text-[#C6AA76] mr-1.5"></i>${s.hours}</span>
-      </div>
-    </div>
-
-    <!-- Fotos de pessoas e do espaço/consultório -->
-    <div class="grid sm:grid-cols-2 gap-4">
-      <div class="rounded-2xl overflow-hidden bg-[#080E18] border border-[#8793A3]/15">
-        <img src="${s.personImg}" alt="${s.personName}" class="w-full h-48 object-cover">
-        <div class="p-3.5">
-          <strong class="text-sm text-[#F1EEE6] block">${s.personName}</strong>
-          <span class="text-xs text-[#8793A3]">${s.personRole}</span>
-        </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden bg-[#080E18] border border-[#8793A3]/15">
-        <img src="${s.spaceImg}" alt="${s.spaceLabel}" class="w-full h-48 object-cover">
-        <div class="p-3.5">
-          <strong class="text-sm text-[#F1EEE6] block">${s.spaceLabel}</strong>
-          <span class="text-xs text-[#8793A3]">${s.address}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sobre e Serviços -->
-    <div class="grid lg:grid-cols-12 gap-4">
-      <div class="lg:col-span-5 p-5 rounded-2xl bg-[#080E18] border border-[#8793A3]/15 space-y-2">
-        <h4 class="font-display text-xl font-semibold text-[#F1EEE6]">Sobre</h4>
-        <p class="text-xs text-[#8793A3] leading-relaxed">${s.aboutText}</p>
-      </div>
-      <div class="lg:col-span-7 p-5 rounded-2xl bg-[#080E18] border border-[#8793A3]/15 space-y-3">
-        <h4 class="font-display text-xl font-semibold text-[#F1EEE6]">Serviços</h4>
-        <div class="grid sm:grid-cols-3 gap-2.5">${servicesHtml}</div>
-      </div>
-    </div>
-
-    <!-- Ferramenta interativa e Agenda -->
-    ${s.renderInteractive()}
-  `;
-
-  if (key === 'whitening') updateSmileSplit(50);
-  if (key === 'bakery') calcRealBakery();
-  if (key === 'barber') calcRealBarber();
-  if (key === 'fashion') calcRealFashion();
-  if (key === 'pet') calcRealPet();
-  if (key === 'arch') calcRealArch();
-  if (key === 'photo') calcRealPhoto();
-  if (key === 'meal') calcRealMeal();
-
-  setTimeout(() => loader.classList.add('done'), 550);
-}
-
-function closeDemoSite() {
-  stopAllRealTimers();
-  document.getElementById('demoModalBackdrop').classList.remove('open');
-}
-
-function updateSmileSplit(val) {
-  const pct = Math.max(5, Math.min(95, Number(val) || 50));
-  const clip = document.getElementById('smileBeforeClip');
-  const ro = document.getElementById('smileSplitReadout');
-  if (clip) clip.style.width = pct + '%';
-  if (ro) ro.textContent = `Antes (amarelado): ${pct}% • Depois (branco): ${100 - pct}%`;
-}
-
-function stepRealQty(id, delta) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.textContent = String(Math.max(0, Number(el.textContent || 0) + delta));
-  calcRealBakery();
-}
-function calcRealBakery() {
-  const q1 = Number(document.getElementById('realBk1')?.textContent || 0);
-  const q2 = Number(document.getElementById('realBk2')?.textContent || 0);
-  const items = q1 + q2;
-  let total = q1 * 18 + q2 * 14;
-  if (items >= 6) total *= 0.9;
-  const el = document.getElementById('realBkSummary');
-  if (el) el.textContent = `${items} itens ${items >= 6 ? '(10% off na caixa)' : ''} • Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-}
-function calcRealBarber() {
-  const [val, name] = (document.getElementById('realBbSrv')?.value || '45|Corte').split('|');
-  const el = document.getElementById('realBbOut');
-  if (el) el.textContent = `${name} • Valor de referência: R$ ${Number(val).toFixed(2).replace('.', ',')}`;
-}
-function calcRealFashion() {
-  const kg = Math.max(40, Number(document.getElementById('realFsKg')?.value || 76));
-  const [pr, item] = (document.getElementById('realFsItem')?.value || '240|Blazer').split('|');
-  const size = kg < 68 ? 'P' : kg < 86 ? 'M' : 'G';
-  const el = document.getElementById('realFsOut');
-  if (el) el.textContent = `${item} • Tamanho sugerido: ${size} (${kg} kg) • R$ ${Number(pr).toFixed(2).replace('.', ',')}`;
-}
-function startRealFitClock() {
-  if (realFitTimer) clearInterval(realFitTimer);
-  let sec = 30;
-  const el = document.getElementById('realFitTimer');
-  if (el) el.textContent = sec + 's';
-  realFitTimer = setInterval(() => {
-    sec -= 1;
-    if (el) el.textContent = Math.max(0, sec) + 's';
-    if (sec <= 0) { clearInterval(realFitTimer); realFitTimer = null; if (el) el.textContent = 'Pronto'; }
-  }, 1000);
-}
-function calcRealPet() {
-  const [val, porte] = (document.getElementById('realPtSize')?.value || '80|Porte Médio').split('|');
-  const el = document.getElementById('realPtOut');
-  if (el) el.textContent = `${porte} • Banho avulso de referência: R$ ${Number(val).toFixed(2).replace('.', ',')}`;
-}
-function calcRealArch() {
-  const m2 = Math.max(10, Number(document.getElementById('realArM2')?.value || 65));
-  const rate = Number(document.getElementById('realArRate')?.value || 140);
-  const el = document.getElementById('realArOut');
-  if (el) el.textContent = `${m2} m² • Estimativa inicial: R$ ${(m2 * rate).toLocaleString('pt-BR')},00`;
-}
-function calcRealPhoto() {
-  const ex = Math.max(0, Number(document.getElementById('realPhExtra')?.value || 6));
-  const el = document.getElementById('realPhOut');
-  if (el) el.textContent = `Pacote base R$ 480 + ${ex} fotos extras = R$ ${(480 + ex * 15).toFixed(2).replace('.', ',')}`;
-}
-function calcRealMeal() {
-  const qty = Math.max(1, Number(document.getElementById('realMlQty')?.value || 10));
-  const el = document.getElementById('realMlOut');
-  if (el) el.textContent = `${qty} marmitas • Total: R$ ${(qty * 22).toFixed(2).replace('.', ',')} • ~${(qty * 520).toLocaleString('pt-BR')} kcal estimadas`;
-}
-function toggleRealMetronome() {
-  const status = document.getElementById('realMsBeat');
-  if (realMetroTimer) {
-    clearInterval(realMetroTimer);
-    realMetroTimer = null;
-    if (status) status.textContent = 'Metrônomo parado';
-    return;
-  }
-  const bpm = Number(document.getElementById('realMsBpmRange')?.value || 90);
-  const ms = Math.round(60000 / bpm);
-  let beat = 0;
-  const pulse = () => {
-    beat = (beat % 4) + 1;
-    if (status) status.textContent = `Batida ${beat}/4 • ${bpm} BPM`;
-    try {
-      realAudioCtx = realAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      const osc = realAudioCtx.createOscillator();
-      const gain = realAudioCtx.createGain();
-      osc.frequency.value = beat === 1 ? 880 : 587;
-      gain.gain.value = 0.05;
-      osc.connect(gain); gain.connect(realAudioCtx.destination);
-      osc.start(); osc.stop(realAudioCtx.currentTime + 0.05);
-    } catch (e) {}
-  };
-  pulse();
-  realMetroTimer = setInterval(pulse, ms);
-}
-function confirmRealAgenda(targetId, text) {
-  const el = document.getElementById(targetId);
-  if (el) el.textContent = text;
-}
-
-/* =========================================================================
-   CONTATO & WHATSAPP
-========================================================================= */
-function openWhatsApp(msg) {
-  const text = msg || 'Olá! Vim pelo site da NEXORA Studio.';
-  window.open(`https://wa.me/${WA_LUX_NUMBER}?text=` + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
-}
-
-function selectLuxPlan(planText) {
-  goPage('contact');
-  const sel = document.getElementById('luxPlan');
-  if (sel) {
-    const found = [...sel.options].find(o => o.text === planText);
-    if (found) sel.value = found.value;
-  }
-}
-
-function submitLuxContact(e) {
-  e.preventDefault();
-  const name = document.getElementById('luxName').value.trim();
-  const demo = document.getElementById('luxDemo').value;
-  const plan = document.getElementById('luxPlan').value;
-  const notes = document.getElementById('luxNotes').value.trim();
-  const fb = document.getElementById('luxContactFeedback');
-  if (!name || !demo || !plan) return;
-  if (fb) fb.textContent = 'Solicitação preparada. Abrindo WhatsApp...';
-  openWhatsApp(`Olá, NEXORA! Sou ${name}. Referência: ${demo}. Plano: ${plan}.${notes ? ' Detalhes: ' + notes : ''}`);
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeDemoSite();
+$('mbody').addEventListener('click',e=>{
+  const c=e.target.closest('[data-slot]');
+  if(c){slot=c.dataset.slot;document.querySelectorAll('#slots .chip').forEach(x=>x.setAttribute('aria-pressed',String(x===c)))}
+  if(e.target.closest('#bkGo')){const n=$('bkName').value.trim();
+    $('bkMsg').textContent=!n?'Informe seu nome para continuar.':!slot?'Escolha um horário.':`${n}, horário reservado: ${slot} (simulação).`}
+});
+document.addEventListener('keydown',e=>{
+  const m=$('mb');if(!m.classList.contains('open'))return;
+  if(e.key==='Escape'){closeDemo();return}
+  if(e.key!=='Tab')return;
+  const f=[...m.querySelectorAll('button,input,select,a[href]')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;
+  const a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+  else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
 });
 
-renderSixteenFeatures();
-goPage('home');
-</script>
+function toolHTML(t){
+  if(t.k==='compare')return `<div><h4 class="font-display text-xl sm:text-2xl font-semibold">Antes e depois do clareamento</h4><p class="text-sm text-[#8793A3]">Arraste o controle. Ilustração simulada por filtro de imagem, não é resultado real.</p></div>
+   <div class="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-[#C6AA76]/30 bg-black select-none">
+    <img src="${U('photo-1588776814546-1ffcf47267a5',1000)}" alt="Sorriso após o clareamento (simulação)" class="w-full h-full object-cover brightness-125 contrast-110 saturate-75">
+    <span class="absolute bottom-3 right-3 z-10 px-3 py-1 rounded bg-[#F1EEE6] text-[#080E18] text-xs font-extrabold">DEPOIS • BRANCO</span>
+    <div id="cmpClip" class="absolute inset-0" style="clip-path:inset(0 50% 0 0)"><img src="${U('photo-1588776814546-1ffcf47267a5',1000)}" alt="Sorriso antes do clareamento (simulação)" class="w-full h-full object-cover sepia-[.85] saturate-150 brightness-90"><span class="absolute bottom-3 left-3 px-3 py-1 rounded bg-[#080E18]/90 text-[#C6AA76] text-xs font-extrabold border border-[#C6AA76]/40">ANTES • AMARELADO</span></div>
+    <div id="cmpLine" class="absolute inset-y-0 w-0.5 bg-[#C6AA76]" style="left:50%"></div></div>
+   <input id="cmpRange" type="range" min="5" max="95" value="50" aria-label="Posição da comparação" class="w-full accent-[#C6AA76]"><div id="cmpOut" class="text-sm text-[#8793A3]">Antes: 50% • Depois: 50%</div>`;
+  if(t.k==='timer')return `<div class="flex flex-wrap items-center justify-between gap-4"><div><h4 class="font-display text-xl sm:text-2xl font-semibold">Cronômetro de descanso</h4><p class="text-sm text-[#8793A3]">Escolha o tempo entre as séries.</p></div><span id="tmOut" class="font-display text-4xl text-[#C6AA76] font-semibold" role="timer" aria-live="off">30s</span></div>
+   <div class="flex flex-wrap gap-2 items-center">${[30,60,90].map((x,i)=>`<button class="chip" data-tm="${x}" aria-pressed="${i===0}">${x}s</button>`).join('')}<button id="tmGo" class="btn-gold !py-2 ml-auto">Iniciar</button></div>`;
+  if(t.k==='metro')return `<h4 class="font-display text-xl sm:text-2xl font-semibold">Metrônomo</h4>
+   <div class="flex flex-wrap items-center gap-3"><span class="text-sm font-semibold">BPM: <strong id="mtVal" class="text-[#C6AA76] text-lg">90</strong></span><input id="mtRange" type="range" min="50" max="180" value="90" aria-label="BPM" class="flex-1 min-w-[140px] accent-[#C6AA76]"><button id="mtGo" class="btn-gold !py-2">Iniciar</button></div><div id="mtOut" class="text-sm text-[#8793A3]" role="status">Metrônomo parado</div>`;
+  return `<h4 class="font-display text-xl sm:text-2xl font-semibold">${t.title}</h4><div class="grid sm:grid-cols-3 gap-3">${t.fields.map(f=>`<div><label for="f-${f.id}" class="text-xs font-semibold text-[#8793A3] block mb-1">${f.label}</label>${f.t==='n'?`<input id="f-${f.id}" type="number" inputmode="numeric" min="${f.min}" max="${f.max}" value="${f.def}" class="lux-input">`:`<select id="f-${f.id}" class="lux-input">${f.opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}</select>`}</div>`).join('')}</div><div id="calcOut" class="p-3.5 rounded-xl bg-[#0E1726] border border-[#C6AA76]/25 text-sm font-semibold text-[#C6AA76]" role="status"></div>`;
+}
+function initTool(t){
+  if(t.k==='compare'){
+    $('cmpRange').oninput=e=>{const p=+e.target.value;$('cmpClip').style.clipPath=`inset(0 ${100-p}% 0 0)`;$('cmpLine').style.left=p+'%';$('cmpOut').textContent=`Antes: ${p}% • Depois: ${100-p}%`}
+  }else if(t.k==='timer'){
+    let sec=30;
+    $('toolBox').addEventListener('click',e=>{const c=e.target.closest('[data-tm]');if(!c)return;sec=+c.dataset.tm;stopAll();$('tmOut').textContent=sec+'s';$('tmGo').textContent='Iniciar';
+      document.querySelectorAll('[data-tm]').forEach(x=>x.setAttribute('aria-pressed',String(x===c)))});
+    $('tmGo').onclick=()=>{stopAll();let r=sec;$('tmOut').textContent=r+'s';$('tmGo').textContent='Reiniciar';
+      tmr=setInterval(()=>{r--;$('tmOut').textContent=Math.max(0,r)+'s';if(r<=0){stopAll();$('tmOut').textContent='Pronto!';$('tmGo').textContent='Iniciar';beep(660,.3)}},1000)}
+  }else if(t.k==='metro'){
+    $('mtRange').oninput=e=>$('mtVal').textContent=e.target.value;
+    $('mtGo').onclick=()=>{
+      if(metro){stopAll();$('mtOut').textContent='Metrônomo parado';$('mtGo').textContent='Iniciar';return}
+      let beat=0,next=performance.now();$('mtGo').textContent='Parar';
+      const pulse=()=>{const bpm=+$('mtRange').value;beat=beat%4+1;$('mtOut').textContent=`Batida ${beat}/4 • ${bpm} BPM`;beep(beat===1?880:587,.05);
+        next+=60000/bpm;metro=setTimeout(pulse,Math.max(0,next-performance.now()))};
+      pulse()}
+  }else{
+    const run=()=>{const v={};t.fields.forEach(f=>v[f.id]=Number($('f-'+f.id).value)||0);$('calcOut').textContent=t.f(v)};
+    $('toolBox').addEventListener('input',run);run()
+  }
+}
+function beep(f,d){
+  try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();
+    const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;g.gain.value=.05;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}
+}
 
+/* ---------- contato e WhatsApp ---------- */
+function openWA(msg){window.open(`https://wa.me/${WA}?text=`+encodeURIComponent(msg||'Olá! Vim pelo site da NEXORA Studio.'),'_blank','noopener,noreferrer')}
+$('cform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('cName').value.trim(),d=$('cDemo').value,p=$('cPlan').value,t=$('cNotes').value.trim();
+  if(!n||!d||!p)return;
+  $('cFb').textContent='Solicitação preparada. Abrindo WhatsApp…';
+  openWA(`Olá, NEXORA! Sou ${n}. Referência: ${d}. Plano: ${p}.${t?' Detalhes: '+t:''}`);
+});
+
+goPage(location.hash.slice(1),false);
+</script>
 </body>
 </html>
